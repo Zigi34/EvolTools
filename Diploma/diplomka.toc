@@ -1,14 +1,31 @@
 \select@language {czech}
-\contentsline {section}{\numberline {1}\IeC {\'U}vod}{9}{section.1}
-\contentsline {section}{\numberline {2}Uk\IeC {\'a}zky sazby}{11}{section.2}
-\contentsline {subsection}{\numberline {2.1}Uk\IeC {\'a}zka nadpis\IeC {\r u}}{11}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}subsection}{11}{subsubsection.2.1.1}
-\contentsline {paragraph}{\numberline {2.1.1.1}paragraph}{11}{paragraph.2.1.1.1}
-\contentsline {subparagraph}{\numberline {2.1.1.1.1}subparagraph}{11}{subparagraph.2.1.1.1.1}
-\contentsline {subsection}{\numberline {2.2}Sazba definic, v\IeC {\v e}t atd.}{11}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}V\IeC {\'y}pisy program\IeC {\r u}}{12}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Obr\IeC {\'a}zky a tabulky}{13}{subsection.2.4}
-\contentsline {section}{\numberline {3}Z\IeC {\'a}v\IeC {\v e}r}{17}{section.3}
-\contentsline {section}{\numberline {4}Reference}{19}{section.4}
-\contentsline {section}{P\IeC {\v r}\IeC {\'\i }lohy}{19}{section.4}
-\contentsline {section}{\numberline {A}Grafy a m\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{21}{section.1}
+\contentsline {section}{\numberline {1}\IeC {\'U}vod}{5}{section.1}
+\contentsline {section}{\numberline {2}P\IeC {\v r}edmluva}{6}{section.2}
+\contentsline {section}{\numberline {3}Evolu\IeC {\v c}n\IeC {\'\i } algoritmus}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Teorie evoluce}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}\IeC {\'U}vod do teorie optimaliza\IeC {\v c}n\IeC {\'\i }ch algoritm\IeC {\r u}}{8}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Spole\IeC {\v c}n\IeC {\'e} rysy}{8}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Populace}{9}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Optimalizace a \IeC {\'u}\IeC {\v c}elov\IeC {\'a} funkce}{10}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Vybran\IeC {\'e} pojmy z optimalizace}{10}{subsubsection.3.5.1}
+\contentsline {subsection}{\numberline {3.6}Evolu\IeC {\v c}n\IeC {\'\i } algoritmy}{10}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Stochastic Hill Climbing}{11}{subsubsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.2}Simulovan\IeC {\'e} \IeC {\v z}\IeC {\'\i }h\IeC {\'a}n\IeC {\'\i }}{11}{subsubsection.3.6.2}
+\contentsline {subsubsection}{\numberline {3.6.3}Evolu\IeC {\v c}n\IeC {\'\i } strategie}{11}{subsubsection.3.6.3}
+\contentsline {subsubsection}{\numberline {3.6.4}Optimalizace mraven\IeC {\v c}\IeC {\'\i } koloni\IeC {\'\i }}{11}{subsubsection.3.6.4}
+\contentsline {subsubsection}{\numberline {3.6.5}Imunitn\IeC {\'\i } syst\IeC {\'e}m}{12}{subsubsection.3.6.5}
+\contentsline {subsubsection}{\numberline {3.6.6}Memetick\IeC {\'y} algoritmus}{12}{subsubsection.3.6.6}
+\contentsline {subsubsection}{\numberline {3.6.7}Rozpt\IeC {\'y}len\IeC {\'e} prohled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i }}{12}{subsubsection.3.6.7}
+\contentsline {subsubsection}{\numberline {3.6.8}Rojen\IeC {\'\i } \IeC {\v c}\IeC {\'a}stic}{12}{subsubsection.3.6.8}
+\contentsline {subsection}{\numberline {3.7}Optimaliza\IeC {\v c}n\IeC {\'\i } probl\IeC {\'e}my}{13}{subsection.3.7}
+\contentsline {subsubsection}{\numberline {3.7.1}Probl\IeC {\'e}m obchodn\IeC {\'\i }ho cestuj\IeC {\'\i }c\IeC {\'\i }ho}{13}{subsubsection.3.7.1}
+\contentsline {subsubsection}{\numberline {3.7.2}Probl\IeC {\'e}m sudoku}{13}{subsubsection.3.7.2}
+\contentsline {section}{\numberline {4}Genetick\IeC {\'e} programov\IeC {\'a}n\IeC {\'\i }}{14}{section.4}
+\contentsline {section}{\numberline {5}Implementace}{15}{section.5}
+\contentsline {section}{\numberline {6}Testov\IeC {\'a}n\IeC {\'\i } a v\IeC {\'y}sledky}{16}{section.6}
+\contentsline {section}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{17}{section.7}
+\contentsline {section}{\numberline {8}Reference}{18}{section.8}
+\contentsline {subsection}{\numberline {8.1}V\IeC {\'y}pisy program\IeC {\r u}}{19}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Obr\IeC {\'a}zky a tabulky}{20}{subsection.8.2}
+\contentsline {section}{P\IeC {\v r}\IeC {\'\i }lohy}{20}{table.2}
+\contentsline {section}{\numberline {A}Grafy a m\IeC {\v e}\IeC {\v r}en\IeC {\'\i }}{24}{section.1}

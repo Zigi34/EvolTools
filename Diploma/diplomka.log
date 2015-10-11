@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  10 OCT 2015 08:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  11 OCT 2015 22:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -542,10 +542,13 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip59
 ))
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 124.
+
 \c@definition=\count112
 \c@theorem=\count113
 \c@remark=\count114
-
 (/usr/share/texlive/texmf-dist/tex/latex/tools/thb.sty
 File: thb.sty 1995/11/23 v2.2c Theorem extension package (FMi)
 )
@@ -565,26 +568,29 @@ File: babel.def 2013/12/03 3.9h Babel common definitions
 Package babel Info: Making " an active character on input line 172.
 \cs@wordlen=\count117
 Package babel Info: Making - an active character on input line 226.
-)) (./diplomka.aux)
+)) (./diplomka.aux
+
+LaTeX Warning: Label `priklad' multiply defined.
+
+)
 \openout1 = `diplomka.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 76.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 52.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 *geometry* driver: auto-detecting
@@ -594,7 +600,7 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot twoside 
+* modes: includehead includefoot 
 * h-part:(L,W,R)=(79.66771pt, 426.79135pt, 91.04881pt)
 * v-part:(T,H,B)=(71.13188pt, 665.7945pt, 108.12047pt)
 * \paperwidth=597.50787pt
@@ -602,7 +608,7 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 * \textwidth=426.79135pt
 * \textheight=594.7945pt
 * \oddsidemargin=7.39772pt
-* \evensidemargin=18.77882pt
+* \evensidemargin=7.39772pt
 * \topmargin=-1.1381pt
 * \headheight=16.0pt
 * \headsep=25.0pt
@@ -616,8 +622,8 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
@@ -651,7 +657,7 @@ e
 ))
 \c@lstlisting=\count124
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 76.
+Package hyperref Info: Link coloring OFF on input line 52.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -661,9 +667,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count125
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 52.
+LaTeX Info: Redefining \pageref on input line 52.
+LaTeX Info: Redefining \nameref on input line 52.
 
 (./diplomka.out) (./diplomka.out)
 \@outlinefile=\write4
@@ -673,21 +679,19 @@ LaTeX Info: Redefining \nameref on input line 76.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
-LaTeX Font Info:    Try loading font information for T1+phv on input line 79.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 55.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 55.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
- [3] [4
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 55.
+ [2
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -697,7 +701,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * hratio: 1:1
 * vratio: 1:1
-* modes: twoside 
+* modes: 
 * h-part:(L,W,R)=(1.0pt, 595.50787pt, 1.0pt)
 * v-part:(T,H,B)=(1.0pt, 843.04684pt, 1.0pt)
 * \paperwidth=597.50787pt
@@ -719,50 +723,43 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 * \voffset=0.0pt
 * \mag=1000
 * \@twocolumnfalse
-* \@twosidetrue
-* \@mparswitchtrue
+* \@twosidefalse
+* \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-<Figures/Prohlaseni.jpg, id=62, 597.09474pt x 844.98083pt>
+<Figures/Prohlaseni.jpg, id=87, 597.09474pt x 844.98083pt>
 File: Figures/Prohlaseni.jpg Graphic file (type jpg)
 
 <use Figures/Prohlaseni.jpg>
-Package pdftex.def Info: Figures/Prohlaseni.jpg used on input line 79.
+Package pdftex.def Info: Figures/Prohlaseni.jpg used on input line 55.
 (pdftex.def)             Requested size: 589.58588pt x 834.6512pt.
- [5
+ [3
 
- <./Figures/Prohlaseni.jpg>] [6
 
-] [7
+ <./Figures/Prohlaseni.jpg>] [4
 
-] [8
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 79.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 79.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 79.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 79.
-
-[9] [10
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 55.
+ [5
 
 ]
-Underfull \hbox (badness 1533) in paragraph at lines 79--79
-[]\T1/ppl/m/n/10.95 Organization For The Advan-ce-ment Of Structu-red In-for-
- []
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 55.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 55.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 55.
+ [6
 
-[11
 
-] [12
-
-] (./diplomka.toc
+]
+(./diplomka.toc
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 2.
 )
@@ -773,224 +770,263 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.83 \cleardoublepage
+l.59 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
 [1
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.83 \cleardoublepage
-                     	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[2
 
 ] (./diplomka.lot)
 \tf@lot=\write6
 \openout6 = `diplomka.lot'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.88 \cleardoublepage
+l.64 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[3
+[2
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.88 \cleardoublepage
-                     	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[4
 
 ] (./diplomka.lof)
 \tf@lof=\write7
 \openout7 = `diplomka.lof'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.92 \cleardoublepage
+l.68 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[5
+[3
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.92 \cleardoublepage
-                     	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[6
 
 ] (./diplomka.lol)
 \tf@lol=\write8
 \openout8 = `diplomka.lol'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.97 \cleardoublepage
+l.72 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[7
+[4
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.97 \cleardoublepage
-                     	% odstrankujeme, u jednostranneho dokumentu o jednu st...
-[8
 
 ]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 104.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 77.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Overfull \hbox (3.32758pt too wide) in paragraph at lines 104--109
+
+LaTeX Warning: Reference `sec:Typo' on page 5 undefined on input line 79.
+
+
+Overfull \hbox (3.32758pt too wide) in paragraph at lines 77--82
 \T1/ppl/m/n/10.95 Tento text je uk·z-kou sazby di-plo-movÈ pr·ce v L[]T[]Xu po-
 mocÌ t∞Ìdy do-ku-ment∑ []\T1/pcr/m/n/10.95 diploma\T1/ppl/m/n/10.95 .
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.111 \section
-              {Uk√°zky sazby} [9
+l.83 \section
+             {P≈ôedmluva} [5
 
-]pdfTeX warning (ext4): destination with the same identifier (name{page.10}) ha
-s been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.111 \section
-              {Uk√°zky sazby} [10
 
 ]
 
+Package hyperref Warning: Composite letter `\textasciicaron+r'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 83.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.89 \section
+             {Evoluƒçn√≠ algoritmus} [6
+
+]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 89.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 117.
+
+
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 114.
+(hyperref)                removing `\textring' on input line 117.
 
+[7
+
+]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 126.
+
+
+Overfull \hbox (0.45958pt too wide) in paragraph at lines 130--131
+[]\T1/ppl/m/n/10.95 Hybridnost £Ì-sel, se kte-r˝mi al-go-rit-mus pra-cuje. Bez 
+ja-k˝ch-ko-liv pro-blÈm∑ lze kom-
+ []
+
+
+Overfull \hbox (13.67639pt too wide) in paragraph at lines 131--132
+\T1/ppl/m/n/10.95 luce. Tyto ne-rov-no-m•r-nosti se sice dajÌ od-stra-nit po-u-
+∫i-tÌm Gray-ova kÛ-do-v·nÌ, nicmÈn•
+ []
+
+[8]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 152.
+
+[9]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 156.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
+File: omsppl.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 156.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 165.
+
+[10] [11]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 197.
+
+[12] [13] [14
+
+] [15
+
+] [16
+
+]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 124.
+(hyperref)                removing `\textasciicaron' on input line 216.
 
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 137.
+[17
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
-File: omsppl.fd 
-)
+]
 LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 168.
-pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.174 \end{itemize}
-                    [11]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 244.
+
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 187.
+(hyperref)                removing `\textring' on input line 293.
 
+[18
+
+]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 196.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 302.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 203.
+(Font)              <9> on input line 309.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 203.
-(./MyClass.java)pdfTeX warning (ext4): destination with the same identifier (na
-me{page.12}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.211 ...en√Ω z extern√≠ho souboru}]{MyClass.java}
-                                                   [12]
+(Font)              <5> on input line 309.
+ (./MyClass.java)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 
 pdfTeX warning: pdflatex (file ./Figures/Obr1.pdf): PDF inclusion: found PDF ve
 rsion <1.6>, but at most version <1.4> allowed
-<Figures/Obr1.pdf, id=221, 190.80083pt x 147.92264pt>
+<Figures/Obr1.pdf, id=268, 190.80083pt x 147.92264pt>
 File: Figures/Obr1.pdf Graphic file (type pdf)
  <use Figures/Obr1.pdf>
-Package pdftex.def Info: Figures/Obr1.pdf used on input line 224.
+Package pdftex.def Info: Figures/Obr1.pdf used on input line 330.
 (pdftex.def)             Requested size: 113.81102pt x 88.2351pt.
-File: Figures/Obr1.pdf Graphic file (type pdf)
 
-<use Figures/Obr1.pdf>
-Package pdftex.def Info: Figures/Obr1.pdf used on input line 226.
+[19]
+File: Figures/Obr1.pdf Graphic file (type pdf)
+ <use Figures/Obr1.pdf>
+Package pdftex.def Info: Figures/Obr1.pdf used on input line 332.
 (pdftex.def)             Requested size: 298.75264pt x 231.63637pt.
 File: Figures/Obr1.pdf Graphic file (type pdf)
  <use Figures/Obr1.pdf>
-Package pdftex.def Info: Figures/Obr1.pdf used on input line 228.
+Package pdftex.def Info: Figures/Obr1.pdf used on input line 334.
 (pdftex.def)             Requested size: 356.88033pt x 276.70644pt.
- [13 <./Figures/Obr1.pdf>]
-[14] [15] [16]
 
-Package hyperref Warning: Composite letter `\textasciicaron+e'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 300.
-
-[17
-
-] [18
-
-]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 321.
+(hyperref)                removing `\textasciicaron' on input line 406.
 
-[19] [20
+[20 <./Figures/Obr1.pdf>] [21] [22] [23]pdfTeX warning (ext4): destination with
+ the same identifier (name{section.1}) has been already used, duplicate ignored
 
-]pdfTeX warning (ext4): destination with the same identifier (name{section.1}) 
-has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.322 \section{Grafy a mƒõ≈ôen√≠}
+l.407 \section{Grafy a mƒõ≈ôen√≠}
                                  
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 322.
+(hyperref)                removing `\textasciicaron' on input line 407.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 322.
+(hyperref)                removing `\textasciicaron' on input line 407.
 
-[21] <Figures/Graf.pdf, id=278, 361.35pt x 252.945pt>
+[24
+
+] <Figures/Graf.pdf, id=335, 361.35pt x 252.945pt>
 File: Figures/Graf.pdf Graphic file (type pdf)
  <use Figures/Graf.pdf>
-Package pdftex.def Info: Figures/Graf.pdf used on input line 327.
+Package pdftex.def Info: Figures/Graf.pdf used on input line 412.
 (pdftex.def)             Requested size: 298.75264pt x 209.12991pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 329.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 414.
 
-[22 <./Figures/Graf.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 329.
+[25 <./Figures/Graf.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 414.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 329.
-Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: 73D0DF8218FC7BAC0CAF0872AEFA2756;551.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 329.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 414.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 414.
+
+
+Package rerunfilecheck Warning: File `diplomka.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `diplomka.out':
+(rerunfilecheck)             Before: 64C123994A08A48E92A4FE3C0102BD18;1081
+(rerunfilecheck)             After:  FA3E80093777930C39B2A862EFF43063;1159.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 414.
  ) 
 Here is how much of TeX's memory you used:
- 9163 strings out of 494116
- 127899 string characters out of 6157658
- 285784 words of memory out of 5000000
- 12276 multiletter control sequences out of 15000+600000
+ 9209 strings out of 494116
+ 128409 string characters out of 6157658
+ 293635 words of memory out of 5000000
+ 12286 multiletter control sequences out of 15000+600000
  48562 words of font info for 65 fonts, out of 8000000 for 9000
  448 hyphenation exceptions out of 8191
- 43i,11n,45p,615b,1203s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,45p,979b,1203s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
@@ -1002,9 +1038,9 @@ b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplri8a.pfb>
-Output written on diplomka.pdf (34 pages, 1310299 bytes).
+Output written on diplomka.pdf (31 pages, 1334639 bytes).
 PDF statistics:
- 357 PDF objects out of 1000 (max. 8388607)
- 86 named destinations out of 1000 (max. 500000)
- 104 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 123 named destinations out of 1000 (max. 500000)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

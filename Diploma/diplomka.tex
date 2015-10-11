@@ -1,6 +1,6 @@
 % Nejprve uvedeme tridu dokumentu s volbami
 %\documentclass[bc,male,java,dept460]{diploma}				% jednostranny dokument
-\documentclass[bc,male,java,dept460,twoside]{diploma}		% oboustranny dokument
+\documentclass[bc,male,java,dept460]{diploma}		% oboustranny dokument
 \usepackage[czech]{babel}
 
 
@@ -17,20 +17,6 @@
 
 \PrintPublicationAgreement{true}
 
-
-%\AccessRestriction{Zde vložte text dohodnutého omezení přístupu k Vaší práci, chránící například firemní know-how.
-%Zde vložte text dohodnutého omezení přístupu k Vaší práce, chránící například firemní know-how.
-%A zavazujete se, že\par
-%\begin{enumerate}
-%\item o práci nikomu neřeknete,
-%\item po obhajobě na ni zapomenete a
-%\item budete popírat její existenci.
-%\end{enumerate}
-%A ještě jeden důležitý odstavec. A ještě jeden důležitý odstavec.
-%A ještě jeden důležitý odstavec. A ještě jeden důležitý odstavec.
-%A ještě jeden důležitý odstavec. A ještě jeden důležitý odstavec.
-%Konec textu dohodnutého omezení přístupu k Vaší práci.}
-
 \Thanks {
 Rád bych na tomto místě poděkoval všem, kteří mi s prací pomohli, protože bez nich by tato práce nevznikla.
 }
@@ -42,7 +28,7 @@ Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstra
 }
 
 \CzechKeywords {
-typografie, \LaTeX, diplomová práce
+evoluční, genetický, genetické programování
 }
 
 \EnglishAbstract {
@@ -50,27 +36,17 @@ This is English abstract. This is English abstract. This is English abstract. Th
 }
 
 \EnglishKeywords {
-typography, \LaTeX, master thesis
+evolutionary, genetic, genetic programming
 }
 
 % Pridame pouzivane zkratky (pokud nejake pouzivame).
-\AddAcronym {DVD} {Digital Versatile Disc}
-\AddAcronym {TNT} {Trinitrotoluen}
-\AddAcronym {OASIS} {Organization For The Advancement Of Structured Information Systems}
-\AddAcronym {HTML} {Hyper Text Markup Language}
+\AddAcronym {EP} {Evoluční programování}
 
-
-% Zadame cestu a jmeno souboru ci nekolika souboru s digitalizovanou podobou zadani prace
-% Pri sazbe se pak hledaji soubory Figures/Zadani1.jpg, Figures/Zadani2.jpg atd.
-% Do diplomove prace se postupne vlozi vsechny existujici soubory Figures/ZadaniXXX.jpg
-% Pokud toto makro zapoznamkujeme sazi se stranka s upozornenim
 %\ThesisAssignmentImagePath{Figures/Zadani}
 
 % Zadame soubor s digitalizovanou podobou prohlaseni
 % Pokud toto makro zapoznamkujeme sazi se cisty text prohlaseni
 \DeclarationImageFile {Figures/Prohlaseni.jpg}
-
-
 
 % Zacatek dokumentu
 \begin{document}
@@ -91,12 +67,9 @@ typography, \LaTeX, master thesis
 \listoffigures
 \cleardoublepage	% odstrankujeme, u jednostranneho dokumentu o jednu stranku, u oboustrenneho o dve
 
-
 % Jsou v praci vypisy programu? Pokud ano vysazime jejich seznam.
 \lstlistoflistings
 \cleardoublepage	% odstrankujeme, u jednostranneho dokumentu o jednu stranku, u oboustrenneho o dve
-
-
 
 % Zacneme uvodem
 \section{Úvod}
@@ -107,27 +80,161 @@ implementovaných maker v praxi. V kapitole \ref{sec:Typo} jsou ukázky použit�
 různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako závěr}. Zároveň
 tato kapitola slouží jako ukázka generování křížových odkazů v \LaTeX{}u.
 
+\section{Předmluva}
+\label{sec:Predmluva}
+Evoluční algoritmy vznikly jako řešení a jeden ze způsobů optimalizace v matematických a vědních kruzích. Celkem dlouho byl způsob optimalizace řešen dnes již klasickým matmatických aparátem, který je založen na infinitezimálním počtu, na variačních metodách aplikovaných ve funkcionálním prostoru nebo numerických metodách.
 
-\section{Ukázky sazby}
-\label{sec:Typo}
+Tímto způsobem však lze nalézt optimální řešení pro problémy jednodušší charakter a pro ty složitější umožňuje nalézt pouze suboptimální řešení.
 
-\subsection{Ukázka nadpisů}
-Toto je nadpis podsekce, generováno makrem \verb|\subsection|.
+\section{Evoluční algoritmus}
+Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsubsection{subsection}
+\subsection{Teorie evoluce}
+Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
 
-\paragraph{paragraph}
-
-\subparagraph{subparagraph}
-Ale tak hluboko se asi stejně nikdo nedostane.
-
-\subsection{Sazba definic, vět atd.}
-Určitě se bude hodit prostředí pro sazbu definice jako je definice binárního vyhledávacího
-stromu, viz definice \ref{def:BinVyhlStrom}.
+\begin{example}
+\label{priklad}
+Postup evolučního algoritmu
+\begin{enumerate}
+\item Vymezení parametrů evoluce – jako je stanovení kritéria ukončení (počet cyklu, vhodnost řešení,…), stanovení účelové funkce, případně tzv. vhodnosti. Účelovou funkcí se rozumí obvykle matematický model, jehož minimalizace/maximalizace vede k řešení
+\item Generování prvopočáteční populace (obecně matice M x N, kde M je počet parametrů jedince a M je počet jedinců v populaci). Jedincem se rozumí vektor čísel s takovým počtem složek, kolik je optimalizovaných parametrů. Složky jsou nastaveny nahodile a každý jedinec představuje jedno možné řešení
+\item Všichni jedinci se ohodnotí přes definovanou účelovou funkci a každému z nich se přiřadí: a) buď přímá hodnota vrácená účelovou funkcí, nebo b) vhodnost, což je upravená hodnota účelové funkce
+\item Nastává výběr rodičů podle jejich kvality
+\item Křížením rodičů se tvoří potomci. Proces křížení je u každého algoritmu odlišný.
+\item Každý potomek je zmutován
+\item Každý jedinec se ohodnotí stejně jako v kroku 3.
+\item Vyberou se nejlepší jedinci
+\item Vybraní jedinci zaplní novou populaci
+\item Stará populace je zapomenuta a na její místo nastupuje populace nová. Dále se pokračuje krokem 4.
+\end{enumerate}
+Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné od klasických, ale hlavně pro fakt, že v případě vhodného aplikování jsou schopny nahradit člověka
+\end{example}
 
 \begin{remark}
 Následující definice a věty nedávají dohromady příliš smysl. Jsou tu jen pro ukázku.
 \end{remark}
+
+\subsection{Úvod do teorie optimalizačních algoritmů}
+\par
+Optimalizační algoritmy jsou mocným nástrojem pro řešení mnoha problémů inženýrské praxe. Obvykle se používají tam, kde je řešení daného problému analytickou cestou nevhodné či nereálné.
+Většina problémů inženýrské praxe může být definována jako optimalizační úlohy, např. nalezení optimální trajektorie robota či optimální tloušťka tlakové nádoby. Řešení takových problémů obvykle vyžaduje práci s argumenty optimalizovaných funkcí.
+\par
+Algoritmy této třídy mají svůj specifický název, a to „evoluční algoritmy“. Řeší problémy tak elegantně, že se staly velmi oblíbené a používané v mnoha inženýrských oborech. Z hlediska nejobecnějšího členění patří evoluční algoritmy k algoritmům heuristickým. Heuristické algoritmy můžeme rozdělit na deterministické a stochastické. Algoritmy druhé skupiny se liší v tom, že některé jejich kroky využívají náhodné operace, a to znamená, že výsledné řešení, které jimi získáme, se v jednotlivýh bězích programu  mohou lišit.
+\par
+Stochastické heuristické metody poskytují pouze obecný rámec a vlastní operace algoritmu je třeba zvolit (operace křížení, mutace, …). Protože tyto metody se často inspirují přírodními procesy, jsou také nazývány evoluční algoritmy. Podle jejich strategie je lze rozdělit do dvou tříd
+
+\subsection{Společné rysy}
+Evoluční algoritmy mají několik společných rysů:
+\begin{enumerate}
+\item Jednoduchost, protože tyto algoritmy lze naprogramovat obvykle velmi jednoduše.
+\item Hybridnost čísel, se kterými algoritmus pracuje. Bez jakýchkoliv problémů lze kombinovat čísla typu integer, real, případně jen vybrané množiny čísel.
+\item Používání dekadických čísel. Jedinec se nemusí převádět do binárního kódu, který je běžně používán u genetických algoritmů. U binárního zápisu mohou totiž mutace způsobit skokovou změnu čisla, což nemusí být dobrý dopad na průběh evoluce. Tyto nerovnoměrnosti se sice dají odstranit použitím Grayova kódování, nicméně práce s reálnými čísly je stále výhodnější.
+\item Rychlost. Díky své relativní jednoduchosti, zvláště při porovnání s klasickými metodami, lze říci, že požadované řešení naleznou mnohem rychleji.
+\item Chopnost nalézt extrém i u funkcí, které jsou v grafickém slova smyslu ploché a extrém je jen dírou v této rovině. Lze to označit jako hledání jehly v kupce sena. Ovšem u těchto problémů je účinnost jakýchkoliv algoritmů, včetně evolučních, velmi nízká.
+\item Schopnost dát vícenásobné řešení.Výsledkem evoluce je nejlepší jedinec – jedno řešení. Pokud je ovšem v globálních extrémů více, pak lze očekávat, že budou rovněž evolučním procesem nalazeny.
+Jinými slovy, evoluční algoritmy jsou vhodné pro hledání extrémů funkcí trpících takovými patologiemi, jako např. šum, vsoký počet dimenzí, „multimodalita“
+\end{enumerate}
+
+\subsection{Populace}
+\par Typickým rysem evolučních algoritmů je, že jsou založeny na práci s populací jedinců. Populace může být znázorněna jako matice NxM, kde sloupce představují jednotlivé jedince. Každý jedinec představuje aktuální řešení danéího problému. S každým jedincem je navíc spojena hodnota účelové funkce, která říká, jak vhodný je jedinec pro další vývoj populace.
+\par Hlavní činnosti evolučních algoritmů je cyklické vytváření nových populací, tedy náhrada starách populací novými. To vše pomocí přesně definovaných matematických pravidel.
+\par K vytvoření populace je třeba nadefinovat tzv. vzor, podle kterého se generuje celá počáteční populace. Ve vzoru jsou pro každý parametr konkrétního jedince definovány tři konstanty, a to typ proměnné a hranice intervalu, v němž může pohybovat hodnota parametru. Volba hranice je velmi důležitý krok, protože při jejich nevhodném zvolení se může stát, že budou nalezena řešení , která nebudou možné fyzikálně realizovat nebo nebudou mít opodstatnění. 
+Další neméně důležtý význam hranic souvisí se samotným evolučním procesem. Může se stát, že daný problém bude reprezentován plochou, která bude nabývat lokálních extrémů stále větších hodnot se vzrůstající vzdáleností od počátku. To způsobí, že evoluce bude nacházet stále nová řešení až do nekonečna. Je to způsobeno tím, že evoluční proces směřuje do stále hlubších a vzdálenějších extrémů.
+\par Populace je na základě vzorového jedince vygenerována podle vzorce.
+
+$\Theta(1+\alpha)$.  
+
+\par Tento vztah zajišťuje, že všchny parametry jedinců budou náhodně vygenerovány uvnitř povolených hranic prostoru možných řešení.
+\par Zobrazení o tom, jak kvalitně proběhla evoluce, se provádí pomocí tzv. historie vývoje hodnoty účelové funkce ve formě jednoduchého grafu. Na něm je vykreslena závislost vývoje účelové funkce na aktuálním počtu jejich ohodnocení. Jde o sekvenci nejhorších a nejlepších řešení z jednotlivých populací. Výhodnější je však zobrazení závislosti hodnoty účelové funkce na aktuálním počtu jejich ohodnocení. To proto, že u evolučních cyklů se provádí u jednotlivých algoritmů různý počet ohodnocení účelové funkce. U prvního případu může být pomalejší konvergence hodnoty účelové funkce zobrazena jako rychlejší a naopak. Skutečná informace o kvalitě evoluce je pak zkreslená. U druhého způsobu můžeme objektivně porovnávat různé typy algoritmů bez ohledu na jejich vnitřní struktuře.
+Kromě vývoje nejlepšího jedince je pak vhodné zobrazovat vývoj i nejhoršího jedince z populace, a to do jednoho grafu.
+\par Vývoj populace musí být vždy konvergentní k lepším hodnotám, což znamená, že nemůže nikdy vykazovat divergenci. V daném algoritmu funguje tzv. „elitismus“, který slouží jako jakýsi jednosměrný filtr, jenž propouští do nové populace pouze ta řešení, která jsou lepší či stejně dobrá jako ta ze staré populace.
+
+\subsection{Optimalizace a účelová funkce}
+\subsubsection{Vybrané pojmy z optimalizace}
+\par Úlohy vedoucí k výpočtu extrémů funkce jsou obvykle úlohy prakticé činnosti člověka a vyžadují analytické a mnohem častěji numerické výpočty extrémů funkcí více proměnných. Existují však komplikace, které ztížují optimalizaci někerých problémů, mající tyto zdroje:
+\begin{itemize}
+\item Prostor možných řešení je příliš velký. To může být například u numerativního přístupu (procházení všech možností) dosti velkým problémem
+\item Samotný problém je natolik složitý, že jeho matematický model použitý při optimalizaci vrací výsledky, které sice odpovídají příslušnému modelu, ale nesouhlasí se skutečně řešeným problémem. Model je vůči realitě nepřesný.
+\item Účelová funkce použitá k měření kvality aktuálního nalezeného řešení může podléhat šumu nebo se může měnit v čase. Proto nestačí pouze jedno řešení, ale množina řešení reprezentující vývoj toho nejlepšího.
+\item Množina řešení podléhá striktnímu omezení, že nalezení optimálního řešení je extrémně složitý problém.
+\end{itemize}
+\par Historický původ optimalizačních úloh sahá do antiky. Z té doby známe úlohy, jako je Didonina úloha, která měla od krále přislíbenou zemi, kterou by ohraničila volskou kůží. Didonina kůži nařezala na tenké pásky a ohraničila území, které se stalo základem Kartága.
+\par Impulz pro rozvoj optimalizačních metod po druhé světové válce přinesly úlohy z oblasti ekonomie, které lze shrnout pod název problému optimalizace výrobních programů. Typicky se v nich předpokládá, že podnik má technické možnosti pro výrobu n druhů výrobků a hledá výrobní program x. Matematicky toto můžeme zapsat jako $h(k)$) je $\Theta(1+\alpha)$.   , kde  udává počet výrobků tohoto druhu. Takový výrobní program přináší podniku užitek . O této funkci mluvíme jako o funkci účelové. Podnik však musí pro konkrétní program respektovat řadu omezení (výrobní zdroje) a rovněž omezení odbytu výrobků.
+\par Jinou skupinou optimalizačních úloh pak může být problém úloh z dopravního hospodáství. V těchto problémech jde o to, aby byl navržen plán přepravy zboží s míst výroby do míst spotřeby. Respektují se omezení na množství přepravovaného zboží, požadavyk spotřebitelů a příp. další. Výsledkem by pak měl být plán na omezení nákladů na přepravu a nebo čas přepravy. 
+
+\subsection{Evoluční algoritmy}
+Seznam několika evolučních algoritmů
+
+\subsubsection{Stochastic Hill Climbing}
+Stochastický horolezecký algoritmus je verze tzv. horolezeckého algoritmu obohaceného o stochastickou složku. Patří mezi gradientní metody, tzn. že prohledávajíprostor možných řešení ve směru největšího spádu. Díky své gradientní povaze velmi často uvázne v lokálním extrému. Vždy se vychází z náhodného bodu v prostoru možných řešení. Pro momentálně navržené řešení se pomocí konečného souboru transformací navrhne určité okolí a daná funkce se minimalizuje jen v tomto okolí. Získané lokální řešení se pak použije jako střed pro výpočet nového okolí.
+
+\subsubsection{Simulované žíhání}
+\par Je vylepšená verze horolezeckého algoritmu, u něhož vylepšení spočívá v tom, že je do horolezeckého algoritmu zavedena tzv. krátkodobá paměť, jejimž úkolem je pamatovat si ty transformace, které sloužily pro vypočítání aktuálního středu. To má v konečném důsledku ten efekt, že se algoritmus nezacyklí, díky zakázanému použití těchto transformací.
+\par Na rozdíl od algoritmu horolezeckého, Tabu Search tak často neuvízne v lokálním extrému.
+
+
+\subsubsection{Evoluční strategie}
+\par Evoluční strategie patří mezi první úspěšné stochastické algoritmy v historii. Byl navržen počátkem šedesátých let Rechenbergem a Schwefelem. Vychází z principů přirozeného výběru podobně jako genetické algoritmy. Na rozdíl od jiných stochastických algoritmů pracuje sevoluční strategie přímo s reálnými hodnotami. Jejím jádrem je práce s řešením ve formě vektoru x, které je mutováno pomocí vektoru náhodných čísel.
+
+\subsubsection{Optimalizace mravenčí kolonií}
+\par Optimalizace mravenčí kolonií je algoritmus, jehož činnost napodobuje chování mravenců v kolonii. Princip je následovný: Nechť existuje zdroj mravenců (mraveniště) a cíl jejich snažení (potrava). Když jsou mravenci vypuštěni, tak po nějaké době dojde k tomu, že všichni mravenci se pohybují po kratší (optimální) cestě mezi zdrojem a cílem. Tento efekt, kdy mravenci najdou optimální cestu je dán tím, že si svou cestu značkují feromonem. Pokud dorazí prní mravenec k rozcestí dvou cest, které vedou ke stejnému cíli, pak je jeh rozhodnutí, po které cestě se vydá, náhodné. Ti, kteří najdou potravu, začnou cestu značkovat a při návratu jsou díky těmto značkám při rozhodování ovlivnění ve prostěch této cesty. Při návratu ji označkují podruhé, což opět zvyšuje pravděpodobnost rozhodnutí dalších mravenců v její prospěch. Tyto principy jsou použity v ACO algoritmu.
+\par Feromonová váha je aditivní, což umožňuje přidávat další feromony od dalších mravenců. V ACO algoritmu je zohledněn i fakt vypařování feromonů tak, že váhy jednotlivých spojů s časem slábnou. To zvyšuje robustnost algoritmu z hlediska nalezení globálních extrémů.
+\par ACO byl úspěšně použitý na optimalizování problému Obchodního cestujícího nebo při návrhu telekomunikačnich sítí.
+
+\subsubsection{Imunitní systém}
+Metoda imunitního systému je, jak už název napovídá, algoritmus, který je založen na principech fungování imunitního systému v živých organismech. Nahlíží se na něj jako na multiagentní systém, kde jednotliví agenti mají svůj specifický úkol. Tito agenti mají různé pravomoci a schopnosti komunikovat s jinými agenty. Na základě této komunikace a určité svobody v rozhodování jednotlivých agentů vzniká hirearchická struktura schopná řešit komplikované problémy. Může například jít o použítí antivirové ochrany u velkých rozsáhlých počítačových sítí.
+
+\subsubsection{Memetický algoritmus}
+\par Memetický algoritmus. Tento pojem představuje širokou třídu metaheuristických algoritmů. Klíčovou charakteristikou těchto algoritmů je použití různých aproximačních algoritmů, technik lokálního vyhledávání, speciálních rekombinačních operátorů apod. V podstatě mohou být memetické algoritmy charakterizovány jako strategie soutěže a spolupráce projevující atributy synergetiky. Jako příklad memetického algoritmu lze uvést hybridní kombinaci genetikých algoritmů a simulovaného žíhání či paralelní lokální prohledávání. 
+\par S úspěchem byly použity na řešení takových problému, jako problém obchodního cestujícího, učení neuronové sítě, plánovaní údržby, nelineární celočíselné
+
+\subsubsection{Rozptýlené prohledávání}
+\par Rozptýlené prohledávání se svou podstatou liší od standardních evolučních algoritmů a je dost podobný algoritmu Tabu Search. Je to vektorově orientovaný algoritmus, který má za úkol generovat nové vektory na základě pomocných heuristických technik. Při startu se vychází z řešení získaných pomocí vhodné heuristiké techniky. Poté jsou generována nová řešení na základě podmnožiny nejlepších řešení ze startu. Z těchto nově nalezených řešení se opět vybere množina těch nejlepších a celý proces se opakuje. Tento algoritmus byl použit k řešení problémů, jako je řízení dopravy, učení neuronové sítě, optimalizace bez omezení, atd.
+
+\subsubsection{Rojení částic}
+Rojení častic je založeno na práci s populací jedinců, jejichž pozice v prostoru možných řešení je měněna pomocí tzv. rychlostního vektoru. Podle popisu nedochází v základní verzi mezi jedinci k vzájemnému ovlivňování. To je odstraněno ve verzi s tzv. sousedstvím. V rámci tohoto sousedství dochází k vzájemnému ovlivňování tak, že jedinci patřící do jednoho sousedství putují k nejhlubšímu extrému, který byl v tomto sousedství nalezen.
+
+\subsection{Optimalizační problémy}
+Zde budou popsány některé optimalizační problémy
+
+\subsubsection{Problém obchodního cestujícího}
+Problém obchodního cestujícího (TSP) je úloha z množiny NP-úplných problémů.
+
+\subsubsection{Problém sudoku}
+Jedná se o problém nalezení řešení k danému schámatu sudoku mřížky, pokud máme k dispozici pouze několik vyplněných čísel.
+
+
+\section{Genetické programování}
+Sekce, která obsahuje genetické programování
+
+\section{Implementace}
+Tohle je sekce zabývající se implemntaci aplikace
+
+\section{Testování a výsledky}
+Tohle je sekce zabývající se implemntaci aplikace
+
+\section{Závěr}
+\label{sec:Conclusion}
+Tak doufám, že Vám tato ukázka k něčemu byla. Další informace najdete v~publikacích
+\cite{goossens94,lamport94}.
+
+\bigskip
+\begin{flushright}
+Zdeněk Gold
+\end{flushright}
+
+\begin{thebibliography}{99}
+
+\bibitem{goossens94} Goossens, Michel,
+\textit{The \LaTeX\ companion,} New York: Addison, 1994.
+
+\bibitem{lamport94} Lamport, Leslie,
+\textit{A document preparation system: user's guide and reference manual},
+New York: Addison-Wesley Pub. Co., 2015.
+
+\end{thebibliography}
+
+
 
 
 \begin{definition}
@@ -156,7 +263,6 @@ Tudíž lze očekávat, že budeme nuceni prozkoumat $\alpha$ prvků.
 Z~toho plyne, že celkový čas pro neúspěšné hledání (plus navíc
 konstantní čas pro výpočet $h(k)$) je $\Theta(1+\alpha)$.
 \end{proof}
-
 
 \begin{example}
 \label{priklad}
@@ -296,27 +402,6 @@ Size of file [bytes] & 4047392 &  & 2473400 &  & 64573143 &  & 498360166 & \\
 \caption{Experimental Files --- Detailed Statistics}
 \label{tab:ExpFilesDetailStats}
 \end{sidewaystable}
-
-\section{Závěr}
-\label{sec:Conclusion}
-Tak doufám, že Vám tato ukázka k něčemu byla. Další informace najdete v~publikacích
-\cite{goossens94,lamport94}.
-
-\bigskip
-\begin{flushright}
-Jiří Dvorský
-\end{flushright}
-
-\begin{thebibliography}{99}
-
-\bibitem{goossens94} Goossens, Michel,
-\textit{The \LaTeX\ companion,} New York: Addison, 1994.
-
-\bibitem{lamport94} Lamport, Leslie,
-\textit{\LaTeX: a document preparation system: user's guide and reference manual},
-New York: Addison-Wesley Pub. Co., 1994.
-
-\end{thebibliography}
 
 \appendix
 \section{Grafy a měření}
