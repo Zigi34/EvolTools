@@ -60,4 +60,9 @@ public class SimpleMutate<T extends CloneableValue<T>> extends MutateFunction<Ar
 	public void setMutateProbability(Double mutateProbability) {
 		this.mutateProbability = mutateProbability;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("MUTATE[Simple Mutate] (prob: %.3f)\n", getMutateProbability());
+	}
 }

@@ -35,4 +35,9 @@ public class RosenbrockSaddle extends EvaluateFunction<ArraySolution<DoubleValue
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "PROBLEM[Rosenbrack Saddle]\n";
+	}
+
 }

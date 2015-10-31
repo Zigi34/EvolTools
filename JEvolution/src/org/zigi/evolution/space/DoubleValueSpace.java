@@ -22,4 +22,9 @@ public class DoubleValueSpace extends SolutionSpace<ArraySolution<DoubleValue>, 
 		return new DoubleValue(rand.nextDouble());
 	}
 
+	@Override
+	public String toString() {
+		return "SPACE[Double Value Space]\n";
+	}
+
 }

@@ -9,25 +9,29 @@ import org.zigi.evolution.solution.Solution;
 public class RandomSelect<T extends CloneableValue<T>> extends SelectFunction<Solution<T>, T> {
 
 	private Random rand = new Random();
-	private Double part = 0.7;
+	private Double prob = 0.7;
 
 	public Population<Solution<T>, T> select(Population<Solution<T>, T> population) {
-		Population<Solution<T>, T> pop = new Population<Solution<T>, T>();
-		pop.setMaxSolutions(population.getMaxSolutions());
+		Population<Solution<T>, T> pop = new Population<Solution<T>, T>(population);
 		pop.setSolutionSize(population.getSolutionSize());
 		for (Solution<T> solution : population.getSolutions()) {
-			if (rand.nextDouble() > part)
+			if (rand.nextDouble() > prob)
 				continue;
 			pop.add(solution);
 		}
 		return pop;
 	}
 
-	public Double getPart() {
-		return part;
+	public Double getProbability() {
+		return prob;
 	}
 
-	public void setPart(Double part) {
-		this.part = part;
+	public void setProbability(Double probability) {
+		this.prob = probability;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("SELECT [Random Select] (prob: %.3f)", prob);
 	}
 }

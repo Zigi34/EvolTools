@@ -16,8 +16,9 @@ public class ArraySolution<T extends CloneableValue<T>> extends Solution<T> {
 	public ArraySolution<T> clone() {
 		ArraySolution<T> sol = new ArraySolution<T>();
 		for (int i = 0; i < values.size(); i++) {
-			sol.setValue(i, sol.getValue(i).clone());
+			sol.addValue(values.get(i).clone());
 		}
+		sol.setFitness(getFitness());
 		return sol;
 	}
 
@@ -52,15 +53,6 @@ public class ArraySolution<T extends CloneableValue<T>> extends Solution<T> {
 	@Override
 	public int size() {
 		return values.size();
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for (T value : values) {
-			sb.append(value + ", ");
-		}
-		return sb.toString();
 	}
 
 	@Override

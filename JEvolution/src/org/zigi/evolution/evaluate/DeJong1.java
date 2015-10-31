@@ -30,4 +30,9 @@ public class DeJong1 extends EvaluateFunction<ArraySolution<DoubleValue>, Double
 			sol.setFitness(1.0 / result);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "PROBLEM[De Jong]\n";
+	}
 }

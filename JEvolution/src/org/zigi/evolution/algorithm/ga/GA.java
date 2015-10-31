@@ -2,13 +2,16 @@ package org.zigi.evolution.algorithm.ga;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.Population;
 import org.zigi.evolution.algorithm.EA;
 import org.zigi.evolution.cross.CrossFunction;
+import org.zigi.evolution.exception.EvolutionException;
 import org.zigi.evolution.mutate.MutateFunction;
 import org.zigi.evolution.select.SelectFunction;
 import org.zigi.evolution.solution.CloneableValue;
 import org.zigi.evolution.solution.array.ArraySolution;
+import org.zigi.evolution.util.TimeMeasure;
 
 public class GA<T extends CloneableValue<T>> extends EA<ArraySolution<T>, T> {
 
@@ -16,20 +19,46 @@ public class GA<T extends CloneableValue<T>> extends EA<ArraySolution<T>, T> {
 	protected CrossFunction<ArraySolution<T>, T> cross;
 	protected SelectFunction<ArraySolution<T>, T> select;
 
+	private static Logger log = Logger.getLogger(GA.class);
+
 	public void run() {
+		TimeMeasure measure = TimeMeasure.start();
+
+		getFunction().evaluate(getPopulation());
+		// log.debug("Population\n" + getPopulation());
+
+		updateBestSolution();
+		log.debug(String.format("BEST SOLUTION: %s\n", getBestSolution()));
+
 		for (int i = 0; i < getGeneration(); i++) {
-			getFunction().evaluate(getPopulation());
+			try {
+				Population<ArraySolution<T>, T> selected = select.select(getPopulation());
+				// log.debug("Selected\n" + selected);
 
-			Population<ArraySolution<T>, T> selected = select.select(getPopulation());
-			cross.cross(selected);
-			mutate.mutate(selected);
+				cross.cross(selected);
+				// log.debug("Crossed\n" + selected);
 
-			getFunction().evaluate(selected);
+				mutate.mutate(selected);
+				// log.debug("Mutated\n" + selected);
 
-			setPopulation(
-					getPopulation().bestSolutions(getPopulation().concat(selected), getPopulation().getMaxSolutions()));
-			System.out.println(selected + "\n");
+				Population<ArraySolution<T>, T> concated = getPopulation().concat(selected);
+				// log.debug("Concated\n" + concated);
+
+				getFunction().evaluate(concated);
+				// log.debug("Evaluated\n" + concated);
+
+				Population<ArraySolution<T>, T> bestSelected = concated.bestSolutions();
+				// log.debug("Best selected\n" + bestSelected);
+
+				setPopulation(bestSelected);
+
+				updateBestSolution();
+				log.debug(String.format("BEST SOLUTION: %s", getBestSolution()));
+			} catch (EvolutionException ee) {
+				log.error(ee);
+			}
 		}
+		log.debug("Measured: " + measure.stop(TimeMeasure.MILLIS_DELAY) + " ms");
 	}
 
 	public MutateFunction<ArraySolution<T>, T> getMutate() {
@@ -61,5 +90,17 @@ public class GA<T extends CloneableValue<T>> extends EA<ArraySolution<T>, T> {
 	public List<ArraySolution<T>> getResults() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Genetic Algorithm\n");
+		sb.append("Generation: " + getGeneration() + "\n");
+		sb.append(select);
+		sb.append(cross);
+		sb.append(mutate);
+		sb.append(getPopulation());
+		return sb.toString();
 	}
 }

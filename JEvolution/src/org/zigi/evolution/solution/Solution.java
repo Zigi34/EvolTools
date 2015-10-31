@@ -28,4 +28,14 @@ public abstract class Solution<T extends CloneableValue<T>> {
 	public void setFitness(Double fitness) {
 		this.fitness = fitness;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[" + String.format("%.3f", fitness) + "] ");
+		for (Object key : getKeys()) {
+			sb.append(getValue(key) + " ");
+		}
+		return sb.toString();
+	}
 }
