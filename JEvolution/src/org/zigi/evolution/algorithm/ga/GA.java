@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.zigi.evolution.Population;
+import org.zigi.evolution.algorithm.Algorithm;
 import org.zigi.evolution.algorithm.EA;
 import org.zigi.evolution.cross.CrossFunction;
 import org.zigi.evolution.exception.EvolutionException;
@@ -94,13 +95,11 @@ public class GA<T extends CloneableValue<T>> extends EA<ArraySolution<T>, T> {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Genetic Algorithm\n");
-		sb.append("Generation: " + getGeneration() + "\n");
-		sb.append(select);
-		sb.append(cross);
-		sb.append(mutate);
-		sb.append(getPopulation());
-		return sb.toString();
+		return "Genetic algorithm";
+	}
+
+	public Algorithm defaultAlgorithm() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

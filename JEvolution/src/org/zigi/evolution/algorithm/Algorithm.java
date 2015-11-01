@@ -5,12 +5,12 @@ public interface Algorithm {
 	 * Spuštění algoritmu
 	 */
 	void start();
-	
+
 	/**
 	 * Zastavení algoritmu
 	 */
 	void stop();
-	
+
 	/**
 	 * Inicializace před spuštěním
 	 */
