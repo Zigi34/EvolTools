@@ -1,25 +1,30 @@
 package org.zigi.evolution.listener;
 
-import org.zigi.evolution.algorithm.Algorithm;
-import org.zigi.evolution.controller.MainController;
+import org.apache.log4j.Logger;
+import org.zigi.evolution.controller.AlgorithmController;
+import org.zigi.evolution.model.AlgorithmDTO;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-public class AlgorithmListener implements ChangeListener<Algorithm> {
+public class AlgorithmListener implements ChangeListener<AlgorithmDTO<?, ?>> {
 
-	private MainController controller;
+	private static Logger log = Logger.getLogger(AlgorithmListener.class);
 
-	public AlgorithmListener(MainController controller) {
+	private AlgorithmController controller;
+
+	public AlgorithmListener(AlgorithmController controller) {
 		this.controller = controller;
 	}
 
-	public MainController getController() {
+	public AlgorithmController getController() {
 		return controller;
 	}
 
 	@Override
-	public void changed(ObservableValue<? extends Algorithm> observable, Algorithm oldValue, Algorithm newValue) {
-
+	public void changed(ObservableValue<? extends AlgorithmDTO<?, ?>> observable, AlgorithmDTO<?, ?> oldValue,
+			AlgorithmDTO<?, ?> newValue) {
+		newValue.initSettingPane(getController().getSettingPane());
+		log.error("sdasd");
 	}
 }

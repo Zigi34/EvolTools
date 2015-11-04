@@ -4,17 +4,17 @@ import java.util.Random;
 
 import org.zigi.evolution.Population;
 import org.zigi.evolution.solution.CloneableValue;
-import org.zigi.evolution.solution.Solution;
+import org.zigi.evolution.solution.array.ArraySolution;
 
-public class RandomSelect<T extends CloneableValue<T>> extends SelectFunction<Solution<T>, T> {
+public class RandomSelect<T extends CloneableValue<T>> extends SelectFunction<ArraySolution<T>, T> {
 
 	private Random rand = new Random();
 	private Double prob = 0.7;
 
-	public Population<Solution<T>, T> select(Population<Solution<T>, T> population) {
-		Population<Solution<T>, T> pop = new Population<Solution<T>, T>(population);
+	public Population<ArraySolution<T>, T> select(Population<ArraySolution<T>, T> population) {
+		Population<ArraySolution<T>, T> pop = new Population<ArraySolution<T>, T>(population);
 		pop.setSolutionSize(population.getSolutionSize());
-		for (Solution<T> solution : population.getSolutions()) {
+		for (ArraySolution<T> solution : population.getSolutions()) {
 			if (rand.nextDouble() > prob)
 				continue;
 			pop.add(solution);
