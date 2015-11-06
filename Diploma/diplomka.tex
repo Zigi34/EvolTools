@@ -22,13 +22,11 @@ Rád bych na tomto místě poděkoval všem, kteří mi s prací pomohli, proto�
 }
 
 \CzechAbstract {
-Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstrakt.
-Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstrakt.
-Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstrakt. Tohle je nějaký abstrakt.
+
 }
 
 \CzechKeywords {
-evoluční, genetický, genetické programování
+evoluční algoritmy, genetické programování, syntaktický strom, křížení, mutace, selekce, program, jedinec
 }
 
 \EnglishAbstract {
@@ -40,7 +38,8 @@ evolutionary, genetic, genetic programming
 }
 
 % Pridame pouzivane zkratky (pokud nejake pouzivame).
-\AddAcronym {EP} {Evoluční programování}
+\AddAcronym {GP} {Genetické programování}
+\AddAcronym {GA} {Genetický algoritmus}
 
 %\ThesisAssignmentImagePath{Figures/Zadani}
 
@@ -113,7 +112,7 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 \subsection{Vybrané algoritmy}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsubsection{GA}
+\subsubsection{Genetický algoritmus (GA)}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
 
 \subsubsection{Particle Swarm}
@@ -122,8 +121,20 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 \subsubsection{SOMA}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
 
-\section{Genetické programování}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+\section{Genetické programování (GP)}
+Všechny dříve popsané algoritmy vznikly a jsou většinou užitečné v případech, kdy hledáme určitou konfiguraci pro matematický model problému tak, abychom dosáhly určitých mezních hodnot. Popusťme však ještě uzdu své fantazii a představme si situaci, kdy budeme chtít řešit problém, u kterého si nejsme jistí, jaký má být správný postup v jeho řešení. V zásadě budeme chtít vytvořit algoritmus, který dokáže generovat jiné algoritmy (či programy), který budou daný problém řešit.
+
+Představme si situaci, kdy budeme chtít na základě nashromážděných dat vytvořit systém, který bude tyto data celkem dobře číst a popisovat je. Můžeme si to osvětlit na příkladě s bankou, která vede záznamy o úvěrech spolu s informacemi o věřitelích. Může se jednat o velikosti rodinného rozpočtu, počtu členů v rodině, počtu pracujících atd. S těmito parametry bychom potom chtěli vytvořit program, který by predikoval, zda je klient vhodným kandidátem na úvěr nebo ne.
+
+GP je svým způsobem rozšířením GA s takovou obměnou, která dovoluje využít místo řetězcové reprezentace s pevnou délkou zvolit hirearchickou strukturu, ve které snáze reprezentujeme počítačové programy. Řešením pro nějaký model problému už není pouze konfigurace, ale celý algoritmus (program).
+
+Otcem GP je standfordský informatik John Koza \cite{kozagp,kozagp2}. Díky konceptu, který vytvořil, lze využít při tvorbě programů stejných evolučních operátorů, jaké obsahuje GA (křížení, mutace).
+
+První problém, který po zrození myšlenky využít GA pro tvorbu a šlechtění počítačových programů je samotná reprezentace počítačového programu. Tato reprezentace musí být dostatečně obecná pro popsání v různých programovacích jazycích a zároveň zachovávat smyslupnost, syntaktickou správnost a spustitelnost nově vyšlechtěných programů při použití evolučních operátorů mutace a křížení.
+
+Vhodnou reprezentaci programů nalezl Koza v jazyce LISP, který reprezentuje programy jako S-výrazy, což je prakticky syntaktický strom, kterým reprezentují svoje programy překladače. Syntaktický strom je tvořeny dvěma možnými typy uzlů. Jsou to buď neterminály (tvoří funkce) a terminály (proměnné a konstanty). Při definici problémů se specifikuje množina neterminálů $\Pi=\{f_1,f_2,...,f_n\}$ a množina terminálů $\Gamma=\{t_1,t_2,...,t_n\}$. Příkladem syntaktického stromu, který znázorňuje výraz pro kombinaci k-té třídy z n prvků je na obrázku.
+
+\InsertFigure{Figures/Graf}{0.7\textwidth}{Nějaký graf}{fig:SampleGraph}
 
 \subsection{Popis algoritmu}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
@@ -326,6 +337,14 @@ Zdeněk Gold
 \end{flushright}
 
 \begin{thebibliography}{99}
+
+\bibitem{kozagp} Koza, J. R.,
+\textit{Genetic programming. On the Programming of Computers by Means of Natural Selection},
+Cambridge, MA: MIT Press, 1992.
+
+\bibitem{kozagp2} Koza, J. R.,
+\textit{Genetic programming II. Automatic Discovery of Reusable Programs},
+Cambridge, MA: MIT Press, 1994.
 
 \bibitem{goossens94} Goossens, Michel,
 \textit{The \LaTeX\ companion,} New York: Addison, 1994.

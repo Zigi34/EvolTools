@@ -4,7 +4,7 @@
 \BOOKMARK [2][-]{subsection.3.1}{Potreba evolucn\355ch algoritmu}{section.3}% 4
 \BOOKMARK [2][-]{subsection.3.2}{Charakteristika}{section.3}% 5
 \BOOKMARK [2][-]{subsection.3.3}{Vybran\351 algoritmy}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355}{}% 7
+\BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355 \(GP\)}{}% 7
 \BOOKMARK [2][-]{subsection.4.1}{Popis algoritmu}{section.4}% 8
 \BOOKMARK [2][-]{subsection.4.2}{GP vs. GA}{section.4}% 9
 \BOOKMARK [1][-]{section.5}{Implementace GP}{}% 10
@@ -25,11 +25,12 @@
 \BOOKMARK [2][-]{subsection.8.2}{Selekce}{section.8}% 25
 \BOOKMARK [2][-]{subsection.8.3}{Kr\355\236en\355}{section.8}% 26
 \BOOKMARK [2][-]{subsection.8.4}{Mutace}{section.8}% 27
-\BOOKMARK [1][-]{section.9}{Implementace}{}% 28
-\BOOKMARK [1][-]{section.10}{Testov\341n\355 a v\375sledky}{}% 29
-\BOOKMARK [1][-]{section.11}{Z\341ver}{}% 30
-\BOOKMARK [1][-]{section.12}{Reference}{}% 31
-\BOOKMARK [2][-]{subsection.12.1}{V\375pisy programu}{section.12}% 32
-\BOOKMARK [2][-]{subsection.12.2}{Obr\341zky a tabulky}{section.12}% 33
-\BOOKMARK [1][-]{table.2}{Pr\355lohy}{}% 34
-\BOOKMARK [1][-]{section.1}{Grafy a meren\355}{}% 35
+\BOOKMARK [1][-]{section.9}{Praktick\341 c\341st}{}% 28
+\BOOKMARK [2][-]{subsection.9.1}{Existuj\355c\355 aplikace}{section.9}% 29
+\BOOKMARK [1][-]{section.10}{Testov\341n\355 a v\375sledky}{}% 30
+\BOOKMARK [1][-]{section.11}{Z\341ver}{}% 31
+\BOOKMARK [1][-]{section.12}{Reference}{}% 32
+\BOOKMARK [2][-]{subsection.12.1}{V\375pisy programu}{section.12}% 33
+\BOOKMARK [2][-]{subsection.12.2}{Obr\341zky a tabulky}{section.12}% 34
+\BOOKMARK [1][-]{table.2}{Pr\355lohy}{}% 35
+\BOOKMARK [1][-]{section.1}{Grafy a meren\355}{}% 36
