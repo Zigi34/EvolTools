@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  6 NOV 2015 20:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  9 NOV 2015 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -572,6 +572,9 @@ Package babel Info: Making - an active character on input line 226.
 
 LaTeX Warning: Label `priklad' multiply defined.
 
+
+LaTeX Warning: Label `fig:SampleGraph' multiply defined.
+
 )
 \openout1 = `diplomka.aux'.
 
@@ -729,7 +732,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-<Figures/Prohlaseni.jpg, id=159, 597.09474pt x 844.98083pt>
+<Figures/Prohlaseni.jpg, id=175, 597.09474pt x 844.98083pt>
 File: Figures/Prohlaseni.jpg Graphic file (type jpg)
 
 <use Figures/Prohlaseni.jpg>
@@ -766,7 +769,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.58 ...P\IeC {\v r}\IeC {\'\i }lohy}{29}{table.2}
+l.59 ...\numberline {12}Reference}{28}{section.12}
                                                    [1
 
 
@@ -872,219 +875,249 @@ Package hyperref Warning: Composite letter `\textring+u'
 
 [8
 
-] [9] <Figures/Graf.pdf, id=279, 361.35pt x 252.945pt>
+] [9] [10] <Figures/Graf.pdf, id=309, 361.35pt x 252.945pt>
 File: Figures/Graf.pdf Graphic file (type pdf)
 
 <use Figures/Graf.pdf>
-Package pdftex.def Info: Figures/Graf.pdf used on input line 137.
+Package pdftex.def Info: Figures/Graf.pdf used on input line 150.
 (pdftex.def)             Requested size: 298.75264pt x 209.12991pt.
- [10
+ [11
 
-] [11 <./Figures/Graf.pdf>] [12
+]
 
-] [13
+Package hyperref Warning: Composite letter `\textring+u'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textring' on input line 160.
+
+[12 <./Figures/Graf.pdf>]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 168.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 168.
+
+<Figures/cross.png, id=331, 798.985pt x 742.775pt>
+File: Figures/cross.png Graphic file (type png)
+ <use Figures/cross.png>
+Package pdftex.def Info: Figures/cross.png used on input line 180.
+(pdftex.def)             Requested size: 298.75264pt x 277.73523pt.
+
+[13] [14 <./Figures/cross.png>] [15] [16
+
+] [17
 
 ]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 172.
+(hyperref)                removing `\textasciicaron' on input line 230.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 205.
+(hyperref)                removing `\textasciicaron' on input line 238.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 205.
+(hyperref)                removing `\textring' on input line 238.
 
-[14
-
-]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 214.
+(hyperref)                removing `\textasciicaron' on input line 247.
 
 
-Overfull \hbox (0.45958pt too wide) in paragraph at lines 218--219
+Overfull \hbox (0.45958pt too wide) in paragraph at lines 251--252
 []\T1/ppl/m/n/10.95 Hybridnost £í-sel, se kte-rými al-go-rit-mus pra-cuje. Bez 
 ja-kých-ko-liv pro-blém· lze kom-
  []
 
 
-Overfull \hbox (13.67639pt too wide) in paragraph at lines 219--220
+Overfull \hbox (13.67639pt too wide) in paragraph at lines 252--253
 \T1/ppl/m/n/10.95 luce. Tyto ne-rov-no-m¥r-nosti se sice dají od-stra-nit po-u-
 ºi-tím Gray-ova kó-do-vání, nicmén¥
  []
 
-[15]
+[18
+
+]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 240.
+(hyperref)                removing `\textasciicaron' on input line 259.
 
-[16]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 244.
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 263.
 
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 244.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 253.
-
-[17] [18]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 263.
+ [19]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 285.
+(hyperref)                removing `\textasciicaron' on input line 272.
 
-[19] [20]
+[20] [21]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 304.
+
+[22]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 311.
-
-[21
-
-] [22]
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 316.
+(hyperref)                removing `\textasciicaron' on input line 330.
 
 [23
 
-] [24
+] [24]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 335.
+
+[25
+
+] [26
 
 ]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 329.
+(hyperref)                removing `\textasciicaron' on input line 348.
 
-[25
+[27
 
 ]
-Underfull \hbox (badness 1460) in paragraph at lines 345--348
+Underfull \hbox (badness 1460) in paragraph at lines 364--367
 []\T1/ppl/m/n/10.95 Koza, J. R., \T1/ppl/m/it/10.95 Ge-ne-tic pro-gra-m-ming II
 . Au-to-ma-tic Dis-co-very of Re-u-sa-ble Pro-grams\T1/ppl/m/n/10.95 ,
  []
 
 LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 377.
-[26
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 396.
+[28
 
 ]
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 426.
+(hyperref)                removing `\textring' on input line 445.
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 435.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 454.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 442.
+(Font)              <9> on input line 461.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 442.
-(./MyClass.java) [27]
+(Font)              <5> on input line 461.
+(./MyClass.java) [29]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 
 pdfTeX warning: pdflatex (file ./Figures/Obr1.pdf): PDF inclusion: found PDF ve
 rsion <1.6>, but at most version <1.4> allowed
-<Figures/Obr1.pdf, id=449, 190.80083pt x 147.92264pt>
+<Figures/Obr1.pdf, id=486, 190.80083pt x 147.92264pt>
 File: Figures/Obr1.pdf Graphic file (type pdf)
  <use Figures/Obr1.pdf>
-Package pdftex.def Info: Figures/Obr1.pdf used on input line 463.
+Package pdftex.def Info: Figures/Obr1.pdf used on input line 482.
 (pdftex.def)             Requested size: 113.81102pt x 88.2351pt.
 File: Figures/Obr1.pdf Graphic file (type pdf)
 
 <use Figures/Obr1.pdf>
-Package pdftex.def Info: Figures/Obr1.pdf used on input line 465.
+Package pdftex.def Info: Figures/Obr1.pdf used on input line 484.
 (pdftex.def)             Requested size: 298.75264pt x 231.63637pt.
 File: Figures/Obr1.pdf Graphic file (type pdf)
  <use Figures/Obr1.pdf>
-Package pdftex.def Info: Figures/Obr1.pdf used on input line 467.
+Package pdftex.def Info: Figures/Obr1.pdf used on input line 486.
 (pdftex.def)             Requested size: 356.88033pt x 276.70644pt.
- [28 <./Figures/Obr1.pdf>]
-[29]
+ [30 <./Figures/Obr1.pdf>]
+[31]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 539.
+(hyperref)                removing `\textasciicaron' on input line 558.
 
-[30] [31]pdfTeX warning (ext4): destination with the same identifier (name{sect
+[32] [33]pdfTeX warning (ext4): destination with the same identifier (name{sect
 ion.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.540 \section{Grafy a mÄ›Å™enÃ­}
+l.559 \section{Grafy a mÄ›Å™enÃ­}
                                  
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 540.
+(hyperref)                removing `\textasciicaron' on input line 559.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 540.
+(hyperref)                removing `\textasciicaron' on input line 559.
 
-[32
+[34
 
 ]
 File: Figures/Graf.pdf Graphic file (type pdf)
  <use Figures/Graf.pdf>
-Package pdftex.def Info: Figures/Graf.pdf used on input line 545.
+Package pdftex.def Info: Figures/Graf.pdf used on input line 564.
 (pdftex.def)             Requested size: 298.75264pt x 209.12991pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 547.
- [33]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 547.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 566.
+ [35]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 566.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 547.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 547.
-Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: F14301E46381124F5004F9F71B85CE8A;2259.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 566.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 566.
 
+
+Package rerunfilecheck Warning: File `diplomka.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `diplomka.out':
+(rerunfilecheck)             Before: 0FB2C0EA51D67887F70897FF08B639F6;2570
+(rerunfilecheck)             After:  25D616642A73C31D49BD39D627FDC3CE;2512.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 547.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 566.
  ) 
 Here is how much of TeX's memory you used:
- 9283 strings out of 494116
- 129435 string characters out of 6157658
- 285587 words of memory out of 5000000
- 12318 multiletter control sequences out of 15000+600000
+ 9300 strings out of 494116
+ 129690 string characters out of 6157658
+ 285642 words of memory out of 5000000
+ 12327 multiletter control sequences out of 15000+600000
  48562 words of font info for 65 fonts, out of 8000000 for 9000
  448 hyphenation exceptions out of 8191
  43i,12n,45p,979b,1203s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
-8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/urw/palatino/uplri8a.pfb>
-Output written on diplomka.pdf (39 pages, 1375999 bytes).
+pdfTeX warning (dest): name{subsection.7.6} has been referenced but does not 
+exist, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/palatino/uplri8a.pfb>
+Output written on diplomka.pdf (41 pages, 1415144 bytes).
 PDF statistics:
- 578 PDF objects out of 1000 (max. 8388607)
- 165 named destinations out of 1000 (max. 500000)
- 312 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 615 PDF objects out of 1000 (max. 8388607)
+ 172 named destinations out of 1000 (max. 500000)
+ 349 words of extra memory for PDF output out of 10000 (max. 10000000)
 

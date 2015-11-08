@@ -5,32 +5,35 @@
 \BOOKMARK [2][-]{subsection.3.2}{Charakteristika}{section.3}% 5
 \BOOKMARK [2][-]{subsection.3.3}{Vybran\351 algoritmy}{section.3}% 6
 \BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355 \(GP\)}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{Popis algoritmu}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{GP vs. GA}{section.4}% 9
-\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 10
-\BOOKMARK [2][-]{subsection.5.1}{UML model}{section.5}% 11
-\BOOKMARK [2][-]{subsection.5.2}{Aplikace EvolTools}{section.5}% 12
-\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 13
-\BOOKMARK [2][-]{subsection.6.1}{Probl\351my}{section.6}% 14
-\BOOKMARK [2][-]{subsection.6.2}{V\375sledky}{section.6}% 15
-\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 16
-\BOOKMARK [2][-]{subsection.7.1}{\332vod do teorie optimalizacn\355ch algoritmu}{section.7}% 17
-\BOOKMARK [2][-]{subsection.7.2}{Spolecn\351 rysy}{section.7}% 18
-\BOOKMARK [2][-]{subsection.7.3}{Populace}{section.7}% 19
-\BOOKMARK [2][-]{subsection.7.4}{Optimalizace a \372celov\341 funkce}{section.7}% 20
-\BOOKMARK [2][-]{subsection.7.5}{Evolucn\355 algoritmy}{section.7}% 21
-\BOOKMARK [2][-]{subsection.7.6}{Optimalizacn\355 probl\351my}{section.7}% 22
-\BOOKMARK [1][-]{section.8}{Genetick\351 programov\341n\355}{}% 23
-\BOOKMARK [2][-]{subsection.8.1}{Fitness}{section.8}% 24
-\BOOKMARK [2][-]{subsection.8.2}{Selekce}{section.8}% 25
-\BOOKMARK [2][-]{subsection.8.3}{Kr\355\236en\355}{section.8}% 26
-\BOOKMARK [2][-]{subsection.8.4}{Mutace}{section.8}% 27
-\BOOKMARK [1][-]{section.9}{Praktick\341 c\341st}{}% 28
-\BOOKMARK [2][-]{subsection.9.1}{Existuj\355c\355 aplikace}{section.9}% 29
-\BOOKMARK [1][-]{section.10}{Testov\341n\355 a v\375sledky}{}% 30
-\BOOKMARK [1][-]{section.11}{Z\341ver}{}% 31
-\BOOKMARK [1][-]{section.12}{Reference}{}% 32
-\BOOKMARK [2][-]{subsection.12.1}{V\375pisy programu}{section.12}% 33
-\BOOKMARK [2][-]{subsection.12.2}{Obr\341zky a tabulky}{section.12}% 34
-\BOOKMARK [1][-]{table.2}{Pr\355lohy}{}% 35
-\BOOKMARK [1][-]{section.1}{Grafy a meren\355}{}% 36
+\BOOKMARK [2][-]{subsection.4.1}{Omezen\355 GP}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Reprezentace stromu}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.4}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Oper\341tory}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.6}{Popis algoritmu}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{UML model}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Aplikace EvolTools}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 17
+\BOOKMARK [2][-]{subsection.6.1}{Probl\351my}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.2}{V\375sledky}{section.6}% 19
+\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 20
+\BOOKMARK [2][-]{subsection.7.1}{\332vod do teorie optimalizacn\355ch algoritmu}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.2}{Spolecn\351 rysy}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.3}{Optimalizace a \372celov\341 funkce}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.4}{Evolucn\355 algoritmy}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.5}{Optimalizacn\355 probl\351my}{section.7}% 25
+\BOOKMARK [1][-]{section.8}{Genetick\351 programov\341n\355}{}% 26
+\BOOKMARK [2][-]{subsection.8.1}{Fitness}{section.8}% 27
+\BOOKMARK [2][-]{subsection.8.2}{Selekce}{section.8}% 28
+\BOOKMARK [2][-]{subsection.8.3}{Kr\355\236en\355}{section.8}% 29
+\BOOKMARK [2][-]{subsection.8.4}{Mutace}{section.8}% 30
+\BOOKMARK [1][-]{section.9}{Praktick\341 c\341st}{}% 31
+\BOOKMARK [2][-]{subsection.9.1}{Existuj\355c\355 aplikace}{section.9}% 32
+\BOOKMARK [1][-]{section.10}{Testov\341n\355 a v\375sledky}{}% 33
+\BOOKMARK [1][-]{section.11}{Z\341ver}{}% 34
+\BOOKMARK [1][-]{section.12}{Reference}{}% 35
+\BOOKMARK [2][-]{subsection.12.1}{V\375pisy programu}{section.12}% 36
+\BOOKMARK [2][-]{subsection.12.2}{Obr\341zky a tabulky}{section.12}% 37
+\BOOKMARK [1][-]{table.2}{Pr\355lohy}{}% 38
+\BOOKMARK [1][-]{section.1}{Grafy a meren\355}{}% 39
