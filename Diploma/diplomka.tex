@@ -183,11 +183,30 @@ Koza ve své knize \cite{kozagp} doporučuje kombinaci obou metod, což v praxi 
 Vše si můžeme ukázat na příkladě populace s $N=500$ jedinců, kde je stanovena maximální hloubka $h_max=6$. Při generování základní populace budeme postupovat tak, že 100 jedinců bude generováno s $h_max=2$ (50 s růstovou metodou a 50 s úplnou metodou),následně pro dalších 100 řešení generujeme obdobné stromy hloubký o 1 vyšší $h_max=3$ a tak dále, až do hloubky $h_max=6$.
 
 \subsection{Operátory}
-V GP budeme používat stejné operace jako u GA. Operátor křížení pracuje s dvojícemi stromů. U každého stromu z dvojíce zvolí náhodně uzel pro křížení a v dalším kroku zamění podstromy pod zvolenými uzly mezi sebou. Více osvětlíme příkladem na obrázku.
+V GP budeme používat stejné operace jako u GA. Operátor křížení pracuje s dvojícemi stromů. U každého stromu z dvojíce zvolí náhodně uzel pro křížení a v dalším kroku zamění podstromy pod zvolenými uzly mezi sebou. Více osvětlíme příkladem na obrázku. Oproti GA se zde potkáváme s problémem postupného růstu hloubky reprezentujících stromů. V první generaci si obstaráme stromy, který mají definouvanou maximální hloubku. Při aplikaci křížení však snad nastává případ, kdy je například listový uzel jednoho stromu nahrazen téměř celým podstromem druhého jedince. V podstatě jen v případech, kdy se budou zaměňovat podstromy z uzlů, které jsou ve stejné hloubce se žádný z obou stromů nerozšiřuje. Ve všech ostatních případech bude jeden nebo druhý strom rozšířený.
 
-Operátor mutace také náhodně vybere uzel stromu a celý jeho podstrom odstraní. Na tomto místě se poté náhodně vygeneruje chybějící část stromu do maximální hloubky předepsané parametrem.
+Koza doporučuje, abychom definovali i maximální hloubku stromů vzniklých křížením. Doporučuje se trojnásobek hloubky počáteční populace. Pokud bychom při křížení překročili tuto maximální povolenou hranici, takto vzniklí potomci budou odmítnuti a nahrazeni jedním z rodičovských jedinců.
 
 \InsertFigure{Figures/cross.png}{0.7\textwidth}{Příklad operátoru křížení}{fig:CrossSample}
+
+Speciálním případem při křížení je tzv. "incestní křížení", které nastane tehdy, pokud do křížení vstoupí dva identiční jedinci. V případě GA je takový případ nežádoucí, protože vznikají identiční potomci. V případe GP k tomu nastává pouze tehdy, když by byl v obou stromech vybrán tentýž uzel pro křížení.
+
+Operátor mutace také náhodně vybere uzel stromu a celý jeho podstrom odstraní. Na tomto místě se poté náhodně vygeneruje chybějící část stromu do maximální hloubky předepsané parametrem tak, aby vyýsledný strom nebyl příliš velký. 
+
+Variant operace mutace je několik. Mezi základní patří tyto:
+\begin{enumerate}
+\item uzlová mutace (point mutation) - neterminální uzel nahradí neterminálem se stejnou aritou a terminální uzel jiným terminálem
+\item vyzvedávající mutace (boist mutation) nahrazuje celý syntaktický strom některým z jeho podstromů
+\item smršťující mutace (shrink mutation) nahrazuje náhodně zvolený podstrom jediným terminálem
+\end{enumerate}
+
+To však není celý výčet možných operátorů. Existují i operátor, které se v GP nevyužívají zcela běžně, ale stojí za to se o nich zmínit. Mezi méně časté operátory řadíme například operátor permutace, zapouzdření, editace či decimace.
+
+Operátor permutace je příkladem asexuálního operátora, který využívá jen jednoho rodiče a náhodně zvolí neterminál s n operátory, jejichž pořadí náhodně prohodí. Jde tedy o náhodné prohození pořadí větví takovéhoto podstromu.
+
+Operátor editace se snaží poskytnou nedestruktivní redukci hloubky stromu tak, aby výsledný strom představoval tentýž program, ale bez přebytečných uzlů. Nejlépe, když si takový případ ukážeme na obrázku.
+
+\InsertFigure{Figures/editace.png}{0.7\textwidth}{Příklad operátoru editace. Levý strom zjednodušíme a výsledkem je strom pravý}{fig:EditSample}
 
 \subsection{Popis algoritmu}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
@@ -383,9 +402,6 @@ London: McGraw-Hill, 1999. 20 p. ISBN 007-709506-5
 
 \end{thebibliography}
 
-
-
-
 \begin{definition}
 \label{def:BinVyhlStrom}
 Binární strom je struktura definovaná nad konečnou množinou uzlů, která:
@@ -432,7 +448,6 @@ Počty uzlů pro jednotlivé podstromy se předávají jako výsledky
 volání funkcí prostřednictvím zásobníku programu, nejsou tudíž
 potřeba žádné pomocné proměnné.
 \end{example}
-
 
 \begin{remark}
 Program z příkladu \ref{priklad} pochopitelně chybí,
@@ -500,57 +515,6 @@ A ještě zkusíme vysázet několik tabulek, ale jen kvůli seznamu tabulek v �
   \caption{Pokusná tabulka}
   \label{tab:ExpTable}
 \end{table}
-
-
-
-\begin{sidewaystable}
-\centering
-\begin{tabular}{|l|rr|rr|rr|rr|}
-\hline
-File &
-\multicolumn{2}{c|}{bible.txt} &
-\multicolumn{2}{c|}{world.txt} &
-\multicolumn{2}{c|}{law.txt} &
-\multicolumn{2}{c|}{latimes.txt} \\
-\hline
-Language &
-\multicolumn{2}{c|}{English} &
-\multicolumn{2}{c|}{English} &
-\multicolumn{2}{c|}{Czech} &
-\multicolumn{2}{c|}{English} \\
-Format &
-\multicolumn{2}{c|}{Plain text} &
-\multicolumn{2}{c|}{Plain text} &
-\multicolumn{2}{c|}{Plain text} &
-\multicolumn{2}{c|}{SGML} \\
-\hline
-Size of file [bytes] & 4047392 &  & 2473400 &  & 64573143 &  & 498360166 & \\
-\hline
-{\small{}Number of tokens} & 1532262 & 100\% & 684767 & 100\% & 19432898 & 100\% & 161254928 & 100\%\\
-{\small{}Number of words} & 766131 & 50\% & 342383 & 50\% & 9716449 & 50\% & 70766067 & 43.885\%\\
-{\small{}Number of nonwords} & 766131 & 50\% & 342384 & 50\% & 9716449 & 50\% & 80619289 & 49.995\%\\
-{\small{}Number of controls} &  &  &  &  &  &  & 9869572 & 6.12\%\\
-\hline
-{\small{}Number of unique tokens} & 13791 & 100\% & 23564 & 100\% & 250570 & 100\% & 529482 & 100\%\\
-{\small{}Number of unique words} & 13744 & 99.659\% & 23082 & 97.955\% & 246266 & 98.282\% & 524280 & 99.018\%\\
-{\small{}Number of unique nonwords} & 47 & 0.341\% & 482 & 2.045\% & 4304 & 1.718\% & 3079 & 0.582\%\\
-{\small{}Number of unique controls} &  &  &  &  &  &  & 2123 & 0.401\%\\
-\hline
-{\small{}Word average frequency} & 55.743 &  & 14.833 &  & 39.455 &  & 134.978 & \\
-{\small{}Nonword average frequency} & 16300.66 &  & 710.34 &  & 2257.539 &  & 26183.595 & \\
-{\small{}Control average frequency} &  &  &  &  &  &  & 4648.88 & \\
-\hline
-{\small{}Minimal length of word} & 1 &  & 1 &  & 1 &  & 1 & \\
-{\small{}Maximal length of word} & 18 &  & 27 &  & 41 &  & 58 & \\
-{\small{}Minimal length of nonword} & 1 &  & 1 &  & 1 &  & 1 & \\
-{\small{}Maximal length of nonword} & 4 &  & 56 &  & 700 &  & 253 & \\
-{\small{}Minimal length of control} &  &  &  &  &  &  & 3 & \\
-{\small{}Maximal length of control} &  &  &  &  &  &  & 132 & \\
-\hline
-\end{tabular}
-\caption{Experimental Files --- Detailed Statistics}
-\label{tab:ExpFilesDetailStats}
-\end{sidewaystable}
 
 \appendix
 \section{Grafy a měření}
