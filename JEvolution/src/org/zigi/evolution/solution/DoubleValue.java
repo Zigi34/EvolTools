@@ -22,4 +22,13 @@ public class DoubleValue extends CloneableValue<DoubleValue> implements Valuable
 		return String.format("%.3f", val);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof DoubleValue) {
+			Double value = (Double) obj;
+			return value.equals(val);
+		}
+		return false;
+	}
+
 }

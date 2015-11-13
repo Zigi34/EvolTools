@@ -1,19 +1,16 @@
 package org.zigi.evolution.solution;
 
 import java.util.Collection;
-import java.util.Set;
 
 public abstract class Solution<T extends CloneableValue<T>> {
 
 	private Double fitness;
 
-	public abstract T getValue(Object key);
+	public abstract T getValue(Integer key);
 
 	public abstract Collection<T> getValues();
 
-	public abstract Set<Object> getKeys();
-
-	public abstract void setValue(Object key, T value);
+	public abstract void setValue(Integer key, T value);
 
 	public abstract void addValue(T value);
 
@@ -33,8 +30,8 @@ public abstract class Solution<T extends CloneableValue<T>> {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[" + String.format("%.3f", fitness) + "] ");
-		for (Object key : getKeys()) {
-			sb.append(getValue(key) + " ");
+		for (T key : getValues()) {
+			sb.append(key + " ");
 		}
 		return sb.toString();
 	}

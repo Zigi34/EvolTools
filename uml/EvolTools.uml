@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_DiymYHArEeWvg_uxY9WTgw" name="JEvolution">
+  <packagedElement xmi:type="uml:Class" xmi:id="_nMWf0HArEeWvg_uxY9WTgw" name="EvolutionAlgorithm" isAbstract="true">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_YltRgHRHEeWDwebjSUDD5g" name="actualState"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iksqMHRHEeWDwebjSUDD5g" name="running"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yUT9sHRHEeWDwebjSUDD5g" name="thread"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_orfM0HRIEeWDwebjSUDD5g" name="problem" type="_brDcYHRIEeWDwebjSUDD5g" association="_ordXoHRIEeWDwebjSUDD5g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_JvvtYHRIEeWDwebjSUDD5g" name="GeneticProgramming">
+    <generalization xmi:type="uml:Generalization" xmi:id="_YSEuYHRIEeWDwebjSUDD5g" general="_nMWf0HArEeWvg_uxY9WTgw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_brDcYHRIEeWDwebjSUDD5g" name="Problem"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ordXoHRIEeWDwebjSUDD5g" memberEnd="_orfM0HRIEeWDwebjSUDD5g _orfz4HRIEeWDwebjSUDD5g">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_orelwHRIEeWDwebjSUDD5g" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_orelwXRIEeWDwebjSUDD5g" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_orfz4HRIEeWDwebjSUDD5g" name="evolutionalgorithm" type="_nMWf0HArEeWvg_uxY9WTgw" association="_ordXoHRIEeWDwebjSUDD5g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uAVxoHRIEeWDwebjSUDD5g" name="SudokuProblem">
+    <generalization xmi:type="uml:Generalization" xmi:id="_xfc80HRIEeWDwebjSUDD5g" general="_brDcYHRIEeWDwebjSUDD5g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_kiZxEIlQEeWC_pPuJd-Gmg" name="NodeValue">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_myOeoIlQEeWC_pPuJd-Gmg" name="isTerminal"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Dtq6QIlREeWC_pPuJd-Gmg" name="isNonTerminal"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_2pRaYIlREeWC_pPuJd-Gmg" name="getName"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ForY8IlSEeWC_pPuJd-Gmg" name="getChilds"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_I99SsIlSEeWC_pPuJd-Gmg" name="getParent"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_X_JZ8IlSEeWC_pPuJd-Gmg" name="getChildCount"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_SA2aEIlTEeWC_pPuJd-Gmg" name="getResultType"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_eVMgkIlTEeWC_pPuJd-Gmg" name="getChildTypes"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_IAyN4IlUEeWC_pPuJd-Gmg" name="getValue"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_G4jh4IlREeWC_pPuJd-Gmg" name="Function" isAbstract="true">
+    <generalization xmi:type="uml:Generalization" xmi:id="_OF7HgIlREeWC_pPuJd-Gmg" general="_kiZxEIlQEeWC_pPuJd-Gmg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RrijUIlREeWC_pPuJd-Gmg" name="Terminal">
+    <generalization xmi:type="uml:Generalization" xmi:id="_XodNsIlREeWC_pPuJd-Gmg" general="_kiZxEIlQEeWC_pPuJd-Gmg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_a9SbgIlREeWC_pPuJd-Gmg" name="Node&lt;T>"/>
+</uml:Model>

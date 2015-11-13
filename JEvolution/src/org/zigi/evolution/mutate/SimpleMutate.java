@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.Population;
 import org.zigi.evolution.solution.CloneableValue;
 import org.zigi.evolution.solution.Solution;
@@ -22,6 +23,7 @@ import org.zigi.evolution.space.SolutionSpace;
 public class SimpleMutate<T extends CloneableValue<T>> extends MutateFunction<ArraySolution<T>, T> {
 	private Double mutateProbability = 0.2;
 	private Random rand = new Random();
+	private static Logger log = Logger.getLogger(SimpleMutate.class);
 
 	@Override
 	public void mutate(Population<ArraySolution<T>, T> population) {
@@ -30,17 +32,23 @@ public class SimpleMutate<T extends CloneableValue<T>> extends MutateFunction<Ar
 
 	@Override
 	public void mutate(List<ArraySolution<T>> solutions) {
-		List<Object> keys = new LinkedList<Object>();
+		List<Integer> keys = new LinkedList<Integer>();
 		for (Solution<T> item : solutions) {
 			keys.clear();
 
-			for (Object key : item.getKeys()) {
-				if (rand.nextDouble() < mutateProbability)
-					keys.add(key);
+			for (T key : item.getValues()) {
+				log.info(key + ", ");
 			}
 
-			for (Object key : keys) {
-				item.setValue(key, space.randomValue());
+			for (Integer index = 0; index < item.getValues().size(); index++) {
+				if (rand.nextDouble() < mutateProbability) {
+					keys.add(index);
+				}
+			}
+
+			for (Integer index = 0; index < item.getValues().size(); index++) {
+				if (keys.contains(index))
+					item.setValue(index, space.randomValue());
 			}
 		}
 	}

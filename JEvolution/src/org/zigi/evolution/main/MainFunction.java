@@ -9,6 +9,9 @@ import org.zigi.evolution.mutate.SimpleMutate;
 import org.zigi.evolution.select.RouleteWheelSelect;
 import org.zigi.evolution.solution.DoubleValue;
 import org.zigi.evolution.solution.array.ArraySolution;
+import org.zigi.evolution.solution.tree.NumberValue;
+import org.zigi.evolution.solution.tree.PlusFunction;
+import org.zigi.evolution.solution.tree.TreeSolution;
 import org.zigi.evolution.space.DoubleValueSpace;
 
 public class MainFunction {
@@ -16,6 +19,21 @@ public class MainFunction {
 	public static Logger log = Logger.getLogger(MainFunction.class);
 
 	public static void main(String[] args) {
+		solutionTree();
+		// gaAlgorithm();
+	}
+
+	private static void solutionTree() {
+		TreeSolution solution = new TreeSolution();
+		solution.addValue(new PlusFunction());
+		solution.addValue(new PlusFunction());
+		solution.addValue(new NumberValue(2.5));
+		solution.addValue(new NumberValue(5.3));
+		solution.addValue(new NumberValue(1.3));
+		log.info(solution);
+	}
+
+	private static void gaAlgorithm() {
 		int populationSize = 20;
 		int solutionSize = 5;
 		int generation = 100;

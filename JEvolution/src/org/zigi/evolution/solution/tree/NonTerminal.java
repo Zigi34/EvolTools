@@ -1,5 +1,5 @@
 package org.zigi.evolution.solution.tree;
 
-public interface NonTerminal {
+public abstract class NonTerminal extends NodeValue {
 
 }

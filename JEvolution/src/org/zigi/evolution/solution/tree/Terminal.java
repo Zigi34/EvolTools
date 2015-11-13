@@ -1,5 +1,5 @@
 package org.zigi.evolution.solution.tree;
 
-public interface Terminal {
+public abstract class Terminal extends NodeValue {
 
 }
