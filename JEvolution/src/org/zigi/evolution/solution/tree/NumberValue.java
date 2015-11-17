@@ -3,9 +3,12 @@ package org.zigi.evolution.solution.tree;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class NumberValue extends Terminal {
 	private Number value;
 	private static final List<NodeValue> CHILDS = new LinkedList<NodeValue>();
+	private static final Logger LOG = Logger.getLogger(NumberValue.class);
 
 	public NumberValue() {
 	}
@@ -16,6 +19,7 @@ public class NumberValue extends Terminal {
 	}
 
 	public NumberValue(Number value) {
+		LOG.info("V=:" + value);
 		this.value = value;
 	}
 
@@ -33,6 +37,18 @@ public class NumberValue extends Terminal {
 
 	public NumberValue add(NumberValue value) {
 		return new NumberValue(this.value.doubleValue() + value.getDouble());
+	}
+
+	public NumberValue subtraction(NumberValue value) {
+		return new NumberValue(this.value.doubleValue() - value.getDouble());
+	}
+
+	public NumberValue multiplication(NumberValue value) {
+		return new NumberValue(this.value.doubleValue() * value.getDouble());
+	}
+
+	public NumberValue divide(NumberValue value) {
+		return new NumberValue(this.value.doubleValue() / value.getDouble());
 	}
 
 	@Override
@@ -62,7 +78,7 @@ public class NumberValue extends Terminal {
 
 	@Override
 	public Object getValue() {
-		return value;
+		return new NumberValue(value);
 	}
 
 	@Override

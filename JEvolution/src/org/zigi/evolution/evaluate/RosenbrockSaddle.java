@@ -11,8 +11,8 @@ public class RosenbrockSaddle extends EvaluateFunction<ArraySolution<DoubleValue
 		Double result = 0.0;
 		for (int i = 0; i < solution.size() - 1; i++) {
 			result += 100 * Math
-					.pow(Math.pow(solution.getValue(i).getValue(), 2.0) - solution.getValue(i + 1).getValue(), 2.0)
-					+ Math.pow(1 - solution.getValue(i).getValue(), 2.0);
+					.pow(Math.pow(solution.getChildNode(i).getValue(), 2.0) - solution.getChildNode(i + 1).getValue(), 2.0)
+					+ Math.pow(1 - solution.getChildNode(i).getValue(), 2.0);
 		}
 		if (result == 0.0)
 			result = 0.00000000000000000000000000001;
@@ -26,8 +26,8 @@ public class RosenbrockSaddle extends EvaluateFunction<ArraySolution<DoubleValue
 			Double result = 0.0;
 			for (int i = 0; i < item.size() - 1; i++) {
 				result += 100
-						* Math.pow(Math.pow(item.getValue(i).getValue(), 2.0) - item.getValue(i + 1).getValue(), 2.0)
-						+ Math.pow(1 - item.getValue(i).getValue(), 2.0);
+						* Math.pow(Math.pow(item.getChildNode(i).getValue(), 2.0) - item.getChildNode(i + 1).getValue(), 2.0)
+						+ Math.pow(1 - item.getChildNode(i).getValue(), 2.0);
 			}
 			if (result == 0.0)
 				result = 0.00000000000000000000000000001;

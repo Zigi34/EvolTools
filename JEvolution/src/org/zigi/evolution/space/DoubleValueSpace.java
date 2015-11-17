@@ -13,7 +13,7 @@ public class DoubleValueSpace extends SolutionSpace<ArraySolution<DoubleValue>, 
 	public ArraySolution<DoubleValue> randomSolution(int size) {
 		ArraySolution<DoubleValue> solution = new ArraySolution<DoubleValue>();
 		for (int i = 0; i < size; i++)
-			solution.addValue(randomValue());
+			solution.addChildNode(randomValue());
 		return solution;
 	}
 

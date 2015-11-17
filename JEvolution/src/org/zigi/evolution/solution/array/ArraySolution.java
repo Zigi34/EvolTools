@@ -14,24 +14,24 @@ public class ArraySolution<T extends CloneableValue<T>> extends Solution<T> {
 	public ArraySolution<T> clone() {
 		ArraySolution<T> sol = new ArraySolution<T>();
 		for (int i = 0; i < values.size(); i++) {
-			sol.addValue(values.get(i).clone());
+			sol.addChildNode(values.get(i).clone());
 		}
 		sol.setFitness(getFitness());
 		return sol;
 	}
 
 	@Override
-	public T getValue(Integer key) {
+	public T getChildNode(Integer key) {
 		return values.get(key);
 	}
 
 	@Override
-	public Collection<T> getValues() {
+	public Collection<T> getChildNodes() {
 		return values;
 	}
 
 	@Override
-	public void setValue(Integer key, T value) {
+	public void setChildNode(Integer key, T value) {
 		values.set(key, value);
 	}
 
@@ -41,7 +41,7 @@ public class ArraySolution<T extends CloneableValue<T>> extends Solution<T> {
 	}
 
 	@Override
-	public void addValue(T value) {
+	public void addChildNode(T value) {
 		values.add(value);
 	}
 }

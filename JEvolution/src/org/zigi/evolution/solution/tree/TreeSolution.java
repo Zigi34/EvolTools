@@ -13,23 +13,27 @@ public class TreeSolution extends Solution<NodeValue> {
 	private List<NodeValue> values = new LinkedList<NodeValue>();
 	private static final Logger LOG = Logger.getLogger(TreeSolution.class);
 
+	public Object getValue() {
+		return root.getValue();
+	}
+
 	@Override
-	public NodeValue getValue(Integer key) {
+	public NodeValue getChildNode(Integer key) {
 		return values.get(key);
 	}
 
 	@Override
-	public Collection<NodeValue> getValues() {
+	public Collection<NodeValue> getChildNodes() {
 		return values;
 	}
 
 	@Override
-	public void setValue(Integer key, NodeValue value) {
+	public void setChildNode(Integer key, NodeValue value) {
 		values.set(key, value);
 	}
 
 	@Override
-	public void addValue(NodeValue value) {
+	public void addChildNode(NodeValue value) {
 		if (root == null) {
 			root = value;
 		} else {
@@ -55,11 +59,11 @@ public class TreeSolution extends Solution<NodeValue> {
 
 	private void deepWalk(List<NodeValue> nodes, NodeValue actual) {
 		if (actual != null) {
-			nodes.add(actual);
 			if (actual.getChilds() != null) {
 				for (NodeValue node : actual.getChilds()) {
 					deepWalk(nodes, node);
 				}
+				nodes.add(actual);
 			}
 		}
 	}

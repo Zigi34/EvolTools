@@ -6,13 +6,13 @@ public abstract class Solution<T extends CloneableValue<T>> {
 
 	private Double fitness;
 
-	public abstract T getValue(Integer key);
+	public abstract T getChildNode(Integer key);
 
-	public abstract Collection<T> getValues();
+	public abstract Collection<T> getChildNodes();
 
-	public abstract void setValue(Integer key, T value);
+	public abstract void setChildNode(Integer key, T value);
 
-	public abstract void addValue(T value);
+	public abstract void addChildNode(T value);
 
 	public abstract int size();
 
@@ -30,7 +30,7 @@ public abstract class Solution<T extends CloneableValue<T>> {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[" + String.format("%.3f", fitness) + "] ");
-		for (T key : getValues()) {
+		for (T key : getChildNodes()) {
 			sb.append(key + " ");
 		}
 		return sb.toString();

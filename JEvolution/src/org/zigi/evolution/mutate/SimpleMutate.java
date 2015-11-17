@@ -36,19 +36,19 @@ public class SimpleMutate<T extends CloneableValue<T>> extends MutateFunction<Ar
 		for (Solution<T> item : solutions) {
 			keys.clear();
 
-			for (T key : item.getValues()) {
+			for (T key : item.getChildNodes()) {
 				log.info(key + ", ");
 			}
 
-			for (Integer index = 0; index < item.getValues().size(); index++) {
+			for (Integer index = 0; index < item.getChildNodes().size(); index++) {
 				if (rand.nextDouble() < mutateProbability) {
 					keys.add(index);
 				}
 			}
 
-			for (Integer index = 0; index < item.getValues().size(); index++) {
+			for (Integer index = 0; index < item.getChildNodes().size(); index++) {
 				if (keys.contains(index))
-					item.setValue(index, space.randomValue());
+					item.setChildNode(index, space.randomValue());
 			}
 		}
 	}

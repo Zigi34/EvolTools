@@ -9,6 +9,8 @@ import org.zigi.evolution.mutate.SimpleMutate;
 import org.zigi.evolution.select.RouleteWheelSelect;
 import org.zigi.evolution.solution.DoubleValue;
 import org.zigi.evolution.solution.array.ArraySolution;
+import org.zigi.evolution.solution.tree.DivideFunction;
+import org.zigi.evolution.solution.tree.MultiplicationFunction;
 import org.zigi.evolution.solution.tree.NumberValue;
 import org.zigi.evolution.solution.tree.PlusFunction;
 import org.zigi.evolution.solution.tree.TreeSolution;
@@ -25,12 +27,15 @@ public class MainFunction {
 
 	private static void solutionTree() {
 		TreeSolution solution = new TreeSolution();
-		solution.addValue(new PlusFunction());
-		solution.addValue(new PlusFunction());
-		solution.addValue(new NumberValue(2.5));
-		solution.addValue(new NumberValue(5.3));
-		solution.addValue(new NumberValue(1.3));
-		log.info(solution);
+		solution.addChildNode(new PlusFunction());
+		solution.addChildNode(new MultiplicationFunction());
+		solution.addChildNode(new NumberValue(100.0));
+		solution.addChildNode(new NumberValue(2.5));
+		solution.addChildNode(new DivideFunction());
+		solution.addChildNode(new NumberValue(-30.0));
+		solution.addChildNode(new NumberValue(0.5));
+
+		log.info("Value = " + solution.getValue());
 	}
 
 	private static void gaAlgorithm() {

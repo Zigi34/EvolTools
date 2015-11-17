@@ -3,18 +3,18 @@ package org.zigi.evolution.solution.tree;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PlusFunction extends NonTerminal {
+public class Operation2Function extends NonTerminal {
 
 	private static final List<Class<?>> CHILD_TYPES = new LinkedList<Class<?>>();
 	private List<NodeValue> childs = new LinkedList<NodeValue>();
 
 	static {
-		CHILD_TYPES.add(NumberValue.class);
-		CHILD_TYPES.add(NumberValue.class);
+		CHILD_TYPES.add(NonTerminal.class);
+		CHILD_TYPES.add(NonTerminal.class);
 	}
 
-	public PlusFunction() {
-		this.name = "+";
+	public Operation2Function() {
+		this.name = "PRG2";
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class PlusFunction extends NonTerminal {
 
 	@Override
 	public Class<?> getResultType() {
-		return NumberValue.class;
+		return null;
 	}
 
 	@Override
@@ -39,12 +39,14 @@ public class PlusFunction extends NonTerminal {
 
 	@Override
 	public NodeValue clone() {
-		return new PlusFunction();
+		return new Operation2Function();
 	}
 
 	@Override
 	public Object getValue() {
-		return ((NumberValue) childs.get(0).getValue()).add((NumberValue) childs.get(1).getValue());
+		childs.get(0).getValue();
+		childs.get(1).getValue();
+		return null;
 	}
 
 	@Override
@@ -59,7 +61,7 @@ public class PlusFunction extends NonTerminal {
 
 	@Override
 	public String toString() {
-		return String.format("(%s+%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
+		return String.format("(%s,%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
 				getChilds().size() < 2 ? "_" : getChilds().get(1));
 	}
 }

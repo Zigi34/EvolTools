@@ -9,7 +9,7 @@ public class DeJong1 extends EvaluateFunction<ArraySolution<DoubleValue>, Double
 	@Override
 	public Double evaluate(ArraySolution<DoubleValue> solution) {
 		Double result = 0.0;
-		for (DoubleValue val : solution.getValues()) {
+		for (DoubleValue val : solution.getChildNodes()) {
 			result += Math.pow(val.getValue(), 2.0);
 		}
 		if (result == 0.0)
@@ -22,7 +22,7 @@ public class DeJong1 extends EvaluateFunction<ArraySolution<DoubleValue>, Double
 	public void evaluate(Population<ArraySolution<DoubleValue>, DoubleValue> population) {
 		for (ArraySolution<DoubleValue> sol : population.getSolutions()) {
 			Double result = 0.0;
-			for (DoubleValue val : sol.getValues()) {
+			for (DoubleValue val : sol.getChildNodes()) {
 				result += Math.pow(val.getValue(), 2.0);
 			}
 			if (result == 0.0)

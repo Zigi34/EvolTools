@@ -3,7 +3,7 @@ package org.zigi.evolution.solution.tree;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PlusFunction extends NonTerminal {
+public class MultiplicationFunction extends NonTerminal {
 
 	private static final List<Class<?>> CHILD_TYPES = new LinkedList<Class<?>>();
 	private List<NodeValue> childs = new LinkedList<NodeValue>();
@@ -13,8 +13,8 @@ public class PlusFunction extends NonTerminal {
 		CHILD_TYPES.add(NumberValue.class);
 	}
 
-	public PlusFunction() {
-		this.name = "+";
+	public MultiplicationFunction() {
+		this.name = "*";
 	}
 
 	@Override
@@ -39,12 +39,12 @@ public class PlusFunction extends NonTerminal {
 
 	@Override
 	public NodeValue clone() {
-		return new PlusFunction();
+		return new MultiplicationFunction();
 	}
 
 	@Override
 	public Object getValue() {
-		return ((NumberValue) childs.get(0).getValue()).add((NumberValue) childs.get(1).getValue());
+		return ((NumberValue) childs.get(0).getValue()).multiplication((NumberValue) childs.get(1).getValue());
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class PlusFunction extends NonTerminal {
 
 	@Override
 	public String toString() {
-		return String.format("(%s+%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
+		return String.format("(%s*%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
 				getChilds().size() < 2 ? "_" : getChilds().get(1));
 	}
 }

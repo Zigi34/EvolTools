@@ -36,15 +36,15 @@ public class OnePointCross<U extends CloneableValue<U>> extends CrossFunction<Ar
 			double randValue = rand.nextDouble();
 			if (randValue <= 0.5) {
 				for (int j = 0; j < crossIndex; j++) {
-					tempValue = solution1.getValue(j);
-					solution1.setValue(j, solution2.getValue(j));
-					solution2.setValue(j, tempValue);
+					tempValue = solution1.getChildNode(j);
+					solution1.setChildNode(j, solution2.getChildNode(j));
+					solution2.setChildNode(j, tempValue);
 				}
 			} else {
 				for (int j = crossIndex; j < population.getSolutionSize(); j++) {
-					tempValue = solution1.getValue(j);
-					solution1.setValue(j, solution2.getValue(j));
-					solution2.setValue(j, tempValue);
+					tempValue = solution1.getChildNode(j);
+					solution1.setChildNode(j, solution2.getChildNode(j));
+					solution2.setChildNode(j, tempValue);
 				}
 			}
 		}
