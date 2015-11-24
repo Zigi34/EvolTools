@@ -3,24 +3,24 @@ package org.zigi.evolution.solution.tree;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MultiplicationFunction extends NonTerminal {
+public class SinusFunction extends NonTerminal {
 
 	private static final List<Class<?>> CHILD_TYPES = new LinkedList<Class<?>>();
 	private List<NodeValue> childs = new LinkedList<NodeValue>();
 
 	static {
 		CHILD_TYPES.add(NumberValue.class);
-		CHILD_TYPES.add(NumberValue.class);
 	}
 
-	public MultiplicationFunction() {
-		this.name = "*";
+	public SinusFunction() {
+		this.name = "sin";
 	}
 
 	@Override
 	public Object getValue() {
-		if (childs.size() == 2)
-			return ((Double) childs.get(0).getValue()) + ((Double) childs.get(1).getValue());
+		if (childs.size() == 1) {
+			return Math.sin((Double) childs.get(0).getValue());
+		}
 		return null;
 	}
 
@@ -46,12 +46,12 @@ public class MultiplicationFunction extends NonTerminal {
 
 	@Override
 	public NodeValue clone() {
-		return new MultiplicationFunction();
+		return new SinusFunction();
 	}
 
 	@Override
 	public Integer getChildCount() {
-		return 2;
+		return 1;
 	}
 
 	@Override
@@ -61,7 +61,6 @@ public class MultiplicationFunction extends NonTerminal {
 
 	@Override
 	public String toString() {
-		return String.format("(%s*%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
-				getChilds().size() < 2 ? "_" : getChilds().get(1));
+		return String.format("sin(%s)", getChilds().size() < 1 ? "_" : getChilds().get(0));
 	}
 }

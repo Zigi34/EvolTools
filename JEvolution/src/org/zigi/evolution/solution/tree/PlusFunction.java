@@ -18,6 +18,14 @@ public class PlusFunction extends NonTerminal {
 	}
 
 	@Override
+	public Object getValue() {
+		if (childs.size() == 2) {
+			return ((Double) childs.get(0).getValue()) + ((Double) childs.get(1).getValue());
+		}
+		return null;
+	}
+
+	@Override
 	public Boolean isTerminal() {
 		return false;
 	}
@@ -40,11 +48,6 @@ public class PlusFunction extends NonTerminal {
 	@Override
 	public NodeValue clone() {
 		return new PlusFunction();
-	}
-
-	@Override
-	public Object getValue() {
-		return ((NumberValue) childs.get(0).getValue()).add((NumberValue) childs.get(1).getValue());
 	}
 
 	@Override

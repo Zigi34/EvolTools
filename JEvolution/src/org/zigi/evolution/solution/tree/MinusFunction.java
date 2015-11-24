@@ -43,11 +43,6 @@ public class MinusFunction extends NonTerminal {
 	}
 
 	@Override
-	public Object getValue() {
-		return ((NumberValue) childs.get(0).getValue()).subtraction((NumberValue) childs.get(1).getValue());
-	}
-
-	@Override
 	public Integer getChildCount() {
 		return 2;
 	}

@@ -3,33 +3,23 @@ package org.zigi.evolution.solution.tree;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Operation2Function extends NonTerminal {
+public class PRG2 extends NonTerminal {
 
 	private static final List<Class<?>> CHILD_TYPES = new LinkedList<Class<?>>();
 	private List<NodeValue> childs = new LinkedList<NodeValue>();
 
 	static {
-		CHILD_TYPES.add(NonTerminal.class);
-		CHILD_TYPES.add(NonTerminal.class);
+		CHILD_TYPES.add(NodeValue.class);
+		CHILD_TYPES.add(NodeValue.class);
 	}
 
-	public Operation2Function() {
+	public PRG2() {
 		this.name = "PRG2";
 	}
 
 	@Override
-	public Boolean isTerminal() {
-		return false;
-	}
-
-	@Override
-	public Boolean isNonTerminal() {
-		return true;
-	}
-
-	@Override
 	public Class<?> getResultType() {
-		return null;
+		return NonTerminal.class;
 	}
 
 	@Override
@@ -39,7 +29,7 @@ public class Operation2Function extends NonTerminal {
 
 	@Override
 	public NodeValue clone() {
-		return new Operation2Function();
+		return new PRG2();
 	}
 
 	@Override
@@ -54,7 +44,11 @@ public class Operation2Function extends NonTerminal {
 
 	@Override
 	public String toString() {
-		return String.format("(%s,%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
-				getChilds().size() < 2 ? "_" : getChilds().get(1));
+		int size = getChilds().size();
+		if (size == 0)
+			return "PRG2(_,_)";
+		else if (size == 1)
+			return String.format("PRG2(%s,_)", getChilds().get(0));
+		return String.format("PRG2(%s,%s)", getChilds().get(0), getChilds().get(1));
 	}
 }

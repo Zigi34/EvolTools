@@ -9,6 +9,7 @@ import org.zigi.evolution.solution.Valuable;
 public abstract class NodeValue extends CloneableValue<NodeValue> implements Valuable<Object> {
 	protected String name;
 	private NodeValue parent;
+	protected Object value;
 	private static final Logger LOG = Logger.getLogger(NodeValue.class);
 
 	public abstract Boolean isTerminal();
@@ -19,7 +20,17 @@ public abstract class NodeValue extends CloneableValue<NodeValue> implements Val
 	 * Vrai hodnotu instance vypoctenou z hodnot potomku nebo vykona vsechny
 	 * operace v potomcich a potom vraci rizeni tomuto uzlu
 	 */
-	public abstract Object getValue();
+	public Object getValue() {
+		return value;
+	}
+
+	public void setValue(Object value) {
+		this.value = value;
+	}
+
+	public boolean isSet() {
+		return value != null;
+	}
 
 	public String getName() {
 		return name;
@@ -91,6 +102,8 @@ public abstract class NodeValue extends CloneableValue<NodeValue> implements Val
 	public abstract List<Class<?>> getChildTypes();
 
 	public Boolean isAnyEmptyChild() {
+		if (getChilds() == null)
+			return false;
 		return getChilds().size() < getChildCount();
 	}
 

@@ -13,10 +13,6 @@ public class TreeSolution extends Solution<NodeValue> {
 	private List<NodeValue> values = new LinkedList<NodeValue>();
 	private static final Logger LOG = Logger.getLogger(TreeSolution.class);
 
-	public Object getValue() {
-		return root.getValue();
-	}
-
 	@Override
 	public NodeValue getChildNode(Integer key) {
 		return values.get(key);
@@ -37,7 +33,7 @@ public class TreeSolution extends Solution<NodeValue> {
 		if (root == null) {
 			root = value;
 		} else {
-			for (NodeValue node : deepWalk()) {
+			for (NodeValue node : deepWalkLeafFirst()) {
 				if (node.isAnyEmptyChild()) {
 					node.addChild(value);
 					break;
@@ -50,14 +46,28 @@ public class TreeSolution extends Solution<NodeValue> {
 	public List<NodeValue> deepWalk() {
 		List<NodeValue> values = new LinkedList<NodeValue>();
 		deepWalk(values, root);
-		LOG.info("DEEP WALK");
-		for (NodeValue node : values) {
-			LOG.info(node.getName());
-		}
+		return values;
+	}
+
+	public List<NodeValue> deepWalkLeafFirst() {
+		List<NodeValue> values = new LinkedList<NodeValue>();
+		deepWalkLeafFirst(values, root);
 		return values;
 	}
 
 	private void deepWalk(List<NodeValue> nodes, NodeValue actual) {
+		if (actual != null) {
+			if (!nodes.contains(actual))
+				nodes.add(actual);
+			if (actual.getChilds() != null) {
+				for (NodeValue node : actual.getChilds()) {
+					deepWalk(nodes, node);
+				}
+			}
+		}
+	}
+
+	private void deepWalkLeafFirst(List<NodeValue> nodes, NodeValue actual) {
 		if (actual != null) {
 			if (actual.getChilds() != null) {
 				for (NodeValue node : actual.getChilds()) {

@@ -1,32 +1,33 @@
 package org.zigi.evolution.solution.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MultiplicationFunction extends NonTerminal {
+public class CosinusFunction extends NonTerminal {
 
 	private static final List<Class<?>> CHILD_TYPES = new LinkedList<Class<?>>();
-	private List<NodeValue> childs = new LinkedList<NodeValue>();
+	private List<NodeValue> childs = new ArrayList<NodeValue>(1);
 
 	static {
 		CHILD_TYPES.add(NumberValue.class);
-		CHILD_TYPES.add(NumberValue.class);
 	}
 
-	public MultiplicationFunction() {
-		this.name = "*";
-	}
-
-	@Override
-	public Object getValue() {
-		if (childs.size() == 2)
-			return ((Double) childs.get(0).getValue()) + ((Double) childs.get(1).getValue());
-		return null;
+	public CosinusFunction() {
+		this.name = "cos";
 	}
 
 	@Override
 	public Boolean isTerminal() {
 		return false;
+	}
+
+	@Override
+	public Object getValue() {
+		if (childs.size() == 1) {
+			return Math.cos((Double) childs.get(0).getValue());
+		}
+		return null;
 	}
 
 	@Override
@@ -46,12 +47,12 @@ public class MultiplicationFunction extends NonTerminal {
 
 	@Override
 	public NodeValue clone() {
-		return new MultiplicationFunction();
+		return new CosinusFunction();
 	}
 
 	@Override
 	public Integer getChildCount() {
-		return 2;
+		return 1;
 	}
 
 	@Override
@@ -61,7 +62,6 @@ public class MultiplicationFunction extends NonTerminal {
 
 	@Override
 	public String toString() {
-		return String.format("(%s*%s)", getChilds().size() < 1 ? "_" : getChilds().get(0),
-				getChilds().size() < 2 ? "_" : getChilds().get(1));
+		return String.format("cos(%s)", getChilds().size() < 1 ? "_" : getChilds().get(0));
 	}
 }

@@ -5,50 +5,29 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-public class NumberValue extends Terminal {
-	private Number value;
+public abstract class NumberValue extends Terminal {
 	private static final List<NodeValue> CHILDS = new LinkedList<NodeValue>();
 	private static final Logger LOG = Logger.getLogger(NumberValue.class);
 
 	public NumberValue() {
 	}
 
-	@Override
-	public String getName() {
-		return String.valueOf(value.doubleValue());
-	}
-
 	public NumberValue(Number value) {
-		LOG.info("V=:" + value);
 		this.value = value;
 	}
 
 	public Integer getInt() {
-		return value.intValue();
+		Number val = (Number) value;
+		return val.intValue();
 	}
 
 	public Double getDouble() {
-		return value.doubleValue();
+		Number val = (Number) value;
+		return val.doubleValue();
 	}
 
 	public void setValue(Number value) {
 		this.value = value;
-	}
-
-	public NumberValue add(NumberValue value) {
-		return new NumberValue(this.value.doubleValue() + value.getDouble());
-	}
-
-	public NumberValue subtraction(NumberValue value) {
-		return new NumberValue(this.value.doubleValue() - value.getDouble());
-	}
-
-	public NumberValue multiplication(NumberValue value) {
-		return new NumberValue(this.value.doubleValue() * value.getDouble());
-	}
-
-	public NumberValue divide(NumberValue value) {
-		return new NumberValue(this.value.doubleValue() / value.getDouble());
 	}
 
 	@Override
@@ -69,16 +48,6 @@ public class NumberValue extends Terminal {
 	@Override
 	public List<Class<?>> getChildTypes() {
 		return null;
-	}
-
-	@Override
-	public NodeValue clone() {
-		return new NumberValue(new Double(value.doubleValue()));
-	}
-
-	@Override
-	public Object getValue() {
-		return new NumberValue(value);
 	}
 
 	@Override
