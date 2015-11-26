@@ -6,33 +6,19 @@
 \BOOKMARK [2][-]{subsection.3.3}{Fitness}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.4}{Vybran\351 algoritmy}{section.3}% 7
 \BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355 \(GP\)}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{Omezen\355 GP}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.3}{Reprezentace stromu}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.4}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.5}{Oper\341tory}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.6}{Popis algoritmu}{section.4}% 14
-\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 15
-\BOOKMARK [2][-]{subsection.5.1}{UML model}{section.5}% 16
-\BOOKMARK [2][-]{subsection.5.2}{Aplikace EvolTools}{section.5}% 17
-\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 18
-\BOOKMARK [2][-]{subsection.6.1}{Probl\351my}{section.6}% 19
-\BOOKMARK [2][-]{subsection.6.2}{V\375sledky}{section.6}% 20
-\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 21
-\BOOKMARK [2][-]{subsection.7.1}{\332vod do teorie optimalizacn\355ch algoritmu}{section.7}% 22
-\BOOKMARK [2][-]{subsection.7.2}{Spolecn\351 rysy}{section.7}% 23
-\BOOKMARK [2][-]{subsection.7.3}{Optimalizace a \372celov\341 funkce}{section.7}% 24
-\BOOKMARK [2][-]{subsection.7.4}{Evolucn\355 algoritmy}{section.7}% 25
-\BOOKMARK [2][-]{subsection.7.5}{Optimalizacn\355 probl\351my}{section.7}% 26
-\BOOKMARK [2][-]{subsection.7.6}{Selekce}{section.7}% 27
-\BOOKMARK [2][-]{subsection.7.7}{Kr\355\236en\355}{section.7}% 28
-\BOOKMARK [2][-]{subsection.7.8}{Mutace}{section.7}% 29
-\BOOKMARK [1][-]{section.8}{Praktick\341 c\341st}{}% 30
-\BOOKMARK [2][-]{subsection.8.1}{Existuj\355c\355 aplikace}{section.8}% 31
-\BOOKMARK [1][-]{section.9}{Testov\341n\355 a v\375sledky}{}% 32
-\BOOKMARK [1][-]{section.10}{Z\341ver}{}% 33
-\BOOKMARK [1][-]{section.11}{Reference}{}% 34
-\BOOKMARK [2][-]{subsection.11.1}{V\375pisy programu}{section.11}% 35
-\BOOKMARK [2][-]{subsection.11.2}{Obr\341zky a tabulky}{section.11}% 36
-\BOOKMARK [1][-]{table.1}{Pr\355lohy}{}% 37
-\BOOKMARK [1][-]{section.1}{Grafy a meren\355}{}% 38
+\BOOKMARK [2][-]{subsection.4.1}{GA vs. GP}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{\332lohy re\235en\351 GP}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Reprezentace jedince}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.4}{Omezen\355 GP}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.5}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.6}{Reprezentace stromu}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.7}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.8}{Oper\341tory}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.9}{Popis algoritmu}{section.4}% 17
+\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 18
+\BOOKMARK [2][-]{subsection.5.1}{UML model}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.2}{Aplikace EvolTools}{section.5}% 20
+\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 21
+\BOOKMARK [2][-]{subsection.6.1}{V\375sledky}{section.6}% 22
+\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 23
+\BOOKMARK [1][-]{section.8}{Reference}{}% 24
