@@ -32,7 +32,12 @@ public class MainFunction {
 	public static void main(String[] args) {
 		// solutionTree();
 		// gaAlgorithm();
-		artificialAnt();
+		// artificialAnt();
+	}
+
+	private static void neco() {
+		GA<DoubleValue> alg = new GA<DoubleValue>();
+
 	}
 
 	private static void artificialAnt() {

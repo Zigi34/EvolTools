@@ -11,14 +11,15 @@ import org.zigi.evolution.exception.EvolutionException;
 import org.zigi.evolution.mutate.MutateFunction;
 import org.zigi.evolution.select.SelectFunction;
 import org.zigi.evolution.solution.CloneableValue;
+import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.array.ArraySolution;
 import org.zigi.evolution.util.TimeMeasure;
 
-public class GA<T extends CloneableValue<T>> extends EA<ArraySolution<T>, T> {
+public class GA<T extends CloneableValue<T>> extends EA<Solution<T>, T> {
 
-	protected MutateFunction<ArraySolution<T>, T> mutate;
-	protected CrossFunction<ArraySolution<T>, T> cross;
-	protected SelectFunction<ArraySolution<T>, T> select;
+	protected MutateFunction<Solution<T>, T> mutate;
+	protected CrossFunction<Solution<T>, T> cross;
+	protected SelectFunction<Solution<T>, T> select;
 
 	private static Logger log = Logger.getLogger(GA.class);
 
