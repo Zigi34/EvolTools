@@ -1,5 +1,5 @@
 % Nejprve uvedeme tridu dokumentu s volbami
-%\documentclass[bc,male,java,dept460]{diploma}				% jednostranny dokument
+%\documentclass[bc,male,java,dept460]{diploma}		% jednostranny dokument
 \documentclass[bc,male,java,dept460]{diploma}		% oboustranny dokument
 \usepackage[czech]{babel}
 
@@ -40,6 +40,7 @@ evolutionary, genetic, genetic programming
 % Pridame pouzivane zkratky (pokud nejake pouzivame).
 \AddAcronym {GP} {Genetické programování}
 \AddAcronym {GA} {Genetický algoritmus}
+\AddAcronym {SR} {Symbolická regrese}
 
 %\ThesisAssignmentImagePath{Figures/Zadani}
 
@@ -132,7 +133,7 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
 
-\subsection{Fitness}
+\subsubsection{Ohodnocení}
 \paragraph*{}
 Každého vytvořeného reprezentativního jedince je třeba ohodnotit v rámci celé populace čítající desídky jiných jedinců tak, aby bylo možné některé jedince (řešení) upřednostňovat při výběru pro křížení před jinými (horšími) řešeními.
 Hodnota takto přidělená jedinci je označována za jeho fitness (neboli vhodnost).
@@ -206,7 +207,9 @@ Postačitelnst nám naproti tomu umožňuje, abychom byli schopní k danému pro
 \paragraph*{}
 U jednoduchých příkladů, kde je množina terminálů a neterminálů tvořena pouze Booleovskými funkcemi můžeme i bez důkazů předpokládat, že takové množiny jsou uzavřené a splňují také podmínku postačitelnosti. Ovšem v reálných příkladech budeme často používat programy složené číselných proměnných a funkcích, podmínkách, rekurzích, ruzných typů v argumentech funkcí. Nebo budeme při práci s číselnými funkcemi muset ošetřit některé zakázané stavy (dělení nulou, logaritmus záporného čísla, atd.). V takových případech už podmínka uzavřenosti nemusí platit.
 \paragraph*{}
-I v těchto případech se však můžeme odkázat na Kozu, který tvrdí, že lze jednoduchým postupem zajistit, aby byly množiny terminálů a funkcí uzavřené pro obecně jakýkoliv problém. Vezměme si případ programu pracujícího s číselnými funkcemi a terminály, kde může nastat situace, že se bude muset provést dělení nulou. Proto je třeba upravit funkce z těchto množin tak, aby umožňovaly zpracovat také nedefinovatelnou hodnotu ("undefined") v podobě nějakého zástupného symbolu a ošetřit stavy funkcí tak, aby funkce mohla vrátit kromě čísla také tuto hodnotu v případech, kdy je operae zakákána nebo v případě, že alespoň jeden z argumentů vrací tuto hodnotu. Takto upravené funkce Koza nazývá chráněné funkce (protected functions).\\
+I v těchto případech se však můžeme odkázat na Kozu, který tvrdí, že lze jednoduchým postupem zajistit, aby byly množiny terminálů a funkcí uzavřené pro obecně jakýkoliv problém. Vezměme si případ programu pracujícího s číselnými funkcemi a terminály, kde může nastat situace, že se bude muset provést dělení nulou. Proto je třeba upravit funkce z těchto množin tak, aby umožňovaly zpracovat také nedefinovatelnou hodnotu ("undefined") v podobě nějakého zástupného symbolu a ošetřit stavy funkcí tak, aby funkce mohla vrátit kromě čísla také tuto hodnotu v případech, kdy je operae zakákána nebo v případě, že alespoň jeden z argumentů vrací tuto hodnotu. Takto upravené funkce Koza nazývá chráněné funkce (protected functions).
+\paragraph*{}
+Vlastnost uzavřenosti množin je vhodná, ale není absolutně nutná. Jako alternativa k chráněným funkcím může sloužit jiný přístup. Pokud striktně nevyžadujeme, aby byl program syntaktického stromu validní, můžeme nesprávně generované stromy v populaci zakázat nebo je jinak penalizovat, aby nepřecházely do nových generací. V této práci se však takovým způsobům nebudeme zabývat a budeme pracovat pouze se splněnou podmínkou uzavřenosti.
 \paragraph*{}
 Protože výsledná funkce je tvořena nejen proměnnými, ale také konstantami, je třeba si říci, jak je při tvorbě jedince reprezentovat. Protože můžeme chtít použít GP pro ekonomické modelování, měl by mít algoritmus možnost generovat vhodné konstanty v daném rozsahu a daného typu podle řešené úlohy. Koza navrhuje množinu terminálů o náhodnou konstantu C tak, že se během běhu programu při ohodnocení individuí doplní o náhodnou hodnotu z příslučné množiny. Toto číslo se potom využije jako kterýkoliv jiný terminál.
 
@@ -232,7 +235,7 @@ Druhou možností je seznam, který představuje strom v prefixovém tvaru zápi
 
 \subsection{Generování počáteční populace}
 \paragraph*{}
-Při prvotním generování populace se budeme zabývat, jakým způsobem lze náhodně vygenerovat několik individuí. Existují dvě metody řídící růst stromu. Úplná - všechny listové uzly stromu mají stejnou hloubku, která je rovna maximální velikosti stromu. Metoda růstová naproti tomu dovoluje rozmanitější stromy. Pro generování následného potomka se náhodně rozhoduje, zda je použitý termínál nebo uzel. I zde je limitní maximální hloubka stromu.
+Při prvotním generování populace se budeme zabývat, jakým způsobem lze náhodně vygenerovat několik individuí. Existují dvě metody řídící růst stromu. Úplná (full method), kdy všechny listové uzly stromu mají stejnou hloubku, která je rovna maximální velikosti stromu. Metoda růstová (grow method) naproti tomu dovoluje tvorbu rozmanitějších stromových struktůr. Pro generování následného potomka se náhodně rozhoduje, zda je použitý termínál nebo uzel. I zde je limitní maximální hloubka stromu.
 \paragraph*{}
 Koza ve své knize \cite{kozagp} doporučuje kombinaci obou metod, což v praxi znamená, že pro polovinu populace se použije růstová metoda a pro druhou polovinu úplná. Zároveň rovnoměrným rozložením hloubky stromů mezi všechny jedince, snížíme pravděpodobnost výskytu stejnývh řešení, která jsou v populaci nevyhovující. 
 \paragraph*{}
@@ -302,21 +305,17 @@ Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a n
 
 \section{Testování na vybraných problémech}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
-
-\subsubsection{Problémy}
-\paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+Po představení pestré, ale zdaleka né kompletní, škály algoritmů je třeba si představit a vyhodnotit jejich sílu na problémech, které se objevují v mnoha publikacích jako vhodní adepti. V následujících pasážích si představíme ty nejběžnější avšak netriviální problémy. U každé definice problému je popsáno, jakými evolučními algoritmy je vhodné tyto problémy řešit. Spolu s definicí problému si popíšeme i výsledky, které byly během testování zaznamenány a konfigurace s jakými byly algoritmy spouštěny. Podtržením toho všeho bude srovnání s výsledky, které byly zveřejněny v publikacích jako optimální, přičemž nemáme za cíl dosáhnout co nejlepšího řešení, ale orientačně vyhodnotit použitelnost na problémech s přihlédnutím k tomu, že výsledným produktem této práce bude aplikace sloužící jako opora při úvodu do problematiky a výuky evolučních algoritmů a hlavně genetického programování.
 
 \subsubsection{Sudoku}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+
 
 \subsubsection{Aproximace modelu}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsection{Výsledky}
+
+\subsection{Vyhodnocení}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 

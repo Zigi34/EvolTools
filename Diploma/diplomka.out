@@ -3,22 +3,21 @@
 \BOOKMARK [1][-]{section.3}{Evolucn\355 algoritmy}{}% 3
 \BOOKMARK [2][-]{subsection.3.1}{Potreba evolucn\355ch algoritmu}{section.3}% 4
 \BOOKMARK [2][-]{subsection.3.2}{Charakteristika}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Fitness}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Vybran\351 algoritmy}{section.3}% 7
-\BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355 \(GP\)}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{GA vs. GP}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{\332lohy re\235en\351 GP}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.3}{Reprezentace jedince}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.4}{Omezen\355 GP}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.5}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.6}{Reprezentace stromu}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.7}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.8}{Oper\341tory}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.9}{Popis algoritmu}{section.4}% 17
-\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 18
-\BOOKMARK [2][-]{subsection.5.1}{UML model}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.2}{Aplikace EvolTools}{section.5}% 20
-\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 21
-\BOOKMARK [2][-]{subsection.6.1}{V\375sledky}{section.6}% 22
-\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 23
-\BOOKMARK [1][-]{section.8}{Reference}{}% 24
+\BOOKMARK [2][-]{subsection.3.3}{Vybran\351 algoritmy}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355 \(GP\)}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{GA vs. GP}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{\332lohy re\235en\351 GP}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{Reprezentace jedince}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.4}{Omezen\355 GP}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.6}{Reprezentace stromu}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.7}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.8}{Oper\341tory}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.9}{Popis algoritmu}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{UML model}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{Aplikace EvolTools}{section.5}% 19
+\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Vyhodnocen\355}{section.6}% 21
+\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 22
+\BOOKMARK [1][-]{section.8}{Reference}{}% 23
