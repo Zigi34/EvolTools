@@ -1,22 +1,29 @@
 package org.zigi.evolution.solution;
 
-import java.util.Collection;
+import java.util.List;
 
-public abstract class Solution<T extends CloneableValue<T>> {
+import org.zigi.evolution.solution.value.Cloneable;
+import org.zigi.evolution.solution.value.Genotype;
 
-	private Double fitness;
+public abstract class Solution implements Cloneable<Solution> {
 
-	public abstract T getChildNode(Integer key);
+	private Double fitness = 0.0;
 
-	public abstract Collection<T> getChildNodes();
+	public abstract Genotype getGenotype(Integer index);
 
-	public abstract void setChildNode(Integer key, T value);
+	public abstract List<Genotype> getGenotypes();
 
-	public abstract void addChildNode(T value);
+	public abstract void setGenotype(int index, Genotype value);
+
+	public abstract void setGenotypes(List<Genotype> vals);
+
+	public abstract void addGenotype(Genotype value);
 
 	public abstract int size();
 
-	public abstract Solution<T> clone();
+	public boolean isEvaluated() {
+		return fitness != null;
+	}
 
 	public Double getFitness() {
 		return fitness;
@@ -24,15 +31,5 @@ public abstract class Solution<T extends CloneableValue<T>> {
 
 	public void setFitness(Double fitness) {
 		this.fitness = fitness;
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("[" + String.format("%.3f", fitness) + "] ");
-		for (T key : getChildNodes()) {
-			sb.append(key + " ");
-		}
-		return sb.toString();
 	}
 }
