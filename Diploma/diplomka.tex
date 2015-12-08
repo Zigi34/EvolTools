@@ -125,6 +125,12 @@ Kromě vývoje nejlepšího jedince je pak vhodné zobrazovat vývoj i nejhorš�
 \paragraph*{}
 Vývoj populace musí být vždy konvergentní k lepším hodnotám, což znamená, že nemůže nikdy vykazovat divergenci. V daném algoritmu funguje tzv. „elitismus“, který slouží jako jakýsi jednosměrný filtr, jenž propouští do nové populace pouze ta řešení, která jsou lepší či stejně dobrá jako ta ze staré populace.
 
+\subsubsection{Selekce}
+\paragraph*{}
+Operací selekcí v evolučních algoritmech rozumíme náhodné vybrání několika řešení z celé populace a to na základě předpokladů, které o každém řešení známe. Požadovaný je stav, aby během běhu algoritmu kulminovaly řešení v populaci k lepším, než byly na začátku. K tomu nám slouží ohodnocovací funkce. Operace selekce poté pracuje s hodnotou fitness tak, aby pozitivně zohlednila řešení s větší vhodností a znevýhodnila řešení, která mají tuto hodnotu malou.
+\paragraph*{}
+V dalších částech této práce si představíme několik nejznámějších způsobů, jak lze z populace vybírat náhodně některá řešení a přitom zvýhodňovat lepší řešení od horších. Vždy záleží na konkrétním případě užití. Představíme si algoritmus "Ruletového kola", "Turnajového výběu" a "Výběru podle pořadí".
+
 \subsubsection{Mutace}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
@@ -242,6 +248,8 @@ Koza ve své knize \cite{kozagp} doporučuje kombinaci obou metod, což v praxi 
 Vše si můžeme ukázat na příkladě populace s $N=500$ jedinců, kde je stanovena maximální hloubka $h_max=6$. Při generování základní populace budeme postupovat tak, že 100 jedinců bude generováno s $h_max=2$ (50 s růstovou metodou a 50 s úplnou metodou),následně pro dalších 100 řešení generujeme obdobné stromy hloubký o 1 vyšší $h_max=3$ a tak dále, až do hloubky $h_max=6$.
 
 \subsection{Operátory}
+
+\subsubsection{Křížení}
 \paragraph*{}
 V GP budeme používat stejné operace jako u GA. Operátor křížení pracuje s dvojícemi stromů. U každého stromu z dvojíce zvolí náhodně uzel pro křížení a v dalším kroku zamění podstromy pod zvolenými uzly mezi sebou. Více osvětlíme příkladem na obrázku. Oproti GA se zde potkáváme s problémem postupného růstu hloubky reprezentujících stromů. V první generaci si obstaráme stromy, který mají definouvanou maximální hloubku. Při aplikaci křížení však snad nastává případ, kdy je například listový uzel jednoho stromu nahrazen téměř celým podstromem druhého jedince. V podstatě jen v případech, kdy se budou zaměňovat podstromy z uzlů, které jsou ve stejné hloubce se žádný z obou stromů nerozšiřuje. Ve všech ostatních případech bude jeden nebo druhý strom rozšířený.
 \paragraph*{}
@@ -250,6 +258,8 @@ Koza doporučuje, abychom definovali i maximální hloubku stromů vzniklých k�
 \InsertFigure{Figures/cross.png}{0.7\textwidth}{Příklad operátoru křížení}{fig:CrossSample}
 \paragraph*{}
 Speciálním případem při křížení je tzv. "incestní křížení", které nastane tehdy, pokud do křížení vstoupí dva identiční jedinci. V případě GA je takový případ nežádoucí, protože vznikají identiční potomci. V případe GP k tomu nastává pouze tehdy, když by byl v obou stromech vybrán tentýž uzel pro křížení.
+
+\subsubsection{Mutace}
 \paragraph*{}
 Operátor mutace také náhodně vybere uzel stromu a celý jeho podstrom odstraní. Na tomto místě se poté náhodně vygeneruje chybějící část stromu do maximální hloubky předepsané parametrem tak, aby vyýsledný strom nebyl příliš velký. 
 \paragraph*{}
@@ -259,6 +269,8 @@ Variant operace mutace je několik. Mezi základní patří tyto:
 \item vyzvedávající mutace (boist mutation) nahrazuje celý syntaktický strom některým z jeho podstromů
 \item smršťující mutace (shrink mutation) nahrazuje náhodně zvolený podstrom jediným terminálem
 \end{enumerate}
+
+\subsubsection{Další operátory}
 \paragraph*{}
 To však není celý výčet možných operátorů. Existují i operátor, které se v GP nevyužívají zcela běžně, ale stojí za to se o nich zmínit. Mezi méně časté operátory řadíme například operátor permutace, zapouzdření, editace či decimace.
 \paragraph*{}
@@ -294,6 +306,21 @@ Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné
 \section{Implementace GP}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+
+\subsection{Evoluční procesy}
+\paragraph*{}
+Evoluční procesy, do kterých řadíme "přirozený výběr", "mutaci", "křížení" a další techniky, které jsou inspirované zákonitostmi v přírodě jsou základním kamenem pro jakýkoliv program napodobující evoluční chování za pomocí počítačů. Proto je teřba dbát o co nejvhodnější a nejpreciznější implementaci tak, aby byl výsledný algoritmus dobře použitelný i pro nejrůznější problémy. Představme si nyní některá úskalí, která je třeba dobře postihnout a zefektivnít výsledný kód.
+
+\subsubsection{Výběrová funkce}
+\paragraph*{}
+V evolučních technikách se využívá vždy a ovlivňuje populační vývoj, protože předchází evoluční operátory (křížení, mutaci). Tato funkce se má stát přirozeným výběrem, který v přírodě funguje již od pradána. Tedy právo silnějšího (odolnějšího, přizpůsobivějšího) jedince na tvorbu nové generace.
+\paragraph*{}
+Několik pravidel pro efektivnější výběrovou funkci:
+\begin{enumerate}
+\item Zamezení výběru dvou totožných jedinců pro křížení
+\item Možnost vícenásobného výběru stejného jedince (posílení vlivu lepších řešení do dalších populací)
+\end{enumerate}
+
 
 \subsection{UML model}
 \paragraph*{}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  1 DEC 2015 23:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  7 DEC 2015 12:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -726,7 +726,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-<Figures/Prohlaseni.jpg, id=108, 597.09474pt x 844.98083pt>
+<Figures/Prohlaseni.jpg, id=112, 597.09474pt x 844.98083pt>
 File: Figures/Prohlaseni.jpg Graphic file (type jpg)
 
 <use Figures/Prohlaseni.jpg>
@@ -869,103 +869,103 @@ Package hyperref Warning: Composite letter `\textring+u'
 
 [7
 
-] [8] [9] [10
+] [8] [9] [10] [11
 
 ]
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 182.
+(hyperref)                removing `\textasciicaron' on input line 188.
 
-<Figures/Graf.pdf, id=242, 361.35pt x 252.945pt>
+<Figures/Graf.pdf, id=254, 361.35pt x 252.945pt>
 File: Figures/Graf.pdf Graphic file (type pdf)
  <use Figures/Graf.pdf>
-Package pdftex.def Info: Figures/Graf.pdf used on input line 198.
+Package pdftex.def Info: Figures/Graf.pdf used on input line 204.
 (pdftex.def)             Requested size: 298.75264pt x 209.12991pt.
 
-Overfull \hbox (4.50154pt too wide) in paragraph at lines 197--199
+Overfull \hbox (4.50154pt too wide) in paragraph at lines 203--205
 \T1/ppl/m/n/10.95 po-malý al-go-rit-mus. Vý-ho-dou oproti ji-ným al-go-ritm·m (
 nap°. ge-ne-tický al-go-rit-mus), které
  []
 
-[11] [12 <./Figures/Graf.pdf>]
+[12] [13 <./Figures/Graf.pdf>]
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 216.
+(hyperref)                removing `\textring' on input line 222.
 
-[13]
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 236.
-
+[14]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 236.
+(hyperref)                removing `\textasciicaron' on input line 242.
 
-[14] <Figures/cross.png, id=300, 798.985pt x 742.775pt>
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 242.
+
+[15] <Figures/cross.png, id=312, 798.985pt x 742.775pt>
 File: Figures/cross.png Graphic file (type png)
 
 <use Figures/cross.png>
-Package pdftex.def Info: Figures/cross.png used on input line 250.
+Package pdftex.def Info: Figures/cross.png used on input line 258.
 (pdftex.def)             Requested size: 298.75264pt x 277.73523pt.
- [15 <./Figures/cross.png>]
-<Figures/editace.png, id=310, 738.76pt x 311.1625pt>
+ [16 <./Figures/cross.png>]
+<Figures/editace.png, id=322, 738.76pt x 311.1625pt>
 File: Figures/editace.png Graphic file (type png)
  <use Figures/editace.png>
-Package pdftex.def Info: Figures/editace.png used on input line 269.
+Package pdftex.def Info: Figures/editace.png used on input line 281.
 (pdftex.def)             Requested size: 298.75264pt x 125.8302pt.
 
-[16 <./Figures/editace.png>] [17] [18
+[17] [18 <./Figures/editace.png>]
 
-] [19
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 310.
+
+[19
+
+] [20
 
 ]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 322.
+(hyperref)                removing `\textasciicaron' on input line 349.
 
-[20
+[21
 
 ]
-Underfull \hbox (badness 1460) in paragraph at lines 338--341
+Underfull \hbox (badness 1460) in paragraph at lines 365--368
 []\T1/ppl/m/n/10.95 Koza, J. R., \T1/ppl/m/it/10.95 Ge-ne-tic pro-gra-m-ming II
 . Au-to-ma-tic Dis-co-very of Re-u-sa-ble Pro-grams\T1/ppl/m/n/10.95 ,
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 363.
-[21
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 390.
+[22
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 363.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 390.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 363.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 363.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 390.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 390.
+Package rerunfilecheck Info: File `diplomka.out' has not changed.
+(rerunfilecheck)             Checksum: 366A38D046D41C96EB752375E84FCCEE;1545.
 
-
-Package rerunfilecheck Warning: File `diplomka.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `diplomka.out':
-(rerunfilecheck)             Before: 0BD5733D2EFBB8439D857417B184896F;1473
-(rerunfilecheck)             After:  33F46D4B20BAE5DA150D59C64B636E00;1476.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 363.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 390.
  ) 
 Here is how much of TeX's memory you used:
- 8834 strings out of 494116
- 125177 string characters out of 6157658
+ 8856 strings out of 494116
+ 125469 string characters out of 6157658
  254165 words of memory out of 5000000
- 11892 multiletter control sequences out of 15000+600000
+ 11900 multiletter control sequences out of 15000+600000
  37212 words of font info for 52 fonts, out of 8000000 for 9000
  448 hyphenation exceptions out of 8191
- 43i,11n,45p,1057b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,11n,45p,1057b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
@@ -977,9 +977,9 @@ b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplri8a.pfb>
-Output written on diplomka.pdf (27 pages, 1367166 bytes).
+Output written on diplomka.pdf (28 pages, 1371897 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 158 named destinations out of 1000 (max. 500000)
- 213 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 480 PDF objects out of 1000 (max. 8388607)
+ 172 named destinations out of 1000 (max. 500000)
+ 221 words of extra memory for PDF output out of 10000 (max. 10000000)
 
