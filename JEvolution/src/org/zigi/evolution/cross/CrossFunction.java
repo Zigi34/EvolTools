@@ -4,6 +4,6 @@ import java.util.List;
 
 import org.zigi.evolution.solution.Solution;
 
-public abstract class CrossFce {
-	public abstract void cross(List<Solution> solutions);
+public abstract class CrossFunction {
+	public abstract boolean cross(List<Solution> solutions);
 }

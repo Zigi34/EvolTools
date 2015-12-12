@@ -3,48 +3,53 @@ package org.zigi.evolution.algorithm;
 import java.util.List;
 import java.util.Random;
 
-import org.zigi.evolution.cross.CrossFce;
-import org.zigi.evolution.mutate.MutateFce;
-import org.zigi.evolution.problem.Problem;
-import org.zigi.evolution.select.BestSelectElitism;
-import org.zigi.evolution.select.ElitismFce;
-import org.zigi.evolution.select.RouleteWheelSelectFunction;
-import org.zigi.evolution.select.SelectFce;
+import org.apache.log4j.Logger;
+import org.zigi.evolution.cross.CrossFunction;
+import org.zigi.evolution.mutate.MutateFunction;
+import org.zigi.evolution.problem.TreeProblem;
+import org.zigi.evolution.select.BestElitism;
+import org.zigi.evolution.select.ElitismFunction;
+import org.zigi.evolution.select.RouleteWheelSelect;
+import org.zigi.evolution.select.SelectFunction;
 import org.zigi.evolution.solution.Solution;
-import org.zigi.evolution.solution.TreeSolution;
 import org.zigi.evolution.util.Population;
 
-public class GeneticProgramming extends EvolutionAlg {
+public class GeneticProgramming extends EvolutionAlgorithm {
 
 	private int generation = 50;
-	private SelectFce select = new RouleteWheelSelectFunction();
-	private CrossFce cross;
-	private MutateFce mutate;
-	private ElitismFce elitism = new BestSelectElitism();
+	private SelectFunction select = new RouleteWheelSelect();
+	private CrossFunction cross;
+	private MutateFunction mutate;
+	private ElitismFunction elitism = new BestElitism();
 
 	private static final Random RAND = new Random();
 
-	public SelectFce getSelect() {
+	public static final String CREATE_INIT_POPULATION_START = "CREATE_INIT_POPULATION_START";
+	public static final String CREATE_INIT_POPULATION_END = "CREATE_INIT_POPULATION_END";
+
+	private static final Logger LOG = Logger.getLogger(GeneticProgramming.class);
+
+	public SelectFunction getSelect() {
 		return select;
 	}
 
-	public void setSelect(SelectFce select) {
+	public void setSelect(SelectFunction select) {
 		this.select = select;
 	}
 
-	public CrossFce getCross() {
+	public CrossFunction getCross() {
 		return cross;
 	}
 
-	public void setCross(CrossFce cross) {
+	public void setCross(CrossFunction cross) {
 		this.cross = cross;
 	}
 
-	public MutateFce getMutate() {
+	public MutateFunction getMutate() {
 		return mutate;
 	}
 
-	public void setMutate(MutateFce mutate) {
+	public void setMutate(MutateFunction mutate) {
 		this.mutate = mutate;
 	}
 
@@ -57,13 +62,19 @@ public class GeneticProgramming extends EvolutionAlg {
 	}
 
 	public void run() {
-		Problem problem = getProblem();
-		Population population = getPop();
+		setState(INIT_STATE);
+		TreeProblem problem = (TreeProblem) getProblem();
+		Population population = getPopulation();
 
-		// pokud neni populace inicializovana, vegenerujeme
+		// pokud neni populace inicializovana, vegenerujeme pul napul metodou
+		// GROW a FULL
 		if (population.size() == 0) {
-			for (int i = 0; i < population.getMax(); i++)
-				population.add(problem.randomSolution());
+			setState(CREATE_INIT_POPULATION_START);
+			for (int i = 0; i < (population.getMaxSolutions() / 2); i++)
+				population.add(problem.randomFullTreeSolution());
+			for (int i = (population.getMaxSolutions() / 2); i < population.getMaxSolutions(); i++)
+				population.add(problem.randomGrowTreeSolution());
+			setState(CREATE_INIT_POPULATION_END);
 		}
 
 		// ohodnotime celou populaci
@@ -75,12 +86,12 @@ public class GeneticProgramming extends EvolutionAlg {
 		for (int i = 0; i < generation; i++) {
 			// vytvorime si novou populaci
 			Population newPopulation = new Population();
-			newPopulation.setMax(getPop().getMax());
+			newPopulation.setMax(getPopulation().getMaxSolutions());
 
 			// dokud neni populace plna, tak pokracujeme
-			while (newPopulation.size() < newPopulation.getMax()) {
+			while (newPopulation.size() < newPopulation.getMaxSolutions()) {
 				// pokud chybi uz jeden jedinec, pouzijeme mutaci
-				if (newPopulation.getMax() - newPopulation.size() == 1) {
+				if (newPopulation.getMaxSolutions() - newPopulation.size() == 1) {
 					// mutace
 					List<Solution> list = select.select(population, 1);
 					Solution selected = list.get(0).cloneMe();
@@ -89,7 +100,7 @@ public class GeneticProgramming extends EvolutionAlg {
 					newPopulation.add(selected);
 				} else {
 					// nahodne vybereme bud mutaci nebo krizeni
-					if (RAND.nextDouble() <= 0.5) {
+					if (RAND.nextDouble() <= 0.7) {
 						// mutace
 						List<Solution> list = select.select(population, 1);
 						Solution selected = list.get(0).cloneMe();
@@ -107,8 +118,10 @@ public class GeneticProgramming extends EvolutionAlg {
 						list.add(selected1);
 						list.add(selected2);
 
-						cross.cross(list);
-
+						if (!cross.cross(list)) {
+							mutate.mutate(selected1);
+							mutate.mutate(selected2);
+						}
 						newPopulation.add(selected1);
 						newPopulation.add(selected2);
 					}
@@ -121,34 +134,19 @@ public class GeneticProgramming extends EvolutionAlg {
 
 			// nova populace
 			Population nextPop = new Population();
-			nextPop.setMax(newPopulation.getMax() + getPop().getMax());
-			nextPop.addAll(getPop().getSolutions());
+			nextPop.setMax(newPopulation.getMaxSolutions() + getPopulation().getMaxSolutions());
+			nextPop.addAll(getPopulation().getSolutions());
 			nextPop.addAll(newPopulation.getSolutions());
 
 			checkBestSolution(nextPop);
 
-			List<Solution> list = elitism.select(nextPop, newPopulation.getMax());
+			List<Solution> list = elitism.select(nextPop, newPopulation.getMaxSolutions());
 			Population p = new Population();
 			p.setMax(list.size());
 			p.addAll(list);
 
 			// konec plneni nove populace a nahrazeni stare
-			setPop(p);
-
-			double sumDeep = 0.0;
-			for (Solution sol : getPop().getSolutions()) {
-				TreeSolution tree = (TreeSolution) sol;
-				sumDeep += tree.deep();
-			}
-
-			System.out.println("Velikost populace: " + getPop().size());
-			System.out.println("Average deep: " + (sumDeep / newPopulation.size()));
-			System.out.println("Průměrná fitness: " + getPop().getAverageFitness());
-			System.out.println("Best solution: " + (getBestSolution().getFitness() * 91));
-			System.out.println("\n");
-
-			if (i % 10 == 0)
-				System.out.println("[" + getBestSolution().getFitness() + "]: " + getBestSolution());
+			setPopulation(p);
 		}
 	}
 }

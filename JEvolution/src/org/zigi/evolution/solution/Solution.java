@@ -2,8 +2,8 @@ package org.zigi.evolution.solution;
 
 import java.util.List;
 
-import org.zigi.evolution.solution.value.Cloneable;
 import org.zigi.evolution.solution.value.Genotype;
+import org.zigi.evolution.util.Cloneable;
 
 public abstract class Solution implements Cloneable<Solution> {
 

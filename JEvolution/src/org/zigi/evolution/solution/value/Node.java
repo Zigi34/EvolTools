@@ -2,27 +2,25 @@ package org.zigi.evolution.solution.value;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
+
+import org.zigi.evolution.util.Cloneable;
 
 public class Node implements Cloneable<Node> {
 
 	private List<Node> childs = new LinkedList<Node>();
 	private Node parent;
 	private GPFenotype value;
-	private String id;
+	private long id;
 
 	/**
 	 * Konstruktor pro vytvoření nového uzlu
 	 * 
 	 * @param fenotype
 	 * @param parent
-	 * @param uniqId
 	 * @param list
 	 */
-	private Node(GPFenotype fenotype, Node parent, String uniqId, List<Node> list) {
-		this.id = uniqId;
-		this.parent = parent;
-		this.childs.addAll(list);
+	private Node(GPFenotype fenotype) {
+		this(fenotype, null);
 	}
 
 	/**
@@ -36,7 +34,7 @@ public class Node implements Cloneable<Node> {
 	public Node(GPFenotype val, Node parent) {
 		this.value = val;
 		this.parent = parent;
-		this.id = UUID.randomUUID().toString();
+		this.id = System.nanoTime();
 	}
 
 	/**
@@ -144,22 +142,13 @@ public class Node implements Cloneable<Node> {
 	public boolean equals(Object obj) {
 		if (obj instanceof Node) {
 			Node node = (Node) obj;
-			return getId() == node.getId();
+			return node.getId() == getId();
 		}
 		return false;
 	}
 
-	/**
-	 * Vrací jedinečný identifikátor uzlu
-	 * 
-	 * @return
-	 */
-	public String getId() {
-		return id;
-	}
-
 	public Node cloneMe() {
-		return new Node(getValue(), getParent(), UUID.randomUUID().toString(), getChilds());
+		return new Node(getValue());
 	}
 
 	/**
@@ -220,4 +209,56 @@ public class Node implements Cloneable<Node> {
 				deepNodes(list, val);
 		}
 	}
+
+	/**
+	 * Vraci výšku stromu
+	 * 
+	 * @return
+	 */
+	public int height() {
+		return height(this, 0);
+	}
+
+	/**
+	 * Rekurzivne prochazi potomky uzlu do sirky a pokazdem pruchodu do potomka
+	 * se zvysi výška podstromu o 1
+	 * 
+	 * @param node
+	 *            aktualne navstiveny uzel
+	 * @param maxHeight
+	 *            aktualně největší výška větve v podstromě
+	 */
+	private int height(Node node, int maxHeight) {
+		int max = maxHeight;
+		if (node != null && node.getChilds().size() > 0) {
+			for (Node subNode : node.getChilds()) {
+				int deep = height(subNode, maxHeight + 1);
+				if (deep > max)
+					max = deep;
+			}
+		}
+		return max;
+	}
+
+	/**
+	 * Vypocet hloubky uzlu. Root uzel ma hloubku 0
+	 * 
+	 * @param node
+	 *            uzel
+	 * @return
+	 */
+	public int deepOf() {
+		int deep = 0;
+		Node actualNode = this;
+		while (actualNode.getParent() != null) {
+			actualNode = actualNode.getParent();
+			deep++;
+		}
+		return deep;
+	}
+
+	public long getId() {
+		return id;
+	}
+
 }

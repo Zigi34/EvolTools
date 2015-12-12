@@ -5,6 +5,6 @@ import java.util.List;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
 
-public abstract class ElitismFce {
-	public abstract List<Solution> select(Population pop, Integer max);
+public abstract class SelectFunction {
+	public abstract List<Solution> select(Population pop, int count);
 }

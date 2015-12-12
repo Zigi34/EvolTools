@@ -24,6 +24,10 @@ public class TreeSolution extends Solution {
 		this(null);
 	}
 
+	public Integer getMaxHeight() {
+		return maxDepth;
+	}
+
 	/**
 	 * Vraci prvni nekompletni uzel ve stromove strukture tak, ze se strom
 	 * prochazi od listovych uzlu smerem ke korenu
@@ -171,22 +175,18 @@ public class TreeSolution extends Solution {
 	}
 
 	/**
-	 * Vypocet hloubky uzlu. Root uzel ma hloubku 0
+	 * Hloubka uzlu
 	 * 
 	 * @param node
-	 *            uzel
 	 * @return
 	 */
 	public int deepOf(Node node) {
-		int deep = 0;
-		Node actualNode = node;
-		while (actualNode.getParent() != null) {
-			actualNode = actualNode.getParent();
-			deep++;
-		}
-		return deep;
+		return node.deepOf();
 	}
 
+	/**
+	 * Vytvari kopii reseni
+	 */
 	public Solution cloneMe() {
 		TreeSolution tree = new TreeSolution(this.maxDepth);
 		tree.setFitness(getFitness());
@@ -226,33 +226,6 @@ public class TreeSolution extends Solution {
 	@Override
 	public void setGenotype(int index, Genotype genotype) {
 		// nelze nastavit
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		printTree(sb, root);
-		return sb.toString();
-	}
-
-	/**
-	 * Rekurzivni tisk uzlů
-	 * 
-	 * @param sb
-	 * @param actual
-	 */
-	private void printTree(StringBuilder sb, Node actual) {
-		sb.append(actual);
-		if (actual.getMaxChild() > 0)
-			sb.append("(");
-		List<Node> nodes = actual.getChilds();
-		for (int i = 0; i < nodes.size(); i++) {
-			printTree(sb, nodes.get(i));
-			if (i < nodes.size() - 1)
-				sb.append(",");
-		}
-		if (actual.getMaxChild() > 0)
-			sb.append(")");
 	}
 
 	/**
@@ -306,9 +279,16 @@ public class TreeSolution extends Solution {
 	 * @param index2
 	 *            index uzlu ve druhém stromě
 	 */
-	public static void changeSubTree(TreeSolution sol1, int index1, TreeSolution sol2, int index2) {
+	public static boolean changeSubTree(TreeSolution sol1, int index1, TreeSolution sol2, int index2) {
 		Node node1 = sol1.getNode(index1);
 		Node node2 = sol2.getNode(index2);
+		int finalHeight1 = node1.deepOf() + node2.height();
+		int finalHeight2 = node2.height() + node1.height();
+
+		// pokud by byla prekrocena vyska stromu, neprovadime nic
+		if (finalHeight1 > sol1.getMaxHeight() || finalHeight2 > sol2.getMaxHeight())
+			return false;
+
 		List<Node> nodes1 = node1.deepNodes();
 		List<Node> nodes2 = node2.deepNodes();
 
@@ -331,36 +311,53 @@ public class TreeSolution extends Solution {
 			sol2.getNodes().remove(node);
 		}
 		sol1.getNodes().addAll(nodes1);
+
+		return true;
 	}
 
 	/**
-	 * Vraci hloubku stromu
+	 * Vraci výšku stromu
 	 * 
 	 * @return
 	 */
-	public int deep() {
-		return deep(root, 0);
+	public int height() {
+		return root.height();
+	}
+
+	public int height(Node node) {
+		return node.height();
 	}
 
 	/**
-	 * Rekurzivne prochazi strom do sirky a pokazdem pruchodu do potomka se
-	 * zvysi hloubka stromu o 1
+	 * Rekurzivni tisk uzlů
 	 * 
-	 * @param node
-	 *            aktualne navstiveny uzel
-	 * @param maxDeep
-	 *            hloubka stromu
+	 * @param sb
+	 * @param actual
 	 */
-	private int deep(Node node, int maxDeep) {
-		int max = maxDeep;
-		if (node != null && node.getChilds().size() > 0) {
-			for (Node subNode : node.getChilds()) {
-				int deep = deep(subNode, maxDeep + 1);
-				if (deep > max)
-					max = deep;
-			}
+	private void printTree(StringBuilder sb, Node actual) {
+		sb.append(actual);
+		if (actual.getMaxChild() > 0)
+			sb.append("(");
+		List<Node> nodes = actual.getChilds();
+		for (int i = 0; i < nodes.size(); i++) {
+			printTree(sb, nodes.get(i));
+			if (i < nodes.size() - 1)
+				sb.append(",");
 		}
-		return max;
+		if (actual.getMaxChild() > 0)
+			sb.append(")");
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		if (getFitness() == null)
+			sb.append("NULL");
+		else
+			sb.append(getFitness());
+		sb.append("]");
+		printTree(sb, root);
+		return sb.toString();
+	}
 }

@@ -9,12 +9,20 @@ import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.SolutionComparator;
 import org.zigi.evolution.util.Population;
 
-public class RankSelectFunction extends SelectFce {
+/**
+ * Selekce hodnot na základě pořadí fitness hodnot.
+ * 
+ * @author Zdeněk Gold
+ *
+ */
+public class RankSelect extends SelectFunction {
 
 	private static final Random RAND = new Random();
 
 	@Override
 	public List<Solution> select(Population sols, int count) {
+		int[] ranks = new int[sols.size()];
+
 		List<Solution> list = new LinkedList<Solution>();
 
 		List<Solution> solutions = new LinkedList<Solution>();
@@ -22,22 +30,28 @@ public class RankSelectFunction extends SelectFce {
 
 		Collections.sort(solutions, new SolutionComparator());
 
-		while (list.size() < count) {
-			int sum = 0;
-			int increment = 1;
-			for (Solution sol : solutions) {
-				sum += increment;
-				increment++;
+		int sum = 0;
+		int rank = 0;
+		double lastValue = Double.MIN_VALUE;
+		for (int i = 0; i < solutions.size(); i++) {
+			Solution sol = solutions.get(i);
+			if (sol.getFitness() != lastValue) {
+				rank++;
+				lastValue = sol.getFitness();
 			}
+			sum += rank;
+			ranks[i] = rank;
+		}
 
-			int rndIndex = RAND.nextInt(sum);
-			increment = 1;
-			for (Solution sol : solutions) {
-				rndIndex -= increment;
-				increment++;
-				if (rndIndex <= 0) {
+		while (list.size() < count) {
+			int rnd = RAND.nextInt(sum);
+			for (int i = 0; i < solutions.size(); i++) {
+				Solution sol = solutions.get(i);
+				rnd -= ranks[i];
+				if (rnd <= 0) {
 					list.add(sol);
-					solutions.remove(sol);
+					sum -= ranks[i];
+					ranks[i] = 0;
 					break;
 				}
 			}

@@ -6,18 +6,21 @@ import org.zigi.evolution.problem.TreeProblem;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.TreeSolution;
 
-public class TreeMutate extends MutateFce {
+public class TreeMutate extends MutateFunction {
 
-	private int maxDeep;
 	private TreeProblem problem;
 	private static final Random RAND = new Random();
+
+	public TreeMutate() {
+		this(null);
+	}
 
 	public TreeMutate(TreeProblem problem) {
 		this.problem = problem;
 	}
 
 	@Override
-	public void mutate(Solution sol) {
+	public boolean mutate(Solution sol) {
 		TreeSolution solution = (TreeSolution) sol;
 		int rnd = RAND.nextInt(solution.size());
 
@@ -26,13 +29,6 @@ public class TreeMutate extends MutateFce {
 
 		// doplneni chybejici casti stromu nahodnym vygenerovanim
 		problem.randomGrowTreeSolution(solution);
-	}
-
-	public int getMaxDeep() {
-		return maxDeep;
-	}
-
-	public void setMaxDeep(int maxDeep) {
-		this.maxDeep = maxDeep;
+		return true;
 	}
 }

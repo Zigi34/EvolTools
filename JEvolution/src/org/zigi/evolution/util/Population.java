@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.zigi.evolution.solution.Solution;
-import org.zigi.evolution.solution.value.Cloneable;
 
 public class Population implements Cloneable<Population>, Comparator<Solution> {
 
@@ -75,7 +74,7 @@ public class Population implements Cloneable<Population>, Comparator<Solution> {
 	 * 
 	 * @return
 	 */
-	public int getMax() {
+	public int getMaxSolutions() {
 		return max;
 	}
 

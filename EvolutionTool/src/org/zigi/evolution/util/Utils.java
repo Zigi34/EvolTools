@@ -10,10 +10,10 @@ import org.zigi.evolution.cross.OnePointCross;
 import org.zigi.evolution.model.AlgorithmDTO;
 import org.zigi.evolution.model.GeneticAlgorithmDTO;
 import org.zigi.evolution.mutate.SimpleMutate;
+import org.zigi.evolution.problem.DoubleValueSpace;
 import org.zigi.evolution.select.RouleteWheelSelect;
 import org.zigi.evolution.solution.DoubleValue;
 import org.zigi.evolution.solution.array.ArraySolution;
-import org.zigi.evolution.space.DoubleValueSpace;
 
 public class Utils {
 	public static Integer populationSize = 20;

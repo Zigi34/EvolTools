@@ -14,7 +14,7 @@ public abstract class TreeProblem extends Problem {
 
 	private List<GPFenotype> values = new LinkedList<GPFenotype>();
 	private static final Random RAND = new Random();
-	private Integer maxDeepSize;
+	private Integer maxHeight;
 
 	/**
 	 * Prida se hodnota o stromove struktury
@@ -30,9 +30,9 @@ public abstract class TreeProblem extends Problem {
 	@Override
 	public Solution randomSolution() {
 		if (RAND.nextDouble() <= 0.5) {
-			return randomGrowTreeSolution();
+			return randomGrowTreeSolution(getMaxHeight());
 		} else {
-			return randomGrowTreeSolution();
+			return randomFullTreeSolution(getMaxHeight());
 		}
 	}
 
@@ -43,7 +43,7 @@ public abstract class TreeProblem extends Problem {
 	 * @return
 	 */
 	public TreeSolution randomGrowTreeSolution() {
-		return randomGrowTreeSolution(getMaxDeepSize());
+		return randomGrowTreeSolution(getMaxHeight());
 	}
 
 	/**
@@ -61,7 +61,7 @@ public abstract class TreeProblem extends Problem {
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = ant.deepOf(val);
-			if (deep < getMaxDeepSize())
+			if (deep < getMaxHeight())
 				ant.addGenotype(randomGenotype());
 			else
 				ant.addGenotype(randomTerminal());
@@ -86,13 +86,68 @@ public abstract class TreeProblem extends Problem {
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = tree.deepOf(val);
-			if (deep < getMaxDeepSize())
+			if (deep < getMaxHeight())
 				tree.addGenotype(randomGenotype());
 			else
 				tree.addGenotype(randomTerminal());
 			list = tree.leaves();
 		}
 		return tree;
+	}
+
+	/**
+	 * Náhodně generovaný strom podle úplné metody
+	 * 
+	 * @param tree
+	 * @return
+	 */
+	public TreeSolution randomFullTreeSolution(TreeSolution tree) {
+		if (tree.getRoot() == null)
+			tree.addGenotype(randomFunction());
+
+		List<Node> list = tree.leaves();
+		while (!list.isEmpty()) {
+			Node val = list.get(0);
+			int deep = tree.deepOf(val);
+			if (deep < getMaxHeight())
+				tree.addGenotype(randomFunction());
+			else
+				tree.addGenotype(randomTerminal());
+			list = tree.leaves();
+		}
+		return tree;
+	}
+
+	/**
+	 * Vygeneruje náhodně strom úplnou metodou bez omezení na výšce stromu
+	 * 
+	 * @return
+	 */
+	public TreeSolution randomFullTreeSolution() {
+		return randomFullTreeSolution(getMaxHeight());
+	}
+
+	/**
+	 * Vegeneruje náhodně strom úplnou metodou s omezením na výšku stromu podle
+	 * parametru
+	 * 
+	 * @param deepSize
+	 * @return
+	 */
+	public TreeSolution randomFullTreeSolution(Integer deepSize) {
+		TreeSolution ant = new TreeSolution(deepSize);
+		ant.addGenotype(randomGenotype());
+		List<Node> list = ant.leaves();
+		while (!list.isEmpty()) {
+			Node val = list.get(0);
+			int deep = ant.deepOf(val);
+			if (deep < getMaxHeight())
+				ant.addGenotype(randomGenotype());
+			else
+				ant.addGenotype(randomTerminal());
+			list = ant.leaves();
+		}
+		return ant;
 	}
 
 	@Override
@@ -159,20 +214,20 @@ public abstract class TreeProblem extends Problem {
 	}
 
 	/**
-	 * Vrací maximální hloubku stromu
+	 * Vrací maximální povolenou výšku stromu
 	 * 
 	 * @return
 	 */
-	public Integer getMaxDeepSize() {
-		return maxDeepSize;
+	public Integer getMaxHeight() {
+		return maxHeight;
 	}
 
 	/**
-	 * Nastavení maximální hloubky stromu
+	 * Nastavení maximální výsky stromu
 	 * 
-	 * @param maxDeepSize
+	 * @param maxHeight
 	 */
-	public void setMaxDeepSize(Integer maxDeepSize) {
-		this.maxDeepSize = maxDeepSize;
+	public void setMaxHeight(Integer maxHeight) {
+		this.maxHeight = maxHeight;
 	}
 }

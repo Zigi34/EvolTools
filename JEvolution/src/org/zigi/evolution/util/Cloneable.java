@@ -1,4 +1,4 @@
-package org.zigi.evolution.solution.value;
+package org.zigi.evolution.util;
 
 public interface Cloneable<T> {
 	public T cloneMe();

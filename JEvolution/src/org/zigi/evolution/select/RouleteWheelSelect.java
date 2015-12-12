@@ -7,10 +7,21 @@ import java.util.Random;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
 
-public class RouleteWheelSelectFunction extends SelectFce {
+/**
+ * Výběr ruletovým kolem. Populace se nejprve seřadí podle fitness a každému
+ * řešení se přiřadí výseč podle této hodnoty fitness na pomysleném kruhu.
+ * Následně se náhodně vygeneruje číslo s maximální mezí odpovídající obvodu
+ * (součet fitness hodnot jednotlivých řešení).
+ * 
+ * @author Zdeněk Gold
+ *
+ */
+public class RouleteWheelSelect extends SelectFunction {
 
 	private static final Random RAND = new Random();
 	public static final double MIN_VALUE = 0.005;
+
+	private double fitnessIncrement = MIN_VALUE;
 
 	@Override
 	public List<Solution> select(Population sols, int count) {
@@ -46,8 +57,25 @@ public class RouleteWheelSelectFunction extends SelectFce {
 			// stejneho jedince)
 			max -= (solut.getFitness() + MIN_VALUE);
 			forSelect.remove(solut);
-
 		}
 		return list;
+	}
+
+	/**
+	 * Hodnota navyšování pro selekci
+	 * 
+	 * @return
+	 */
+	public double getFitnessIncrement() {
+		return fitnessIncrement;
+	}
+
+	/**
+	 * Nastavení navýšení pro každé řešení ve výseči koláče
+	 * 
+	 * @param fitnessIncrement
+	 */
+	public void setFitnessIncrement(double fitnessIncrement) {
+		this.fitnessIncrement = fitnessIncrement;
 	}
 }

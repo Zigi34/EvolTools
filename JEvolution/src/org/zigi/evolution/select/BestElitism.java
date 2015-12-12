@@ -6,7 +6,7 @@ import java.util.List;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
 
-public class BestSelectElitism extends ElitismFce {
+public class BestElitism extends ElitismFunction {
 
 	@Override
 	public List<Solution> select(Population pop, Integer max) {
