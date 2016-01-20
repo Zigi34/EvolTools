@@ -58,4 +58,9 @@ public class RankSelect extends SelectFunction {
 		}
 		return list;
 	}
+
+	@Override
+	public String toString() {
+		return "Rank Select";
+	}
 }

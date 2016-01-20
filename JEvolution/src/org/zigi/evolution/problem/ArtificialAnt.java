@@ -87,6 +87,7 @@ public class ArtificialAnt extends TreeProblem {
 
 		// add functions
 		addFenotype(new Prg2());
+		// addFenotype(new Prg3());
 		addFenotype(new IfFoodAhead());
 
 		// add terminals

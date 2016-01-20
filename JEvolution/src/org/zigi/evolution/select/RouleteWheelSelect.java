@@ -78,4 +78,9 @@ public class RouleteWheelSelect extends SelectFunction {
 	public void setFitnessIncrement(double fitnessIncrement) {
 		this.fitnessIncrement = fitnessIncrement;
 	}
+
+	@Override
+	public String toString() {
+		return "Roulete Wheel Select";
+	}
 }
