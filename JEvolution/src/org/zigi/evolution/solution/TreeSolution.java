@@ -360,4 +360,11 @@ public class TreeSolution extends Solution {
 		printTree(sb, root);
 		return sb.toString();
 	}
+
+	@Override
+	public String getGenotypeString() {
+		StringBuilder sb = new StringBuilder();
+		printTree(sb, root);
+		return sb.toString();
+	}
 }

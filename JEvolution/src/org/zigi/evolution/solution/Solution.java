@@ -32,4 +32,6 @@ public abstract class Solution implements Cloneable<Solution> {
 	public void setFitness(Double fitness) {
 		this.fitness = fitness;
 	}
+
+	public abstract String getGenotypeString();
 }

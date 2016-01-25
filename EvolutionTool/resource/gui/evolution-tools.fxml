@@ -40,12 +40,7 @@
                             <Font name="System Bold" size="16.0" />
                           </font>
                         </Label>
-                        <TableView prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="100.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="Fitness" />
-                            <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="250.0" text="Genotype" />
-                          </columns>
-                        </TableView>
+                        <TableView fx:id="populationTable" prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="100.0" />
                         <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="Import" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="95.0" />
                         <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="Save" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="14.0" />
                         <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="70.0" text="Add" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" />
@@ -71,8 +66,7 @@
                                 <Label fx:id="selectFunctionLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="63.0" />
                                 <ChoiceBox fx:id="selectFunctionInput" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="79.0">
                                   <items>
-                                    <FXCollections fx:factory="observableArrayList">
-                                    </FXCollections>
+                                    <FXCollections fx:factory="observableArrayList" />
                                   </items>
                                 </ChoiceBox>
                               </children>

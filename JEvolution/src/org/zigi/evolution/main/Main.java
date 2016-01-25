@@ -3,7 +3,6 @@ package org.zigi.evolution.main;
 import java.io.File;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
 import org.zigi.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.cross.TreeCross;
 import org.zigi.evolution.mutate.TreeMutate;
@@ -15,7 +14,6 @@ import org.zigi.evolution.solution.TreeSolution;
 public class Main {
 
 	private static final Random RAND = new Random();
-	private static final Logger LOG = Logger.getLogger(Main.class);
 
 	/**
 	 * Provadi krizeni mezi dvema stromy

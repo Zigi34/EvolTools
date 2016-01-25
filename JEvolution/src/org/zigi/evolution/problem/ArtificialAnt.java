@@ -211,7 +211,7 @@ public class ArtificialAnt extends TreeProblem {
 			for (int j = 0; j < yardWidth; j++)
 				field[i][j] = yard[i][j];
 
-		double bit = 0.0;
+		// double bit = 0.0;
 		List<Node> moveBack = new LinkedList<Node>();
 
 		while (moves < maxMoves) {
@@ -220,7 +220,7 @@ public class ArtificialAnt extends TreeProblem {
 			while (index < nodes.size()) {
 				GPFenotype fenotype = nodes.get(index).getValue();
 				if (fenotype instanceof Move) {
-					bit += move(field, path);
+					// bit += move(field, path);
 					moves++;
 					if (!moveBack.isEmpty()) {
 						index = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
