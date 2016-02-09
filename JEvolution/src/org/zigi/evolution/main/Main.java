@@ -44,7 +44,7 @@ public class Main {
 			alg.setGeneration(2000);
 			alg.setProblem(problem);
 			alg.setCross(new TreeCross());
-			alg.setMutate(new TreeMutate(problem));
+			alg.setMutate(new TreeMutate());
 			alg.setSelect(new RankSelect());
 			alg.start();
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import org.zigi.evolution.controller.*?>
+
+<AnchorPane id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.zigi.evolution.controller.EvolutionToolController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <BorderPane prefHeight="335.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <top>
+        <MenuBar>
+          <menus>
+            <Menu mnemonicParsing="false" text="Application" fx:id="applicationMenu">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#closeWindowAction" text="Close" fx:id="closeMenuItem" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help" fx:id="helpMenu">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" fx:id="aboutMenuItem" />
+              </items>
+            </Menu>
+          </menus>
+        </MenuBar>
+      </top>
+      <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab fx:id="algorithmTab" text="Untitled Tab 1">
+              <content>
+                <BorderPane bottom="$null" right="$null" top="$null">
+                  <left>
+                    <EvolutionToolAlgorithmProperty />
+                  </left>
+                  <center>
+                  	<ControlPanel />
+                  </center>
+                </BorderPane>
+              </content>
+            </Tab>
+            <Tab fx:id="summaryTab" text="Untitled Tab 2">
+              <content>
+                <BorderPane bottom="$null" left="$null" right="$null" top="$null">
+                  <center>
+                    <EvolutionToolFitnessChart />
+                  </center>
+                </BorderPane>
+              </content>
+            </Tab>
+            <Tab fx:id="problemTab" text="Untitled Tab 2">
+              <content>
+                <BorderPane bottom="$null" left="$null" right="$null" top="$null">
+                  <center>
+                    <EvolutionToolProblemProperty />
+                  </center>
+                </BorderPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </center>
+      <bottom>
+        <EvolutionToolFootBar />
+      </bottom>
+    </BorderPane>
+  </children>
+</AnchorPane>

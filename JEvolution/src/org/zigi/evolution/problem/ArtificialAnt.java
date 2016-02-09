@@ -55,7 +55,8 @@ public class ArtificialAnt extends TreeProblem {
 		if (!file.exists())
 			throw new FileNotFoundException();
 		StringBuilder sb = new StringBuilder();
-		try (InputStreamReader sr = new InputStreamReader(new FileInputStream(file))) {
+		try {
+			InputStreamReader sr = new InputStreamReader(new FileInputStream(file));
 			char[] buffer = new char[2048];
 			int readSize = 0;
 			do {

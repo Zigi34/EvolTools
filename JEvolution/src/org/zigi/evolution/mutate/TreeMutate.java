@@ -8,15 +8,14 @@ import org.zigi.evolution.solution.TreeSolution;
 
 public class TreeMutate extends MutateFunction {
 
-	private TreeProblem problem;
+	// private TreeProblem problem;
 	private static final Random RAND = new Random();
 
-	public TreeMutate() {
-		this(null);
-	}
-
-	public TreeMutate(TreeProblem problem) {
-		this.problem = problem;
+	/*
+	 * public TreeMutate() { this(null); }
+	 */
+	public TreeMutate(/* TreeProblem problem */) {
+		// this.problem = problem;
 	}
 
 	@Override
@@ -28,7 +27,13 @@ public class TreeMutate extends MutateFunction {
 		solution.removeSubTree(solution.getNode(rnd));
 
 		// doplneni chybejici casti stromu nahodnym vygenerovanim
+		TreeProblem problem = (TreeProblem) getProblem();
 		problem.randomGrowTreeSolution(solution);
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Tree mutation";
 	}
 }

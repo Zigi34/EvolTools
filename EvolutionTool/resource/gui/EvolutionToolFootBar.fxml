@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<fx:root type="javafx.scene.control.ToolBar" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <items>
+    <Label fx:id="title" text="EvolutionTool application 2016">
+      <font>
+        <Font size="11.0" />
+      </font>
+    </Label>
+    <Label fx:id="generation" text="Generation: 10" />
+    <Label fx:id="best" text="Best: 0.875" />
+  </items>
+</fx:root>

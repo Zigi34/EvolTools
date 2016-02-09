@@ -1,6 +1,8 @@
 package org.zigi.evolution.util;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -31,5 +33,25 @@ public class Utils {
 			LOG.error(e);
 		}
 		return null;
+	}
+
+	/**
+	 * Nacitani controlleru
+	 * 
+	 * @param fxml
+	 * @return
+	 */
+	public static Object loadController(Class<?> clazz, String fxml) {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		try {
+			fxmlLoader.load(new URL("file:" + clazz.getResource(fxml)));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			LOG.error(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+			LOG.error(e);
+		}
+		return fxmlLoader.getController();
 	}
 }

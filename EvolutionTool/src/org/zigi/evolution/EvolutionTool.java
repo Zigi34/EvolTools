@@ -4,24 +4,33 @@ import org.apache.log4j.Logger;
 import org.zigi.evolution.util.Utils;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class EvolutionToolsApplication extends Application {
+public class EvolutionTool extends Application {
 
-	private static final Logger LOG = Logger.getLogger(EvolutionToolsApplication.class);
+	private static final Logger LOG = Logger.getLogger(EvolutionTool.class);
 
 	// window size
 	private static final int WIDTH = 1000;
 	private static final int HEIGHT = 600;
 
+	private Stage stage;
+
+	@FXML
+	private MenuItem closeMenuItem;
+
 	@Override
 	public void start(Stage stage) throws Exception {
+		this.stage = stage;
 		try {
-			Parent pane = Utils.loadView(EvolutionToolsApplication.class, "/gui/evolution-tools.fxml");
-			Scene init = new Scene(pane, WIDTH, HEIGHT);
+			Parent panel = FXMLLoader.load(getClass().getResource("/gui/EvolutionTool.fxml"));
+			Scene init = new Scene(panel, WIDTH, HEIGHT);
 
 			stage.setScene(init);
 			stage.getIcons().add(new Image("file:/resource/img/ico.ico"));

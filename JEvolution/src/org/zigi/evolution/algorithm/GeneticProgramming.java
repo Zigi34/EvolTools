@@ -47,6 +47,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	}
 
 	public void setMutate(MutateFunction mutate) {
+		mutate.setProblem(getProblem());
 		this.mutate = mutate;
 	}
 
