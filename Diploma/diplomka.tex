@@ -205,6 +205,9 @@ Vlastnostmi se podobá neuronovými sítěmi. Od jiných evolučních algoritmů
 \paragraph*{}
 Funkce $f_i$ z množiny $\Pi$ tvořící uzly syntaktického stromu jejichž argumenty reprezentují hrany vedoucí do hloubky o jedno větší. Terminály zastupují proměnné či konstanty umístěné v listových uzlech ukončují růst stromu a samotné individuum.
 
+\subsection{Algoritmus GP}
+\InsertFigure{Figures/gp-paradigm.png}{0.7\textwidth}{Průběh algoritmu Genetického programování}{fig:gp-paradigm}
+
 \subsection{Omezení GP}
 \paragraph*{}
 Koza ve své knize definuje \cite{kozagp} dvojí požadavky na množinu funkcí a terminálů. Je to požadavek uzavřenosti (closure) a postačitelnosti (sufficiency) obou množin. Uzavřenost množiny je splněna tehdy, pokud může libovolná funkce příjmout jako argument libovoulnou funkci z množiny funkcí či terminál z množiny terminálních symbolů. Uzavřenost zamezí tvorbu syntakticky nesprávných programů.
@@ -321,7 +324,6 @@ Několik pravidel pro efektivnější výběrovou funkci:
 \item Možnost vícenásobného výběru stejného jedince (posílení vlivu lepších řešení do dalších populací)
 \end{enumerate}
 
-
 \subsection{UML model}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
@@ -329,6 +331,33 @@ Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a n
 \subsection{Aplikace EvolTools}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+
+\section{Paralelizace s technologií GPGPU}
+\paragraph*{}
+Nedávným trendem dnešních běžných stolních systémů je využít univerzálních grafických procesorových jednotek (GPGPU) s cílem získat o řád vyšší výpočetní výkon než u CPU jednotek. Tradiční CPU je současně schopno spouštět pouze několik málo vláken. Naopak GPU umožňuje provádět stovky až tisíce vláken.
+Jako příklad lze uvést NVIDIA Compute Unified Device Architecture (CUDA) se ukázal jako populární programovací model pro GPGPUs s použitím C/C++.
+
+\paragraph*{}
+V tomto článku představíme programovací rozhraní s názvem JCUDA, které mohou být použity Java programátory k vyvolání jádra CUDA. Pomocí tohoto rozhraní mohou programátoři píší Java kódy, které přímo volají jádra CUDA, aniž by se museli starat o podrobnostech přemostění běhového prostředí Java a CUDA runtime.
+
+\subsection{CUDA}
+\paragraph*{}
+Poháněn nenasytnou poptávkou po real-time 3D hrách a multimediálním zážitku, programovatelné GPU (Graphics Processing Unit) se vyvinul do vysoce paralelní, vícevláknových, manycore procesoru. Současné GPU mají desítky či stovky fragmentů procesorů a vyšší paměťové šířky pásma než běžné procesory. Například, NVIDIA GeForce GTX 295 grafická karta je dodáván se dvěma GPU, každý s 240 procesorovými jádry a pamětí s 233,8 Gb/s šířky pásma, což je asi 10-krát rychlejší než u současných procesorů 1,8 GB. Stejný GPU je součástí NVIDIA Tesla C1060 procesor počítače, který je GPU procesor použitý v našich výkonnostních hodnoceních.
+
+\paragraph*{}
+Programovací model CUDA je rozšíření jazyka C. Programátoři píší aplikace se dvěma částmi kód - funkce, které mají být provedeny na počítači a funkce procesoru, které mají být provedeny na GPU zařízení. Vstupní funkce kódu součástky jsou označeny globální klíčové slovo, a jsou označovány jako jádra. Kernel provádí paralelně v sadě paralelních vláken v jediné instrukce Multiple Thread (SIMT) Model
+
+\subsection{jCUDA}
+\paragraph*{}
+Implementace JCUDA zvládá datové přenosy primitiv a vícerozměrných polí primitiv mezi hostitelem a zařízení. Naše předběžné výsledky výkonu získané na čtyři dvojitou přesností plovoucí desetinnou čárkou Java Grande měřítek ukazují, že toto rozhraní může přinést významné zlepšení výkonu na Java programátory. Výsledky pro velikost C (největší velikost dat) Zobrazit speedups v rozmezí od 7,70 do 120,32 s použitím jednoho GPGPU, vzhledem k výkonu CPU na jednom vlákně.
+
+\paragraph*{}
+Java Native Interface (JNI) [6], rozhraní Javy pro provádění funkcí nativního jazyka C, hrálo také významnou roli v projektech JGF, jako je umožnění Message Passing Interface (MPI) pro Javu. V JNI, programátor deklaruje vnější nativní metody vybraných funkcí C, které lze vyvolat Java programem. Po kompilaci zdrojové soubory Java je použit nástroj javah ke generování hlavičkové soubory C, které obsahuje rozhraní nativního kódu. JNI podporuje také bohatou paletu funkcí zpětného volání a umožní nativnímu kódu přístup k Java objektům a služebám.
+
+\InsertFigure{Figures/jCUDA.png}{0.7\textwidth}{Vývojový proces přístupu CUDA přes JNI}{fig:jCUDA}
+
+\paragraph*{}
+Obrázek \ref{fig:jCUDA} shrnuje proces třístupňový, že programátor Java potřebuje řídit přístup k CUDA přes JNI dnes. To zahrnuje psaní kódu Java a JNI pahýl kód v jazyce C pro provedení na CPU, stejně jako CUDA kód pro provedení na GPU zařízení. Otočný kód musí také zvládnout alokaci a uvolnění dat v paměti přístroje a datové přenosy mezi hostitelem a zařízení. Je jasné, že tento proces je zdlouhavý a náchylné k chybám, a že by bylo více produktivní použít kompilátor nebo programovací nástroj, který automaticky generuje pahýl kód a přenosu dat volání.
 
 \section{Testování na vybraných problémech}
 \paragraph*{}
@@ -384,6 +413,10 @@ Morgan Kaufnamm pub., ISBN 1-55860-543-6, 1999
 \bibitem{optimization} Lampinen Jouni, Zelinka, Ivan,
 \textit{New Ideas in Optimization and Mechanical Engineering Design Optimization by Differential Evolution. Volume 1},
 London: McGraw-Hill, 1999. 20 p. ISBN 007-709506-5
+
+\bibitem{jCUDA} Yan Y., Grossman M., Sarkar V.,
+\textit{Euro-Par 2009 Parallel Processing},
+Department of Computer Science, Rice University, 2009. 899 p. ISBN 978-3-642-03868-6
 
 \end{thebibliography}
 

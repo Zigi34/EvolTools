@@ -8,17 +8,21 @@
 \BOOKMARK [2][-]{subsection.4.1}{GA vs. GP}{section.4}% 8
 \BOOKMARK [2][-]{subsection.4.2}{\332lohy re\235en\351 GP}{section.4}% 9
 \BOOKMARK [2][-]{subsection.4.3}{Reprezentace jedince}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.4}{Omezen\355 GP}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.5}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.6}{Reprezentace stromu}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.7}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.8}{Oper\341tory}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.9}{Popis algoritmu}{section.4}% 16
-\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 17
-\BOOKMARK [2][-]{subsection.5.1}{Evolucn\355 procesy}{section.5}% 18
-\BOOKMARK [2][-]{subsection.5.2}{UML model}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.3}{Aplikace EvolTools}{section.5}% 20
-\BOOKMARK [1][-]{section.6}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 21
-\BOOKMARK [2][-]{subsection.6.1}{Vyhodnocen\355}{section.6}% 22
-\BOOKMARK [1][-]{section.7}{Z\341ver}{}% 23
-\BOOKMARK [1][-]{section.8}{Reference}{}% 24
+\BOOKMARK [2][-]{subsection.4.4}{Algoritmus GP}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Omezen\355 GP}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.6}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.7}{Reprezentace stromu}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.8}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.9}{Oper\341tory}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.10}{Popis algoritmu}{section.4}% 17
+\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 18
+\BOOKMARK [2][-]{subsection.5.1}{Evolucn\355 procesy}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.2}{UML model}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.3}{Aplikace EvolTools}{section.5}% 21
+\BOOKMARK [1][-]{section.6}{Paralelizace s technologi\355 GPGPU}{}% 22
+\BOOKMARK [2][-]{subsection.6.1}{CUDA}{section.6}% 23
+\BOOKMARK [2][-]{subsection.6.2}{jCUDA}{section.6}% 24
+\BOOKMARK [1][-]{section.7}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 25
+\BOOKMARK [2][-]{subsection.7.1}{Vyhodnocen\355}{section.7}% 26
+\BOOKMARK [1][-]{section.8}{Z\341ver}{}% 27
+\BOOKMARK [1][-]{section.9}{Reference}{}% 28

@@ -19,23 +19,27 @@
 \contentsline {subsection}{\numberline {4.1}GA vs. GP}{12}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}\IeC {\'U}lohy \IeC {\v r}e\IeC {\v s}en\IeC {\'e} GP}{12}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Reprezentace jedince}{12}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Omezen\IeC {\'\i } GP}{13}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Mno\IeC {\v z}ina funkc\IeC {\'\i } a termin\IeC {\'a}l\IeC {\r u}}{14}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Reprezentace stromu}{15}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Generov\IeC {\'a}n\IeC {\'\i } po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i } populace}{15}{subsection.4.7}
-\contentsline {subsection}{\numberline {4.8}Oper\IeC {\'a}tory}{16}{subsection.4.8}
-\contentsline {subsubsection}{\numberline {4.8.1}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{16}{subsubsection.4.8.1}
-\contentsline {subsubsection}{\numberline {4.8.2}Mutace}{17}{subsubsection.4.8.2}
-\contentsline {subsubsection}{\numberline {4.8.3}Dal\IeC {\v s}\IeC {\'\i } oper\IeC {\'a}tory}{17}{subsubsection.4.8.3}
-\contentsline {subsection}{\numberline {4.9}Popis algoritmu}{17}{subsection.4.9}
-\contentsline {section}{\numberline {5}Implementace GP}{19}{section.5}
-\contentsline {subsection}{\numberline {5.1}Evolu\IeC {\v c}n\IeC {\'\i } procesy}{19}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{19}{subsubsection.5.1.1}
-\contentsline {subsection}{\numberline {5.2}UML model}{19}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Aplikace EvolTools}{19}{subsection.5.3}
-\contentsline {section}{\numberline {6}Testov\IeC {\'a}n\IeC {\'\i } na vybran\IeC {\'y}ch probl\IeC {\'e}mech}{20}{section.6}
-\contentsline {subsubsection}{\numberline {6.0.1}Sudoku}{20}{subsubsection.6.0.1}
-\contentsline {subsubsection}{\numberline {6.0.2}Aproximace modelu}{20}{subsubsection.6.0.2}
-\contentsline {subsection}{\numberline {6.1}Vyhodnocen\IeC {\'\i }}{20}{subsection.6.1}
-\contentsline {section}{\numberline {7}Z\IeC {\'a}v\IeC {\v e}r}{21}{section.7}
-\contentsline {section}{\numberline {8}Reference}{22}{section.8}
+\contentsline {subsection}{\numberline {4.4}Algoritmus GP}{13}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Omezen\IeC {\'\i } GP}{13}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Mno\IeC {\v z}ina funkc\IeC {\'\i } a termin\IeC {\'a}l\IeC {\r u}}{15}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Reprezentace stromu}{16}{subsection.4.7}
+\contentsline {subsection}{\numberline {4.8}Generov\IeC {\'a}n\IeC {\'\i } po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i } populace}{16}{subsection.4.8}
+\contentsline {subsection}{\numberline {4.9}Oper\IeC {\'a}tory}{17}{subsection.4.9}
+\contentsline {subsubsection}{\numberline {4.9.1}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{17}{subsubsection.4.9.1}
+\contentsline {subsubsection}{\numberline {4.9.2}Mutace}{18}{subsubsection.4.9.2}
+\contentsline {subsubsection}{\numberline {4.9.3}Dal\IeC {\v s}\IeC {\'\i } oper\IeC {\'a}tory}{18}{subsubsection.4.9.3}
+\contentsline {subsection}{\numberline {4.10}Popis algoritmu}{18}{subsection.4.10}
+\contentsline {section}{\numberline {5}Implementace GP}{20}{section.5}
+\contentsline {subsection}{\numberline {5.1}Evolu\IeC {\v c}n\IeC {\'\i } procesy}{20}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{20}{subsubsection.5.1.1}
+\contentsline {subsection}{\numberline {5.2}UML model}{20}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Aplikace EvolTools}{20}{subsection.5.3}
+\contentsline {section}{\numberline {6}Paralelizace s technologi\IeC {\'\i } GPGPU}{21}{section.6}
+\contentsline {subsection}{\numberline {6.1}CUDA}{21}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}jCUDA}{21}{subsection.6.2}
+\contentsline {section}{\numberline {7}Testov\IeC {\'a}n\IeC {\'\i } na vybran\IeC {\'y}ch probl\IeC {\'e}mech}{23}{section.7}
+\contentsline {subsubsection}{\numberline {7.0.1}Sudoku}{23}{subsubsection.7.0.1}
+\contentsline {subsubsection}{\numberline {7.0.2}Aproximace modelu}{23}{subsubsection.7.0.2}
+\contentsline {subsection}{\numberline {7.1}Vyhodnocen\IeC {\'\i }}{23}{subsection.7.1}
+\contentsline {section}{\numberline {8}Z\IeC {\'a}v\IeC {\v e}r}{24}{section.8}
+\contentsline {section}{\numberline {9}Reference}{25}{section.9}
