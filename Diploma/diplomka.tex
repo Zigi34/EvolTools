@@ -170,6 +170,9 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 Název "genetické programování" se zrodil již počátkem 80. let, kdy byl představen jako algoritmus pro využití v problémeh jako je predikce, klasifikace, aproximace, tvorba programů.
 Otcem GP je standfordský informatik John Koza \cite{kozagp,kozagp2}. Díky konceptu, který vytvořil, lze využít při tvorbě programů stejných evolučních operátorů, jaké obsahuje GA (křížení, mutace).
 \paragraph*{}
+Samotné genetické programování lze definovat mnoha způsob. V různých publikacích je o něm píše různými zpsoby. Může jít o program, který umožňuje konstruovat další programy. Nebo může jít o algoritmicky založenou evoluční metodologii, inspirovananou biologickými evolučními procesy či přežití nejschopnějších, z pohledu počítačové programu, ke zjištění, který program nejlépe odpovídá řešení
+
+\paragraph*{}
 Pro to, abychom pochopili smysl tohoto algoritmu, položmě si tuto otázku: "Jak se může počítač naučit řešit  problémy bez toho, abychom jej k tomu přímo nenaprogramovali? Jinými slovy, jak může počítač sám dělat to co potřebujeme aby dělal, bez toho abychom mu to přesně řekli?" Touto otázkou Arthur Samuel již v roce 1959 otevřel debatu kolem umělé inteligence.
 \paragraph*{}
 Paradigma genetického programování následuje přístup k řešení problému klasickým genetickým algoritmem s navýšením komplexnosti struktury jedince procházející adaptací. Takové jedince tvoří složitější struktury, které tvoří hirearchicky členěné počítačové programy, vyznačující se různou délkou a tvarem. Jsou to zejména problémy jako umělá inteligence, symbolická regrese, strojové učení, které lze přeformulovat na požadavek nalezení počítačového programu, který bude na výstupu generovat jiné programy jako vstup ke konkrétní úloze. Koza ve své knize tvrdí, že proces řešení těchto problémů lze formulovat jako hledání nejvhodnějšího počítačového programu v prostoru všech možných programů. Prohledávací prostor je tvořen funkcemi a terminály odpovídající doméně problému. A právě genetické programování nám poskytuje postup, jak pomocí genetického šlechtění nalézt nejlépe odpovídající program k dané úloze.
@@ -349,7 +352,13 @@ Programovací model CUDA je rozšíření jazyka C. Programátoři píší aplik
 
 \subsection{jCUDA}
 \paragraph*{}
-Implementace JCUDA zvládá datové přenosy primitiv a vícerozměrných polí primitiv mezi hostitelem a zařízení. Naše předběžné výsledky výkonu získané na čtyři dvojitou přesností plovoucí desetinnou čárkou Java Grande měřítek ukazují, že toto rozhraní může přinést významné zlepšení výkonu na Java programátory. Výsledky pro velikost C (největší velikost dat) Zobrazit speedups v rozmezí od 7,70 do 120,32 s použitím jednoho GPGPU, vzhledem k výkonu CPU na jednom vlákně.
+Smyslem projektu jCUDA (Java pro CUDA®) je nabídnout pro jazyk Java vazbu na NVidia CUDA framework spolu s jejími knihovnami, které umožňují plně využít výpočetní výkon grafických karet podporujícími různé verze CUDA, na různých platformách, bez nutnosti měnit svůj kód. Knihovna je nabízená jak pro platformu Windows (32, 64-bit), tak Linux( 32, 64-bit). 
+
+\paragraph*{}
+Chcete-li využit knihoven JCUDA, je potřeba mít grafickou kartu, podporující CUDA spolu s ovladači. Informace o podpoře CUDA u grafických karet NVidia jsou zveřejněny na stránkách NVidie. Požaduje se minimální nároky na CUDA verzi nejméně 1.1 a Java Runtime 1.5 a vyšší.
+
+\paragraph*{}
+jCUDA je nabízená s volnou licencí pro osobní požití, vědeckou či výzkumnou činnost a komerční využití. Ovšem zde není poskytnuta žádná podpora ani záruka.
 
 \paragraph*{}
 Java Native Interface (JNI) [6], rozhraní Javy pro provádění funkcí nativního jazyka C, hrálo také významnou roli v projektech JGF, jako je umožnění Message Passing Interface (MPI) pro Javu. V JNI, programátor deklaruje vnější nativní metody vybraných funkcí C, které lze vyvolat Java programem. Po kompilaci zdrojové soubory Java je použit nástroj javah ke generování hlavičkové soubory C, které obsahuje rozhraní nativního kódu. JNI podporuje také bohatou paletu funkcí zpětného volání a umožní nativnímu kódu přístup k Java objektům a služebám.
@@ -358,6 +367,26 @@ Java Native Interface (JNI) [6], rozhraní Javy pro provádění funkcí nativn�
 
 \paragraph*{}
 Obrázek \ref{fig:jCUDA} shrnuje proces třístupňový, že programátor Java potřebuje řídit přístup k CUDA přes JNI dnes. To zahrnuje psaní kódu Java a JNI pahýl kód v jazyce C pro provedení na CPU, stejně jako CUDA kód pro provedení na GPU zařízení. Otočný kód musí také zvládnout alokaci a uvolnění dat v paměti přístroje a datové přenosy mezi hostitelem a zařízení. Je jasné, že tento proces je zdlouhavý a náchylné k chybám, a že by bylo více produktivní použít kompilátor nebo programovací nástroj, který automaticky generuje pahýl kód a přenosu dat volání.
+
+\subsection{Paralelizace na GPU}
+\paragraph*{}
+Pro využití grafického procesoru k výpočtům algoritmu genetického programování je třeba daný proces správně paralelizovat, aby byl výpočet, pokud možno co nejefektivnější a nejjednodušší.
+
+\subsubsection{Paralelizace genetického programování}
+\paragraph*{}
+V následující části bude popsáno, jakým způsobem bude program komunikovat s grafickým procesorem a jak bude algoritmus paralelizován přímo na grafickém procesoru.
+
+\paragraph*{}
+Pro dosažení maximálního výkonu při běhu algoritmu, přesuneme celý algoritmus přímo na GPU. Pro tento účel bude třeba vytvořit kernel gp.cu, který se bude řídit provádění evolučního cyklu. Kernel bude volán s parametry: gen - počet generací populace, popSize - velikost populace, pop - kolekci řešení v poli, funs - funkce, oper - operátory.
+
+\paragraph*{}
+Je třeba si uvědomit, že takýto přístup k paralelizaci je individuální a je závislý na daném problému, který genetický algoritmus řeší. Proto mimo tento kernel bude existovat funkce art ant.cu, která se bude starat o vyhodnocování jednotlivých řešení.
+
+\subsubsection{Návrh paměťového modelu}
+\paragraph*{}
+Aby byla paralelizace úspěšná, je důležité si dobře zanalyzovat umístění a zarovnání dat pro výpočet v paměti. Lze bez nadsázky říci, že tento krok je při dosažení správných výsledků a také výkonu nejdůležitější.
+
+
 
 \section{Testování na vybraných problémech}
 \paragraph*{}
@@ -417,6 +446,14 @@ London: McGraw-Hill, 1999. 20 p. ISBN 007-709506-5
 \bibitem{jCUDA} Yan Y., Grossman M., Sarkar V.,
 \textit{Euro-Par 2009 Parallel Processing},
 Department of Computer Science, Rice University, 2009. 899 p. ISBN 978-3-642-03868-6
+
+\bibitem{nVidia} CUDA GPUs. 
+\textit{NVidia Corporation: Accelerated Computing [online] 2016}, 
+[cit. 2016-02-15]. Dostupné z: https://developer.nvidia.com/cuda-gpus
+
+\bibitem{jCUDA} JCUDA. 
+\textit{Company for Advanced Supercomputing Solutions LTD: jCUDA [online] 2008-2015}, 
+[cit. 2016-02-15]. Dostupné z: http://www.cass-hpc.com/solutions/legacy/jcuda/
 
 \end{thebibliography}
 

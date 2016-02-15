@@ -22,7 +22,8 @@
 \BOOKMARK [1][-]{section.6}{Paralelizace s technologi\355 GPGPU}{}% 22
 \BOOKMARK [2][-]{subsection.6.1}{CUDA}{section.6}% 23
 \BOOKMARK [2][-]{subsection.6.2}{jCUDA}{section.6}% 24
-\BOOKMARK [1][-]{section.7}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 25
-\BOOKMARK [2][-]{subsection.7.1}{Vyhodnocen\355}{section.7}% 26
-\BOOKMARK [1][-]{section.8}{Z\341ver}{}% 27
-\BOOKMARK [1][-]{section.9}{Reference}{}% 28
+\BOOKMARK [2][-]{subsection.6.3}{Paralelizace na GPU}{section.6}% 25
+\BOOKMARK [1][-]{section.7}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 26
+\BOOKMARK [2][-]{subsection.7.1}{Vyhodnocen\355}{section.7}% 27
+\BOOKMARK [1][-]{section.8}{Z\341ver}{}% 28
+\BOOKMARK [1][-]{section.9}{Reference}{}% 29
