@@ -4,11 +4,9 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.zigi.evolution.algorithm.GeneticProgramming;
-import org.zigi.evolution.cross.TreeCross;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.model.SelectFunctionModel;
-import org.zigi.evolution.mutate.TreeMutate;
 import org.zigi.evolution.services.Services;
 
 import javafx.event.ActionEvent;
@@ -17,6 +15,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Algorithm control manager
+ * 
+ * @author zigi
+ *
+ */
 public class ControlPanel extends AnchorPane {
 
 	private static final Logger LOG = Logger.getLogger(ControlPanel.class);
@@ -52,47 +56,49 @@ public class ControlPanel extends AnchorPane {
 
 	@FXML
 	private void startAction(ActionEvent event) {
-		LOG.info("Akce spusteni algoritmu");
-		try {
-			AlgorithmModel alg = Services.algorithmService().getSelected();
-			if (alg != null) {
-				if (alg.getAlgorithm() instanceof GeneticProgramming) {
-					GeneticProgramming gp = (GeneticProgramming) alg.getAlgorithm();
-					gp.setPopulationSize(400);
-					gp.setGeneration(2000);
-
-					ProblemModel problem = Services.problemService().getSelected();
-					if (problem != null)
-						gp.setProblem(problem.getProblem());
-					else
-						LOG.info("Problem nebyl vybrán");
-
-					gp.setCross(new TreeCross());
-					gp.setMutate(new TreeMutate());
-
-					SelectFunctionModel select = Services.selectFunctionService().getSelected();
-					if (select != null)
-						gp.setSelect(select.getFunction());
-					else
-						LOG.info("Selekce nebyla vybrana");
-				}
-				alg.start();
-			} else {
-				LOG.info("Algoritmus nebyl vybran");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			LOG.error(e);
+		AlgorithmModel alg = Services.algorithmService().getSelected();
+		if (alg != null) {
+			initializeAlgorithm(alg);
+			alg.start();
 		}
 	}
 
 	@FXML
 	private void stopAction() {
-		// stop
+		// pause algorithm
+		AlgorithmModel alg = Services.algorithmService().getSelected();
+		if (alg != null) {
+			alg.stop();
+		}
 	}
 
 	@FXML
 	private void resetAction() {
-		// reset
+		// TODO reseting button going to stop with reset setting for new start
+	}
+
+	private void initializeAlgorithm(AlgorithmModel alg) {
+		if (alg.getAlgorithm() instanceof GeneticProgramming) {
+			GeneticProgramming gp = (GeneticProgramming) alg.getAlgorithm();// new
+																			// GeneticProgramming();
+			// gp.addChangeListener(new AlgorithmListener());
+
+			ProblemModel problem = Services.problemService().getSelected();
+			if (problem != null)
+				gp.setProblem(problem.getProblem());
+			else
+				LOG.info("Problem nebyl vybrán");
+
+			SelectFunctionModel select = Services.selectFunctionService().getSelected();
+			if (select != null)
+				gp.setSelect(select.getFunction());
+			else
+				LOG.info("Selekce nebyla vybrana");
+
+			// alg.setAlgorithm(gp);
+		}
+
+		// set population
+		alg.getAlgorithm().setPopulation(Services.populationService().getSelected().getPopulation());
 	}
 }

@@ -10,6 +10,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.TreeSolution;
+import org.zigi.evolution.solution.value.Configuration;
+import org.zigi.evolution.solution.value.Direction;
 import org.zigi.evolution.solution.value.GPFenotype;
 import org.zigi.evolution.solution.value.IfFoodAhead;
 import org.zigi.evolution.solution.value.LeftDirection;
@@ -17,6 +19,7 @@ import org.zigi.evolution.solution.value.Move;
 import org.zigi.evolution.solution.value.Node;
 import org.zigi.evolution.solution.value.Prg2;
 import org.zigi.evolution.solution.value.RightDirection;
+import org.zigi.evolution.solution.value.Rotation;
 import org.zigi.evolution.util.Population;
 
 public class ArtificialAnt extends TreeProblem {
@@ -26,22 +29,18 @@ public class ArtificialAnt extends TreeProblem {
 	private int yardWidth = 0;
 	private int yardHeight = 0;
 
-	private int posX = 0;
-	private int posY = 0;
+	// private int posX = 0;
+	// private int posY = 0;
 
-	private int startPosX = 0;
-	private int startPosY = 0;
+	// private int startPosX = 0;
+	// private int startPosY = 0;
 
 	private int maxMoves = 440;
 
-	private Direction startDirection = Direction.RIGHT;
-	private Direction direction = Direction.RIGHT;
+	// private Direction startDirection = Direction.RIGHT;
+	// private Direction direction = Direction.RIGHT;
 
 	public static final Logger LOG = Logger.getLogger(ArtificialAnt.class);
-
-	private enum Direction {
-		LEFT, TOP, RIGHT, DOWN
-	}
 
 	/**
 	 * Nacte stezku ze souboru. V sobouru je označené jídlo znakem '1' a prázdné
@@ -54,6 +53,7 @@ public class ArtificialAnt extends TreeProblem {
 	public void setYard(File file) throws FileNotFoundException {
 		if (!file.exists())
 			throw new FileNotFoundException();
+
 		StringBuilder sb = new StringBuilder();
 		try {
 			InputStreamReader sr = new InputStreamReader(new FileInputStream(file));
@@ -98,6 +98,13 @@ public class ArtificialAnt extends TreeProblem {
 
 		// max deep size
 		setMaxHeight(6);
+		setMaxMoves(420);
+
+		try {
+			setYard(new File("resources/artificial_ant"));
+		} catch (Exception e) {
+			LOG.warn(e);
+		}
 	}
 
 	public void setYard(int[][] array) {
@@ -128,6 +135,14 @@ public class ArtificialAnt extends TreeProblem {
 		return ant;
 	}
 
+	private int[][] copyYard() {
+		int[][] field = new int[yardHeight][yardWidth];
+		for (int i = 0; i < yardHeight; i++)
+			for (int j = 0; j < yardWidth; j++)
+				field[i][j] = yard[i][j];
+		return field;
+	}
+
 	@Override
 	public Double evaluate(Solution sol) {
 		TreeSolution tree = (TreeSolution) sol;
@@ -135,52 +150,45 @@ public class ArtificialAnt extends TreeProblem {
 
 		// initialize evaluation
 		int nodeIndex = 0;
-		int moves = 0;
-		double foundCrumbs = 0.0;
-		posX = startPosX;
-		posY = startPosY;
-		direction = startDirection;
-		int[][] actualYard = new int[yardHeight][yardWidth];
-		int[][] path = new int[yardHeight][yardWidth];
-		for (int i = 0; i < yardHeight; i++)
-			for (int j = 0; j < yardWidth; j++)
-				actualYard[i][j] = yard[i][j];
+
+		Configuration conf = new Configuration();
+
+		Direction direction = Direction.RIGHT;
+
+		int[][] actualYard = copyYard();
 
 		// seznam uzlu, ke kterym je treba se vracit zpet
 		List<Node> moveBack = new LinkedList<Node>();
 
 		// dokud se muze mravenec pohybovat
-		while (moves < maxMoves) {
+		while (conf.getMoves() < maxMoves) {
 			nodeIndex = 0;
 			nodes = tree.deepNodes();
 			while (nodeIndex < nodes.size()) {
 				GPFenotype operation = nodes.get(nodeIndex).getValue();
 				if (operation instanceof Move) {
-					foundCrumbs += move(actualYard, path);
-					moves++;
+					conf = move(actualYard, conf, yardWidth, yardHeight);
 					if (!moveBack.isEmpty()) {
 						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
 						moveBack.remove(moveBack.size() - 1);
 					} else
 						break;
 				} else if (operation instanceof LeftDirection) {
-					changeDirection(Direction.LEFT);
-					moves++;
+					conf = changeDirection(conf, Rotation.LEFT);
 					if (!moveBack.isEmpty()) {
 						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
 						moveBack.remove(moveBack.size() - 1);
 					} else
 						break;
 				} else if (operation instanceof RightDirection) {
-					changeDirection(Direction.RIGHT);
-					moves++;
+					conf = changeDirection(conf, Rotation.RIGHT);
 					if (!moveBack.isEmpty()) {
 						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
 						moveBack.remove(moveBack.size() - 1);
 					} else
 						break;
 				} else if (operation instanceof IfFoodAhead) {
-					if (!ifFoodAhead(actualYard)) {
+					if (!ifFoodAhead(actualYard, conf.getPosX(), conf.getPosY(), yardWidth, yardHeight, direction)) {
 						Node node = nodes.get(nodeIndex);
 						Node rightNode = node.getChilds().get(1);
 						nodeIndex = nodes.indexOf(rightNode);
@@ -193,89 +201,8 @@ public class ArtificialAnt extends TreeProblem {
 			}
 		}
 		// printPath(array);
-		sol.setFitness(foundCrumbs / crumbs);
+		sol.setFitness(conf.getFoundCrumbs() / Double.valueOf(crumbs));
 		return sol.getFitness();
-	}
-
-	public int[][] getPath(Solution sol) {
-		TreeSolution tree = (TreeSolution) sol;
-		List<Node> nodes = null;
-		int index = 0;
-		int moves = 0;
-		posX = 0;
-		posY = 0;
-		direction = Direction.RIGHT;
-
-		int[][] path = new int[yardHeight][yardWidth];
-		int[][] field = new int[yardHeight][yardWidth];
-		for (int i = 0; i < yardHeight; i++)
-			for (int j = 0; j < yardWidth; j++)
-				field[i][j] = yard[i][j];
-
-		// double bit = 0.0;
-		List<Node> moveBack = new LinkedList<Node>();
-
-		while (moves < maxMoves) {
-			index = 0;
-			nodes = tree.deepNodes();
-			while (index < nodes.size()) {
-				GPFenotype fenotype = nodes.get(index).getValue();
-				if (fenotype instanceof Move) {
-					// bit += move(field, path);
-					moves++;
-					if (!moveBack.isEmpty()) {
-						index = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
-						moveBack.remove(moveBack.size() - 1);
-					} else
-						break;
-				} else if (fenotype instanceof LeftDirection) {
-					changeDirection(Direction.LEFT);
-					moves++;
-					if (!moveBack.isEmpty()) {
-						index = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
-						moveBack.remove(moveBack.size() - 1);
-					} else
-						break;
-				} else if (fenotype instanceof RightDirection) {
-					changeDirection(Direction.RIGHT);
-					moves++;
-					if (!moveBack.isEmpty()) {
-						index = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
-						moveBack.remove(moveBack.size() - 1);
-					} else
-						break;
-				} else if (fenotype instanceof IfFoodAhead) {
-					if (!ifFoodAhead(field)) {
-						Node node = nodes.get(index);
-						Node rightNode = node.getChilds().get(1);
-						index = nodes.indexOf(rightNode);
-						continue;
-					}
-				} else if (fenotype instanceof Prg2) {
-					moveBack.add(nodes.get(index));
-				}
-				index++;
-			}
-		}
-		return path;
-	}
-
-	/**
-	 * Loguje celou prošlou cestu.
-	 * 
-	 * @param path
-	 */
-	public static void printPath(int[][] path) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n");
-		for (int i = 0; i < path.length; i++) {
-			for (int y = 0; y < path[i].length; y++) {
-				sb.append(path[i][y]);
-			}
-			sb.append("\n");
-		}
-		LOG.info(sb.toString());
-		LOG.info("\n");
 	}
 
 	/**
@@ -284,7 +211,8 @@ public class ArtificialAnt extends TreeProblem {
 	 * @param array
 	 * @return
 	 */
-	private boolean ifFoodAhead(int[][] array) {
+	private static boolean ifFoodAhead(int[][] array, Integer posX, Integer posY, Integer yardWidth, Integer yardHeight,
+			Direction direction) {
 		if (direction == Direction.LEFT && array[posY][(posX + yardWidth - 1) % yardWidth] == 1)
 			return true;
 		else if (direction == Direction.DOWN && array[(posY + 1) % yardHeight][posX] == 1)
@@ -303,23 +231,23 @@ public class ArtificialAnt extends TreeProblem {
 	 * @param path
 	 * @return
 	 */
-	private int move(int[][] yard, int[][] path) {
-		path[posY][posX] = 1;
-		if (direction == Direction.RIGHT)
-			posX = (posX + 1) % yardWidth;
-		else if (direction == Direction.DOWN)
-			posY = (posY + 1) % yardHeight;
-		else if (direction == Direction.LEFT)
-			posX = (posX + yardWidth - 1) % yardWidth;
-		else if (direction == Direction.TOP)
-			posY = (posY + yardHeight - 1) % yardHeight;
+	private static Configuration move(int[][] yard, Configuration conf, Integer yardWidth, Integer yardHeight) {
+		conf.moveIncrement();
+		if (conf.getDirection() == Direction.RIGHT)
+			conf.setPosX((conf.getPosX() + 1) % yardWidth);
+		else if (conf.getDirection() == Direction.DOWN)
+			conf.setPosY((conf.getPosX() + 1) % yardHeight);
+		else if (conf.getDirection() == Direction.LEFT)
+			conf.setPosX((conf.getPosX() + yardWidth - 1) % yardWidth);
+		else if (conf.getDirection() == Direction.TOP)
+			conf.setPosY((conf.getPosX() + yardHeight - 1) % yardHeight);
 
-		path[posY][posX] = 1;
-		if (yard[posY][posX] == 1) {
-			yard[posY][posX] = 0;
-			return 1;
+		if (yard[conf.getPosY()][conf.getPosX()] == 1) {
+			yard[conf.getPosY()][conf.getPosX()] = 0;
+			conf.foundCrumbsIncrement();
+			return conf;
 		}
-		return 0;
+		return conf;
 	}
 
 	/**
@@ -328,23 +256,25 @@ public class ArtificialAnt extends TreeProblem {
 	 * @param direction
 	 *            nový směr mravence
 	 */
-	private void changeDirection(Direction direction) {
-		if (this.direction == Direction.LEFT && direction == Direction.LEFT)
-			this.direction = Direction.DOWN;
-		else if (this.direction == Direction.DOWN && direction == Direction.LEFT)
-			this.direction = Direction.RIGHT;
-		else if (this.direction == Direction.RIGHT && direction == Direction.LEFT)
-			this.direction = Direction.TOP;
-		else if (this.direction == Direction.TOP && direction == Direction.LEFT)
-			this.direction = Direction.LEFT;
-		else if (this.direction == Direction.LEFT && direction == Direction.RIGHT)
-			this.direction = Direction.TOP;
-		else if (this.direction == Direction.DOWN && direction == Direction.RIGHT)
-			this.direction = Direction.LEFT;
-		else if (this.direction == Direction.RIGHT && direction == Direction.RIGHT)
-			this.direction = Direction.DOWN;
-		else if (this.direction == Direction.TOP && direction == Direction.RIGHT)
-			this.direction = Direction.RIGHT;
+	private static Configuration changeDirection(Configuration conf, Rotation newDirection) {
+		conf.moveIncrement();
+		if (conf.getDirection() == Direction.LEFT && newDirection == Rotation.LEFT)
+			conf.setDirection(Direction.DOWN);
+		else if (conf.getDirection() == Direction.DOWN && newDirection == Rotation.LEFT)
+			conf.setDirection(Direction.RIGHT);
+		else if (conf.getDirection() == Direction.RIGHT && newDirection == Rotation.LEFT)
+			conf.setDirection(Direction.TOP);
+		else if (conf.getDirection() == Direction.TOP && newDirection == Rotation.LEFT)
+			conf.setDirection(Direction.LEFT);
+		else if (conf.getDirection() == Direction.LEFT && newDirection == Rotation.RIGHT)
+			conf.setDirection(Direction.TOP);
+		else if (conf.getDirection() == Direction.DOWN && newDirection == Rotation.RIGHT)
+			conf.setDirection(Direction.LEFT);
+		else if (conf.getDirection() == Direction.RIGHT && newDirection == Rotation.RIGHT)
+			conf.setDirection(Direction.DOWN);
+		else if (conf.getDirection() == Direction.TOP && newDirection == Rotation.RIGHT)
+			conf.setDirection(Direction.RIGHT);
+		return conf;
 	}
 
 	public int getMaxMoves() {

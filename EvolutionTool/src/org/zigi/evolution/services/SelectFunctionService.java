@@ -9,7 +9,7 @@ import org.zigi.evolution.select.RouleteWheelSelect;
 
 public class SelectFunctionService {
 
-	private static SelectFunctionModel selected;
+	private static SelectFunctionModel selected = new SelectFunctionModel(new RankSelect());
 	private static SelectFunctionService instance;
 
 	private SelectFunctionService() {

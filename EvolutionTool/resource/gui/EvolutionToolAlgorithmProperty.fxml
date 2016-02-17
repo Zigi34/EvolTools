@@ -22,6 +22,8 @@
                 <ChoiceBox id="selectFunctionInput" fx:id="selectFunction" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0" />
                 <Label id="selectFunctionLabel" fx:id="mutateFunctionLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0" />
                 <ChoiceBox id="selectFunctionInput" fx:id="mutateFunction" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="76.0" />
+                <Label fx:id="generationLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="124.0" />
+                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="140.0" />
               </children>
             </AnchorPane>
           </content>

@@ -1,19 +1,19 @@
 package org.zigi.evolution.main;
 
-import java.io.File;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.algorithm.GeneticProgramming;
-import org.zigi.evolution.cross.TreeCross;
-import org.zigi.evolution.mutate.TreeMutate;
 import org.zigi.evolution.problem.ArtificialAnt;
-import org.zigi.evolution.select.RankSelect;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.TreeSolution;
 
 public class Main {
 
 	private static final Random RAND = new Random();
+	private static final Logger LOG = Logger.getLogger(Main.class);
 
 	/**
 	 * Provadi krizeni mezi dvema stromy
@@ -34,26 +34,27 @@ public class Main {
 	public void artificialAnt() {
 		try {
 			ArtificialAnt problem = new ArtificialAnt();
-			problem.setMaxHeight(6);
-			problem.setMaxMoves(420);
-			problem.setYard(new File("resources/artificial_ant"));
+			// problem.setMaxHeight(6);
+			// problem.setMaxMoves(420);
+			// problem.setYard(new File("resources/artificial_ant"));
 			// LOG.info("Drobečků: " + problem.getCrumbs());
 
 			GeneticProgramming alg = new GeneticProgramming();
-			alg.setPopulationSize(400);
-			alg.setGeneration(2000);
 			alg.setProblem(problem);
-			alg.setCross(new TreeCross());
-			alg.setMutate(new TreeMutate());
-			alg.setSelect(new RankSelect());
+			alg.addChangeListener(new PropertyChangeListener() {
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					LOG.info(evt.getNewValue());
+				}
+			});
 			alg.start();
 
 			Solution best = alg.getBestSolution();
 			System.out.println("BEST: " + best.toString());
-			int[][] path = problem.getPath(best);
+			// int[][] path = problem.getPath(best);
 
 			// print best path
-			ArtificialAnt.printPath(path);
+			// ArtificialAnt.printPath(path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

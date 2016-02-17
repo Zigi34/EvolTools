@@ -3,7 +3,9 @@ package org.zigi.evolution.controller;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.MutateFunctionModel;
+import org.zigi.evolution.model.PopulationModel;
 import org.zigi.evolution.model.SelectFunctionModel;
 import org.zigi.evolution.services.Services;
 import org.zigi.evolution.util.Utils;
@@ -16,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 
@@ -38,6 +41,12 @@ public class EvolutionToolAlgorithmProperty extends BorderPane {
 	@FXML
 	private TitledPane basicProperty;
 
+	@FXML
+	private Label generationLabel;
+
+	@FXML
+	private TextField generation;
+
 	public EvolutionToolAlgorithmProperty() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/EvolutionToolAlgorithmProperty.fxml"));
 		fxmlLoader.setRoot(this);
@@ -53,6 +62,9 @@ public class EvolutionToolAlgorithmProperty extends BorderPane {
 	}
 
 	private void initialize() {
+		PopulationModel popModel = Services.populationService().getSelected();
+		AlgorithmModel algModel = Services.algorithmService().getSelected();
+
 		// basic property
 		basicProperty.setText(Utils.getLabel("basic_property"));
 
@@ -76,5 +88,21 @@ public class EvolutionToolAlgorithmProperty extends BorderPane {
 		ObservableList<MutateFunctionModel> mutateList = FXCollections.observableList(Services.mutateFunctionService().findMutateFunctions());
 		mutateFunction.setItems(mutateList);
 		mutateFunction.getSelectionModel().selectFirst();
+
+		// generation
+		generationLabel.setText(Utils.getLabel("generation"));
+
+		generation.setText(String.valueOf(algModel.getAlgorithm().getGeneration()));
+		generation.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				try {
+					Services.algorithmService().getSelected().getAlgorithm().setGeneration(Integer.parseInt(newValue));
+					LOG.debug("Change generation count to " + newValue);
+				} catch (Exception e) {
+					LOG.warn("Invalid value for generation count " + newValue);
+				}
+			}
+		});
 	}
 }

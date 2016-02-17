@@ -14,16 +14,26 @@ import org.zigi.evolution.problem.Problem;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
 
+/**
+ * Object represent evolution algorithm method
+ * 
+ * @author zigi
+ *
+ */
 public abstract class EvolutionAlgorithm implements Runnable {
-
 	private Population population;
 	private boolean terminate;
 	private Problem problem;
 	private Solution bestSolution;
+	private int generation = 2000;
+	private Thread thread = new Thread(this);
 
 	protected OutputStreamWriter writer;
 
 	public static final String INIT_STATE = "INIT_STATE";
+	public static final String ALGORITHM_TERMINATING = "ALGORITHM_TERMINATING";
+	public static final String ALGORITHM_TERMINATED = "ALGORITHM_TERMINATED";
+	public static final String ALGORITHM_STARTED = "ALGORITHM_STARTED";
 
 	public static final String STATE_NAME = "STATE";
 
@@ -39,15 +49,19 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 * @throws Exception
 	 */
 	public void start() throws Exception {
-		terminate = false;
+		if (!thread.isAlive()) {
+			thread = new Thread(this);
+			terminate = false;
 
-		if (problem == null)
-			throw new Exception("Problem není nastavený");
+			if (problem == null)
+				throw new Exception("Problem není nastavený");
 
-		if (population == null)
-			fillPopulation();
+			if (population == null)
+				fillPopulation();
 
-		run();
+			thread.start();
+			setState(ALGORITHM_STARTED);
+		}
 	}
 
 	/**
@@ -64,6 +78,17 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public void stop() {
 		terminate = true;
+		setState(ALGORITHM_TERMINATING);
+
+		if (thread != null) {
+			try {
+				thread.join(1000);
+				thread.interrupt();
+			} catch (InterruptedException e) {
+				LOG.error(e);
+			}
+		}
+		setState(ALGORITHM_TERMINATED);
 	}
 
 	/**
@@ -249,6 +274,15 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	protected void setState(String state) {
 		notifyListeners(this, "STATE", this.state, state);
+		// LOG.debug(state);
 		this.state = state;
+	}
+
+	public int getGeneration() {
+		return generation;
+	}
+
+	public void setGeneration(int generation) {
+		this.generation = generation;
 	}
 }

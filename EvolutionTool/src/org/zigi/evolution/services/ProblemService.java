@@ -11,8 +11,13 @@ public class ProblemService {
 
 	private static ProblemService instance;
 	private static ProblemModel selected;
+	private static List<ProblemModel> list;
 
 	private ProblemService() {
+		if (list == null) {
+			list = new LinkedList<ProblemModel>();
+			initialize(list);
+		}
 	}
 
 	public static ProblemService getInstance() {
@@ -27,8 +32,6 @@ public class ProblemService {
 	 * @return
 	 */
 	public List<ProblemModel> findProblemFunctions() {
-		List<ProblemModel> list = new LinkedList<ProblemModel>();
-		initialize(list);
 		return list;
 	}
 
@@ -45,6 +48,8 @@ public class ProblemService {
 	}
 
 	public static ProblemModel getSelected() {
+		if (selected == null)
+			selected = list.get(0);
 		return selected;
 	}
 

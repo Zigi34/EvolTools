@@ -1,5 +1,11 @@
 package org.zigi.evolution.services;
 
+/**
+ * Services all managers
+ * 
+ * @author zigi
+ *
+ */
 public class Services {
 
 	private Services() {
@@ -19,5 +25,9 @@ public class Services {
 
 	public static AlgorithmService algorithmService() {
 		return AlgorithmService.getInstance();
+	}
+
+	public static PopulationService populationService() {
+		return PopulationService.getInstance();
 	}
 }

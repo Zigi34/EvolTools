@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.zigi.evolution.listener.AlgorithmListener;
 import org.zigi.evolution.model.AlgorithmModel;
 
 public class AlgorithmService {
@@ -23,6 +24,7 @@ public class AlgorithmService {
 	public List<AlgorithmModel> findAlgorithms() {
 		List<AlgorithmModel> list = new LinkedList<AlgorithmModel>();
 		GeneticProgramming alg = new GeneticProgramming();
+		alg.addChangeListener(new AlgorithmListener());
 		list.add(new AlgorithmModel(alg));
 		return list;
 	}
