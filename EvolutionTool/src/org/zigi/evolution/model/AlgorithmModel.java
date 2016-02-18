@@ -33,4 +33,9 @@ public class AlgorithmModel {
 	public void stop() {
 		algorithm.stop();
 	}
+
+	public void reset() {
+		algorithm.stop();
+
+	}
 }

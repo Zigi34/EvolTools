@@ -16,14 +16,16 @@
       <expandedPane>
         <TitledPane fx:id="basicProperty" animated="false" text="Basic Properties">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="202.0">
               <children>
                 <Label fx:id="selectFunctionLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                 <ChoiceBox id="selectFunctionInput" fx:id="selectFunction" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0" />
                 <Label id="selectFunctionLabel" fx:id="mutateFunctionLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0" />
                 <ChoiceBox id="selectFunctionInput" fx:id="mutateFunction" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="76.0" />
-                <Label fx:id="generationLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="124.0" />
-                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="140.0" />
+                <Label fx:id="generationLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="180.0" />
+                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="196.0" />
+                <Label id="generationLabel" fx:id="crossMutateLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="116.0" />
+                <Slider fx:id="crossMutate" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="173.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.7" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="138.0" />
               </children>
             </AnchorPane>
           </content>

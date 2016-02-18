@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.problem.ArtificialAnt;
 
@@ -55,5 +56,10 @@ public class ProblemService {
 
 	public static void setSelected(ProblemModel selected) {
 		ProblemService.selected = selected;
+		// setting of problem will be call set problem in algorithm
+		AlgorithmModel alg = Services.algorithmService().getSelected();
+		if (alg != null) {
+			alg.getAlgorithm().setProblem(selected.getProblem());
+		}
 	}
 }

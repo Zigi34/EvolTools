@@ -11,11 +11,7 @@ public class TreeMutate extends MutateFunction {
 	// private TreeProblem problem;
 	private static final Random RAND = new Random();
 
-	/*
-	 * public TreeMutate() { this(null); }
-	 */
-	public TreeMutate(/* TreeProblem problem */) {
-		// this.problem = problem;
+	public TreeMutate() {
 	}
 
 	@Override

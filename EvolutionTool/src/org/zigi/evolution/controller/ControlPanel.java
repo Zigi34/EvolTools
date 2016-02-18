@@ -58,7 +58,7 @@ public class ControlPanel extends AnchorPane {
 	private void startAction(ActionEvent event) {
 		AlgorithmModel alg = Services.algorithmService().getSelected();
 		if (alg != null) {
-			initializeAlgorithm(alg);
+			// initializeAlgorithm(alg);
 			alg.start();
 		}
 	}
@@ -75,13 +75,16 @@ public class ControlPanel extends AnchorPane {
 	@FXML
 	private void resetAction() {
 		// TODO reseting button going to stop with reset setting for new start
+		AlgorithmModel alg = Services.algorithmService().getSelected();
+		if (alg != null) {
+			alg.reset();
+		}
 	}
 
 	private void initializeAlgorithm(AlgorithmModel alg) {
+
 		if (alg.getAlgorithm() instanceof GeneticProgramming) {
-			GeneticProgramming gp = (GeneticProgramming) alg.getAlgorithm();// new
-																			// GeneticProgramming();
-			// gp.addChangeListener(new AlgorithmListener());
+			GeneticProgramming gp = (GeneticProgramming) alg.getAlgorithm();
 
 			ProblemModel problem = Services.problemService().getSelected();
 			if (problem != null)

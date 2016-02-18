@@ -3,6 +3,7 @@ package org.zigi.evolution.controller;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.zigi.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.MutateFunctionModel;
 import org.zigi.evolution.model.PopulationModel;
@@ -18,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
@@ -46,6 +48,12 @@ public class EvolutionToolAlgorithmProperty extends BorderPane {
 
 	@FXML
 	private TextField generation;
+
+	@FXML
+	private Label crossMutateLabel;
+
+	@FXML
+	private Slider crossMutate;
 
 	public EvolutionToolAlgorithmProperty() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/EvolutionToolAlgorithmProperty.fxml"));
@@ -101,6 +109,23 @@ public class EvolutionToolAlgorithmProperty extends BorderPane {
 					LOG.debug("Change generation count to " + newValue);
 				} catch (Exception e) {
 					LOG.warn("Invalid value for generation count " + newValue);
+				}
+			}
+		});
+
+		// cross-mutate
+		crossMutateLabel.setText(Utils.getLabel("cross_mutate"));
+
+		if (algModel.getAlgorithm() instanceof GeneticProgramming) {
+			GeneticProgramming gp = (GeneticProgramming) algModel.getAlgorithm();
+			crossMutate.valueProperty().setValue(gp.getMutateProbability());
+		}
+		crossMutate.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				if (algModel.getAlgorithm() instanceof GeneticProgramming) {
+					GeneticProgramming gp = (GeneticProgramming) algModel.getAlgorithm();
+					gp.setMutateProbability(newValue.doubleValue());
 				}
 			}
 		});

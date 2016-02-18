@@ -20,14 +20,14 @@ public class EvolutionTool extends Application {
 	private static final int WIDTH = 1000;
 	private static final int HEIGHT = 600;
 
-	private Stage stage;
+	public static Stage stage;
 
 	@FXML
 	private MenuItem closeMenuItem;
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		this.stage = stage;
+		EvolutionTool.stage = stage;
 		try {
 			Parent panel = FXMLLoader.load(getClass().getResource("/gui/EvolutionTool.fxml"));
 			Scene init = new Scene(panel, WIDTH, HEIGHT);

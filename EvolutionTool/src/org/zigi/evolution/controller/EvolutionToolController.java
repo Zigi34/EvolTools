@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
+import org.zigi.evolution.EvolutionTool;
+import org.zigi.evolution.model.AlgorithmModel;
+import org.zigi.evolution.services.Services;
 import org.zigi.evolution.util.Utils;
 
 import javafx.fxml.FXML;
@@ -12,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
-import javafx.stage.Stage;
 
 public class EvolutionToolController implements Initializable {
 
@@ -58,7 +60,10 @@ public class EvolutionToolController implements Initializable {
 
 	@FXML
 	public void closeWindowAction() {
-		Stage stage = (Stage) root.getScene().getWindow();
-		stage.close();
+		// stopping algorithm
+		AlgorithmModel alg = Services.algorithmService().getSelected();
+		alg.stop();
+
+		EvolutionTool.stage.close();
 	}
 }

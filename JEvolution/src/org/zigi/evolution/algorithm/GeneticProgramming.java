@@ -22,6 +22,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	private CrossFunction cross;
 	private MutateFunction mutate;
 	private ElitismFunction elitism = new BestElitism();
+	private double mutateProbability = 0.7;
 
 	private static final Random RAND = new Random();
 	private static final Logger LOG = Logger.getLogger(GeneticProgramming.class);
@@ -71,6 +72,14 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		this.mutate = mutate;
 	}
 
+	public double getMutateProbability() {
+		return mutateProbability;
+	}
+
+	public void setMutateProbability(double mutateProbability) {
+		this.mutateProbability = mutateProbability;
+	}
+
 	public void run() {
 		setState(INIT_STATE);
 		TreeProblem problem = (TreeProblem) getProblem();
@@ -98,7 +107,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		checkBestSolution(population);
 		setState(CHECK_BEST_SOLUTION_END);
 
-		for (int i = 0; i < getGeneration() && !isTerminate(); i++) {
+		while (getActualGeneration() < getGeneration() && !isTerminate()) {
 			// vytvorime si novou populaci
 			Population newPopulation = new Population();
 			newPopulation.setMax(getPopulation().getMaxSolutions());
@@ -117,7 +126,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 					newPopulation.add(selected);
 				} else {
 					// nahodne vybereme bud mutaci nebo krizeni
-					if (RAND.nextDouble() <= 0.7) {
+					if (RAND.nextDouble() <= mutateProbability) {
 						// mutace
 						List<Solution> list = select.select(population, 1);
 						Solution selected = list.get(0).cloneMe();
@@ -173,6 +182,11 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 			// konec plneni nove populace a nahrazeni stare
 			setPopulation(p);
 			setState(NEW_POPULATION);
+
+			increseActualGeneration();
 		}
+
+		setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);
+		setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);
 	}
 }

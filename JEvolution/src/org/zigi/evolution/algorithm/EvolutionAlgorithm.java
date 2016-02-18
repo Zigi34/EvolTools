@@ -26,6 +26,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	private Problem problem;
 	private Solution bestSolution;
 	private int generation = 2000;
+	private int actualGeneration = 0;
 	private Thread thread = new Thread(this);
 
 	protected OutputStreamWriter writer;
@@ -34,6 +35,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	public static final String ALGORITHM_TERMINATING = "ALGORITHM_TERMINATING";
 	public static final String ALGORITHM_TERMINATED = "ALGORITHM_TERMINATED";
 	public static final String ALGORITHM_STARTED = "ALGORITHM_STARTED";
+	public static final String NEW_BEST_SOLUTION = "NEW_BEST_SOLUTION";
 
 	public static final String STATE_NAME = "STATE";
 
@@ -183,13 +185,15 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 * @param population
 	 */
 	public void checkBestSolution(Population population) {
-		if (bestSolution == null)
+		if (bestSolution == null) {
 			bestSolution = population.getSolutions().get(0).cloneMe();
+			setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
+		}
 
 		for (Solution solution : population.getSolutions()) {
 			if (solution.getFitness() > bestSolution.getFitness()) {
 				bestSolution = solution.cloneMe();
-				LOG.info(String.format("New best solution: %s", bestSolution));
+				setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
 			}
 		}
 	}
@@ -274,7 +278,6 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	protected void setState(String state) {
 		notifyListeners(this, "STATE", this.state, state);
-		// LOG.debug(state);
 		this.state = state;
 	}
 
@@ -284,5 +287,17 @@ public abstract class EvolutionAlgorithm implements Runnable {
 
 	public void setGeneration(int generation) {
 		this.generation = generation;
+	}
+
+	public int getActualGeneration() {
+		return actualGeneration;
+	}
+
+	public void setActualGeneration(int actualGeneration) {
+		this.actualGeneration = actualGeneration;
+	}
+
+	public void increseActualGeneration() {
+		this.actualGeneration++;
 	}
 }
