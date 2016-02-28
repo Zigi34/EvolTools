@@ -18,15 +18,15 @@
 \PrintPublicationAgreement{true}
 
 \Thanks {
-Rád bych na tomto místě poděkoval všem, kteří mi s prací pomohli, protože bez nich by tato práce nevznikla.
+Rád bych poděkoval prof. Ing. Ivan Zelinka, Ph.D. za užitečné rady, zajímavé
+podměty a věnovaný čas při tvorbě této práce. Rovněž velmi děkuji svým rodičům a dalším rodinným příslušníkům za všestrannou podporu během studia.
 }
 
 \CzechAbstract {
-
 }
 
 \CzechKeywords {
-evoluční algoritmy, genetické programování, syntaktický strom, křížení, mutace, selekce, program, jedinec
+EVT, evoluční algoritmy, genetické programování, syntaktický strom, křížení, mutace, selekce, program, jedinec, symbolická regrese, Java
 }
 
 \EnglishAbstract {
@@ -34,12 +34,13 @@ This is English abstract. This is English abstract. This is English abstract. Th
 }
 
 \EnglishKeywords {
-evolutionary, genetic, genetic programming
+EVT, evolutionary algorithm, genetic programming, syntactic tree, cross, mutate, selection, program, individual, symbolic regression, Java
 }
 
 % Pridame pouzivane zkratky (pokud nejake pouzivame).
-\AddAcronym {GP} {Genetické programování}
+\AddAcronym {EVT} {Evoluční výpočetní techniky}
 \AddAcronym {GA} {Genetický algoritmus}
+\AddAcronym {GP} {Genetické programování}
 \AddAcronym {SR} {Symbolická regrese}
 
 %\ThesisAssignmentImagePath{Figures/Zadani}
@@ -78,13 +79,13 @@ evolutionary, genetic, genetic programming
 Tento text je ukázkou sazby diplomové práce v \LaTeX{}u pomocí třídy dokumentů \verb|diploma|.
 Pochopitelně text není skutečnou diplomovou prací, ale jen ukázkou použití
 implementovaných maker v praxi. V kapitole \ref{sec:Typo} jsou ukázky použití
-různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako závěr}. Zároveň
-tato kapitola slouží jako ukázka generování křížových odkazů v \LaTeX{}u.
+různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako závěr}. Zároveň tato kapitola slouží jako ukázka generování křížových odkazů v \LaTeX{}u.
 
 \section{Předmluva}
 \label{sec:Predmluva}
 \paragraph*{}
 Evoluční algoritmy vznikly jako řešení a jeden ze způsobů optimalizace v matematických a vědních kruzích. Celkem dlouho byl způsob optimalizace řešen dnes již klasickým matmatických aparátem, který je založen na infinitezimálním počtu, na variačních metodách aplikovaných ve funkcionálním prostoru nebo numerických metodách.
+
 \paragraph*{}
 Tímto způsobem však lze nalézt optimální řešení pro problémy jednodušší charakter a pro ty složitější umožňuje nalézt pouze suboptimální řešení.
 
@@ -96,7 +97,7 @@ Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a n
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsection{Charakteristika}
+\subsection{Terminologie}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
@@ -107,42 +108,52 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 \subsubsection{Populace}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
+
 \paragraph*{}
 Typickým rysem evolučních algoritmů je, že jsou založeny na práci s populací jedinců. Populace může být znázorněna jako matice NxM, kde sloupce představují jednotlivé jedince. Každý jedinec představuje aktuální řešení danéího problému. S každým jedincem je navíc spojena hodnota účelové funkce, která říká, jak vhodný je jedinec pro další vývoj populace.
+
 \paragraph*{}
 Hlavní činnosti evolučních algoritmů je cyklické vytváření nových populací, tedy náhrada starách populací novými. To vše pomocí přesně definovaných matematických pravidel.
+
 \paragraph*{}
 K vytvoření populace je třeba nadefinovat tzv. vzor, podle kterého se generuje celá počáteční populace. Ve vzoru jsou pro každý parametr konkrétního jedince definovány tři konstanty, a to typ proměnné a hranice intervalu, v němž může pohybovat hodnota parametru. Volba hranice je velmi důležitý krok, protože při jejich nevhodném zvolení se může stát, že budou nalezena řešení , která nebudou možné fyzikálně realizovat nebo nebudou mít opodstatnění. 
+
+\paragraph*{}
 Další neméně důležtý význam hranic souvisí se samotným evolučním procesem. Může se stát, že daný problém bude reprezentován plochou, která bude nabývat lokálních extrémů stále větších hodnot se vzrůstající vzdáleností od počátku. To způsobí, že evoluce bude nacházet stále nová řešení až do nekonečna. Je to způsobeno tím, že evoluční proces směřuje do stále hlubších a vzdálenějších extrémů.
 Populace je na základě vzorového jedince vygenerována podle vzorce.
+
 \paragraph*{}
 $\Theta(1+\alpha)$.  
+
 \paragraph*{}
 Tento vztah zajišťuje, že všchny parametry jedinců budou náhodně vygenerovány uvnitř povolených hranic prostoru možných řešení.
+
 \paragraph*{}
 Zobrazení o tom, jak kvalitně proběhla evoluce, se provádí pomocí tzv. historie vývoje hodnoty účelové funkce ve formě jednoduchého grafu. Na něm je vykreslena závislost vývoje účelové funkce na aktuálním počtu jejich ohodnocení. Jde o sekvenci nejhorších a nejlepších řešení z jednotlivých populací. Výhodnější je však zobrazení závislosti hodnoty účelové funkce na aktuálním počtu jejich ohodnocení. To proto, že u evolučních cyklů se provádí u jednotlivých algoritmů různý počet ohodnocení účelové funkce. U prvního případu může být pomalejší konvergence hodnoty účelové funkce zobrazena jako rychlejší a naopak. Skutečná informace o kvalitě evoluce je pak zkreslená. U druhého způsobu můžeme objektivně porovnávat různé typy algoritmů bez ohledu na jejich vnitřní struktuře.
 Kromě vývoje nejlepšího jedince je pak vhodné zobrazovat vývoj i nejhoršího jedince z populace, a to do jednoho grafu.
+
 \paragraph*{}
 Vývoj populace musí být vždy konvergentní k lepším hodnotám, což znamená, že nemůže nikdy vykazovat divergenci. V daném algoritmu funguje tzv. „elitismus“, který slouží jako jakýsi jednosměrný filtr, jenž propouští do nové populace pouze ta řešení, která jsou lepší či stejně dobrá jako ta ze staré populace.
 
-\subsubsection{Selekce}
-\paragraph*{}
-Operací selekcí v evolučních algoritmech rozumíme náhodné vybrání několika řešení z celé populace a to na základě předpokladů, které o každém řešení známe. Požadovaný je stav, aby během běhu algoritmu kulminovaly řešení v populaci k lepším, než byly na začátku. K tomu nám slouží ohodnocovací funkce. Operace selekce poté pracuje s hodnotou fitness tak, aby pozitivně zohlednila řešení s větší vhodností a znevýhodnila řešení, která mají tuto hodnotu malou.
-\paragraph*{}
-V dalších částech této práce si představíme několik nejznámějších způsobů, jak lze z populace vybírat náhodně některá řešení a přitom zvýhodňovat lepší řešení od horších. Vždy záleží na konkrétním případě užití. Představíme si algoritmus "Ruletového kola", "Turnajového výběu" a "Výběru podle pořadí".
-
-\subsubsection{Mutace}
-\paragraph*{}
-Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
-
-\subsubsection{Křížení}
-\paragraph*{}
-Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
-
-\subsubsection{Ohodnocení}
+\subsubsection{Ohodnocovací funkce}
 \paragraph*{}
 Každého vytvořeného reprezentativního jedince je třeba ohodnotit v rámci celé populace čítající desídky jiných jedinců tak, aby bylo možné některé jedince (řešení) upřednostňovat při výběru pro křížení před jinými (horšími) řešeními.
 Hodnota takto přidělená jedinci je označována za jeho fitness (neboli vhodnost).
+
+\subsubsection{Výběrová funkce}
+\paragraph*{}
+Operací selekcí v evolučních algoritmech rozumíme náhodné vybrání několika řešení z celé populace a to na základě předpokladů, které o každém řešení známe. Požadovaný je stav, aby během běhu algoritmu kulminovaly řešení v populaci k lepším, než byly na začátku. K tomu nám slouží ohodnocovací funkce. Operace selekce poté pracuje s hodnotou fitness tak, aby pozitivně zohlednila řešení s větší vhodností a znevýhodnila řešení, která mají tuto hodnotu malou.
+
+\paragraph*{}
+V dalších částech této práce si představíme několik nejznámějších způsobů, jak lze z populace vybírat náhodně některá řešení a přitom zvýhodňovat lepší řešení od horších. Vždy záleží na konkrétním případě užití. Představíme si algoritmus "Ruletového kola", "Turnajového výběu" a "Výběru podle pořadí".
+
+\subsubsection{Operátor mutace}
+\paragraph*{}
+Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
+
+\subsubsection{Operátor křížení}
+\paragraph*{}
+Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
 
 \subsubsection{Elitismus}
 \paragraph*{}
@@ -167,24 +178,39 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 
 \section{Genetické programování (GP)}
 \paragraph*{}
-Název "genetické programování" se zrodil již počátkem 80. let, kdy byl představen jako algoritmus pro využití v problémeh jako je predikce, klasifikace, aproximace, tvorba programů.
+Název "genetické programování" (dále už jen GP) se zrodil již počátkem 80. let, kdy byl představen jako algoritmus pro využití v problémeh jako je predikce, klasifikace, aproximace, tvorba programů. GP je odvětvím evolučních výpočetních technik.
 Otcem GP je standfordský informatik John Koza \cite{kozagp,kozagp2}. Díky konceptu, který vytvořil, lze využít při tvorbě programů stejných evolučních operátorů, jaké obsahuje GA (křížení, mutace).
-\paragraph*{}
-Samotné genetické programování lze definovat mnoha způsob. V různých publikacích je o něm píše různými zpsoby. Může jít o program, který umožňuje konstruovat další programy. Nebo může jít o algoritmicky založenou evoluční metodologii, inspirovananou biologickými evolučními procesy či přežití nejschopnějších, z pohledu počítačové programu, ke zjištění, který program nejlépe odpovídá řešení
 
 \paragraph*{}
-Pro to, abychom pochopili smysl tohoto algoritmu, položmě si tuto otázku: "Jak se může počítač naučit řešit  problémy bez toho, abychom jej k tomu přímo nenaprogramovali? Jinými slovy, jak může počítač sám dělat to co potřebujeme aby dělal, bez toho abychom mu to přesně řekli?" Touto otázkou Arthur Samuel již v roce 1959 otevřel debatu kolem umělé inteligence.
+V zásadě lze označit GP jako hledaní nejlépe ohodnoceného (hodícího se) programu ve skupině přípustných programů, kdy populace požadované velikosti – obvykle několika stovek jedinců – je geneticky křížena a mutována.
+Jde o program, který umožňuje konstruovat další programy. Může jít o algoritmicky založenou evoluční metodologii, inspirovananou biologickými evolučními procesy (přežití nejschopnějších), ke zjištění, který program nejlépe odpovídá řešení.
+
+\paragraph*{}
+Proto, abychom pochopili smysl tohoto algoritmu, položmě si tuto otázku: "Jak se může počítač naučit řešit  problémy bez toho, abychom jej k tomu přímo nenaprogramovali? Jinými slovy, jak může počítač sám dělat to co potřebujeme aby dělal, bez toho abychom mu to přesně řekli?" Touto otázkou Arthur Samuel již v roce 1959 otevřel debatu kolem umělé inteligence.
+
 \paragraph*{}
 Paradigma genetického programování následuje přístup k řešení problému klasickým genetickým algoritmem s navýšením komplexnosti struktury jedince procházející adaptací. Takové jedince tvoří složitější struktury, které tvoří hirearchicky členěné počítačové programy, vyznačující se různou délkou a tvarem. Jsou to zejména problémy jako umělá inteligence, symbolická regrese, strojové učení, které lze přeformulovat na požadavek nalezení počítačového programu, který bude na výstupu generovat jiné programy jako vstup ke konkrétní úloze. Koza ve své knize tvrdí, že proces řešení těchto problémů lze formulovat jako hledání nejvhodnějšího počítačového programu v prostoru všech možných programů. Prohledávací prostor je tvořen funkcemi a terminály odpovídající doméně problému. A právě genetické programování nám poskytuje postup, jak pomocí genetického šlechtění nalézt nejlépe odpovídající program k dané úloze.
+
 \paragraph*{}
 Typickým příkladem pro genetické programování je model, který se snaží nalézt logický výraz, jehož výsledkem je buď ano či ne. Můžeme si to představit na modelu banky, která eviduje své zákazníky a jejich úvěry. U každého záznamu zákazníka známe cílový stav (dostal úvěr nebo nedostal)? Nás potom ude zajímat, podle jakých kritérií bychom mohli tento model kategorizovat (čili vytvořit podmínky pro rozhodnutí, kdo úvěr dostane a kdo ne).
-Všechny dříve popsané algoritmy vznikly a jsou většinou užitečné v případech, kdy hledáme určitou konfiguraci pro matematický model problému tak, abychom dosáhly určitých mezních hodnot. Popusťme však ještě uzdu své fantazii a představme si situaci, kdy budeme chtít řešit problém, u kterého si nejsme jistí, jaký má být správný postup v jeho řešení. V zásadě budeme chtít vytvořit algoritmus, který dokáže generovat jiné algoritmy (či programy), který budou daný problém řešit.
+
 \paragraph*{}
 Představme si situaci, kdy budeme chtít na základě nashromážděných dat vytvořit systém, který bude tyto data celkem dobře číst a popisovat je. Můžeme si to osvětlit na příkladě s bankou, která vede záznamy o úvěrech spolu s informacemi o věřitelích. Může se jednat o velikosti rodinného rozpočtu, počtu členů v rodině, počtu pracujících atd. S těmito parametry bychom potom chtěli vytvořit program, který by predikoval, zda je klient vhodným kandidátem na úvěr nebo ne.
 
 \subsection{GA vs. GP}
+\paragraph*{}
+Přesto, že je tato technika GP poměrně mladá, patří k nejintenzivněji zkoumaným přístupům. Jak již bylo dříve zmíněno, vychází z analogie GA. Liší se v účelu použítí a také v reprezentaci jidince.
+
+\paragraph*{}
+Genetické algoritmy obecně jsou založeny na myšlence optimalizace hodnot nezávislých proměnných za pomocí adapatčního preparátu, který známe z přírodních zákonitostí \cite{evoltech}.
+
 \begin{enumerate}
+\item GA je založeno na optimalizaci hodnot nezávislých proměnných
+\paragraph*{}
+Všechny dříve popsané algoritmy vznikly a jsou většinou užitečné v případech, kdy hledáme určitou konfiguraci pro matematický model problému tak, abychom dosáhly určitých mezních hodnot. Popusťme však ještě uzdu své fantazii a představme si situaci, kdy budeme chtít řešit problém, u kterého si nejsme jistí, jaký má být správný postup v jeho řešení. V zásadě budeme chtít vytvořit algoritmus, který dokáže generovat jiné algoritmy (či programy), který budou daný problém řešit.
+
 \item Jedinec v GP tvoří řešením pro nějaký model problému, který však už není pouze konfigurace, ale celý algoritmus (program).
+
 \item Populace v GP je tvořena stovkami až tisíci jedinci, kdy každému jedinci odpovídá nějaký program
 \end{enumerate}
 
@@ -200,28 +226,48 @@ Představme si situaci, kdy budeme chtít na základě nashromážděných dat v
 \subsection{Reprezentace jedince}
 \paragraph*{}
 První problém, který po zrození myšlenky využít GA pro tvorbu a šlechtění počítačových programů je samotná reprezentace počítačového programu. Tato reprezentace musí být dostatečně obecná pro popsání v různých programovacích jazycích a zároveň zachovávat smyslupnost, syntaktickou správnost a spustitelnost nově vyšlechtěných programů při použití evolučních operátorů mutace a křížení.
+
 \paragraph*{}
 Vhodnou reprezentaci programů nalezl Koza v jazyce LISP, který reprezentuje programy jako S-výrazy, což je prakticky syntaktický strom, kterým reprezentují svoje programy překladače. Syntaktický strom je tvořeny dvěma možnými typy uzlů. Jsou to buď neterminály (tvoří funkce) a terminály (proměnné a konstanty). Při definici problémů se specifikuje množina neterminálů $\Pi=\{f_1,f_2,...,f_n\}$ a množina terminálů $\Gamma=\{t_1,t_2,...,t_n\}$. Příkladem syntaktického stromu, který znázorňuje výraz pro kombinaci k-té třídy z n prvků je na obrázku.
+
 \paragraph*{}
 Vlastnostmi se podobá neuronovými sítěmi. Od jiných evolučních algoritmů vyčnívá svou značně velkou populací (čítající tisíce jedinců) a z toho důvodu se jeví, jako značně pomalý algoritmus. Výhodou oproti jiným algoritmům (např. genetický algoritmus), které mají většinou lineárlní strukturu, zde tvoři jedince ne-lineární chromosomy (např. stromy či grafy).
 \InsertFigure{Figures/Graf}{0.7\textwidth}{Nějaký graf}{fig:SampleGraph}
+
 \paragraph*{}
 Funkce $f_i$ z množiny $\Pi$ tvořící uzly syntaktického stromu jejichž argumenty reprezentují hrany vedoucí do hloubky o jedno větší. Terminály zastupují proměnné či konstanty umístěné v listových uzlech ukončují růst stromu a samotné individuum.
 
 \subsection{Algoritmus GP}
+\paragraph*{}
+Jak ilustruje níže uvedený obrázek \ref{fig:gp-paradigm}, algoritmus GP lze rozdělit do několika kroků, které budou následně rozebrány v závislosti na způsobu realizace.
 \InsertFigure{Figures/gp-paradigm.png}{0.7\textwidth}{Průběh algoritmu Genetického programování}{fig:gp-paradigm}
+
+\paragraph*{}
+Prvním krokem je vytvoření náhodné populace jedinců, která bude sloužit k tvorbě dalších, vhodnějších řešeních.
+Než se dostaneme ke šlechtění nových "lepších" jedinců, je potřeba, ve stávající populaci, nějak rozlišit vhodnější řešení reprezentováno jedincem, od řešení horšího. Proto je iniciační populace ohodnocena fitness funkcí.
+
+\paragraph*{}
+Před tím, něž budou řešení v populaci podrobena operátorům křížení nebo mutaci, stanou nejprve před genetickou operací selekce. Program je vybrán na základě dříve zmíněné Darwinovy teorie přírodního výběru. Konkrétně pro nás je to na základě předchozího ohodnocení.
+
+\paragraph*{}
+Ohodnocená populace je následně předaná genetickým operacím. Zde bude velmi záviset, s jakými parametry budou operace křížení či mutace operovat. Je třeba parametrem stanovit, jak velká část populace bude podrobena operaci mutace a naopak jak velká část operaci křížení. 
 
 \subsection{Omezení GP}
 \paragraph*{}
 Koza ve své knize definuje \cite{kozagp} dvojí požadavky na množinu funkcí a terminálů. Je to požadavek uzavřenosti (closure) a postačitelnosti (sufficiency) obou množin. Uzavřenost množiny je splněna tehdy, pokud může libovolná funkce příjmout jako argument libovoulnou funkci z množiny funkcí či terminál z množiny terminálních symbolů. Uzavřenost zamezí tvorbu syntakticky nesprávných programů.
+
 \paragraph*{}
 Postačitelnst nám naproti tomu umožňuje, abychom byli schopní k danému problému nalézt odpovídající program (funkci), která by jej řešila. Díky tomu jsme schopni říci, že k danému problému můžeme vyjádřit řešení daného problému. Představme si problém nalezení potravy umělým mravencem v mřížkové soustavěm kterou můžeme popsat množinou funkcí tvořenou příkazy $\{KROK VPRED, OTOC VLEVO, OTOC VPRAVO\}$ a množinou terminálů s jediným příkazem $\{ZASTAV\}$. I bez dokázaní si můžeme jasně říci, že jsme schopní díky těmto příkazům dostat mravence do jakéhokoliv místa a zastavit.
+
 \paragraph*{}
 U jednoduchých příkladů, kde je množina terminálů a neterminálů tvořena pouze Booleovskými funkcemi můžeme i bez důkazů předpokládat, že takové množiny jsou uzavřené a splňují také podmínku postačitelnosti. Ovšem v reálných příkladech budeme často používat programy složené číselných proměnných a funkcích, podmínkách, rekurzích, ruzných typů v argumentech funkcí. Nebo budeme při práci s číselnými funkcemi muset ošetřit některé zakázané stavy (dělení nulou, logaritmus záporného čísla, atd.). V takových případech už podmínka uzavřenosti nemusí platit.
+
 \paragraph*{}
 I v těchto případech se však můžeme odkázat na Kozu, který tvrdí, že lze jednoduchým postupem zajistit, aby byly množiny terminálů a funkcí uzavřené pro obecně jakýkoliv problém. Vezměme si případ programu pracujícího s číselnými funkcemi a terminály, kde může nastat situace, že se bude muset provést dělení nulou. Proto je třeba upravit funkce z těchto množin tak, aby umožňovaly zpracovat také nedefinovatelnou hodnotu ("undefined") v podobě nějakého zástupného symbolu a ošetřit stavy funkcí tak, aby funkce mohla vrátit kromě čísla také tuto hodnotu v případech, kdy je operae zakákána nebo v případě, že alespoň jeden z argumentů vrací tuto hodnotu. Takto upravené funkce Koza nazývá chráněné funkce (protected functions).
+
 \paragraph*{}
 Vlastnost uzavřenosti množin je vhodná, ale není absolutně nutná. Jako alternativa k chráněným funkcím může sloužit jiný přístup. Pokud striktně nevyžadujeme, aby byl program syntaktického stromu validní, můžeme nesprávně generované stromy v populaci zakázat nebo je jinak penalizovat, aby nepřecházely do nových generací. V této práci se však takovým způsobům nebudeme zabývat a budeme pracovat pouze se splněnou podmínkou uzavřenosti.
+
 \paragraph*{}
 Protože výsledná funkce je tvořena nejen proměnnými, ale také konstantami, je třeba si říci, jak je při tvorbě jedince reprezentovat. Protože můžeme chtít použít GP pro ekonomické modelování, měl by mít algoritmus možnost generovat vhodné konstanty v daném rozsahu a daného typu podle řešené úlohy. Koza navrhuje množinu terminálů o náhodnou konstantu C tak, že se během běhu programu při ohodnocení individuí doplní o náhodnou hodnotu z příslučné množiny. Toto číslo se potom využije jako kterýkoliv jiný terminál.
 
@@ -242,14 +288,17 @@ Aby byl algoritmus GP skutečně úspěšný a efektivní při hledání vhodné
 \subsection{Reprezentace stromu}
 \paragraph*{}
 Implementací syntaktického stromu je několik. Jednou z možností jak strom v počítačích reprezentovat je s použitím uzlů obsahující sezname potomků. Jde o přirozené vnímání stromové struktury, která je však při samotné implementaci dosti obtížně manipulovatelná. 
+
 \paragraph*{}
 Druhou možností je seznam, který představuje strom v prefixovém tvaru zápisu. Pořadí prvků v seznamu odpovídá pořadí navštívení každého uzlu ve stromě, při procházení stromu do hloubky. Zajištění zpětné rekonstrukce stromu nám umožňuje informace o tom, zda prvek patří do množiny terminálních symbolů nebo naopak do množiny funkcí a arita každé funkce. Příkladem takovéto stromové reprezentace je na obrázku níže.
 
 \subsection{Generování počáteční populace}
 \paragraph*{}
 Při prvotním generování populace se budeme zabývat, jakým způsobem lze náhodně vygenerovat několik individuí. Existují dvě metody řídící růst stromu. Úplná (full method), kdy všechny listové uzly stromu mají stejnou hloubku, která je rovna maximální velikosti stromu. Metoda růstová (grow method) naproti tomu dovoluje tvorbu rozmanitějších stromových struktůr. Pro generování následného potomka se náhodně rozhoduje, zda je použitý termínál nebo uzel. I zde je limitní maximální hloubka stromu.
+
 \paragraph*{}
 Koza ve své knize \cite{kozagp} doporučuje kombinaci obou metod, což v praxi znamená, že pro polovinu populace se použije růstová metoda a pro druhou polovinu úplná. Zároveň rovnoměrným rozložením hloubky stromů mezi všechny jedince, snížíme pravděpodobnost výskytu stejnývh řešení, která jsou v populaci nevyhovující. 
+
 \paragraph*{}
 Vše si můžeme ukázat na příkladě populace s $N=500$ jedinců, kde je stanovena maximální hloubka $h_max=6$. Při generování základní populace budeme postupovat tak, že 100 jedinců bude generováno s $h_max=2$ (50 s růstovou metodou a 50 s úplnou metodou),následně pro dalších 100 řešení generujeme obdobné stromy hloubký o 1 vyšší $h_max=3$ a tak dále, až do hloubky $h_max=6$.
 
@@ -258,6 +307,7 @@ Vše si můžeme ukázat na příkladě populace s $N=500$ jedinců, kde je stan
 \subsubsection{Křížení}
 \paragraph*{}
 V GP budeme používat stejné operace jako u GA. Operátor křížení pracuje s dvojícemi stromů. U každého stromu z dvojíce zvolí náhodně uzel pro křížení a v dalším kroku zamění podstromy pod zvolenými uzly mezi sebou. Více osvětlíme příkladem na obrázku. Oproti GA se zde potkáváme s problémem postupného růstu hloubky reprezentujících stromů. V první generaci si obstaráme stromy, který mají definouvanou maximální hloubku. Při aplikaci křížení však snad nastává případ, kdy je například listový uzel jednoho stromu nahrazen téměř celým podstromem druhého jedince. V podstatě jen v případech, kdy se budou zaměňovat podstromy z uzlů, které jsou ve stejné hloubce se žádný z obou stromů nerozšiřuje. Ve všech ostatních případech bude jeden nebo druhý strom rozšířený.
+
 \paragraph*{}
 Koza doporučuje, abychom definovali i maximální hloubku stromů vzniklých křížením. Doporučuje se trojnásobek hloubky počáteční populace. Pokud bychom při křížení překročili tuto maximální povolenou hranici, takto vzniklí potomci budou odmítnuti a nahrazeni jedním z rodičovských jedinců.
 
@@ -268,6 +318,7 @@ Speciálním případem při křížení je tzv. "incestní křížení", které
 \subsubsection{Mutace}
 \paragraph*{}
 Operátor mutace také náhodně vybere uzel stromu a celý jeho podstrom odstraní. Na tomto místě se poté náhodně vygeneruje chybějící část stromu do maximální hloubky předepsané parametrem tak, aby vyýsledný strom nebyl příliš velký. 
+
 \paragraph*{}
 Variant operace mutace je několik. Mezi základní patří tyto:
 \begin{enumerate}
@@ -279,8 +330,10 @@ Variant operace mutace je několik. Mezi základní patří tyto:
 \subsubsection{Další operátory}
 \paragraph*{}
 To však není celý výčet možných operátorů. Existují i operátor, které se v GP nevyužívají zcela běžně, ale stojí za to se o nich zmínit. Mezi méně časté operátory řadíme například operátor permutace, zapouzdření, editace či decimace.
+
 \paragraph*{}
 Operátor permutace je příkladem asexuálního operátora, který využívá jen jednoho rodiče a náhodně zvolí neterminál s n operátory, jejichž pořadí náhodně prohodí. Jde tedy o náhodné prohození pořadí větví takovéhoto podstromu.
+
 \paragraph*{}
 Operátor editace se snaží poskytnou nedestruktivní redukci hloubky stromu tak, aby výsledný strom představoval tentýž program, ale bez přebytečných uzlů. Nejlépe, když si takový případ ukážeme na obrázku.
 
@@ -305,6 +358,7 @@ Postup evolučního algoritmu
 \item Vybraní jedinci zaplní novou populaci
 \item Stará populace je zapomenuta a na její místo nastupuje populace nová. Dále se pokračuje krokem 4.
 \end{enumerate}
+
 \paragraph*{}
 Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné od klasických, ale hlavně pro fakt, že v případě vhodného aplikování jsou schopny nahradit člověka
 \end{example}
@@ -320,6 +374,7 @@ Evoluční procesy, do kterých řadíme "přirozený výběr", "mutaci", "kří
 \subsubsection{Výběrová funkce}
 \paragraph*{}
 V evolučních technikách se využívá vždy a ovlivňuje populační vývoj, protože předchází evoluční operátory (křížení, mutaci). Tato funkce se má stát přirozeným výběrem, který v přírodě funguje již od pradána. Tedy právo silnějšího (odolnějšího, přizpůsobivějšího) jedince na tvorbu nové generace.
+
 \paragraph*{}
 Několik pravidel pro efektivnější výběrovou funkci:
 \begin{enumerate}
@@ -419,6 +474,10 @@ Zdeněk Gold
 \bibitem{kozagp} Koza, J. R.,
 \textit{Genetic programming. On the Programming of Computers by Means of Natural Selection},
 Cambridge, MA: MIT Press, 1992.
+
+\bibitem{evoltech} Dostál, M.,
+\textit{Evluční výpočetní techniky},
+Olomouc, Přírodovědecká fakulta: 2007.
 
 \bibitem{kozagp2} Koza, J. R.,
 \textit{Genetic programming II. Automatic Discovery of Reusable Programs},

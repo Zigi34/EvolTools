@@ -3,30 +3,30 @@
 \contentsline {section}{\numberline {2}P\IeC {\v r}edmluva}{6}{section.2}
 \contentsline {section}{\numberline {3}Evolu\IeC {\v c}n\IeC {\'\i } algoritmy}{7}{section.3}
 \contentsline {subsection}{\numberline {3.1}Pot\IeC {\v r}eba evolu\IeC {\v c}n\IeC {\'\i }ch algoritm\IeC {\r u}}{7}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Charakteristika}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Terminologie}{7}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Jedinec}{7}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Populace}{7}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Selekce}{8}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Mutace}{9}{subsubsection.3.2.4}
-\contentsline {subsubsection}{\numberline {3.2.5}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{9}{subsubsection.3.2.5}
-\contentsline {subsubsection}{\numberline {3.2.6}Ohodnocen\IeC {\'\i }}{9}{subsubsection.3.2.6}
+\contentsline {subsubsection}{\numberline {3.2.3}Ohodnocovac\IeC {\'\i } funkce}{8}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{8}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.5}Oper\IeC {\'a}tor mutace}{9}{subsubsection.3.2.5}
+\contentsline {subsubsection}{\numberline {3.2.6}Oper\IeC {\'a}tor k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{9}{subsubsection.3.2.6}
 \contentsline {subsubsection}{\numberline {3.2.7}Elitismus}{9}{subsubsection.3.2.7}
 \contentsline {subsection}{\numberline {3.3}Vybran\IeC {\'e} algoritmy}{9}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Genetick\IeC {\'y} algoritmus (GA)}{9}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Particle Swarm}{9}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2}Particle Swarm}{10}{subsubsection.3.3.2}
 \contentsline {subsubsection}{\numberline {3.3.3}SOMA}{10}{subsubsection.3.3.3}
 \contentsline {section}{\numberline {4}Genetick\IeC {\'e} programov\IeC {\'a}n\IeC {\'\i } (GP)}{11}{section.4}
 \contentsline {subsection}{\numberline {4.1}GA vs. GP}{12}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}\IeC {\'U}lohy \IeC {\v r}e\IeC {\v s}en\IeC {\'e} GP}{12}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Reprezentace jedince}{12}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Algoritmus GP}{13}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Omezen\IeC {\'\i } GP}{13}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Mno\IeC {\v z}ina funkc\IeC {\'\i } a termin\IeC {\'a}l\IeC {\r u}}{15}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Reprezentace stromu}{16}{subsection.4.7}
-\contentsline {subsection}{\numberline {4.8}Generov\IeC {\'a}n\IeC {\'\i } po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i } populace}{16}{subsection.4.8}
-\contentsline {subsection}{\numberline {4.9}Oper\IeC {\'a}tory}{17}{subsection.4.9}
-\contentsline {subsubsection}{\numberline {4.9.1}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{17}{subsubsection.4.9.1}
-\contentsline {subsubsection}{\numberline {4.9.2}Mutace}{17}{subsubsection.4.9.2}
+\contentsline {subsection}{\numberline {4.3}Reprezentace jedince}{13}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Algoritmus GP}{14}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Omezen\IeC {\'\i } GP}{14}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Mno\IeC {\v z}ina funkc\IeC {\'\i } a termin\IeC {\'a}l\IeC {\r u}}{16}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Reprezentace stromu}{17}{subsection.4.7}
+\contentsline {subsection}{\numberline {4.8}Generov\IeC {\'a}n\IeC {\'\i } po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i } populace}{17}{subsection.4.8}
+\contentsline {subsection}{\numberline {4.9}Oper\IeC {\'a}tory}{18}{subsection.4.9}
+\contentsline {subsubsection}{\numberline {4.9.1}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{18}{subsubsection.4.9.1}
+\contentsline {subsubsection}{\numberline {4.9.2}Mutace}{19}{subsubsection.4.9.2}
 \contentsline {subsubsection}{\numberline {4.9.3}Dal\IeC {\v s}\IeC {\'\i } oper\IeC {\'a}tory}{19}{subsubsection.4.9.3}
 \contentsline {subsection}{\numberline {4.10}Popis algoritmu}{19}{subsection.4.10}
 \contentsline {section}{\numberline {5}Implementace GP}{21}{section.5}
