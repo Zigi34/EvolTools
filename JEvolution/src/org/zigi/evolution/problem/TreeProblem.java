@@ -7,17 +7,16 @@ import java.util.Random;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.TreeSolution;
 import org.zigi.evolution.solution.value.GPFenotype;
-import org.zigi.evolution.solution.value.Genotype;
 import org.zigi.evolution.solution.value.Node;
 
 public abstract class TreeProblem extends Problem {
 
 	private List<GPFenotype> values = new LinkedList<GPFenotype>();
 	private static final Random RAND = new Random();
-	private Integer maxHeight;
+	private Integer maxHeight = 3;
 
 	/**
-	 * Prida se hodnota o stromove struktury
+	 * Prida se hodnota do stromove struktury
 	 * 
 	 * @param val
 	 *            hodnota stromu
@@ -57,7 +56,7 @@ public abstract class TreeProblem extends Problem {
 	public TreeSolution randomGrowTreeSolution(Integer deepSize) {
 		TreeSolution ant = new TreeSolution(deepSize);
 		ant.addGenotype(randomGenotype());
-		List<Node> list = ant.leaves();
+		List<Node> list = ant.uncompleteNodes();
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = ant.deepOf(val);
@@ -65,7 +64,7 @@ public abstract class TreeProblem extends Problem {
 				ant.addGenotype(randomGenotype());
 			else
 				ant.addGenotype(randomTerminal());
-			list = ant.leaves();
+			list = ant.uncompleteNodes();
 		}
 		return ant;
 	}
@@ -82,7 +81,7 @@ public abstract class TreeProblem extends Problem {
 		if (tree.getRoot() == null)
 			tree.addGenotype(randomGenotype());
 
-		List<Node> list = tree.leaves();
+		List<Node> list = tree.uncompleteNodes();
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = tree.deepOf(val);
@@ -90,7 +89,7 @@ public abstract class TreeProblem extends Problem {
 				tree.addGenotype(randomGenotype());
 			else
 				tree.addGenotype(randomTerminal());
-			list = tree.leaves();
+			list = tree.uncompleteNodes();
 		}
 		return tree;
 	}
@@ -105,7 +104,7 @@ public abstract class TreeProblem extends Problem {
 		if (tree.getRoot() == null)
 			tree.addGenotype(randomFunction());
 
-		List<Node> list = tree.leaves();
+		List<Node> list = tree.uncompleteNodes();
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = tree.deepOf(val);
@@ -113,7 +112,7 @@ public abstract class TreeProblem extends Problem {
 				tree.addGenotype(randomFunction());
 			else
 				tree.addGenotype(randomTerminal());
-			list = tree.leaves();
+			list = tree.uncompleteNodes();
 		}
 		return tree;
 	}
@@ -137,7 +136,7 @@ public abstract class TreeProblem extends Problem {
 	public TreeSolution randomFullTreeSolution(Integer deepSize) {
 		TreeSolution ant = new TreeSolution(deepSize);
 		ant.addGenotype(randomGenotype());
-		List<Node> list = ant.leaves();
+		List<Node> list = ant.uncompleteNodes();
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = ant.deepOf(val);
@@ -145,13 +144,13 @@ public abstract class TreeProblem extends Problem {
 				ant.addGenotype(randomGenotype());
 			else
 				ant.addGenotype(randomTerminal());
-			list = ant.leaves();
+			list = ant.uncompleteNodes();
 		}
 		return ant;
 	}
 
 	@Override
-	public Genotype randomGenotype() {
+	public GPFenotype randomGenotype() {
 		if (RAND.nextDouble() <= 0.5)
 			return randomFunction();
 		else
@@ -189,7 +188,7 @@ public abstract class TreeProblem extends Problem {
 	public GPFenotype randomFunction() {
 		List<GPFenotype> list = new LinkedList<GPFenotype>();
 		for (GPFenotype fen : values) {
-			if (fen.isFunction())
+			if (!fen.isTerminal())
 				list.add(fen);
 		}
 		return list.get(RAND.nextInt(list.size()));

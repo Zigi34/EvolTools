@@ -6,28 +6,13 @@ public class IfFoodAhead extends GPFenotype {
 		super(2);
 	}
 
-	public Genotype cloneMe() {
+	public GPFenotype cloneMe() {
 		return new IfFoodAhead();
 	}
 
 	@Override
 	public boolean isTerminal() {
 		return false;
-	}
-
-	@Override
-	public boolean isFunction() {
-		return true;
-	}
-
-	@Override
-	public void setValue(Object o) {
-
-	}
-
-	@Override
-	public Object getValue() {
-		return null;
 	}
 
 	@Override

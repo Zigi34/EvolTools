@@ -1,6 +1,8 @@
 package org.zigi.evolution.solution.value;
 
-public abstract class GPFenotype extends Genotype {
+import org.zigi.evolution.util.Cloneable;
+
+public abstract class GPFenotype implements Cloneable<GPFenotype> {
 
 	private int maxChilds = 0;
 
@@ -10,14 +12,20 @@ public abstract class GPFenotype extends Genotype {
 
 	public abstract boolean isTerminal();
 
-	public abstract boolean isFunction();
-
 	public int getMaxChilds() {
 		return maxChilds;
 	}
 
 	public void setMaxChilds(int maxChilds) {
 		this.maxChilds = maxChilds;
+	}
+
+	public void setValue(Object o) {
+
+	}
+
+	public Object getValue() {
+		return null;
 	}
 
 }

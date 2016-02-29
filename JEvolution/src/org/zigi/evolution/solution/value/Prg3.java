@@ -6,28 +6,13 @@ public class Prg3 extends GPFenotype {
 		super(3);
 	}
 
-	public Genotype cloneMe() {
+	public GPFenotype cloneMe() {
 		return new Prg3();
 	}
 
 	@Override
 	public boolean isTerminal() {
 		return false;
-	}
-
-	@Override
-	public boolean isFunction() {
-		return true;
-	}
-
-	@Override
-	public void setValue(Object o) {
-
-	}
-
-	@Override
-	public Object getValue() {
-		return null;
 	}
 
 	@Override

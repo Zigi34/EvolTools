@@ -261,4 +261,14 @@ public class Node implements Cloneable<Node> {
 		return id;
 	}
 
+	/**
+	 * Testing for leaf
+	 * 
+	 * @return
+	 */
+	public boolean isLeaf() {
+		if (getChilds().isEmpty())
+			return true;
+		return false;
+	}
 }

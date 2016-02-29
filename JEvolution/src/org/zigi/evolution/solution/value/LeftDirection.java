@@ -6,28 +6,13 @@ public class LeftDirection extends GPFenotype {
 		super(0);
 	}
 
-	public Genotype cloneMe() {
+	public GPFenotype cloneMe() {
 		return new LeftDirection();
 	}
 
 	@Override
 	public boolean isTerminal() {
 		return true;
-	}
-
-	@Override
-	public boolean isFunction() {
-		return false;
-	}
-
-	@Override
-	public void setValue(Object o) {
-		// nic nedelej
-	}
-
-	@Override
-	public Object getValue() {
-		return null;
 	}
 
 	@Override

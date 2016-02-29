@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.zigi.evolution.solution.value.GPFenotype;
-import org.zigi.evolution.solution.value.Genotype;
 import org.zigi.evolution.solution.value.Node;
 
 public class TreeSolution extends Solution {
@@ -35,7 +34,7 @@ public class TreeSolution extends Solution {
 	 * @return
 	 */
 	private Node nextUncompleteNode() {
-		List<Node> leaves = leaves();
+		List<Node> leaves = uncompleteNodes();
 		if (leaves != null && !leaves.isEmpty())
 			return leaves.get(0);
 		return null;
@@ -77,9 +76,8 @@ public class TreeSolution extends Solution {
 	}
 
 	@Override
-	public void addGenotype(Genotype genotype) {
-		GPFenotype fenotype = (GPFenotype) genotype;
-		addNode(new Node(fenotype, nextUncompleteNode()));
+	public void addGenotype(GPFenotype genotype) {
+		addNode(new Node(genotype, nextUncompleteNode()));
 	}
 
 	/**
@@ -122,12 +120,14 @@ public class TreeSolution extends Solution {
 	}
 
 	/**
-	 * Odstraneni podstromu od nejakeho uzlu včetne tohoto uzlu.
+	 * Odstraneni podstromu od nejakeho uzlu včetne tohoto uzlu a vraceni
+	 * rodicoveskeho uzlu
 	 * 
 	 * @param node
-	 *            uzle od kterého se odstrani podstrom
+	 * @return
 	 */
-	public void removeSubTree(Node node) {
+	public Node removeSubTree(Node node) {
+		Node result = null;
 		if (nodes.contains(node)) {
 			List<Node> subNodes = node.deepNodes();
 
@@ -136,10 +136,12 @@ public class TreeSolution extends Solution {
 				root = null;
 			} else {
 				// preskocime na nadrazeny uzel a odstranime tohoto potomka
-				node.getParent().removeChild(node);
+				result = node.getParent();
+				result.removeChild(node);
 			}
 			nodes.removeAll(subNodes);
 		}
+		return result;
 	}
 
 	/**
@@ -148,9 +150,9 @@ public class TreeSolution extends Solution {
 	 * 
 	 * @return seznam nekompletnich uzlu
 	 */
-	public List<Node> leaves() {
+	public List<Node> uncompleteNodes() {
 		List<Node> list = new LinkedList<Node>();
-		leaves(list, root);
+		uncompleteNodes(list, root);
 		return list;
 	}
 
@@ -163,14 +165,43 @@ public class TreeSolution extends Solution {
 	 * @param actual
 	 *            aktualne prochazeny uzel
 	 */
-	private void leaves(List<Node> list, Node actual) {
+	private void uncompleteNodes(List<Node> list, Node actual) {
 		if (actual != null) {
 			for (Node val : actual.getChilds()) {
-				leaves(list, val);
+				uncompleteNodes(list, val);
 			}
 			if (!actual.isComplete()) {
 				list.add(actual);
 			}
+		}
+	}
+
+	/**
+	 * Returning all leaves
+	 * 
+	 * @return
+	 */
+	public List<Node> leaveNodes() {
+		List<Node> leaves = new LinkedList<>();
+		leaveNodes(leaves, root);
+		return leaves;
+	}
+
+	/**
+	 * Recursice function for get all leaves in tree
+	 * 
+	 * @param list
+	 * @param actual
+	 */
+	private void leaveNodes(List<Node> list, Node actual) {
+		if (actual != null) {
+			List<Node> childs = actual.getChilds();
+			if (childs == null || childs.size() == 0)
+				list.add(actual);
+			else
+				for (Node val : actual.getChilds()) {
+					leaveNodes(list, val);
+				}
 		}
 	}
 
@@ -198,12 +229,12 @@ public class TreeSolution extends Solution {
 	}
 
 	@Override
-	public Genotype getGenotype(Integer index) {
+	public GPFenotype getGenotype(Integer index) {
 		return nodes.get(index).getValue();
 	}
 
-	public List<Genotype> getGenotypes() {
-		List<Genotype> list = new LinkedList<Genotype>();
+	public List<GPFenotype> getGenotypes() {
+		List<GPFenotype> list = new LinkedList<GPFenotype>();
 		for (Node node : nodes) {
 			list.add(node.getValue());
 		}
@@ -211,9 +242,9 @@ public class TreeSolution extends Solution {
 	}
 
 	@Override
-	public void setGenotypes(List<Genotype> vals) {
+	public void setGenotypes(List<GPFenotype> vals) {
 		vals.clear();
-		for (Genotype gen : vals) {
+		for (GPFenotype gen : vals) {
 			addGenotype(gen);
 		}
 	}
@@ -224,7 +255,7 @@ public class TreeSolution extends Solution {
 	}
 
 	@Override
-	public void setGenotype(int index, Genotype genotype) {
+	public void setGenotype(int index, GPFenotype genotype) {
 		// nelze nastavit
 	}
 

@@ -122,7 +122,7 @@ public class ArtificialAnt extends TreeProblem {
 	public Solution randomSolution() {
 		TreeSolution ant = new TreeSolution(getMaxHeight());
 		ant.addGenotype(randomGenotype());
-		List<Node> list = ant.leaves();
+		List<Node> list = ant.uncompleteNodes();
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = ant.deepOf(val);
@@ -130,7 +130,7 @@ public class ArtificialAnt extends TreeProblem {
 				ant.addGenotype(randomGenotype());
 			else
 				ant.addGenotype(randomTerminal());
-			list = ant.leaves();
+			list = ant.uncompleteNodes();
 		}
 		return ant;
 	}

@@ -2,22 +2,22 @@ package org.zigi.evolution.solution;
 
 import java.util.List;
 
-import org.zigi.evolution.solution.value.Genotype;
+import org.zigi.evolution.solution.value.GPFenotype;
 import org.zigi.evolution.util.Cloneable;
 
 public abstract class Solution implements Cloneable<Solution> {
 
 	private Double fitness = 0.0;
 
-	public abstract Genotype getGenotype(Integer index);
+	public abstract GPFenotype getGenotype(Integer index);
 
-	public abstract List<Genotype> getGenotypes();
+	public abstract List<GPFenotype> getGenotypes();
 
-	public abstract void setGenotype(int index, Genotype value);
+	public abstract void setGenotype(int index, GPFenotype value);
 
-	public abstract void setGenotypes(List<Genotype> vals);
+	public abstract void setGenotypes(List<GPFenotype> vals);
 
-	public abstract void addGenotype(Genotype value);
+	public abstract void addGenotype(GPFenotype value);
 
 	public abstract int size();
 
