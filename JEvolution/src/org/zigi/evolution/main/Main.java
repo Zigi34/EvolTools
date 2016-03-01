@@ -82,24 +82,19 @@ public class Main {
 			problem.addFenotype(new PowerFunction());
 			problem.addFenotype(new DivideFunction());
 			problem.addFenotype(new NumericConstant());
-			for (int i = 0; i < 10; i++) {
-				TreeSolution solution = (TreeSolution) problem.randomSolution();
-				System.out.println(String.format("%s (%s)", solution, problem.variables(solution).size()));
-			}
 
-			/*
-			 * GeneticProgramming alg = new GeneticProgramming();
-			 * alg.setProblem(problem); alg.addChangeListener(new
-			 * PropertyChangeListener() {
-			 * 
-			 * @Override public void propertyChange(PropertyChangeEvent evt) {
-			 * LOG.info(evt.getNewValue()); } }); alg.start();
-			 * 
-			 * Thread.sleep(3000);
-			 * 
-			 * Solution best = alg.getBestSolution(); System.out.println(
-			 * "BEST: " + best.toString());
-			 */
+			Solution best = null;
+			Double minValue = null;
+			for (int i = 0; i < 100000; i++) {
+				TreeSolution solution = (TreeSolution) problem.randomSolution();
+				Double result = problem.evaluate(solution);
+				if (minValue == null || minValue > result) {
+					minValue = result;
+					best = solution;
+				}
+				System.out.println(String.format("%s = %s", solution, result));
+			}
+			System.out.println(String.format("Best: %s = %s", best, minValue));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

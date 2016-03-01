@@ -43,6 +43,8 @@ public class NumericVariable extends GPFenotype {
 
 	@Override
 	public String toString() {
+		if (value != null)
+			return String.valueOf(value);
 		return name;
 	}
 

@@ -118,7 +118,8 @@ public class RegressionProblem extends TreeProblem {
 		} else if (function instanceof PowerFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
-			return Math.pow(var1, (Double) function.getValue());
+			Double var2 = (Double) childs.get(1).getValue().getValue();
+			return Math.pow(var1, var2);
 		} else if (function instanceof SinFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
@@ -126,7 +127,7 @@ public class RegressionProblem extends TreeProblem {
 		} else if (function instanceof CosFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
-			return Math.sin(var1);
+			return Math.cos(var1);
 		} else if (function instanceof NumericConstant) {
 			return (Double) function.getValue();
 		} else if (function instanceof NumberGenotyp) {
@@ -137,35 +138,48 @@ public class RegressionProblem extends TreeProblem {
 
 	@Override
 	public Double evaluate(Solution sol) {
-		Double value = 0.0;
-
 		if (sol instanceof TreeSolution) {
-			TreeSolution tree = (TreeSolution) sol.cloneMe();
-			List<Node> leaves = null;
-			while (!(leaves = tree.leaveNodes()).isEmpty()) {
-				LOG.info(tree);
-				for (Node item : leaves) {
-					Node parent = item.getParent();
+			TreeSolution originalTree = (TreeSolution) sol.cloneMe();
 
-					// testing for leaves
-					boolean valid = true;
-					for (Node node : parent.getChilds()) {
-						if (!node.isLeaf()) {
-							valid = false;
+			Double difference = 0.0;
+
+			for (KeyVariables key : dataset.keySet()) {
+				TreeSolution tree = (TreeSolution) originalTree.cloneMe();
+				List<NumericVariable> variables = variables(tree);
+				for (int i = 0; i < variables.size(); i++)
+					variables.get(i).setValue(key.getKey(i));
+
+				List<Node> leaves = null;
+				while (!(leaves = tree.leaveNodes()).isEmpty() && tree.getNodes().size() > 1) {
+					// LOG.info(tree);
+
+					for (Node item : leaves) {
+						Node parent = item.getParent();
+						if (parent == null)
+							break;
+
+						// testing for leaves
+						boolean valid = true;
+						for (Node node : parent.getChilds()) {
+							if (!node.isLeaf()) {
+								valid = false;
+								break;
+							}
+						}
+
+						if (valid) {
+							// get numeric value
+							Double val = applyFunction(parent);
+							tree.removeSubTree(parent);
+							tree.addGenotype(new NumericConstant(val));
 							break;
 						}
 					}
-
-					if (valid) {
-						// get numeric value
-						Double val = applyFunction(parent);
-						tree.removeSubTree(parent);
-						tree.addGenotype(new NumericConstant(val));
-						break;
-					}
 				}
+				Double result = (Double) tree.getRoot().getValue().getValue();
+				difference += Math.abs(result - dataset.get(key));
 			}
-			return (Double) tree.getRoot().getValue().getValue();
+			return difference;
 		}
 		return null;
 	}
