@@ -220,10 +220,10 @@ public class TreeSolution extends Solution {
 	 */
 	public Solution cloneMe() {
 		TreeSolution tree = new TreeSolution(this.maxDepth);
-		tree.setFitness(getFitness());
+		tree.setFitness(new Double(getFitness()));
 		List<Node> nodes = deepNodes();
 		for (Node node : nodes) {
-			tree.addGenotype(node.getValue());
+			tree.addGenotype(node.getValue().cloneMe());
 		}
 		return tree;
 	}
