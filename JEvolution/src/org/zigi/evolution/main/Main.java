@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.zigi.evolution.algorithm.terminate.FitnessTerminate;
 import org.zigi.evolution.problem.ArtificialAnt;
 import org.zigi.evolution.problem.RegressionProblem;
 import org.zigi.evolution.solution.Solution;
@@ -19,6 +20,7 @@ import org.zigi.evolution.solution.value.PowerFunction;
 import org.zigi.evolution.solution.value.SinFunction;
 import org.zigi.evolution.solution.value.SubtractionFunction;
 import org.zigi.evolution.solution.value.SumFunction;
+import org.zigi.evolution.util.Population;
 
 public class Main {
 
@@ -89,21 +91,24 @@ public class Main {
 			NumericConstant const3 = new NumericConstant("Z", 3.0, 25.0);
 			// problem.addFenotype(const3);
 
-			Solution best = null;
-			for (int i = 0; i < 100000; i++) {
-				TreeSolution solution = (TreeSolution) problem.randomSolution();
-				problem.evaluate(solution);
-				if (best == null || best.getFitness() > solution.getFitness()) {
-					best = solution;
-				}
-				if (best != null && best.getFitness() < 0.0001) {
-					LOG.info("Generace:" + i);
-					break;
-				}
-				// System.out.println(String.format("%s = %s", solution,
-				// result));
+			int index = 1;
+			for (; index < 20; index++) {
+				GeneticProgramming gp = new GeneticProgramming();
+				gp.addChangeListener(new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						if (evt.getNewValue().equals(GeneticProgramming.ALGORITHM_TERMINATED)) {
+							LOG.info(String.format("(%s) BEST: %s", gp.getActualGeneration(), gp.getBestSolution()));
+						}
+					}
+				});
+				gp.addTerminateFunction(new FitnessTerminate(20.0));
+				Population pop = new Population(200);
+				gp.setPopulation(pop);
+				gp.setProblem(problem);
+				gp.setGeneration(1000);
+				gp.start();
 			}
-			System.out.println(String.format("Best: %s", best));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

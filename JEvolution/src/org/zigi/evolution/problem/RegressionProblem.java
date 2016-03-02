@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -29,7 +29,7 @@ import org.zigi.evolution.solution.value.SumFunction;
 import org.zigi.evolution.util.Population;
 
 public class RegressionProblem extends TreeProblem {
-	private HashMap<KeyVariables, Double> dataset = new HashMap<>();
+	private LinkedHashMap<KeyVariables, Double> dataset = new LinkedHashMap<>();
 	private Integer dimension;
 	private static final String VARIABLE_NAMES = "abcdefghijklmnopqrstuvwxyz";
 	private static final Random RAND = new Random();
@@ -86,10 +86,23 @@ public class RegressionProblem extends TreeProblem {
 	}
 
 	@Override
-	public Solution randomSolution() {
-		TreeSolution solution = (TreeSolution) super.randomSolution();
+	public TreeSolution randomGrowTreeSolution(Integer deepSize) {
+		TreeSolution solution = (TreeSolution) super.randomGrowTreeSolution(deepSize);
 
-		// LOG.info("Puvodni: " + solution);
+		// evaluate constants in tree solution
+		List<NumericConstant> constants = constants(solution);
+		for (int i = 0; i < constants.size(); i++) {
+			NumericConstant cons = constants.get(i);
+			Double randValue = RAND.nextDouble() * Math.abs(cons.getMaxValue() - cons.getMinValue());
+			setValueOfConstant(solution, constants.get(i).getName(), randValue);
+		}
+
+		return solution;
+	}
+
+	@Override
+	public TreeSolution randomFullTreeSolution(Integer deepSize) {
+		TreeSolution solution = (TreeSolution) super.randomGrowTreeSolution(deepSize);
 
 		// evaluate constants in tree solution
 		List<NumericConstant> constants = constants(solution);
@@ -247,8 +260,8 @@ public class RegressionProblem extends TreeProblem {
 				Double result = (Double) tree.getRoot().getValue().getValue();
 				difference += Math.abs(result - dataset.get(key));
 			}
-			sol.setFitness(difference);
-			return difference;
+			sol.setFitness(1.0 / difference);
+			return sol.getFitness();
 		}
 		return null;
 	}

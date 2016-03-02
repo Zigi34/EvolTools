@@ -20,7 +20,8 @@ public class NumericConstant extends GPFenotype {
 
 	public GPFenotype cloneMe() {
 		NumericConstant val = new NumericConstant(name, minValue, maxValue);
-		val.setValue(new Double((Double) getValue()));
+		if (value != null)
+			val.setValue(new Double((Double) value));
 		return val;
 	}
 

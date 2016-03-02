@@ -7,9 +7,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.zigi.evolution.algorithm.terminate.TerminateFunction;
 import org.zigi.evolution.problem.Problem;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
@@ -42,6 +44,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	protected String state = INIT_STATE;
 
 	private List<PropertyChangeListener> listeners = new ArrayList<PropertyChangeListener>();
+	private List<TerminateFunction> terminateFunction = new LinkedList<>();
 
 	private static final Logger LOG = Logger.getLogger(EvolutionAlgorithm.class);
 
@@ -123,11 +126,18 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	}
 
 	/**
-	 * Testuje, zda se máalgoritmus ukončit
+	 * Testuje, zda se má algoritmus ukončit
 	 * 
 	 * @return
 	 */
 	public boolean isTerminate() {
+		Boolean terminate = this.terminate;
+		if (!terminateFunction.isEmpty())
+			for (TerminateFunction function : terminateFunction) {
+				terminate |= function.isTerminate(this);
+				if (terminate)
+					return true;
+			}
 		return terminate;
 	}
 
@@ -299,5 +309,22 @@ public abstract class EvolutionAlgorithm implements Runnable {
 
 	public void increseActualGeneration() {
 		this.actualGeneration++;
+	}
+
+	/**
+	 * Add new terminate function
+	 * 
+	 * @param function
+	 *            terminate function
+	 */
+	public void addTerminateFunction(TerminateFunction function) {
+		terminateFunction.add(function);
+	}
+
+	/**
+	 * Remove all terminate function
+	 */
+	public void clearTerminateFunctions() {
+		terminateFunction.clear();
 	}
 }
