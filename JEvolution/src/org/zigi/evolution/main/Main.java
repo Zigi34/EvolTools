@@ -81,20 +81,29 @@ public class Main {
 			problem.addFenotype(new MultiplyFunction());
 			problem.addFenotype(new PowerFunction());
 			problem.addFenotype(new DivideFunction());
-			problem.addFenotype(new NumericConstant());
+			// problem.addFenotype(new NumericValue());
+			NumericConstant const1 = new NumericConstant("X", -2.0, 10.0);
+			problem.addFenotype(const1);
+			NumericConstant const2 = new NumericConstant("Y", 1.0, 3.0);
+			// problem.addFenotype(const2);
+			NumericConstant const3 = new NumericConstant("Z", 3.0, 25.0);
+			// problem.addFenotype(const3);
 
 			Solution best = null;
-			Double minValue = null;
 			for (int i = 0; i < 100000; i++) {
 				TreeSolution solution = (TreeSolution) problem.randomSolution();
-				Double result = problem.evaluate(solution);
-				if (minValue == null || minValue > result) {
-					minValue = result;
+				problem.evaluate(solution);
+				if (best == null || best.getFitness() > solution.getFitness()) {
 					best = solution;
 				}
-				System.out.println(String.format("%s = %s", solution, result));
+				if (best != null && best.getFitness() < 0.0001) {
+					LOG.info("Generace:" + i);
+					break;
+				}
+				// System.out.println(String.format("%s = %s", solution,
+				// result));
 			}
-			System.out.println(String.format("Best: %s = %s", best, minValue));
+			System.out.println(String.format("Best: %s", best));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

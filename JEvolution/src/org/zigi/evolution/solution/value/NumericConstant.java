@@ -1,27 +1,26 @@
 package org.zigi.evolution.solution.value;
 
-import java.util.Random;
-
 public class NumericConstant extends GPFenotype {
 
 	private Double value;
 	private Double minValue = -1.0;
 	private Double maxValue = 1.0;
-	private static final Random RAND = new Random();
+	private String name;
 
-	public NumericConstant() {
+	public NumericConstant(String name, Double min, Double max) {
 		super(0);
-		this.value = RAND.nextDouble() * (Math.abs(maxValue - minValue)) + minValue;
+		this.name = name;
+		this.minValue = min;
+		this.maxValue = max;
 	}
 
-	public NumericConstant(Double value) {
-		this();
-		this.value = value;
+	public NumericConstant(String name) {
+		this(name, null, null);
 	}
 
 	public GPFenotype cloneMe() {
-		NumericConstant val = new NumericConstant();
-		val.setValue(getValue());
+		NumericConstant val = new NumericConstant(name, minValue, maxValue);
+		val.setValue(new Double((Double) getValue()));
 		return val;
 	}
 
@@ -41,8 +40,44 @@ public class NumericConstant extends GPFenotype {
 		return true;
 	}
 
+	public Double getMinValue() {
+		return minValue;
+	}
+
+	public void setMinValue(Double minValue) {
+		this.minValue = minValue;
+	}
+
+	public Double getMaxValue() {
+		return maxValue;
+	}
+
+	public void setMaxValue(Double maxValue) {
+		this.maxValue = maxValue;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof NumericConstant) {
+			NumericConstant cons = (NumericConstant) obj;
+			return cons.getName().equals(name);
+		}
+		return false;
+	}
+
 	@Override
 	public String toString() {
+		if (value == null)
+			return name;
 		return String.valueOf(value);
 	}
 

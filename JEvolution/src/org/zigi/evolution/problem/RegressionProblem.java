@@ -19,8 +19,8 @@ import org.zigi.evolution.solution.value.DivideFunction;
 import org.zigi.evolution.solution.value.GPFenotype;
 import org.zigi.evolution.solution.value.MultiplyFunction;
 import org.zigi.evolution.solution.value.Node;
-import org.zigi.evolution.solution.value.NumberGenotyp;
 import org.zigi.evolution.solution.value.NumericConstant;
+import org.zigi.evolution.solution.value.NumericValue;
 import org.zigi.evolution.solution.value.NumericVariable;
 import org.zigi.evolution.solution.value.PowerFunction;
 import org.zigi.evolution.solution.value.SinFunction;
@@ -85,6 +85,23 @@ public class RegressionProblem extends TreeProblem {
 
 	}
 
+	@Override
+	public Solution randomSolution() {
+		TreeSolution solution = (TreeSolution) super.randomSolution();
+
+		// LOG.info("Puvodni: " + solution);
+
+		// evaluate constants in tree solution
+		List<NumericConstant> constants = constants(solution);
+		for (int i = 0; i < constants.size(); i++) {
+			NumericConstant cons = constants.get(i);
+			Double randValue = RAND.nextDouble() * Math.abs(cons.getMaxValue() - cons.getMinValue());
+			setValueOfConstant(solution, constants.get(i).getName(), randValue);
+		}
+
+		return solution;
+	}
+
 	/**
 	 * Aplikuje operaci vybraného uzlu s operátory v podobě podřízených uzlů
 	 * 
@@ -128,27 +145,78 @@ public class RegressionProblem extends TreeProblem {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
 			return Math.cos(var1);
+		} else if (function instanceof NumericValue) {
+			List<Node> childs = functionNode.getChilds();
+			return (Double) childs.get(0).getValue().getValue();
+		} else if (function instanceof NumericVariable) {
+			List<Node> childs = functionNode.getChilds();
+			return (Double) childs.get(0).getValue().getValue();
 		} else if (function instanceof NumericConstant) {
-			return (Double) function.getValue();
-		} else if (function instanceof NumberGenotyp) {
-			return (Double) function.getValue();
+			List<Node> childs = functionNode.getChilds();
+			return (Double) childs.get(0).getValue().getValue();
 		}
 		return null;
+	}
+
+	/**
+	 * Set value for variables according name
+	 * 
+	 * @param tree
+	 *            solution tree
+	 * @param name
+	 *            name of variable
+	 * @param value
+	 *            numeric value
+	 */
+	private void setValueOfVariable(TreeSolution tree, String name, Double value) {
+		List<Node> nodes = tree.deepNodes();
+		for (Node node : nodes) {
+			GPFenotype fenotype = node.getValue();
+			if (fenotype instanceof NumericVariable) {
+				NumericVariable variable = (NumericVariable) fenotype;
+				if (variable.getName().equals(name))
+					variable.setValue(value);
+			}
+		}
+	}
+
+	/**
+	 * Set value for constants according name
+	 * 
+	 * @param tree
+	 *            tree solution
+	 * @param name
+	 *            name of constant
+	 * @param value
+	 *            numeric value
+	 */
+	private void setValueOfConstant(TreeSolution tree, String name, Double value) {
+		List<Node> nodes = tree.deepNodes();
+		for (Node node : nodes) {
+			GPFenotype fenotype = node.getValue();
+			if (fenotype instanceof NumericConstant) {
+				NumericConstant variable = (NumericConstant) fenotype;
+				if (variable.getName().equals(name))
+					variable.setValue(value);
+			}
+		}
 	}
 
 	@Override
 	public Double evaluate(Solution sol) {
 		if (sol instanceof TreeSolution) {
-			TreeSolution originalTree = (TreeSolution) sol.cloneMe();
+			TreeSolution originalTree = (TreeSolution) sol;
 
 			Double difference = 0.0;
 
+			// LOG.info("Ohodnocene konstanty: " + originalTree);
 			for (KeyVariables key : dataset.keySet()) {
 				TreeSolution tree = (TreeSolution) originalTree.cloneMe();
 				List<NumericVariable> variables = variables(tree);
 				for (int i = 0; i < variables.size(); i++)
-					variables.get(i).setValue(key.getKey(i));
+					setValueOfVariable(tree, variables.get(i).getName(), key.getKey(i));
 
+				// LOG.info("Ohodnocene proměnné: " + tree);
 				List<Node> leaves = null;
 				while (!(leaves = tree.leaveNodes()).isEmpty() && tree.getNodes().size() > 1) {
 					// LOG.info(tree);
@@ -171,7 +239,7 @@ public class RegressionProblem extends TreeProblem {
 							// get numeric value
 							Double val = applyFunction(parent);
 							tree.removeSubTree(parent);
-							tree.addGenotype(new NumericConstant(val));
+							tree.addGenotype(new NumericValue(val));
 							break;
 						}
 					}
@@ -179,6 +247,7 @@ public class RegressionProblem extends TreeProblem {
 				Double result = (Double) tree.getRoot().getValue().getValue();
 				difference += Math.abs(result - dataset.get(key));
 			}
+			sol.setFitness(difference);
 			return difference;
 		}
 		return null;
@@ -201,6 +270,15 @@ public class RegressionProblem extends TreeProblem {
 		for (Node node : tree.deepNodes()) {
 			if (node.getValue() instanceof NumericVariable && !list.contains(node.getValue()))
 				list.add((NumericVariable) node.getValue());
+		}
+		return list;
+	}
+
+	public List<NumericConstant> constants(TreeSolution tree) {
+		List<NumericConstant> list = new LinkedList<NumericConstant>();
+		for (Node node : tree.deepNodes()) {
+			if (node.getValue() instanceof NumericConstant && !list.contains(node.getValue()))
+				list.add((NumericConstant) node.getValue());
 		}
 		return list;
 	}

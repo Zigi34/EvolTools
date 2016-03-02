@@ -42,6 +42,21 @@ public class NumericVariable extends GPFenotype {
 	}
 
 	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof NumericVariable) {
+			NumericVariable variable = (NumericVariable) obj;
+			if (variable.getName().equals(name))
+				return true;
+		}
+		return false;
+	}
+
+	@Override
 	public String toString() {
 		if (value != null)
 			return String.valueOf(value);
