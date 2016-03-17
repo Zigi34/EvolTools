@@ -13,6 +13,12 @@ public class Direction {
 	}
 
 	public Direction(int direction) {
+		this();
 		this.direction = (direction % 3);
 	}
+
+	public int getDirection() {
+		return direction;
+	}
+
 }

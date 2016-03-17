@@ -22,6 +22,9 @@ import org.zigi.evolution.solution.value.SubtractionFunction;
 import org.zigi.evolution.solution.value.SumFunction;
 import org.zigi.evolution.util.Population;
 
+import jcuda.Pointer;
+import jcuda.runtime.JCuda;
+
 public class Main {
 
 	private static final Random RAND = new Random();
@@ -86,9 +89,9 @@ public class Main {
 			// problem.addFenotype(new NumericValue());
 			NumericConstant const1 = new NumericConstant("X", -2.0, 10.0);
 			problem.addFenotype(const1);
-			NumericConstant const2 = new NumericConstant("Y", 1.0, 3.0);
+			// NumericConstant const2 = new NumericConstant("Y", 1.0, 3.0);
 			// problem.addFenotype(const2);
-			NumericConstant const3 = new NumericConstant("Z", 3.0, 25.0);
+			// NumericConstant const3 = new NumericConstant("Z", 3.0, 25.0);
 			// problem.addFenotype(const3);
 
 			int index = 1;
@@ -126,7 +129,12 @@ public class Main {
 	public static void main(String[] args) {
 		Main test = new Main();
 		// test.artificialAnt();
-		test.regression();
+		// test.regression();
+
+		Pointer pointer = new Pointer();
+		JCuda.cudaMalloc(pointer, 4);
+		System.out.println("Pointer: " + pointer);
+		JCuda.cudaFree(pointer);
 	}
 
 }

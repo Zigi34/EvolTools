@@ -63,6 +63,7 @@ public class ArtificialAnt extends TreeProblem {
 				sb.append(new String(buffer, 0, readSize));
 				readSize = sr.read(buffer);
 			} while (readSize > 0);
+			sr.close();
 		} catch (Exception e) {
 			LOG.error(e);
 		}

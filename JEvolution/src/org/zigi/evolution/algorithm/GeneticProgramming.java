@@ -3,7 +3,6 @@ package org.zigi.evolution.algorithm;
 import java.util.List;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
 import org.zigi.evolution.cross.CrossFunction;
 import org.zigi.evolution.cross.TreeCross;
 import org.zigi.evolution.mutate.MutateFunction;
@@ -25,7 +24,6 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	private double mutateProbability = 0.7;
 
 	private static final Random RAND = new Random();
-	private static final Logger LOG = Logger.getLogger(GeneticProgramming.class);
 
 	public static final String CREATE_INIT_POPULATION_START = "CREATE_INIT_POPULATION_START";
 	public static final String CREATE_INIT_POPULATION_END = "CREATE_INIT_POPULATION_END";
