@@ -1,25 +1,31 @@
 package org.zigi.evolution.solution.value;
 
+import java.util.Random;
+
 public class NumericConstant extends GPFenotype {
+
+	private static final Random RND = new Random();
 
 	private Double value;
 	private Double minValue = -1.0;
 	private Double maxValue = 1.0;
-	private String name;
 
-	public NumericConstant(String name, Double min, Double max) {
+	public NumericConstant(Double min, Double max) {
 		super(0);
-		this.name = name;
 		this.minValue = min;
 		this.maxValue = max;
 	}
 
-	public NumericConstant(String name) {
-		this(name, null, null);
+	public NumericConstant() {
+		this(null, null);
+	}
+
+	public void evaluateRandom() {
+		this.value = minValue + RND.nextDouble() * Math.abs(maxValue - minValue);
 	}
 
 	public GPFenotype cloneMe() {
-		NumericConstant val = new NumericConstant(name, minValue, maxValue);
+		NumericConstant val = new NumericConstant(minValue, maxValue);
 		if (value != null)
 			val.setValue(new Double((Double) value));
 		return val;
@@ -57,28 +63,10 @@ public class NumericConstant extends GPFenotype {
 		this.maxValue = maxValue;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public int hashCode() {
-		return name.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof NumericConstant) {
-			NumericConstant cons = (NumericConstant) obj;
-			return cons.getName().equals(name);
-		}
-		return false;
-	}
-
 	@Override
 	public String toString() {
 		if (value == null)
-			return name;
+			return "K";
 		return String.valueOf(value);
 	}
 

@@ -196,12 +196,18 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public void checkBestSolution(Population population) {
 		if (bestSolution == null) {
-			bestSolution = population.getSolutions().get(0).cloneMe();
-			setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
+			for (Solution sol : population.getSolutions()) {
+				if (!sol.getFitness().isNaN()) {
+					bestSolution = sol.cloneMe();
+					setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
+					break;
+				}
+			}
 		}
 
 		for (Solution solution : population.getSolutions()) {
-			if (solution.getFitness() > bestSolution.getFitness()) {
+			Double fitness = solution.getFitness();
+			if (!fitness.isNaN() && fitness > bestSolution.getFitness()) {
 				bestSolution = solution.cloneMe();
 				setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
 			}

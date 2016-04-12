@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.TreeSolution;
 import org.zigi.evolution.solution.value.GPFenotype;
@@ -11,9 +12,12 @@ import org.zigi.evolution.solution.value.Node;
 
 public abstract class TreeProblem extends Problem {
 
-	private List<GPFenotype> values = new LinkedList<GPFenotype>();
+	private List<GPFenotype> terminals = new LinkedList<GPFenotype>();
+	private List<GPFenotype> functions = new LinkedList<GPFenotype>();
 	private static final Random RAND = new Random();
 	private Integer maxHeight = 3;
+
+	private static final Logger LOG = Logger.getLogger(TreeProblem.class);
 
 	/**
 	 * Prida se hodnota do stromove struktury
@@ -22,8 +26,25 @@ public abstract class TreeProblem extends Problem {
 	 *            hodnota stromu
 	 */
 	public void addFenotype(GPFenotype val) {
-		if (!values.contains(val))
-			values.add(val);
+		if (val.isTerminal() && !terminals.contains(val))
+			terminals.add(val);
+		else if (!val.isTerminal() && !functions.contains(val))
+			functions.add(val);
+	}
+
+	public List<GPFenotype> getFenotypes() {
+		List<GPFenotype> list = new LinkedList<GPFenotype>();
+		list.addAll(terminals);
+		list.addAll(functions);
+		return list;
+	}
+
+	public List<GPFenotype> getTerminalFenotypes() {
+		return terminals;
+	}
+
+	public List<GPFenotype> getFunctionFenotypes() {
+		return functions;
 	}
 
 	@Override
@@ -135,13 +156,14 @@ public abstract class TreeProblem extends Problem {
 	 */
 	public TreeSolution randomFullTreeSolution(Integer deepSize) {
 		TreeSolution ant = new TreeSolution(deepSize);
-		ant.addGenotype(randomGenotype());
+		int maxHeight = getMaxHeight();
+		ant.addGenotype(randomFunction());
 		List<Node> list = ant.uncompleteNodes();
 		while (!list.isEmpty()) {
 			Node val = list.get(0);
 			int deep = ant.deepOf(val);
-			if (deep < getMaxHeight())
-				ant.addGenotype(randomGenotype());
+			if (deep + 1 < maxHeight)
+				ant.addGenotype(randomFunction());
 			else
 				ant.addGenotype(randomTerminal());
 			list = ant.uncompleteNodes();
@@ -163,7 +185,10 @@ public abstract class TreeProblem extends Problem {
 	 * @return
 	 */
 	public GPFenotype randomFenotype() {
-		return values.get(RAND.nextInt(values.size()));
+		if (RAND.nextDouble() > 0.5)
+			return terminals.get(RAND.nextInt(terminals.size())).cloneMe();
+		else
+			return functions.get(RAND.nextInt(functions.size())).cloneMe();
 	}
 
 	/**
@@ -172,12 +197,7 @@ public abstract class TreeProblem extends Problem {
 	 * @return
 	 */
 	public GPFenotype randomTerminal() {
-		List<GPFenotype> list = new LinkedList<GPFenotype>();
-		for (GPFenotype fen : values) {
-			if (fen.isTerminal())
-				list.add(fen);
-		}
-		return list.get(RAND.nextInt(list.size()));
+		return terminals.get(RAND.nextInt(terminals.size())).cloneMe();
 	}
 
 	/**
@@ -186,30 +206,7 @@ public abstract class TreeProblem extends Problem {
 	 * @return
 	 */
 	public GPFenotype randomFunction() {
-		List<GPFenotype> list = new LinkedList<GPFenotype>();
-		for (GPFenotype fen : values) {
-			if (!fen.isTerminal())
-				list.add(fen);
-		}
-		return list.get(RAND.nextInt(list.size()));
-	}
-
-	/**
-	 * Vrací všechny fenotypy
-	 * 
-	 * @return
-	 */
-	public List<GPFenotype> getFenotypes() {
-		return values;
-	}
-
-	/**
-	 * Nastaví všechny fenotypy
-	 * 
-	 * @param values
-	 */
-	public void setFenotypes(List<GPFenotype> values) {
-		this.values = values;
+		return functions.get(RAND.nextInt(functions.size())).cloneMe();
 	}
 
 	/**

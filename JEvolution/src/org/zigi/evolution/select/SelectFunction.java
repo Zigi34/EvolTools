@@ -7,4 +7,6 @@ import org.zigi.evolution.util.Population;
 
 public abstract class SelectFunction {
 	public abstract List<Solution> select(Population pop, int count);
+
+	public abstract List<Solution> select(Population pop, int count, double maxValue);
 }

@@ -3,24 +3,26 @@ package org.zigi.evolution.algorithm;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.cross.CrossFunction;
 import org.zigi.evolution.cross.TreeCross;
 import org.zigi.evolution.mutate.MutateFunction;
 import org.zigi.evolution.mutate.TreeMutate;
 import org.zigi.evolution.problem.TreeProblem;
-import org.zigi.evolution.select.BestElitism;
 import org.zigi.evolution.select.ElitismFunction;
 import org.zigi.evolution.select.RankSelect;
 import org.zigi.evolution.select.SelectFunction;
+import org.zigi.evolution.select.SpravedlivyBestElitism;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
+import org.zigi.evolution.util.Util;
 
 public class GeneticProgramming extends EvolutionAlgorithm {
 
 	private SelectFunction select;
 	private CrossFunction cross;
 	private MutateFunction mutate;
-	private ElitismFunction elitism = new BestElitism();
+	private ElitismFunction elitism = new SpravedlivyBestElitism();
 	private double mutateProbability = 0.7;
 
 	private static final Random RAND = new Random();
@@ -36,6 +38,8 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	public static final String CROSS_SOLUTION_START = "CROSS_SOLUTION_START";
 	public static final String CROSS_SOLUTION_END = "CROSS_SOLUTION_END";
 	public static final String NEW_POPULATION = "NEW_POPULATION";
+
+	private static final Logger LOG = Logger.getLogger(GeneticProgramming.class);
 
 	public GeneticProgramming() {
 		setPopulationSize(400);
@@ -100,6 +104,8 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		problem.evaluate(population);
 		setState(EVALUATE_POPULATION_END);
 
+		Util.logPopulation(population);
+
 		// aktualizace nejlepsiho jedince
 		setState(CHECK_BEST_SOLUTION_START);
 		checkBestSolution(population);
@@ -110,12 +116,15 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 			Population newPopulation = new Population();
 			newPopulation.setMax(getPopulation().getMaxSolutions());
 
+			// prepocitame sum fitness
+			double sumFitness = population.getFitnessSum();
+
 			// dokud neni populace plna, tak pokracujeme
 			while (newPopulation.size() < newPopulation.getMaxSolutions()) {
 				// pokud chybi uz jeden jedinec, pouzijeme mutaci
 				if (newPopulation.getMaxSolutions() - newPopulation.size() == 1) {
 					// mutace
-					List<Solution> list = select.select(population, 1);
+					List<Solution> list = select.select(population, 1, sumFitness);
 					Solution selected = list.get(0).cloneMe();
 					setState(MUTATE_SOLUTION_START);
 					mutate.mutate(selected);
@@ -126,7 +135,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 					// nahodne vybereme bud mutaci nebo krizeni
 					if (RAND.nextDouble() <= mutateProbability) {
 						// mutace
-						List<Solution> list = select.select(population, 1);
+						List<Solution> list = select.select(population, 1, sumFitness);
 						Solution selected = list.get(0).cloneMe();
 						setState(MUTATE_SOLUTION_START);
 						mutate.mutate(selected);
@@ -135,7 +144,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 						newPopulation.add(selected);
 					} else {
 						// krizeni
-						List<Solution> list = select.select(population, 2);
+						List<Solution> list = select.select(population, 2, sumFitness);
 						Solution selected1 = list.get(0).cloneMe();
 						Solution selected2 = list.get(1).cloneMe();
 
@@ -168,6 +177,9 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 			nextPop.addAll(getPopulation().getSolutions());
 			nextPop.addAll(newPopulation.getSolutions());
 
+			// Util.logPopulation(nextPop);
+			// LOG.info("-----");
+
 			setState(CHECK_BEST_SOLUTION_START);
 			checkBestSolution(nextPop);
 			setState(CHECK_BEST_SOLUTION_END);
@@ -176,6 +188,9 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 			Population p = new Population();
 			p.setMax(list.size());
 			p.addAll(list);
+
+			// Util.logPopulation(p);
+			// LOG.info("-----");
 
 			// konec plneni nove populace a nahrazeni stare
 			setPopulation(p);

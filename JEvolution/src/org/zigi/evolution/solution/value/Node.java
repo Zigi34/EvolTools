@@ -7,7 +7,7 @@ import org.zigi.evolution.util.Cloneable;
 
 public class Node implements Cloneable<Node> {
 
-	private List<Node> childs = new LinkedList<Node>();
+	private Node[] childs;
 	private Node parent;
 	private GPFenotype value;
 	private long id;
@@ -32,6 +32,7 @@ public class Node implements Cloneable<Node> {
 	 *            nadřazený uzel
 	 */
 	public Node(GPFenotype val, Node parent) {
+		this.childs = new Node[val.getMaxChilds()];
 		this.value = val;
 		this.parent = parent;
 		this.id = System.nanoTime();
@@ -43,7 +44,10 @@ public class Node implements Cloneable<Node> {
 	 * @return true, pokud jsou nastaveny všechny podřízené uzly
 	 */
 	public boolean isComplete() {
-		return childs.size() == value.getMaxChilds();
+		for (int i = 0; i < childs.length; i++)
+			if (childs[i] == null)
+				return false;
+		return true;
 	}
 
 	/**
@@ -54,17 +58,24 @@ public class Node implements Cloneable<Node> {
 	 *            podřízený uzel
 	 */
 	public void addChild(Node val) {
-		if (childs.size() < getMaxChild())
-			childs.add(val);
+		if (!isComplete()) {
+			for (int i = 0; i < childs.length; i++)
+				if (childs[i] == null) {
+					childs[i] = val;
+					break;
+				}
+		}
 	}
 
 	public void removeChild(Node node) {
-		if (childs.contains(node)) {
-			// odstraneni uzlu z potomka na rodice
-			node.setParent(null);
-			// odstraneni uzlu z rodice na potomka
-			childs.remove(node);
-		}
+		for (int i = 0; i < childs.length; i++)
+			if (childs[i] != null && childs[i].equals(node)) {
+				// odstraneni uzlu z potomka na rodice
+				node.setParent(null);
+				// odstraneni uzlu z rodice na potomka
+				childs[i] = null;
+				break;
+			}
 	}
 
 	/**
@@ -73,7 +84,11 @@ public class Node implements Cloneable<Node> {
 	 * @return
 	 */
 	public List<Node> getChilds() {
-		return childs;
+		List<Node> nodes = new LinkedList<Node>();
+		for (int i = 0; i < childs.length; i++)
+			if (childs[i] != null)
+				nodes.add(childs[i]);
+		return nodes;
 	}
 
 	/**
@@ -83,15 +98,6 @@ public class Node implements Cloneable<Node> {
 	 */
 	public int getMaxChild() {
 		return value.getMaxChilds();
-	}
-
-	/**
-	 * Nastavení podřízených uzlů
-	 * 
-	 * @param childs
-	 */
-	public void setChilds(List<Node> childs) {
-		this.childs = childs;
 	}
 
 	/**
@@ -248,7 +254,7 @@ public class Node implements Cloneable<Node> {
 	 * @return
 	 */
 	public int deepOf() {
-		int deep = 0;
+		int deep = 1;
 		Node actualNode = this;
 		while (actualNode.getParent() != null) {
 			actualNode = actualNode.getParent();

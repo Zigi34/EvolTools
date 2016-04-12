@@ -1,0 +1,23 @@
+package org.zigi.evolution.util;
+
+import java.text.DecimalFormat;
+
+import org.apache.log4j.Logger;
+import org.zigi.evolution.solution.Solution;
+
+public class Util {
+
+	private static final DecimalFormat NUMBER_FORMAT = new DecimalFormat("#.####");
+	private static final Logger LOG = Logger.getLogger(Util.class);
+
+	public static String formatNumber(Double value) {
+		return NUMBER_FORMAT.format(value);
+	}
+
+	public static void logPopulation(Population pop) {
+		if (pop != null)
+			for (Solution sol : pop.getSolutions()) {
+				LOG.info(sol);
+			}
+	}
+}

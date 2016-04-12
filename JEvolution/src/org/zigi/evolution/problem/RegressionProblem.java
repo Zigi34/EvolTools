@@ -23,6 +23,7 @@ import org.zigi.evolution.solution.value.NumericConstant;
 import org.zigi.evolution.solution.value.NumericValue;
 import org.zigi.evolution.solution.value.NumericVariable;
 import org.zigi.evolution.solution.value.PowerFunction;
+import org.zigi.evolution.solution.value.RangedPowerFunction;
 import org.zigi.evolution.solution.value.SinFunction;
 import org.zigi.evolution.solution.value.SubtractionFunction;
 import org.zigi.evolution.solution.value.SumFunction;
@@ -88,29 +89,12 @@ public class RegressionProblem extends TreeProblem {
 	@Override
 	public TreeSolution randomGrowTreeSolution(Integer deepSize) {
 		TreeSolution solution = (TreeSolution) super.randomGrowTreeSolution(deepSize);
-
-		// evaluate constants in tree solution
-		List<NumericConstant> constants = constants(solution);
-		for (int i = 0; i < constants.size(); i++) {
-			NumericConstant cons = constants.get(i);
-			Double randValue = RAND.nextDouble() * Math.abs(cons.getMaxValue() - cons.getMinValue());
-			setValueOfConstant(solution, constants.get(i).getName(), randValue);
-		}
-
 		return solution;
 	}
 
 	@Override
 	public TreeSolution randomFullTreeSolution(Integer deepSize) {
-		TreeSolution solution = (TreeSolution) super.randomGrowTreeSolution(deepSize);
-
-		// evaluate constants in tree solution
-		List<NumericConstant> constants = constants(solution);
-		for (int i = 0; i < constants.size(); i++) {
-			NumericConstant cons = constants.get(i);
-			Double randValue = RAND.nextDouble() * Math.abs(cons.getMaxValue() - cons.getMinValue());
-			setValueOfConstant(solution, constants.get(i).getName(), randValue);
-		}
+		TreeSolution solution = (TreeSolution) super.randomFullTreeSolution(deepSize);
 
 		return solution;
 	}
@@ -164,9 +148,12 @@ public class RegressionProblem extends TreeProblem {
 		} else if (function instanceof NumericVariable) {
 			List<Node> childs = functionNode.getChilds();
 			return (Double) childs.get(0).getValue().getValue();
-		} else if (function instanceof NumericConstant) {
+		} else if (function instanceof RangedPowerFunction) {
 			List<Node> childs = functionNode.getChilds();
-			return (Double) childs.get(0).getValue().getValue();
+			double base = (Double) childs.get(0).getValue().getValue();
+			double index = ((RangedPowerFunction) function).getIndex();
+			Double val = (Double) Math.pow(base, index);
+			return val;
 		}
 		return null;
 	}
@@ -193,42 +180,27 @@ public class RegressionProblem extends TreeProblem {
 		}
 	}
 
-	/**
-	 * Set value for constants according name
-	 * 
-	 * @param tree
-	 *            tree solution
-	 * @param name
-	 *            name of constant
-	 * @param value
-	 *            numeric value
-	 */
-	private void setValueOfConstant(TreeSolution tree, String name, Double value) {
-		List<Node> nodes = tree.deepNodes();
-		for (Node node : nodes) {
-			GPFenotype fenotype = node.getValue();
-			if (fenotype instanceof NumericConstant) {
-				NumericConstant variable = (NumericConstant) fenotype;
-				if (variable.getName().equals(name))
-					variable.setValue(value);
-			}
-		}
-	}
-
 	@Override
 	public Double evaluate(Solution sol) {
 		if (sol instanceof TreeSolution) {
 			TreeSolution originalTree = (TreeSolution) sol;
 
+			// LOG.info("ORIGINAL: " + originalTree);
 			Double difference = 0.0;
 
-			// LOG.info("Ohodnocene konstanty: " + originalTree);
+			List<NumericConstant> constants = constants(originalTree);
+			for (NumericConstant constant : constants)
+				if (constant.getValue() == null)
+					constant.evaluateRandom();
+
 			for (KeyVariables key : dataset.keySet()) {
 				TreeSolution tree = (TreeSolution) originalTree.cloneMe();
+				// LOG.info("ITEM: " + tree);
 				List<NumericVariable> variables = variables(tree);
 				for (int i = 0; i < variables.size(); i++)
 					setValueOfVariable(tree, variables.get(i).getName(), key.getKey(i));
 
+				// LOG.info("OHODNOCENA KOPIE: " + tree);
 				// LOG.info("Ohodnocene proměnné: " + tree);
 				List<Node> leaves = null;
 				while (!(leaves = tree.leaveNodes()).isEmpty() && tree.getNodes().size() > 1) {
@@ -251,8 +223,10 @@ public class RegressionProblem extends TreeProblem {
 						if (valid) {
 							// get numeric value
 							Double val = applyFunction(parent);
+							// LOG.info("PRED REDUKCI: " + tree);
 							tree.removeSubTree(parent);
 							tree.addGenotype(new NumericValue(val));
+							// LOG.info("REDUCE: " + tree);
 							break;
 						}
 					}
@@ -260,7 +234,11 @@ public class RegressionProblem extends TreeProblem {
 				Double result = (Double) tree.getRoot().getValue().getValue();
 				difference += Math.abs(result - dataset.get(key));
 			}
-			sol.setFitness(1.0 / difference);
+			if (difference == 0.0)
+				sol.setFitness(Double.MAX_VALUE - 1000.0);
+			else
+				sol.setFitness(1000.0 / difference);
+			// LOG.info(sol);
 			return sol.getFitness();
 		}
 		return null;

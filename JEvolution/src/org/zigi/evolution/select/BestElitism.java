@@ -3,10 +3,13 @@ package org.zigi.evolution.select;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
 
 public class BestElitism extends ElitismFunction {
+
+	private static final Logger LOG = Logger.getLogger(BestElitism.class);
 
 	@Override
 	public List<Solution> select(Population pop, Integer max) {

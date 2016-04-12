@@ -1,6 +1,12 @@
 \select@language {czech}
-\contentsline {figure}{\numberline {1}{\ignorespaces N\IeC {\v e}jak\IeC {\'y} graf}}{13}{figure.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h algoritmu Genetick\IeC {\'e}ho programov\IeC {\'a}n\IeC {\'\i }}}{15}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}}{18}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru editace. Lev\IeC {\'y} strom zjednodu\IeC {\v s}\IeC {\'\i }me a v\IeC {\'y}sledkem je strom prav\IeC {\'y}}}{20}{figure.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces V\IeC {\'y}vojov\IeC {\'y} proces p\IeC {\v r}\IeC {\'\i }stupu CUDA p\IeC {\v r}es JNI}}{23}{figure.5}
+\contentsline {figure}{\numberline {1}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h evolu\IeC {\v c}n\IeC {\'\i }ho algoritmu}}{8}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces N\IeC {\v e}jak\IeC {\'y} graf}}{12}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Ruletov\IeC {\'e} kolo}}{13}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h algoritmu Genetick\IeC {\'e}ho programov\IeC {\'a}n\IeC {\'\i }}}{15}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Reprezentace stromu}}{17}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}}{19}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru mutace}}{20}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru editace. Lev\IeC {\'y} strom zjednodu\IeC {\v s}\IeC {\'\i }me a v\IeC {\'y}sledkem je strom prav\IeC {\'y}}}{21}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Regresn\IeC {\'\i } funkce (modr\IeC {\'a}) s nalezenou aproximax\IeC {\'\i } (\IeC {\v c}erven\IeC {\v e})}}{25}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^5-2x^3+x$}}{26}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^6-2x^4+x^2$}}{27}{figure.11}

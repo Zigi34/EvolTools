@@ -81,23 +81,13 @@ Pochopitelně text není skutečnou diplomovou prací, ale jen ukázkou použit�
 implementovaných maker v praxi. V kapitole \ref{sec:Typo} jsou ukázky použití
 různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako závěr}. Zároveň tato kapitola slouží jako ukázka generování křížových odkazů v \LaTeX{}u.
 
-\section{Předmluva}
-\label{sec:Predmluva}
-\paragraph*{}
-Evoluční algoritmy vznikly jako řešení a jeden ze způsobů optimalizace v matematických a vědních kruzích. Celkem dlouho byl způsob optimalizace řešen dnes již klasickým matmatických aparátem, který je založen na infinitezimálním počtu, na variačních metodách aplikovaných ve funkcionálním prostoru nebo numerických metodách.
-
-\paragraph*{}
-Tímto způsobem však lze nalézt optimální řešení pro problémy jednodušší charakter a pro ty složitější umožňuje nalézt pouze suboptimální řešení.
-
 \section{Evoluční algoritmy}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsection{Potřeba evolučních algoritmů}
-\paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsection{Terminologie}
+
+\subsection{Pojmy z oblasti evolučních algoritmů}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
@@ -135,17 +125,10 @@ Kromě vývoje nejlepšího jedince je pak vhodné zobrazovat vývoj i nejhorš�
 \paragraph*{}
 Vývoj populace musí být vždy konvergentní k lepším hodnotám, což znamená, že nemůže nikdy vykazovat divergenci. V daném algoritmu funguje tzv. „elitismus“, který slouží jako jakýsi jednosměrný filtr, jenž propouští do nové populace pouze ta řešení, která jsou lepší či stejně dobrá jako ta ze staré populace.
 
-\subsubsection{Ohodnocovací funkce}
+\subsubsection{Účelová funkce}
 \paragraph*{}
 Každého vytvořeného reprezentativního jedince je třeba ohodnotit v rámci celé populace čítající desídky jiných jedinců tak, aby bylo možné některé jedince (řešení) upřednostňovat při výběru pro křížení před jinými (horšími) řešeními.
 Hodnota takto přidělená jedinci je označována za jeho fitness (neboli vhodnost).
-
-\subsubsection{Výběrová funkce}
-\paragraph*{}
-Operací selekcí v evolučních algoritmech rozumíme náhodné vybrání několika řešení z celé populace a to na základě předpokladů, které o každém řešení známe. Požadovaný je stav, aby během běhu algoritmu kulminovaly řešení v populaci k lepším, než byly na začátku. K tomu nám slouží ohodnocovací funkce. Operace selekce poté pracuje s hodnotou fitness tak, aby pozitivně zohlednila řešení s větší vhodností a znevýhodnila řešení, která mají tuto hodnotu malou.
-
-\paragraph*{}
-V dalších částech této práce si představíme několik nejznámějších způsobů, jak lze z populace vybírat náhodně některá řešení a přitom zvýhodňovat lepší řešení od horších. Vždy záleží na konkrétním případě užití. Představíme si algoritmus "Ruletového kola", "Turnajového výběu" a "Výběru podle pořadí".
 
 \subsubsection{Operátor mutace}
 \paragraph*{}
@@ -160,19 +143,28 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů
 plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
 
-\subsection{Vybrané algoritmy}
-\paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+\subsection{Životní cyklus evolučních algoritmů}
 
-\subsubsection{Genetický algoritmus (GA)}
+\InsertFigure{Figures/evol-progress.png}{0.7\textwidth}{Průběh evolučního algoritmu}{fig:EvolProgress}
+
+\paragraph*{}
+Životní cyklus algoritmů z rodiny evolučních algoritmů je v zásadě totožný a lze jej zjedodušeně popsat několika kroky, jak je znázorněno na obr. Na počátku je v rámci námi zkoumané instance problématiky náhodně vytvořena populace, a to z genofondu, který příslučí danému alforitmu.
+
+\paragraph*{}
+Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocení kvality řešení) daného problému každému jedinci přiřazena hodota, vyjadřující míru vhodnosti jedince, tzv. fitness. Ohodnocená populace je dále podrobena selekci jedinců vhodných k reprodukci. Selektivní funkce přímo pracuje s přiřazenými fitness hodnotami a na základě těchto hodot ovlivňuje míru pravděpodobnosti jedinců v populaci.
+
+\paragraph*{}
+V reprodukční části algoritmu dochází k výměně genetických informací nově vzniklých jedinců. Typickými operátory je křížení - vzájemná výměna části fenotypů mezi více jedinci a mutace - náhodné pozměnení fenotypů jedince.
+
+\subsection{Genetický algoritmus (GA)}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
 
-\subsubsection{Particle Swarm}
+\subsection{Particle Swarm}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
 
-\subsubsection{SOMA}
+\subsection{SOMA}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
 
@@ -237,7 +229,26 @@ Vlastnostmi se podobá neuronovými sítěmi. Od jiných evolučních algoritmů
 \paragraph*{}
 Funkce $f_i$ z množiny $\Pi$ tvořící uzly syntaktického stromu jejichž argumenty reprezentují hrany vedoucí do hloubky o jedno větší. Terminály zastupují proměnné či konstanty umístěné v listových uzlech ukončují růst stromu a samotné individuum.
 
-\subsection{Algoritmus GP}
+\subsection{Selekce}
+\paragraph*{}
+Cílem operátoru selekce je udžení v nové populaci co možná nejlepší řešení daného problému. Praktikuje se přitom přímá vazba na hodnotu fitness funkce jednotlivých jedinců (řešení). Výběr jedinců z populace je často aplikován  algoritmem, založeným na pravděpodobnosti.
+
+\paragraph*{}
+Variant selekce existuje několik. Běžne se v publikacích objevují vyskytují varianty označované jako \textit{roulete wheel selection}
+
+\subsubsection*{Roulete wheel selection}
+\paragraph*{}
+V češtině pod názvem výběr ruletovým kolem, je operátor používaný v genetických algoritmů pro výběr potenciálně vhodných řešení pro následnou rekombinaci. K přiřazené fitness hodnotě se úměrně přidružuje pravděpodobnostní hodnota pro výběr jedince k další reprodukci. 
+
+\paragraph*{}
+Hodnota fitness je použita k přiřazení pravděpodobnosti pro výběr jednotlivých řešení následujícím způsobem. Pokud je $f_i$ přiřazená fitness hodnota jedince $i$ v populaci, pak pravděpodobnost, že toto řešení bude vybráno rovno $p_i=\frac{f_i}{\sum\limits_{j=1}^n f_j}$, kde $n$ je počet jedinců v populaci.
+
+\paragraph*{}
+Rozdělení pravděpodobnosti pro jednotlivé jedince si lze dobře představit na kole s výšeči, kde plocha každé výseči reprezentuje velikost pravděpodobností každého řešení. Odtud tedy název tohoto algoritmu.
+
+\InsertFigure{Figures/roulete_wheel}{0.5\textwidth}{Ruletové kolo}{fig:SampleGraph}
+
+\subsection{Algo1ritmus GP}
 \paragraph*{}
 Jak ilustruje níže uvedený obrázek \ref{fig:gp-paradigm}, algoritmus GP lze rozdělit do několika kroků, které budou následně rozebrány v závislosti na způsobu realizace.
 \InsertFigure{Figures/gp-paradigm.png}{0.7\textwidth}{Průběh algoritmu Genetického programování}{fig:gp-paradigm}
@@ -285,12 +296,14 @@ Množina funkcí může obsahovat:
 \paragraph*{}
 Aby byl algoritmus GP skutečně úspěšný a efektivní při hledání vhodného řešení, musíme velmi pečlivě definovat množinu použitých funkcí a také terminálních symbolů. Chybí-li v množině funkcí nějaký klíčový krok, můžeme se nám tvorba správného programu zesložitit či v extrémním případě nemusíme dojít k řešení vůbec. Naproti tomu, pokud budeme mít množinu funkcí příliš bohatou, rozšíří se prostor možných řešení a tedy i časová složitost pro prohledání celého prostoru. Může se stát, že i přesto, že je výsledná funkce jednoduchá, bude přesto časově zdlouhavé, abychom toto řešení nalezli. Je to jako hledat jehlu v kupce sena. Vhodné je omezit funkce na co nejmenší počet.
 
-\subsection{Reprezentace stromu}
+\subsection{Reprezentace stromové struktury}
 \paragraph*{}
 Implementací syntaktického stromu je několik. Jednou z možností jak strom v počítačích reprezentovat je s použitím uzlů obsahující sezname potomků. Jde o přirozené vnímání stromové struktury, která je však při samotné implementaci dosti obtížně manipulovatelná. 
 
 \paragraph*{}
 Druhou možností je seznam, který představuje strom v prefixovém tvaru zápisu. Pořadí prvků v seznamu odpovídá pořadí navštívení každého uzlu ve stromě, při procházení stromu do hloubky. Zajištění zpětné rekonstrukce stromu nám umožňuje informace o tom, zda prvek patří do množiny terminálních symbolů nebo naopak do množiny funkcí a arita každé funkce. Příkladem takovéto stromové reprezentace je na obrázku níže.
+
+\InsertFigure{Figures/tree_structure.png}{0.4\textwidth}{Reprezentace stromu}{fig:TreeStructure}
 
 \subsection{Generování počáteční populace}
 \paragraph*{}
@@ -318,6 +331,8 @@ Speciálním případem při křížení je tzv. "incestní křížení", které
 \subsubsection{Mutace}
 \paragraph*{}
 Operátor mutace také náhodně vybere uzel stromu a celý jeho podstrom odstraní. Na tomto místě se poté náhodně vygeneruje chybějící část stromu do maximální hloubky předepsané parametrem tak, aby vyýsledný strom nebyl příliš velký. 
+
+\InsertFigure{Figures/mutate.png}{0.4\textwidth}{Příklad operátoru mutace}{fig:MutateSample}
 
 \paragraph*{}
 Variant operace mutace je několik. Mezi základní patří tyto:
@@ -390,70 +405,87 @@ Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a n
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\section{Paralelizace s technologií GPGPU}
-\paragraph*{}
-Nedávným trendem dnešních běžných stolních systémů je využít univerzálních grafických procesorových jednotek (GPGPU) s cílem získat o řád vyšší výpočetní výkon než u CPU jednotek. Tradiční CPU je současně schopno spouštět pouze několik málo vláken. Naopak GPU umožňuje provádět stovky až tisíce vláken.
-Jako příklad lze uvést NVIDIA Compute Unified Device Architecture (CUDA) se ukázal jako populární programovací model pro GPGPUs s použitím C/C++.
-
-\paragraph*{}
-V tomto článku představíme programovací rozhraní s názvem JCUDA, které mohou být použity Java programátory k vyvolání jádra CUDA. Pomocí tohoto rozhraní mohou programátoři píší Java kódy, které přímo volají jádra CUDA, aniž by se museli starat o podrobnostech přemostění běhového prostředí Java a CUDA runtime.
-
-\subsection{CUDA}
-\paragraph*{}
-Poháněn nenasytnou poptávkou po real-time 3D hrách a multimediálním zážitku, programovatelné GPU (Graphics Processing Unit) se vyvinul do vysoce paralelní, vícevláknových, manycore procesoru. Současné GPU mají desítky či stovky fragmentů procesorů a vyšší paměťové šířky pásma než běžné procesory. Například, NVIDIA GeForce GTX 295 grafická karta je dodáván se dvěma GPU, každý s 240 procesorovými jádry a pamětí s 233,8 Gb/s šířky pásma, což je asi 10-krát rychlejší než u současných procesorů 1,8 GB. Stejný GPU je součástí NVIDIA Tesla C1060 procesor počítače, který je GPU procesor použitý v našich výkonnostních hodnoceních.
-
-\paragraph*{}
-Programovací model CUDA je rozšíření jazyka C. Programátoři píší aplikace se dvěma částmi kód - funkce, které mají být provedeny na počítači a funkce procesoru, které mají být provedeny na GPU zařízení. Vstupní funkce kódu součástky jsou označeny globální klíčové slovo, a jsou označovány jako jádra. Kernel provádí paralelně v sadě paralelních vláken v jediné instrukce Multiple Thread (SIMT) Model
-
-\subsection{jCUDA}
-\paragraph*{}
-Smyslem projektu jCUDA (Java pro CUDA®) je nabídnout pro jazyk Java vazbu na NVidia CUDA framework spolu s jejími knihovnami, které umožňují plně využít výpočetní výkon grafických karet podporujícími různé verze CUDA, na různých platformách, bez nutnosti měnit svůj kód. Knihovna je nabízená jak pro platformu Windows (32, 64-bit), tak Linux( 32, 64-bit). 
-
-\paragraph*{}
-Chcete-li využit knihoven JCUDA, je potřeba mít grafickou kartu, podporující CUDA spolu s ovladači. Informace o podpoře CUDA u grafických karet NVidia jsou zveřejněny na stránkách NVidie. Požaduje se minimální nároky na CUDA verzi nejméně 1.1 a Java Runtime 1.5 a vyšší.
-
-\paragraph*{}
-jCUDA je nabízená s volnou licencí pro osobní požití, vědeckou či výzkumnou činnost a komerční využití. Ovšem zde není poskytnuta žádná podpora ani záruka.
-
-\paragraph*{}
-Java Native Interface (JNI) [6], rozhraní Javy pro provádění funkcí nativního jazyka C, hrálo také významnou roli v projektech JGF, jako je umožnění Message Passing Interface (MPI) pro Javu. V JNI, programátor deklaruje vnější nativní metody vybraných funkcí C, které lze vyvolat Java programem. Po kompilaci zdrojové soubory Java je použit nástroj javah ke generování hlavičkové soubory C, které obsahuje rozhraní nativního kódu. JNI podporuje také bohatou paletu funkcí zpětného volání a umožní nativnímu kódu přístup k Java objektům a služebám.
-
-\InsertFigure{Figures/jCUDA.png}{0.7\textwidth}{Vývojový proces přístupu CUDA přes JNI}{fig:jCUDA}
-
-\paragraph*{}
-Obrázek \ref{fig:jCUDA} shrnuje proces třístupňový, že programátor Java potřebuje řídit přístup k CUDA přes JNI dnes. To zahrnuje psaní kódu Java a JNI pahýl kód v jazyce C pro provedení na CPU, stejně jako CUDA kód pro provedení na GPU zařízení. Otočný kód musí také zvládnout alokaci a uvolnění dat v paměti přístroje a datové přenosy mezi hostitelem a zařízení. Je jasné, že tento proces je zdlouhavý a náchylné k chybám, a že by bylo více produktivní použít kompilátor nebo programovací nástroj, který automaticky generuje pahýl kód a přenosu dat volání.
-
-\subsection{Paralelizace na GPU}
-\paragraph*{}
-Pro využití grafického procesoru k výpočtům algoritmu genetického programování je třeba daný proces správně paralelizovat, aby byl výpočet, pokud možno co nejefektivnější a nejjednodušší.
-
-\subsubsection{Paralelizace genetického programování}
-\paragraph*{}
-V následující části bude popsáno, jakým způsobem bude program komunikovat s grafickým procesorem a jak bude algoritmus paralelizován přímo na grafickém procesoru.
-
-\paragraph*{}
-Pro dosažení maximálního výkonu při běhu algoritmu, přesuneme celý algoritmus přímo na GPU. Pro tento účel bude třeba vytvořit kernel gp.cu, který se bude řídit provádění evolučního cyklu. Kernel bude volán s parametry: gen - počet generací populace, popSize - velikost populace, pop - kolekci řešení v poli, funs - funkce, oper - operátory.
-
-\paragraph*{}
-Je třeba si uvědomit, že takýto přístup k paralelizaci je individuální a je závislý na daném problému, který genetický algoritmus řeší. Proto mimo tento kernel bude existovat funkce art ant.cu, která se bude starat o vyhodnocování jednotlivých řešení.
-
-\subsubsection{Návrh paměťového modelu}
-\paragraph*{}
-Aby byla paralelizace úspěšná, je důležité si dobře zanalyzovat umístění a zarovnání dat pro výpočet v paměti. Lze bez nadsázky říci, že tento krok je při dosažení správných výsledků a také výkonu nejdůležitější.
-
-
-
 \section{Testování na vybraných problémech}
 \paragraph*{}
 Po představení pestré, ale zdaleka né kompletní, škály algoritmů je třeba si představit a vyhodnotit jejich sílu na problémech, které se objevují v mnoha publikacích jako vhodní adepti. V následujících pasážích si představíme ty nejběžnější avšak netriviální problémy. U každé definice problému je popsáno, jakými evolučními algoritmy je vhodné tyto problémy řešit. Spolu s definicí problému si popíšeme i výsledky, které byly během testování zaznamenány a konfigurace s jakými byly algoritmy spouštěny. Podtržením toho všeho bude srovnání s výsledky, které byly zveřejněny v publikacích jako optimální, přičemž nemáme za cíl dosáhnout co nejlepšího řešení, ale orientačně vyhodnotit použitelnost na problémech s přihlédnutím k tomu, že výsledným produktem této práce bude aplikace sloužící jako opora při úvodu do problematiky a výuky evolučních algoritmů a hlavně genetického programování.
 
-\subsubsection{Sudoku}
+\subsection{Umělý mravenec}
 \paragraph*{}
 
 
-\subsubsection{Aproximace modelu}
+\subsection{Symbolická regrese}
 \paragraph*{}
+Symbolická regrese (dále jako SR) se v publikacích popisována jako statická metoda používaná k předpovídání hodnot nějaké proměnné, závislé a jedné nebo více nezávislých proměnných. Snaží se odhalit vnitřní vztahy v datovém souboru. Jde tedy o inverzní postup pro získání symbolického tvaru (původního předpisu funkce) na základě tohoto souboru dat - množina hodnot z definičního oboru funkce. 
 
+\paragraph*{}
+Obecně může jít o jakoukoliv funkci např. $y=sin(x)+1/e^x$. Symbolická regrese je jeden z možných způsobů, jak najít vhodnou regresní funkci pro zadaná data.
+
+\paragraph*{}
+Regresní funkce může být zkonstruována kombinací elementárních funkcí, jako jsou matematické operátory: sčítání ($+$), odčítání ($-$), násobení ($*$), dělení ($/$), goniometrické funkce: sinus ($\sin(x)$), cosinus ($\cos(x)$), proměnné:  $x, y, z, ...$, a konstant: $a, b, c, ...$. 
+
+\paragraph*{}
+V GP je cílová regresní funkce konstruována a upřesňována během evolučního procesu. Na začátku se v závislosti na velikosti populace a matematických výrazech, proměnných, respektive konstantách vytvoří počáteční populace, kde každý jedinec představuje jednu z možných regresních funkcí.
+
+\paragraph*{}
+Fitness funkce, která řídí vývoj modelů bere v úvahu nejen chybové metriky (s cílem zajistit modely přesně předpovědět data), ale také ...
+
+\paragraph*{}
+Zatímco běžné regresní techniky se snaží optimalizovat parametry pro předem specifikované modelové struktury, symbolická regrese žádné modelové struktury nepředpokladá, a místo toho vyvozuje tento model ze samotných dat. Jinými slovy, se pokouší zjistit, jak modelové struktury, tak parametry. Tento přístup má samozřejmě nevýhodu v mnohem větším prostoru k prohledání - ve skutečnosti, je nekonečný ne jen prostor pro modely symbolické regrese, ale existuje nekonečné množství modelů, které se perfektně hodí na konečná množina dat (za předpokladu, že složitost modelu není uměle omezena). 
+
+\InsertFigure{Figures/regression_example.png}{0.7\textwidth}{Regresní funkce (modrá) s nalezenou aproximaxí (červeně)}{fig:reg_sample}
+
+\paragraph*{}
+Velikost prohledávaného prostoru, a tak i časovou náročnost pro nalezení modelu lze omezit tím, že omezíme sadu stavebních bloků poskytnutých algoritmu na základě stávajících znalostí systému, který produkoval data. Nicméně, tento rys symbolické regrese má také výhodu - evoluční algoritmus využívá rozmanitosti generování modelu, a tak účinně prozkoumává prostor možných řešení. V konečném výsledku je proto pravděpodobné, že z výběru navržených modelů, které celkem optimálně aproximují datový soubor, můžeme poskytnout lepší vhled do systému, a umožňuje uživateli identifikovat aproximaci, která lépe vyhovuje potřebám (co do přesnosti a jednoduchosti).
+
+\paragraph*{}
+Symbolická regrese má široké využití. Mezi nejčastější možnosti aplikace bychom mohli zařadit:
+\begin{enumerate}
+\item Syntéza logických obvodů
+\item Syntéza neuroových sítí
+\item Syntéza trajektorií robotů
+\item Aproximace funkcí
+\end{enumerate}
+
+\subsubsection{Aproximace funkcí}
+\paragraph*{}
+Pro otestování životaschopnosti a správnosti implementovaného algoritmu GP bylo vytvořeno rozhraní také pro aproximaci neznáméh modelu funkce za pomocí předložených dat. Cílem bylo nalezení modelu funkce k dosažení co možná nejoptimálnějšího proložení dat.
+
+\paragraph*{}
+K testvání byly použity polynomy pátého a šestého řádu, tzv. Sextic a Quintic problémy a dvojice trignometrických funkcí s značením 3Sine a 4Sine problémy \cite{evolvyptech}.
+
+\subsubsection{Quintic a Sextic problem}
+\paragraph*{}
+Problém označovaný jako Quintic a Sextic problem jsou označením pro všechny polynomiální funkce pátého a šestého řádu. V této práci se jednalo o funkce definované vztahy \ref{eq:quitic} a \ref{eq:sextic}. Prezentované výsledky pro oba problémy byly produkovány konfiguraci v tabulce \ref{tab:quintic_conf}.
+
+\begin{equation} \label{eq:quitic}
+x^5-2x^3+x
+\end{equation}
+
+\InsertFigure{Figures/quintic-problem.png}{0.7\textwidth}{Průběh funkce $x^5-2x^3+x$}{fig:quintic_fce}
+
+\begin{equation} \label{eq:sextic}
+x^6-2x^4+x^2
+\end{equation}
+
+\InsertFigure{Figures/sextic-problem.png}{0.7\textwidth}{Průběh funkce $x^6-2x^4+x^2$}{fig:sextic_fce}
+
+\paragraph*{}
+\begin{table}
+  \centering
+  \begin{tabular}{| r | p{9cm} |} \hline
+    Datový soubor & tvoře 50 vzorky v rozmezí [-1;1] \\ \hline
+    Velikost chyby & Suma absolutních hodnot rozdílů mezi původí hodnotou a hodnotou syntetizované funkce \\ \hline
+    Množina funkcí & $+, -, *, /, pow(a,b)$ \\ \hline
+    Množina terminálů & konstanty $a, b, c, d, e, f$ s nastavenou mezí [-10;10], a nezávislá proměnná $x$ \\ \hline
+    Počet generací & 5000 evolučních cyklů \\ \hline
+    Velikost populace & 500 řešení \\ \hline
+  \end{tabular}
+  \label{tab:quintic_conf}
+  \caption{Konfigurace pro testování GP pro Quintic a Sextic problem}
+\end{table}
+
+\paragraph*{}
+Simulace aproximace pro oba problémy byla opakována 50-krát. Na obrázku jsou zobrazeny data a jejich proložení všemi syntetizovanými funkcemi. Z toho obrázku lze vidět, že všechny nalezené syntetizované funkce velice přesně aproximují původní funkci.
 
 \subsection{Vyhodnocení}
 \paragraph*{}
@@ -461,7 +493,7 @@ Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a n
 
 \section{Závěr}
 \label{sec:Conclusion}
-Tak doufám, že Vám tato ukázka k něčemu byla. Další informace najdete v~publikacích
+Tak doufám, že Vám tato ukázka k něčemu byla. Další informace najdete v publikacích
 \cite{goossens94,lamport94}.
 
 \bigskip
@@ -478,6 +510,10 @@ Cambridge, MA: MIT Press, 1992.
 \bibitem{evoltech} Dostál, M.,
 \textit{Evluční výpočetní techniky},
 Olomouc, Přírodovědecká fakulta: 2007.
+
+\bibitem{evolvyptech} Zelinka, I., Oplatkova, Z., Šeda, M., Ošmera, P., Včelař, F.,
+\textit{Evluční výpočetní techniky, principy a aplikace},
+Praha, BEN - technická literatura: 2009.
 
 \bibitem{kozagp2} Koza, J. R.,
 \textit{Genetic programming II. Automatic Discovery of Reusable Programs},
@@ -501,18 +537,6 @@ Morgan Kaufnamm pub., ISBN 1-55860-543-6, 1999
 \bibitem{optimization} Lampinen Jouni, Zelinka, Ivan,
 \textit{New Ideas in Optimization and Mechanical Engineering Design Optimization by Differential Evolution. Volume 1},
 London: McGraw-Hill, 1999. 20 p. ISBN 007-709506-5
-
-\bibitem{jCUDA} Yan Y., Grossman M., Sarkar V.,
-\textit{Euro-Par 2009 Parallel Processing},
-Department of Computer Science, Rice University, 2009. 899 p. ISBN 978-3-642-03868-6
-
-\bibitem{nVidia} CUDA GPUs. 
-\textit{NVidia Corporation: Accelerated Computing [online] 2016}, 
-[cit. 2016-02-15]. Dostupné z: https://developer.nvidia.com/cuda-gpus
-
-\bibitem{jCUDA} JCUDA. 
-\textit{Company for Advanced Supercomputing Solutions LTD: jCUDA [online] 2008-2015}, 
-[cit. 2016-02-15]. Dostupné z: http://www.cass-hpc.com/solutions/legacy/jcuda/
 
 \end{thebibliography}
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.zigi.evolution.solution.value.GPFenotype;
 import org.zigi.evolution.solution.value.Node;
+import org.zigi.evolution.util.Util;
 
 public class TreeSolution extends Solution {
 	private Node root;
@@ -386,7 +387,7 @@ public class TreeSolution extends Solution {
 		if (getFitness() == null)
 			sb.append("NULL");
 		else
-			sb.append(getFitness());
+			sb.append(Util.formatNumber(getFitness()));
 		sb.append("]");
 		printTree(sb, root);
 		return sb.toString();

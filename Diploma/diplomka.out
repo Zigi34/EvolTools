@@ -1,29 +1,29 @@
 \BOOKMARK [1][-]{section.1}{\332vod}{}% 1
-\BOOKMARK [1][-]{section.2}{Predmluva}{}% 2
-\BOOKMARK [1][-]{section.3}{Evolucn\355 algoritmy}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Potreba evolucn\355ch algoritmu}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Terminologie}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Vybran\351 algoritmy}{section.3}% 6
-\BOOKMARK [1][-]{section.4}{Genetick\351 programov\341n\355 \(GP\)}{}% 7
-\BOOKMARK [2][-]{subsection.4.1}{GA vs. GP}{section.4}% 8
-\BOOKMARK [2][-]{subsection.4.2}{\332lohy re\235en\351 GP}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.3}{Reprezentace jedince}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.4}{Algoritmus GP}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.5}{Omezen\355 GP}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.6}{Mno\236ina funkc\355 a termin\341lu}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.7}{Reprezentace stromu}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.8}{Generov\341n\355 poc\341tecn\355 populace}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.9}{Oper\341tory}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.10}{Popis algoritmu}{section.4}% 17
-\BOOKMARK [1][-]{section.5}{Implementace GP}{}% 18
-\BOOKMARK [2][-]{subsection.5.1}{Evolucn\355 procesy}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.2}{UML model}{section.5}% 20
-\BOOKMARK [2][-]{subsection.5.3}{Aplikace EvolTools}{section.5}% 21
-\BOOKMARK [1][-]{section.6}{Paralelizace s technologi\355 GPGPU}{}% 22
-\BOOKMARK [2][-]{subsection.6.1}{CUDA}{section.6}% 23
-\BOOKMARK [2][-]{subsection.6.2}{jCUDA}{section.6}% 24
-\BOOKMARK [2][-]{subsection.6.3}{Paralelizace na GPU}{section.6}% 25
-\BOOKMARK [1][-]{section.7}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 26
-\BOOKMARK [2][-]{subsection.7.1}{Vyhodnocen\355}{section.7}% 27
-\BOOKMARK [1][-]{section.8}{Z\341ver}{}% 28
-\BOOKMARK [1][-]{section.9}{Reference}{}% 29
+\BOOKMARK [1][-]{section.2}{Evolucn\355 algoritmy}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Pojmy z oblasti evolucn\355ch algoritmu}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{\231ivotn\355 cyklus evolucn\355ch algoritmu}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Genetick\375 algoritmus \(GA\)}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Particle Swarm}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{SOMA}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Genetick\351 programov\341n\355 \(GP\)}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{GA vs. GP}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{\332lohy re\235en\351 GP}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Reprezentace jedince}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{Selekce}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.5}{Algo1ritmus GP}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.6}{Omezen\355 GP}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.7}{Mno\236ina funkc\355 a termin\341lu}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.8}{Reprezentace stromov\351 struktury}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.9}{Generov\341n\355 poc\341tecn\355 populace}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.10}{Oper\341tory}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.11}{Popis algoritmu}{section.3}% 19
+\BOOKMARK [1][-]{section.4}{Implementace GP}{}% 20
+\BOOKMARK [2][-]{subsection.4.1}{Evolucn\355 procesy}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.2}{UML model}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.3}{Aplikace EvolTools}{section.4}% 23
+\BOOKMARK [1][-]{section.5}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 24
+\BOOKMARK [2][-]{subsection.5.1}{Umel\375 mravenec}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Symbolick\341 regrese}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.3}{Vyhodnocen\355}{section.5}% 27
+\BOOKMARK [1][-]{section.6}{Z\341ver}{}% 28
+\BOOKMARK [1][-]{section.7}{Reference}{}% 29

@@ -63,4 +63,10 @@ public class RankSelect extends SelectFunction {
 	public String toString() {
 		return "Rank Select";
 	}
+
+	@Override
+	public List<Solution> select(Population pop, int count, double maxValue) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

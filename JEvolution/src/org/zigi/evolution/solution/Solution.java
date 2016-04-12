@@ -34,4 +34,17 @@ public abstract class Solution implements Cloneable<Solution> {
 	}
 
 	public abstract String getGenotypeString();
+
+	@Override
+	public int hashCode() {
+		String code = toString();
+		return code.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj != null)
+			return obj.toString().equals(toString());
+		return false;
+	}
 }

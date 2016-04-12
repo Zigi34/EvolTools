@@ -100,6 +100,30 @@ public class Population implements Cloneable<Population>, Comparator<Solution> {
 	}
 
 	public int compare(Solution o1, Solution o2) {
-		return o1.getFitness().compareTo(o2.getFitness());
+		Double val1 = o1.getFitness();
+		Double val2 = o2.getFitness();
+		if (val1.isNaN())
+			val1 = Double.MIN_VALUE;
+		if (val2.isNaN())
+			val2 = Double.MIN_VALUE;
+		return val1.compareTo(val2);
+	}
+
+	/**
+	 * Vrací součet fitness v populaci
+	 * 
+	 * @return
+	 */
+	public double getFitnessSum() {
+		double max = 0.0;
+		for (Solution sol : solutions) {
+			if (sol.isEvaluated()) {
+				Double fit = sol.getFitness();
+				if (fit.isNaN())
+					fit = 0.0;
+				max += fit;
+			}
+		}
+		return max;
 	}
 }

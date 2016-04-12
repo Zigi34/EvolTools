@@ -34,7 +34,10 @@ public class RouleteWheelSelect extends SelectFunction {
 		double max = 0.0;
 		for (Solution sol : sols.getSolutions()) {
 			if (sol.isEvaluated()) {
-				max += sol.getFitness() + MIN_VALUE;
+				Double fit = sol.getFitness();
+				if (fit.isNaN())
+					fit = 0.0;
+				max += fit + MIN_VALUE;
 			}
 		}
 
@@ -82,5 +85,27 @@ public class RouleteWheelSelect extends SelectFunction {
 	@Override
 	public String toString() {
 		return "Roulete Wheel Select";
+	}
+
+	@Override
+	public List<Solution> select(Population sols, int count, double sumFitness) {
+		List<Solution> list = new LinkedList<Solution>();
+
+		double max = sumFitness + (sols.size() * MIN_VALUE);
+		for (int i = 0; i < count; i++) {
+			double rnd = RAND.nextDouble() * max;
+			double value = 0.0;
+			for (Solution sol : sols.getSolutions()) {
+				Double fit = sol.getFitness();
+				if (fit.isNaN())
+					fit = 0.0;
+				value += fit + MIN_VALUE;
+				if (value > rnd) {
+					list.add(sol);
+					break;
+				}
+			}
+		}
+		return list;
 	}
 }
