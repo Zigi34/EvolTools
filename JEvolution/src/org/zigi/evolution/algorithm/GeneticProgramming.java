@@ -1,6 +1,5 @@
 package org.zigi.evolution.algorithm;
 
-import java.util.List;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -9,21 +8,17 @@ import org.zigi.evolution.cross.TreeCross;
 import org.zigi.evolution.mutate.MutateFunction;
 import org.zigi.evolution.mutate.TreeMutate;
 import org.zigi.evolution.problem.TreeProblem;
-import org.zigi.evolution.select.ElitismFunction;
 import org.zigi.evolution.select.RankSelect;
 import org.zigi.evolution.select.SelectFunction;
-import org.zigi.evolution.select.SpravedlivyBestElitism;
-import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
-import org.zigi.evolution.util.Util;
 
 public class GeneticProgramming extends EvolutionAlgorithm {
 
 	private SelectFunction select;
 	private CrossFunction cross;
 	private MutateFunction mutate;
-	private ElitismFunction elitism = new SpravedlivyBestElitism();
-	private double mutateProbability = 0.7;
+	private double mutateProbability = 0.1;
+	private double crossProbrability = 0.8;
 
 	private static final Random RAND = new Random();
 
@@ -99,12 +94,12 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 			setState(CREATE_INIT_POPULATION_END);
 		}
 
+		// Util.logPopulation(population);
+
 		// ohodnotime celou populaci
 		setState(EVALUATE_POPULATION_START);
 		problem.evaluate(population);
 		setState(EVALUATE_POPULATION_END);
-
-		Util.logPopulation(population);
 
 		// aktualizace nejlepsiho jedince
 		setState(CHECK_BEST_SOLUTION_START);
@@ -112,88 +107,51 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		setState(CHECK_BEST_SOLUTION_END);
 
 		while (getActualGeneration() < getGeneration() && !isTerminate()) {
-			// vytvorime si novou populaci
-			Population newPopulation = new Population();
-			newPopulation.setMax(getPopulation().getMaxSolutions());
+			// Util.logPopulation(getPopulation());
 
-			// prepocitame sum fitness
-			double sumFitness = population.getFitnessSum();
+			Population list = select.select(getPopulation(), getProblem(), population.getMaxSolutions());
 
-			// dokud neni populace plna, tak pokracujeme
-			while (newPopulation.size() < newPopulation.getMaxSolutions()) {
-				// pokud chybi uz jeden jedinec, pouzijeme mutaci
-				if (newPopulation.getMaxSolutions() - newPopulation.size() == 1) {
-					// mutace
-					List<Solution> list = select.select(population, 1, sumFitness);
-					Solution selected = list.get(0).cloneMe();
-					setState(MUTATE_SOLUTION_START);
-					mutate.mutate(selected);
-					setState(MUTATE_SOLUTION_END);
+			// Util.logPopulation(list);
 
-					newPopulation.add(selected);
-				} else {
-					// nahodne vybereme bud mutaci nebo krizeni
-					if (RAND.nextDouble() <= mutateProbability) {
-						// mutace
-						List<Solution> list = select.select(population, 1, sumFitness);
-						Solution selected = list.get(0).cloneMe();
-						setState(MUTATE_SOLUTION_START);
-						mutate.mutate(selected);
-						setState(MUTATE_SOLUTION_END);
+			long crossSize = Math.round(list.size() * crossProbrability);
+			long mutateSize = Math.round(list.size() * mutateProbability);
+			long reproduceSize = list.size() - (crossSize - mutateSize);
 
-						newPopulation.add(selected);
-					} else {
-						// krizeni
-						List<Solution> list = select.select(population, 2, sumFitness);
-						Solution selected1 = list.get(0).cloneMe();
-						Solution selected2 = list.get(1).cloneMe();
+			// krizeni
+			setState(CROSS_SOLUTION_START);
+			cross.cross(list, 0, crossSize);
+			setState(CROSS_SOLUTION_END);
 
-						list.clear();
+			// Util.logPopulation(list);
 
-						list.add(selected1);
-						list.add(selected2);
+			// mutace
+			setState(MUTATE_SOLUTION_START);
+			mutate.mutate(list, crossSize, mutateSize);
+			setState(MUTATE_SOLUTION_END);
 
-						setState(CROSS_SOLUTION_START);
-						if (!cross.cross(list)) {
-							mutate.mutate(selected1);
-							mutate.mutate(selected2);
-						}
-						setState(CROSS_SOLUTION_END);
-						newPopulation.add(selected1);
-						newPopulation.add(selected2);
-					}
-
-				}
-			}
+			// Util.logPopulation(list);
 
 			// ohodnocení nové populace
 			setState(EVALUATE_POPULATION_START);
-			problem.evaluate(newPopulation);
+			problem.evaluate(list);
 			setState(EVALUATE_POPULATION_END);
 
-			// nova populace
-			Population nextPop = new Population();
-			nextPop.setMax(newPopulation.getMaxSolutions() + getPopulation().getMaxSolutions());
-			nextPop.addAll(getPopulation().getSolutions());
-			nextPop.addAll(newPopulation.getSolutions());
+			// Util.logPopulation(list);
 
 			// Util.logPopulation(nextPop);
 			// LOG.info("-----");
 
 			setState(CHECK_BEST_SOLUTION_START);
-			checkBestSolution(nextPop);
+			checkBestSolution(list);
 			setState(CHECK_BEST_SOLUTION_END);
 
-			List<Solution> list = elitism.select(nextPop, newPopulation.getMaxSolutions());
-			Population p = new Population();
-			p.setMax(list.size());
-			p.addAll(list);
+			// Util.logPopulation(list);
 
 			// Util.logPopulation(p);
 			// LOG.info("-----");
 
 			// konec plneni nove populace a nahrazeni stare
-			setPopulation(p);
+			setPopulation(list);
 			setState(NEW_POPULATION);
 
 			increseActualGeneration();
@@ -201,5 +159,13 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 
 		setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);
 		setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);
+	}
+
+	public double getCrossProbrability() {
+		return crossProbrability;
+	}
+
+	public void setCrossProbrability(double crossProbrability) {
+		this.crossProbrability = crossProbrability;
 	}
 }

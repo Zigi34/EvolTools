@@ -18,9 +18,11 @@ import org.zigi.evolution.solution.value.LeftDirection;
 import org.zigi.evolution.solution.value.Move;
 import org.zigi.evolution.solution.value.Node;
 import org.zigi.evolution.solution.value.Prg2;
+import org.zigi.evolution.solution.value.Prg3;
 import org.zigi.evolution.solution.value.RightDirection;
 import org.zigi.evolution.solution.value.Rotation;
 import org.zigi.evolution.util.Population;
+import org.zigi.evolution.util.Position;
 
 public class ArtificialAnt extends TreeProblem {
 
@@ -29,18 +31,32 @@ public class ArtificialAnt extends TreeProblem {
 	private int yardWidth = 0;
 	private int yardHeight = 0;
 
-	// private int posX = 0;
-	// private int posY = 0;
-
-	// private int startPosX = 0;
-	// private int startPosY = 0;
-
-	private int maxMoves = 440;
-
-	// private Direction startDirection = Direction.RIGHT;
-	// private Direction direction = Direction.RIGHT;
+	private int maxMoves = 500;
 
 	public static final Logger LOG = Logger.getLogger(ArtificialAnt.class);
+
+	public ArtificialAnt() {
+		super();
+
+		// add functions
+		addFenotype(new Prg2());
+		addFenotype(new Prg3());
+		addFenotype(new IfFoodAhead());
+
+		// add terminals
+		addFenotype(new Move());
+		addFenotype(new LeftDirection());
+		addFenotype(new RightDirection());
+
+		// max deep size
+		setMaxHeight(6);
+
+		try {
+			setYard(new File("resources/artificial_ant"));
+		} catch (Exception e) {
+			LOG.warn(e);
+		}
+	}
 
 	/**
 	 * Nacte stezku ze souboru. V sobouru je označené jídlo znakem '1' a prázdné
@@ -84,30 +100,6 @@ public class ArtificialAnt extends TreeProblem {
 		}
 	}
 
-	public ArtificialAnt() {
-		super();
-
-		// add functions
-		addFenotype(new Prg2());
-		// addFenotype(new Prg3());
-		addFenotype(new IfFoodAhead());
-
-		// add terminals
-		addFenotype(new Move());
-		addFenotype(new LeftDirection());
-		addFenotype(new RightDirection());
-
-		// max deep size
-		setMaxHeight(6);
-		setMaxMoves(420);
-
-		try {
-			setYard(new File("resources/artificial_ant"));
-		} catch (Exception e) {
-			LOG.warn(e);
-		}
-	}
-
 	public void setYard(int[][] array) {
 		this.yard = array;
 		this.crumbs = 0;
@@ -117,23 +109,6 @@ public class ArtificialAnt extends TreeProblem {
 					crumbs++;
 		this.yardHeight = array.length;
 		this.yardWidth = array[0].length;
-	}
-
-	@Override
-	public Solution randomSolution() {
-		TreeSolution ant = new TreeSolution(getMaxHeight());
-		ant.addGenotype(randomGenotype());
-		List<Node> list = ant.uncompleteNodes();
-		while (!list.isEmpty()) {
-			Node val = list.get(0);
-			int deep = ant.deepOf(val);
-			if (deep < getMaxHeight())
-				ant.addGenotype(randomGenotype());
-			else
-				ant.addGenotype(randomTerminal());
-			list = ant.uncompleteNodes();
-		}
-		return ant;
 	}
 
 	private int[][] copyYard() {
@@ -146,20 +121,22 @@ public class ArtificialAnt extends TreeProblem {
 
 	@Override
 	public void evaluate(Population pop) {
-		Double minFunctionValue = isMinProblem() ? Double.MIN_VALUE : Double.MAX_VALUE;
-		Double maxFunctionValue = isMinProblem() ? Double.MAX_VALUE : Double.MIN_VALUE;
-		Double sumFunctionValue = 0.0;
 		for (Solution sol : pop.getSolutions()) {
 			TreeSolution tree = (TreeSolution) sol;
 			List<Node> nodes = null;
+
+			int height = tree.height();
+			int max = tree.getMaxHeight();
+			if (height > max) {
+				sol.setFunctionValue(0.0);
+				continue;
+			}
 
 			// initialize evaluation
 			int nodeIndex = 0;
 
 			Configuration conf = new Configuration();
-
 			Direction direction = Direction.RIGHT;
-
 			int[][] actualYard = copyYard();
 
 			// seznam uzlu, ke kterym je treba se vracit zpet
@@ -208,25 +185,7 @@ public class ArtificialAnt extends TreeProblem {
 			}
 			// printPath(array);
 			Double functionValue = (double) conf.getFoundCrumbs();
-			sumFunctionValue += functionValue;
-			if (isMinProblem()) {
-				if (functionValue < maxFunctionValue) {
-					maxFunctionValue = functionValue;
-				}
-				if (functionValue > minFunctionValue) {
-					minFunctionValue = functionValue;
-				}
-			} else {
-				if (functionValue > maxFunctionValue) {
-					maxFunctionValue = functionValue;
-				}
-				if (functionValue < minFunctionValue) {
-					minFunctionValue = functionValue;
-				}
-			}
-
 			sol.setFunctionValue(functionValue);
-
 		}
 	}
 
@@ -249,6 +208,74 @@ public class ArtificialAnt extends TreeProblem {
 		return false;
 	}
 
+	public List<Position> generatePath(Solution solution) {
+		TreeSolution tree = (TreeSolution) solution;
+		List<Node> nodes = null;
+		List<Position> positions = new LinkedList<Position>();
+
+		int height = tree.height();
+		int max = tree.getMaxHeight();
+		if (height > max) {
+			solution.setFunctionValue(0.0);
+			return positions;
+		}
+
+		// initialize evaluation
+		int nodeIndex = 0;
+
+		Configuration conf = new Configuration();
+		Direction direction = Direction.RIGHT;
+		int[][] actualYard = copyYard();
+
+		// seznam uzlu, ke kterym je treba se vracit zpet
+		List<Node> moveBack = new LinkedList<Node>();
+
+		// dokud se muze mravenec pohybovat
+		while (conf.getMoves() < maxMoves) {
+			nodeIndex = 0;
+			nodes = tree.deepNodes();
+			while (nodeIndex < nodes.size()) {
+				GPFenotype operation = nodes.get(nodeIndex).getValue();
+				if (operation instanceof Move) {
+					conf = move(actualYard, conf, yardWidth, yardHeight);
+					positions.add(new Position(conf.getPosX(), conf.getPosY()));
+					if (!moveBack.isEmpty()) {
+						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
+						moveBack.remove(moveBack.size() - 1);
+					} else
+						break;
+				} else if (operation instanceof LeftDirection) {
+					conf = changeDirection(conf, Rotation.LEFT);
+					if (!moveBack.isEmpty()) {
+						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
+						moveBack.remove(moveBack.size() - 1);
+					} else
+						break;
+				} else if (operation instanceof RightDirection) {
+					conf = changeDirection(conf, Rotation.RIGHT);
+					if (!moveBack.isEmpty()) {
+						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
+						moveBack.remove(moveBack.size() - 1);
+					} else
+						break;
+				} else if (operation instanceof IfFoodAhead) {
+					if (!ifFoodAhead(actualYard, conf.getPosX(), conf.getPosY(), yardWidth, yardHeight, direction)) {
+						Node node = nodes.get(nodeIndex);
+						Node rightNode = node.getChilds().get(1);
+						nodeIndex = nodes.indexOf(rightNode);
+						continue;
+					}
+				} else if (operation instanceof Prg2) {
+					moveBack.add(nodes.get(nodeIndex));
+				}
+				nodeIndex++;
+			}
+		}
+		// printPath(array);
+		Double functionValue = (double) conf.getFoundCrumbs();
+		return positions;
+	}
+
 	/**
 	 * Pohyb mravence vpřed aktuálním směrem
 	 * 
@@ -261,11 +288,11 @@ public class ArtificialAnt extends TreeProblem {
 		if (conf.getDirection() == Direction.RIGHT)
 			conf.setPosX((conf.getPosX() + 1) % yardWidth);
 		else if (conf.getDirection() == Direction.DOWN)
-			conf.setPosY((conf.getPosX() + 1) % yardHeight);
+			conf.setPosY((conf.getPosY() + 1) % yardHeight);
 		else if (conf.getDirection() == Direction.LEFT)
 			conf.setPosX((conf.getPosX() + yardWidth - 1) % yardWidth);
 		else if (conf.getDirection() == Direction.TOP)
-			conf.setPosY((conf.getPosX() + yardHeight - 1) % yardHeight);
+			conf.setPosY((conf.getPosY() + yardHeight - 1) % yardHeight);
 
 		if (yard[conf.getPosY()][conf.getPosX()] == 1) {
 			yard[conf.getPosY()][conf.getPosX()] = 0;
@@ -332,5 +359,10 @@ public class ArtificialAnt extends TreeProblem {
 
 	public int getCrumbs() {
 		return crumbs;
+	}
+
+	@Override
+	public boolean isMinProblem() {
+		return false;
 	}
 }

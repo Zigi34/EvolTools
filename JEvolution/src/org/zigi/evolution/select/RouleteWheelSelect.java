@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.zigi.evolution.problem.Problem;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.util.Population;
 
@@ -47,19 +48,19 @@ public class RouleteWheelSelect extends SelectFunction {
 	}
 
 	@Override
-	public Population select(Population pop, int count) {
+	public Population select(Population pop, Problem problem, int count) {
 		List<Solution> list = new LinkedList<Solution>();
 
 		double max = 0.0;
 		for (Solution sol : pop.getSolutions()) {
-			max += Population.getNormalizedFitness(sol, pop);
+			max += problem.getNormalizedFitness(sol);
 		}
 
 		for (int index = 0; index < count; index++) {
 			double rnd = RAND.nextDouble() * max;
 			double value = 0.0;
 			for (Solution sol : pop.getSolutions()) {
-				Double fitness = Population.getNormalizedFitness(sol, pop);
+				Double fitness = problem.getNormalizedFitness(sol);
 				value += fitness;
 				if (value > rnd) {
 					list.add(sol.cloneMe());
@@ -68,10 +69,7 @@ public class RouleteWheelSelect extends SelectFunction {
 			}
 		}
 		Population result = new Population();
-		result.setBestFunctionValue(pop.getBestFunctionValue());
 		result.setMax(pop.getMaxSolutions());
-		result.setSumFunctionValue(pop.getSumFunctionValue());
-		result.setWorstFunctionValue(pop.getWorstFunctionValue());
 		result.setSolutions(list);
 		return result;
 	}

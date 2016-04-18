@@ -15,9 +15,6 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 	private List<Solution> solutions = new LinkedList<Solution>();
 	private int max;
 	private Double sumFunctionValue = 0.0;
-	private Double worstFunctionValue = null;
-	private Double bestFunctionValue = null;
-	private static Double epsilon = 0.00001;
 
 	public static final int DEFAULT_SIZE = 20;
 
@@ -82,9 +79,6 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 		for (Solution sol : solutions) {
 			pop.add(sol.cloneMe());
 		}
-		pop.setBestFunctionValue(bestFunctionValue);
-		pop.setWorstFunctionValue(worstFunctionValue);
-		pop.setSumFunctionValue(sumFunctionValue);
 		return pop;
 	}
 
@@ -104,39 +98,6 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 
 	public void setSumFunctionValue(Double sumFunctionValue) {
 		this.sumFunctionValue = sumFunctionValue;
-	}
-
-	public Double getWorstFunctionValue() {
-		return worstFunctionValue;
-	}
-
-	public void setWorstFunctionValue(Double minFunctionValue) {
-		this.worstFunctionValue = minFunctionValue;
-	}
-
-	public Double getBestFunctionValue() {
-		return bestFunctionValue;
-	}
-
-	public void setBestFunctionValue(Double maxFunctionValue) {
-		this.bestFunctionValue = maxFunctionValue;
-	}
-
-	public static Double getNormalizedFitness(Solution solution, Population pop) {
-		Double value = solution.getFunctionValue();
-		if (value > pop.getWorstFunctionValue())
-			value = pop.getWorstFunctionValue();
-		else if (value < pop.getBestFunctionValue())
-			value = pop.getBestFunctionValue();
-		return ((1.0 - epsilon) * value + (pop.getBestFunctionValue() * epsilon) - pop.getWorstFunctionValue())
-				/ (pop.getBestFunctionValue() - pop.getWorstFunctionValue());
-	}
-
-	public boolean isMinProblem() {
-		if (worstFunctionValue <= bestFunctionValue)
-			return false;
-		else
-			return true;
 	}
 
 	@Override

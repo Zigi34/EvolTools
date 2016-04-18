@@ -2,10 +2,14 @@ package org.zigi.evolution.main;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.apache.log4j.Logger;
@@ -15,6 +19,7 @@ import org.zigi.evolution.cross.CrossFunction;
 import org.zigi.evolution.cross.OnePointTreeCross;
 import org.zigi.evolution.problem.ArtificialAnt;
 import org.zigi.evolution.problem.RegressionProblem;
+import org.zigi.evolution.select.SelectFunction;
 import org.zigi.evolution.select.TournamentSelection;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.TreeSolution;
@@ -28,20 +33,14 @@ import org.zigi.evolution.solution.value.SinFunction;
 import org.zigi.evolution.solution.value.SubtractionFunction;
 import org.zigi.evolution.solution.value.SumFunction;
 import org.zigi.evolution.util.Population;
+import org.zigi.evolution.util.Position;
 
 public class Main {
 
 	private static final Random RAND = new Random();
 	private static final Logger LOG = Logger.getLogger(Main.class);
+	private static final DecimalFormat FITNESS_FORMAT = new DecimalFormat("#.####");
 
-	/**
-	 * Provadi krizeni mezi dvema stromy
-	 * 
-	 * @param sol1
-	 *            prvni reseni
-	 * @param sol2
-	 *            druhe reseni
-	 */
 	public void crossTreeSolutions(TreeSolution sol1, TreeSolution sol2) {
 		int index1 = RAND.nextInt(sol1.size());
 		int index2 = RAND.nextInt(sol2.size());
@@ -51,19 +50,62 @@ public class Main {
 	}
 
 	public void artificialAnt() {
+		int maxHeight = 6;
+		int maxMoves = 440;
+		double mutateProb = 0.05;
+		double crossProb = 0.95;
+		int generation = 100;
+		int populationSize = 500;
+		int tournamentSize = 6;
+
 		try {
 			ArtificialAnt problem = new ArtificialAnt();
-			// problem.setMaxHeight(6);
-			// problem.setMaxMoves(420);
-			// problem.setYard(new File("resources/artificial_ant"));
-			// LOG.info("Drobečků: " + problem.getCrumbs());
-
+			problem.setMaxHeight(maxHeight);
+			problem.setMaxMoves(maxMoves);
+			problem.setYard(new File("resources/artificial_ant"));
+			problem.setMinFunctionValue(0.0);
+			problem.setMaxFunctionValue(89.0);
 			GeneticProgramming alg = new GeneticProgramming();
+			alg.setGeneration(generation);
+			alg.setMutateProbability(mutateProb);
+			alg.setCrossProbrability(crossProb);
+			Population pop = new Population(populationSize);
+			alg.setPopulation(pop);
 			alg.setProblem(problem);
+			TournamentSelection select = new TournamentSelection();
+			select.setTournamentSize(tournamentSize);
+			alg.setSelect(select);
+			CrossFunction cross = new OnePointTreeCross();
+			alg.setCross(cross);
 			alg.addChangeListener(new PropertyChangeListener() {
 				@Override
 				public void propertyChange(PropertyChangeEvent evt) {
-					LOG.info(evt.getNewValue());
+					if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION)) {
+						GeneticProgramming gp = (GeneticProgramming) evt.getSource();
+						LOG.info(gp.getActualGeneration() + " - (" + problem.getNormalizedFitness(gp.getBestSolution())
+								+ ") " + gp.getBestSolution());
+					} else if (evt.getNewValue().equals(GeneticProgramming.ALGORITHM_TERMINATED)) {
+						GeneticProgramming gp = (GeneticProgramming) evt.getSource();
+						List<Position> path = problem.generatePath(gp.getBestSolution());
+						int[][] yard = new int[32][32];
+						for (Position pos : path) {
+							yard[pos.getY()][pos.getX()] = 1;
+							// LOG.info(pos);
+						}
+						StringBuilder sb = new StringBuilder();
+						sb.append("\n");
+						for (int i = 0; i < 32; i++) {
+							for (int j = 0; j < 32; j++) {
+								if (yard[i][j] == 1)
+									sb.append("x");
+								else
+									sb.append(".");
+							}
+							sb.append("\n");
+						}
+						LOG.info(sb.toString());
+					}
+
 				}
 			});
 			alg.start();
@@ -75,51 +117,104 @@ public class Main {
 			// print best path
 			// ArtificialAnt.printPath(path);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error(e);
 		}
 	}
 
 	public void sextic() {
-
 		try {
-			RegressionProblem problem = new RegressionProblem();
-			problem.loadDataset(new File("resources/quintic"), ";");
-			problem.setMaxHeight(6);
-			problem.addFenotype(new SumFunction());
-			problem.addFenotype(new SubtractionFunction());
-			problem.addFenotype(new MultiplyFunction());
-			// problem.addFenotype(new DivideFunction());
-			problem.addFenotype(new RangedPowerFunction(2.0, 5.0, true));
-			problem.addFenotype(new NumericConstant(-4.0, 4.0));
+			// LOG.info(
+			// "problem;best-function;squared-error;fitness;population-size;max-generation;tree-height;select-function;cross-probability;mutate-probability;cross-function;max-error;min-error");
+			List<Map<Integer, Double>> stat = new LinkedList<Map<Integer, Double>>();
+			StringBuilder bests = new StringBuilder();
 
-			GeneticProgramming gp = new GeneticProgramming();
-			gp.addChangeListener(new PropertyChangeListener() {
-				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
-					if (evt.getNewValue().equals(GeneticProgramming.ALGORITHM_TERMINATED)) {
-						LOG.info(String.format("(%s) BEST: %s", gp.getActualGeneration(), gp.getBestSolution()));
-						// Util.logPopulation(gp.getPopulation());
-					} else if (evt.getNewValue().equals(GeneticProgramming.NEW_BEST_SOLUTION)) {
-						LOG.info(String.format("(%s) BEST: %s", gp.getActualGeneration(), gp.getBestSolution()));
-					} else if (evt.getNewValue().equals(GeneticProgramming.EVALUATE_POPULATION_END)) {
-						LOG.info("generation: " + gp.getActualGeneration());
+			int tests = 20;
+			int maxGen = 500;
+			int popSize = 200;
+			int height = 6;
+			int tournamentSize = 10;
+
+			for (int i = 0; i < tests; i++) {
+				Map<Integer, Double> st = new HashMap<Integer, Double>();
+				RegressionProblem problem = new RegressionProblem("quintic");
+				problem.loadDataset(new File("resources/quintic"), ";");
+				problem.setMaxHeight(height);
+				problem.addFenotype(new SumFunction());
+				problem.addFenotype(new SubtractionFunction());
+				problem.addFenotype(new MultiplyFunction());
+				// problem.addFenotype(new DivideFunction());
+				problem.addFenotype(new RangedPowerFunction(2.0, 6.0, true));
+				problem.addFenotype(new NumericConstant(-10.0, 10.0));
+
+				GeneticProgramming gp = new GeneticProgramming();
+				gp.setMutateProbability(0.28);
+				gp.setCrossProbrability(0.7);
+				gp.addChangeListener(new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						if (evt.getNewValue().equals(GeneticProgramming.ALGORITHM_TERMINATED)) {
+
+							Solution best = gp.getBestSolution();
+							Double funVal = best.getFunctionValue();
+							Population pop = gp.getPopulation();
+							Double fitness = problem.getNormalizedFitness(best);
+							int sols = pop.getMaxSolutions();
+							int gen = gp.getGeneration();
+							int height = problem.getMaxHeight();
+							SelectFunction select = gp.getSelect();
+							Double mutateProb = gp.getMutateProbability();
+							double crossProb = gp.getCrossProbrability();
+							CrossFunction cross = gp.getCross();
+							bests.append("=" + RegressionProblem.printFunction((TreeSolution) best) + ";");
+						} else if (evt.getNewValue().equals(GeneticProgramming.NEW_BEST_SOLUTION)) {
+
+						} else if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION)) {
+							st.put(gp.getActualGeneration(), problem.getNormalizedFitness(gp.getBestSolution()));
+							// LOG.info(gp.getActualGeneration());
+							LOG.info(String.format("%s;%s;%s;%s", gp.getActualGeneration(),
+									gp.getBestSolution().getFunctionValue(),
+									problem.getNormalizedFitness(gp.getBestSolution()), gp.getBestSolution()));
+						}
 					}
+				});
+				Population pop = new Population(popSize);
+				problem.setMinFunctionValue(0.0);
+				problem.setMaxFunctionValue(2.0);
+				gp.setPopulation(pop);
+				gp.setProblem(problem);
+				gp.setGeneration(maxGen);
+				TournamentSelection select = new TournamentSelection();
+				select.setTournamentSize(tournamentSize);
+				gp.setSelect(select);
+				CrossFunction cross = new OnePointTreeCross();
+				gp.setCross(cross);
+
+				gp.run();
+				stat.add(st);
+			}
+
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < maxGen; i++) {
+				sb.append(i + ";");
+				for (int j = 0; j < stat.size(); j++) {
+					sb.append(stat.get(j).get(i) + ";");
 				}
-			});
-			// gp.addTerminateFunction(new FitnessTerminate(1.0));
-			Population pop = new Population(500);
-			gp.setPopulation(pop);
-			gp.setProblem(problem);
-			gp.setGeneration(100);
-			TournamentSelection select = new TournamentSelection();
-			select.setTournamentSize(10);
-			gp.setSelect(select);
-			CrossFunction cross = new OnePointTreeCross();
-			gp.setCross(cross);
-			gp.start();
+				sb.append("\n");
+			}
+
+			printToFile("1", sb.toString());
+			printToFile("2", bests.toString());
 		} catch (Exception e) {
 			LOG.error(e);
 		}
+
+	}
+
+	private void printToFile(String path, String data) throws IOException {
+		File file = new File(path);
+		FileWriter sw = new FileWriter(file);
+		sw.write(data);
+		sw.close();
 	}
 
 	public void regression() {
@@ -160,95 +255,14 @@ public class Main {
 		}
 	}
 
-	/**
-	 * Náhodné generování stromu požadované hloubky
-	 * 
-	 * @return
-	 */
 	public static TreeSolution randomTree(ArtificialAnt problem) {
 		return (TreeSolution) problem.randomSolution();
 	}
 
 	public static void main(String[] args) throws IOException {
 		Main test = new Main();
-		// test.artificialAnt();
+		test.artificialAnt();
 		// test.regression();
-		test.sextic();
-
-	}
-
-	/**
-	 * The extension of the given file name is replaced with "ptx". If the file
-	 * with the resulting name does not exist, it is compiled from the given
-	 * file using NVCC. The name of the PTX file is returned.
-	 *
-	 * @param cuFileName
-	 *            The name of the .CU file
-	 * @return The name of the PTX file
-	 * @throws IOException
-	 *             If an I/O error occurs
-	 */
-	private static String preparePtxFile(String cuFileName) throws IOException {
-		int endIndex = cuFileName.lastIndexOf('.');
-		if (endIndex == -1) {
-			endIndex = cuFileName.length() - 1;
-		}
-		String ptxFileName = cuFileName.substring(0, endIndex + 1) + "ptx";
-		File ptxFile = new File(ptxFileName);
-		if (ptxFile.exists()) {
-			return ptxFileName;
-		}
-
-		File cuFile = new File(cuFileName);
-		if (!cuFile.exists()) {
-			throw new IOException("Input file not found: " + cuFileName);
-		}
-		String modelString = "-m" + System.getProperty("sun.arch.data.model");
-		String command = "nvcc " + modelString + " -ptx " + cuFile.getPath() + " -o " + ptxFileName;
-
-		System.out.println("Executing\n" + command);
-		Process process = Runtime.getRuntime().exec(command);
-
-		String errorMessage = new String(toByteArray(process.getErrorStream()));
-		String outputMessage = new String(toByteArray(process.getInputStream()));
-		int exitValue = 0;
-		try {
-			exitValue = process.waitFor();
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-			throw new IOException("Interrupted while waiting for nvcc output", e);
-		}
-
-		if (exitValue != 0) {
-			System.out.println("nvcc process exitValue " + exitValue);
-			System.out.println("errorMessage:\n" + errorMessage);
-			System.out.println("outputMessage:\n" + outputMessage);
-			throw new IOException("Could not create .ptx file: " + errorMessage);
-		}
-
-		System.out.println("Finished creating PTX file");
-		return ptxFileName;
-	}
-
-	/**
-	 * Fully reads the given InputStream and returns it as a byte array
-	 *
-	 * @param inputStream
-	 *            The input stream to read
-	 * @return The byte array containing the data from the input stream
-	 * @throws IOException
-	 *             If an I/O error occurs
-	 */
-	private static byte[] toByteArray(InputStream inputStream) throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		byte buffer[] = new byte[8192];
-		while (true) {
-			int read = inputStream.read(buffer);
-			if (read == -1) {
-				break;
-			}
-			baos.write(buffer, 0, read);
-		}
-		return baos.toByteArray();
+		// test.sextic();
 	}
 }

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.zigi.evolution.problem.Problem;
 import org.zigi.evolution.solution.Solution;
 import org.zigi.evolution.solution.SolutionComparator;
 import org.zigi.evolution.util.Population;
@@ -20,7 +21,7 @@ public class RankSelect extends SelectFunction {
 	private static final Random RAND = new Random();
 
 	@Override
-	public Population select(Population pop, int count) {
+	public Population select(Population pop, Problem problem, int count) {
 		int[] ranks = new int[pop.size()];
 
 		List<Solution> list = new LinkedList<Solution>();
@@ -28,7 +29,7 @@ public class RankSelect extends SelectFunction {
 		List<Solution> solutions = new LinkedList<Solution>();
 		solutions.addAll(pop.getSolutions());
 
-		Collections.sort(solutions, new SolutionComparator(pop.isMinProblem()));
+		Collections.sort(solutions, new SolutionComparator(problem.isMinProblem()));
 
 		int sum = 0;
 		int rank = 0;
@@ -56,10 +57,7 @@ public class RankSelect extends SelectFunction {
 		}
 
 		Population result = new Population();
-		result.setBestFunctionValue(pop.getBestFunctionValue());
 		result.setMax(pop.getMaxSolutions());
-		result.setSumFunctionValue(pop.getSumFunctionValue());
-		result.setWorstFunctionValue(pop.getWorstFunctionValue());
 		result.setSolutions(list);
 		return result;
 	}
