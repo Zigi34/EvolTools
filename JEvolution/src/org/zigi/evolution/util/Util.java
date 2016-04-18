@@ -3,7 +3,6 @@ package org.zigi.evolution.util;
 import java.text.DecimalFormat;
 
 import org.apache.log4j.Logger;
-import org.zigi.evolution.solution.Solution;
 
 public class Util {
 
@@ -15,9 +14,11 @@ public class Util {
 	}
 
 	public static void logPopulation(Population pop) {
-		if (pop != null)
-			for (Solution sol : pop.getSolutions()) {
-				LOG.info(sol);
+		if (pop != null) {
+			for (int i = 0; i < pop.size(); i++) {
+				LOG.info(i + ". " + pop.getSolutions().get(i));
 			}
+			LOG.info("");
+		}
 	}
 }

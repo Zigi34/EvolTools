@@ -132,6 +132,9 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public boolean isTerminate() {
 		Boolean terminate = this.terminate;
+		Solution best = getBestSolution();
+		if (best != null && Population.getNormalizedFitness(best, getPopulation()) == 1.0)
+			return true;
 		if (!terminateFunction.isEmpty())
 			for (TerminateFunction function : terminateFunction) {
 				terminate |= function.isTerminate(this);
@@ -197,7 +200,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	public void checkBestSolution(Population population) {
 		if (bestSolution == null) {
 			for (Solution sol : population.getSolutions()) {
-				if (!sol.getFitness().isNaN()) {
+				if (!sol.getFunctionValue().isNaN()) {
 					bestSolution = sol.cloneMe();
 					setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
 					break;
@@ -206,8 +209,11 @@ public abstract class EvolutionAlgorithm implements Runnable {
 		}
 
 		for (Solution solution : population.getSolutions()) {
-			Double fitness = solution.getFitness();
-			if (!fitness.isNaN() && fitness > bestSolution.getFitness()) {
+			Double fitness = solution.getFunctionValue();
+			if (!fitness.isNaN() && population.isMinProblem() && fitness < bestSolution.getFunctionValue()) {
+				bestSolution = solution.cloneMe();
+				setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
+			} else if (!fitness.isNaN() && !population.isMinProblem() && fitness > bestSolution.getFunctionValue()) {
 				bestSolution = solution.cloneMe();
 				setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);
 			}

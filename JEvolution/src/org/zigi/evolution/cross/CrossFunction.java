@@ -1,9 +1,7 @@
 package org.zigi.evolution.cross;
 
-import java.util.List;
-
-import org.zigi.evolution.solution.Solution;
+import org.zigi.evolution.util.Population;
 
 public abstract class CrossFunction {
-	public abstract boolean cross(List<Solution> solutions);
+	public abstract void cross(Population solutions, long offset, long size);
 }

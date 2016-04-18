@@ -7,7 +7,7 @@ import org.zigi.evolution.util.Cloneable;
 
 public abstract class Solution implements Cloneable<Solution> {
 
-	private Double fitness = 0.0;
+	private Double rawFitness = 0.0;
 
 	public abstract GPFenotype getGenotype(Integer index);
 
@@ -22,15 +22,15 @@ public abstract class Solution implements Cloneable<Solution> {
 	public abstract int size();
 
 	public boolean isEvaluated() {
-		return fitness != null;
+		return rawFitness != null;
 	}
 
-	public Double getFitness() {
-		return fitness;
+	public Double getFunctionValue() {
+		return rawFitness;
 	}
 
-	public void setFitness(Double fitness) {
-		this.fitness = fitness;
+	public void setFunctionValue(Double fitness) {
+		this.rawFitness = fitness;
 	}
 
 	public abstract String getGenotypeString();

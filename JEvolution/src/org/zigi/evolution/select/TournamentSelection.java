@@ -13,9 +13,8 @@ public class TournamentSelection extends SelectFunction {
 	private int tournamentSize = 2;
 
 	@Override
-	public List<Solution> select(Population pop, int count) {
+	public Population select(Population pop, int count) {
 		List<Solution> list = new LinkedList<Solution>();
-
 		for (int i = 0; i < count; i++) {
 			double bestFittness = Double.MIN_VALUE;
 			Solution bestSolution = null;
@@ -23,15 +22,23 @@ public class TournamentSelection extends SelectFunction {
 			for (int j = 0; j < tournamentSize; j++) {
 				Solution solut = pop.getSolutions().get(RAND.nextInt(pop.size()));
 
-				if (solut.getFitness() > bestFittness) {
+				Double fitness = Population.getNormalizedFitness(solut, pop);
+				if (fitness > bestFittness) {
 					bestSolution = solut;
-					bestFittness = solut.getFitness();
+					bestFittness = fitness;
 				}
 			}
 
-			list.add(bestSolution);
+			list.add(bestSolution.cloneMe());
 		}
-		return list;
+		Population result = new Population();
+		result.setBestFunctionValue(pop.getBestFunctionValue());
+		result.setMax(pop.getMaxSolutions());
+		result.setSumFunctionValue(pop.getSumFunctionValue());
+		result.setWorstFunctionValue(pop.getWorstFunctionValue());
+		result.setSolutions(list);
+
+		return result;
 	}
 
 	public int getTournamentSize() {
@@ -44,12 +51,6 @@ public class TournamentSelection extends SelectFunction {
 
 	@Override
 	public String toString() {
-		return "Tournament Select";
+		return "tournament(" + tournamentSize + ")";
 	}
-
-	@Override
-	public List<Solution> select(Population pop, int count, double maxValue) {
-		return select(pop, count);
-	}
-
 }

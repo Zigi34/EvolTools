@@ -20,24 +20,24 @@ public class RankSelect extends SelectFunction {
 	private static final Random RAND = new Random();
 
 	@Override
-	public List<Solution> select(Population sols, int count) {
-		int[] ranks = new int[sols.size()];
+	public Population select(Population pop, int count) {
+		int[] ranks = new int[pop.size()];
 
 		List<Solution> list = new LinkedList<Solution>();
 
 		List<Solution> solutions = new LinkedList<Solution>();
-		solutions.addAll(sols.getSolutions());
+		solutions.addAll(pop.getSolutions());
 
-		Collections.sort(solutions, new SolutionComparator());
+		Collections.sort(solutions, new SolutionComparator(pop.isMinProblem()));
 
 		int sum = 0;
 		int rank = 0;
 		double lastValue = Double.MIN_VALUE;
 		for (int i = 0; i < solutions.size(); i++) {
 			Solution sol = solutions.get(i);
-			if (sol.getFitness() != lastValue) {
+			if (sol.getFunctionValue() != lastValue) {
 				rank++;
-				lastValue = sol.getFitness();
+				lastValue = sol.getFunctionValue();
 			}
 			sum += rank;
 			ranks[i] = rank;
@@ -50,23 +50,22 @@ public class RankSelect extends SelectFunction {
 				rnd -= ranks[i];
 				if (rnd <= 0) {
 					list.add(sol);
-					sum -= ranks[i];
-					ranks[i] = 0;
 					break;
 				}
 			}
 		}
-		return list;
+
+		Population result = new Population();
+		result.setBestFunctionValue(pop.getBestFunctionValue());
+		result.setMax(pop.getMaxSolutions());
+		result.setSumFunctionValue(pop.getSumFunctionValue());
+		result.setWorstFunctionValue(pop.getWorstFunctionValue());
+		result.setSolutions(list);
+		return result;
 	}
 
 	@Override
 	public String toString() {
 		return "Rank Select";
-	}
-
-	@Override
-	public List<Solution> select(Population pop, int count, double maxValue) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

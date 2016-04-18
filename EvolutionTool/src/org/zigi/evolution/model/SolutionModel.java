@@ -10,7 +10,7 @@ public class SolutionModel {
 	private SimpleStringProperty genotype;
 
 	public SolutionModel(Solution sol) {
-		this.fitness = new SimpleStringProperty(String.valueOf(sol.getFitness()));
+		this.fitness = new SimpleStringProperty(String.valueOf(sol.getFunctionValue()));
 		this.genotype = new SimpleStringProperty(sol.getGenotypeString());
 	}
 

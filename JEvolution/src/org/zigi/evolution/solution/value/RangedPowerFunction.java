@@ -40,7 +40,7 @@ public class RangedPowerFunction extends GPFenotype {
 
 	@Override
 	public String toString() {
-		return String.format("RPOW(%s)", getIndex());
+		return String.format("RPOW%s", getIndex());
 	}
 
 	public Double getMinIndex() {

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  17 APR 2016 14:36
+=======
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  10 APR 2016 12:19
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -568,6 +572,31 @@ File: babel.def 2013/12/03 3.9h Babel common definitions
 Package babel Info: Making " an active character on input line 172.
 \cs@wordlen=\count117
 Package babel Info: Making - an active character on input line 226.
+<<<<<<< HEAD
+)) (./diplomka.aux
+
+LaTeX Warning: Label `fig:SampleGraph' multiply defined.
+
+)
+\openout1 = `diplomka.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Try loading font information for T1+ppl on input line 51.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
+=======
 )) (./diplomka.aux)
 \openout1 = `diplomka.aux'.
 
@@ -588,6 +617,7 @@ LaTeX Font Info:    ... okay on input line 53.
 LaTeX Font Info:    Try loading font information for T1+ppl on input line 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ppl.fd
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 *geometry* driver: auto-detecting
@@ -654,7 +684,7 @@ e
 ))
 \c@lstlisting=\count124
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring OFF on input line 53.
+Package hyperref Info: Link coloring OFF on input line 51.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -664,9 +694,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count125
 )
-LaTeX Info: Redefining \ref on input line 53.
-LaTeX Info: Redefining \pageref on input line 53.
-LaTeX Info: Redefining \nameref on input line 53.
+LaTeX Info: Redefining \ref on input line 51.
+LaTeX Info: Redefining \pageref on input line 51.
+LaTeX Info: Redefining \nameref on input line 51.
 
 (./diplomka.out) (./diplomka.out)
 \@outlinefile=\write4
@@ -676,18 +706,18 @@ LaTeX Info: Redefining \nameref on input line 53.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
-LaTeX Font Info:    Try loading font information for T1+phv on input line 56.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 56.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 54.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 56.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 54.
  [2
 
 ]
@@ -730,7 +760,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 File: Figures/Prohlaseni.jpg Graphic file (type jpg)
 
 <use Figures/Prohlaseni.jpg>
-Package pdftex.def Info: Figures/Prohlaseni.jpg used on input line 56.
+Package pdftex.def Info: Figures/Prohlaseni.jpg used on input line 54.
 (pdftex.def)             Requested size: 589.58588pt x 834.6512pt.
  [3
 
@@ -740,18 +770,18 @@ Package pdftex.def Info: Figures/Prohlaseni.jpg used on input line 56.
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 56.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 54.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 56.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 54.
  [5
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 56.
+(Font)              <10.95> on input line 54.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 56.
+(Font)              <8> on input line 54.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 56.
+(Font)              <6> on input line 54.
  [6
 
 
@@ -767,7 +797,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.60 \cleardoublepage
+l.58 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
 [1
 
@@ -780,7 +810,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.65 \cleardoublepage
+l.63 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
 [2
 
@@ -793,7 +823,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \cleardoublepage
+l.67 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
 [3
 
@@ -806,21 +836,21 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.73 \cleardoublepage
+l.71 \cleardoublepage
                      	% odstrankujeme, u jednostranneho dokumentu o jednu st...
 [4
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 79.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 77.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 
-LaTeX Warning: Reference `sec:Typo' on page 5 undefined on input line 81.
+LaTeX Warning: Reference `sec:Typo' on page 5 undefined on input line 79.
 
 
-Overfull \hbox (14.27757pt too wide) in paragraph at lines 79--83
+Overfull \hbox (14.27757pt too wide) in paragraph at lines 77--81
  [] \T1/ppl/m/n/10.95 Tento text je uk·z-kou sazby di-plo-movÈ pr·ce v L[]T[]Xu
  po-mocÌ t∞Ìdy do-ku-ment∑ []\T1/pcr/m/n/10.95 diploma\T1/ppl/m/n/10.95 .
  []
@@ -829,7 +859,11 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
+<<<<<<< HEAD
+l.82 \section
+=======
 l.84 \section
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
              {Evoluƒçn√≠ algoritmy} [5
 
 
@@ -837,16 +871,31 @@ l.84 \section
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 84.
+(hyperref)                removing `\textasciicaron' on input line 82.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textasciicaron' on input line 88.
+=======
 (hyperref)                removing `\textasciicaron' on input line 90.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textring' on input line 88.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.112 
+       [6
+
+=======
 (hyperref)                removing `\textring' on input line 90.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
@@ -856,15 +905,29 @@ been already used, duplicate ignored
 l.114 
        [6
 
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 ] [7]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textasciicaron' on input line 144.
+=======
 (hyperref)                removing `\textasciicaron' on input line 146.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textring' on input line 144.
+
+<Figures/evol-progress.png, id=266, 387.4475pt x 311.1625pt>
+File: Figures/evol-progress.png Graphic file (type png)
+
+<use Figures/evol-progress.png>
+Package pdftex.def Info: Figures/evol-progress.png used on input line 146.
+=======
 (hyperref)                removing `\textring' on input line 146.
 
 <Figures/evol-progress.png, id=256, 387.4475pt x 311.1625pt>
@@ -872,6 +935,7 @@ File: Figures/evol-progress.png Graphic file (type png)
 
 <use Figures/evol-progress.png>
 Package pdftex.def Info: Figures/evol-progress.png used on input line 148.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 (pdftex.def)             Requested size: 298.75264pt x 239.93297pt.
  [8 <./Figures/evol-progress.png>] [9] [10
 
@@ -879,6 +943,17 @@ Package pdftex.def Info: Figures/evol-progress.png used on input line 148.
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textasciicaron' on input line 207.
+
+[11] <Figures/Graf.pdf, id=318, 361.35pt x 252.945pt>
+File: Figures/Graf.pdf Graphic file (type pdf)
+ <use Figures/Graf.pdf>
+Package pdftex.def Info: Figures/Graf.pdf used on input line 225.
+(pdftex.def)             Requested size: 298.75264pt x 209.12991pt.
+
+Overfull \hbox (4.50154pt too wide) in paragraph at lines 224--226
+=======
 (hyperref)                removing `\textasciicaron' on input line 209.
 
 [11] <Figures/Graf.pdf, id=308, 361.35pt x 252.945pt>
@@ -888,11 +963,38 @@ Package pdftex.def Info: Figures/Graf.pdf used on input line 227.
 (pdftex.def)             Requested size: 298.75264pt x 209.12991pt.
 
 Overfull \hbox (4.50154pt too wide) in paragraph at lines 226--228
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 \T1/ppl/m/n/10.95 po-mal˝ al-go-rit-mus. V˝-ho-dou oproti ji-n˝m al-go-ritm∑m (
 nap∞. ge-ne-tick˝ al-go-rit-mus), kterÈ
  []
 
 [12 <./Figures/Graf.pdf>]
+<<<<<<< HEAD
+<Figures/roulete_wheel.png, id=334, 1204.5pt x 803.0pt>
+File: Figures/roulete_wheel.png Graphic file (type png)
+
+<use Figures/roulete_wheel.png>
+Package pdftex.def Info: Figures/roulete_wheel.png used on input line 247.
+(pdftex.def)             Requested size: 213.39568pt x 142.25475pt.
+
+<Figures/gp-paradigm.png, id=336, 662.475pt x 997.7275pt>
+File: Figures/gp-paradigm.png Graphic file (type png)
+
+<use Figures/gp-paradigm.png>
+Package pdftex.def Info: Figures/gp-paradigm.png used on input line 252.
+(pdftex.def)             Requested size: 298.75264pt x 449.93234pt.
+ [13 <./Figures/roulete_wheel.png>] [14] [15 <./Figures/gp-paradigm.png>]
+
+Package hyperref Warning: Composite letter `\textring+u'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textring' on input line 283.
+
+[16] <Figures/tree_structure.png, id=383, 458.71375pt x 491.8375pt>
+File: Figures/tree_structure.png Graphic file (type png)
+
+<use Figures/tree_structure.png>
+Package pdftex.def Info: Figures/tree_structure.png used on input line 304.
+=======
 <Figures/roulete_wheel.png, id=324, 824.32968pt x 606.01407pt>
 File: Figures/roulete_wheel.png Graphic file (type png)
 
@@ -918,16 +1020,44 @@ File: Figures/tree_structure.png Graphic file (type png)
 
 <use Figures/tree_structure.png>
 Package pdftex.def Info: Figures/tree_structure.png used on input line 306.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 (pdftex.def)             Requested size: 170.71393pt x 183.04271pt.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textasciicaron' on input line 306.
+=======
 (hyperref)                removing `\textasciicaron' on input line 308.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textasciicaron' on input line 306.
+
+[17 <./Figures/tree_structure.png>]
+<Figures/cross.png, id=394, 798.985pt x 742.775pt>
+File: Figures/cross.png Graphic file (type png)
+ <use Figures/cross.png>
+Package pdftex.def Info: Figures/cross.png used on input line 325.
+(pdftex.def)             Requested size: 298.75264pt x 277.73523pt.
+
+[18] [19 <./Figures/cross.png>]
+<Figures/mutate.png, id=411, 397.485pt x 682.55pt>
+File: Figures/mutate.png Graphic file (type png)
+ <use Figures/mutate.png>
+Package pdftex.def Info: Figures/mutate.png used on input line 333.
+(pdftex.def)             Requested size: 170.71393pt x 293.1471pt.
+
+[20 <./Figures/mutate.png>]
+<Figures/editace.png, id=423, 738.76pt x 311.1625pt>
+File: Figures/editace.png Graphic file (type png)
+ <use Figures/editace.png>
+Package pdftex.def Info: Figures/editace.png used on input line 353.
+=======
 (hyperref)                removing `\textasciicaron' on input line 308.
 
 [17 <./Figures/tree_structure.png>]
@@ -949,17 +1079,121 @@ Package pdftex.def Info: Figures/mutate.png used on input line 335.
 File: Figures/editace.png Graphic file (type png)
  <use Figures/editace.png>
 Package pdftex.def Info: Figures/editace.png used on input line 355.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 (pdftex.def)             Requested size: 298.75264pt x 125.8302pt.
 
 [21 <./Figures/editace.png>] [22]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
+<<<<<<< HEAD
+(hyperref)                removing `\textasciicaron' on input line 383.
+=======
 (hyperref)                removing `\textasciicaron' on input line 385.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 
 [23
 
 ]
+<<<<<<< HEAD
+
+Package hyperref Warning: Composite letter `\textasciicaron+e'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 410.
+
+[24
+
+] <Figures/regression_example.png, id=474, 853.1875pt x 526.96875pt>
+File: Figures/regression_example.png Graphic file (type png)
+
+<use Figures/regression_example.png>
+Package pdftex.def Info: Figures/regression_example.png used on input line 433.
+
+(pdftex.def)             Requested size: 298.75264pt x 184.52223pt.
+
+Overfull \hbox (2.39993pt too wide) in paragraph at lines 439--440
+ [] \T1/ppl/m/n/10.95 Sym-bo-lick· re-grese m· ≤i-rokÈ vy-u-∫itÌ. Mezi nej-£as-
+t•j≤Ì mo∫-nosti apli-kace bychom mohli
+ []
+
+[25 <./Figures/regression_example.png>]
+<Figures/quintic-problem-origin.png, id=491, 1211.52625pt x 655.44875pt>
+File: Figures/quintic-problem-origin.png Graphic file (type png)
+
+<use Figures/quintic-problem-origin.png>
+Package pdftex.def Info: Figures/quintic-problem-origin.png used on input line 
+488.
+(pdftex.def)             Requested size: 426.79135pt x 230.9007pt.
+
+<Figures/quintic-problem-result.png, id=492, 1217.54875pt x 655.44875pt>
+File: Figures/quintic-problem-result.png Graphic file (type png)
+
+<use Figures/quintic-problem-result.png>
+Package pdftex.def Info: Figures/quintic-problem-result.png used on input line 
+490.
+(pdftex.def)             Requested size: 426.79135pt x 229.75053pt.
+
+<Figures/sextic-problem-origin.png, id=493, 1220.56pt x 661.47125pt>
+File: Figures/sextic-problem-origin.png Graphic file (type png)
+
+<use Figures/sextic-problem-origin.png>
+Package pdftex.def Info: Figures/sextic-problem-origin.png used on input line 4
+92.
+(pdftex.def)             Requested size: 426.79135pt x 231.29636pt.
+
+<Figures/sextic-problem-result.png, id=494, 1220.56pt x 661.47125pt>
+File: Figures/sextic-problem-result.png Graphic file (type png)
+
+<use Figures/sextic-problem-result.png>
+Package pdftex.def Info: Figures/sextic-problem-result.png used on input line 4
+94.
+(pdftex.def)             Requested size: 426.79135pt x 231.29636pt.
+
+Overfull \hbox (11.22546pt too wide) in paragraph at lines 497--498
+\T1/ppl/m/n/10.95 ra-zena data a je-jich pro-lo-∫enÌ v≤emi syn-te-ti-zo-va-n˝mi
+ funk-cemi. Lze si v≤im-nout, ∫e v≤echny
+ []
+
+[26] [27 <./Figures/quintic-problem-origin.png (PNG copy)> <./Figures/quintic-p
+roblem-result.png (PNG copy)>] [28 <./Figures/sextic-problem-origin.png (PNG co
+py)> <./Figures/sextic-problem-result.png (PNG copy)>]
+<Figures/fitness-quintic.png, id=519, 1356.06625pt x 716.6775pt>
+File: Figures/fitness-quintic.png Graphic file (type png)
+
+<use Figures/fitness-quintic.png>
+Package pdftex.def Info: Figures/fitness-quintic.png used on input line 504.
+(pdftex.def)             Requested size: 426.79135pt x 225.55777pt.
+
+<Figures/fitness-sextic.png, id=520, 1403.2425pt x 711.65875pt>
+File: Figures/fitness-sextic.png Graphic file (type png)
+
+<use Figures/fitness-sextic.png>
+Package pdftex.def Info: Figures/fitness-sextic.png used on input line 506.
+(pdftex.def)             Requested size: 426.79135pt x 216.44206pt.
+ [29 <./Figures/fitness-quintic.png (PNG copy)>] [30 <./Figures/fitness-sextic.
+png (PNG copy)>]
+
+Package hyperref Warning: Composite letter `\textasciicaron+e'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 512.
+
+[31
+
+]
+Underfull \hbox (badness 1460) in paragraph at lines 536--539
+[]\T1/ppl/m/n/10.95 Koza, J. R., \T1/ppl/m/it/10.95 Ge-ne-tic pro-gra-m-ming II
+. Au-to-ma-tic Dis-co-very of Re-u-sa-ble Pro-grams\T1/ppl/m/n/10.95 ,
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 561.
+[32
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 561.
+ (./diplomka.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 561.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 561.
+=======
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
@@ -1016,6 +1250,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 543.
  (./diplomka.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 543.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 543.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
 (rerunfilecheck)             Checksum: 88D878C5B8B751D844417673FEEDDDDE;1941.
 
@@ -1025,6 +1260,15 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
+<<<<<<< HEAD
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 561.
+ ) 
+Here is how much of TeX's memory you used:
+ 8989 strings out of 494116
+ 128093 string characters out of 6157658
+ 257339 words of memory out of 5000000
+ 11963 multiletter control sequences out of 15000+600000
+=======
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 543.
  ) 
 Here is how much of TeX's memory you used:
@@ -1032,6 +1276,7 @@ Here is how much of TeX's memory you used:
  127237 string characters out of 6157658
  254990 words of memory out of 5000000
  11943 multiletter control sequences out of 15000+600000
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
  37212 words of font info for 52 fonts, out of 8000000 for 9000
  448 hyphenation exceptions out of 8191
  43i,11n,45p,1057b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1049,9 +1294,17 @@ hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
 fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
 /uplri8a.pfb>
+<<<<<<< HEAD
+Output written on diplomka.pdf (38 pages, 2081141 bytes).
+PDF statistics:
+ 659 PDF objects out of 1000 (max. 8388607)
+ 230 named destinations out of 1000 (max. 500000)
+ 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
 Output written on diplomka.pdf (36 pages, 1640853 bytes).
 PDF statistics:
  630 PDF objects out of 1000 (max. 8388607)
  223 named destinations out of 1000 (max. 500000)
  301 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 

@@ -26,7 +26,7 @@ public class FitnessTerminate extends TerminateFunction {
 	public boolean isTerminate(EvolutionAlgorithm algorithm) {
 		if (algorithm != null) {
 			Solution solution = algorithm.getBestSolution();
-			if (solution != null && solution.getFitness() != null && solution.getFitness() >= maxFitness)
+			if (solution != null && solution.getFunctionValue() != null && solution.getFunctionValue() >= maxFitness)
 				return true;
 		}
 		return false;

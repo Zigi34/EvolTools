@@ -145,65 +145,89 @@ public class ArtificialAnt extends TreeProblem {
 	}
 
 	@Override
-	public Double evaluate(Solution sol) {
-		TreeSolution tree = (TreeSolution) sol;
-		List<Node> nodes = null;
+	public void evaluate(Population pop) {
+		Double minFunctionValue = isMinProblem() ? Double.MIN_VALUE : Double.MAX_VALUE;
+		Double maxFunctionValue = isMinProblem() ? Double.MAX_VALUE : Double.MIN_VALUE;
+		Double sumFunctionValue = 0.0;
+		for (Solution sol : pop.getSolutions()) {
+			TreeSolution tree = (TreeSolution) sol;
+			List<Node> nodes = null;
 
-		// initialize evaluation
-		int nodeIndex = 0;
+			// initialize evaluation
+			int nodeIndex = 0;
 
-		Configuration conf = new Configuration();
+			Configuration conf = new Configuration();
 
-		Direction direction = Direction.RIGHT;
+			Direction direction = Direction.RIGHT;
 
-		int[][] actualYard = copyYard();
+			int[][] actualYard = copyYard();
 
-		// seznam uzlu, ke kterym je treba se vracit zpet
-		List<Node> moveBack = new LinkedList<Node>();
+			// seznam uzlu, ke kterym je treba se vracit zpet
+			List<Node> moveBack = new LinkedList<Node>();
 
-		// dokud se muze mravenec pohybovat
-		while (conf.getMoves() < maxMoves) {
-			nodeIndex = 0;
-			nodes = tree.deepNodes();
-			while (nodeIndex < nodes.size()) {
-				GPFenotype operation = nodes.get(nodeIndex).getValue();
-				if (operation instanceof Move) {
-					conf = move(actualYard, conf, yardWidth, yardHeight);
-					if (!moveBack.isEmpty()) {
-						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
-						moveBack.remove(moveBack.size() - 1);
-					} else
-						break;
-				} else if (operation instanceof LeftDirection) {
-					conf = changeDirection(conf, Rotation.LEFT);
-					if (!moveBack.isEmpty()) {
-						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
-						moveBack.remove(moveBack.size() - 1);
-					} else
-						break;
-				} else if (operation instanceof RightDirection) {
-					conf = changeDirection(conf, Rotation.RIGHT);
-					if (!moveBack.isEmpty()) {
-						nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
-						moveBack.remove(moveBack.size() - 1);
-					} else
-						break;
-				} else if (operation instanceof IfFoodAhead) {
-					if (!ifFoodAhead(actualYard, conf.getPosX(), conf.getPosY(), yardWidth, yardHeight, direction)) {
-						Node node = nodes.get(nodeIndex);
-						Node rightNode = node.getChilds().get(1);
-						nodeIndex = nodes.indexOf(rightNode);
-						continue;
+			// dokud se muze mravenec pohybovat
+			while (conf.getMoves() < maxMoves) {
+				nodeIndex = 0;
+				nodes = tree.deepNodes();
+				while (nodeIndex < nodes.size()) {
+					GPFenotype operation = nodes.get(nodeIndex).getValue();
+					if (operation instanceof Move) {
+						conf = move(actualYard, conf, yardWidth, yardHeight);
+						if (!moveBack.isEmpty()) {
+							nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
+							moveBack.remove(moveBack.size() - 1);
+						} else
+							break;
+					} else if (operation instanceof LeftDirection) {
+						conf = changeDirection(conf, Rotation.LEFT);
+						if (!moveBack.isEmpty()) {
+							nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
+							moveBack.remove(moveBack.size() - 1);
+						} else
+							break;
+					} else if (operation instanceof RightDirection) {
+						conf = changeDirection(conf, Rotation.RIGHT);
+						if (!moveBack.isEmpty()) {
+							nodeIndex = nodes.indexOf(moveBack.get(moveBack.size() - 1).getChilds().get(1));
+							moveBack.remove(moveBack.size() - 1);
+						} else
+							break;
+					} else if (operation instanceof IfFoodAhead) {
+						if (!ifFoodAhead(actualYard, conf.getPosX(), conf.getPosY(), yardWidth, yardHeight,
+								direction)) {
+							Node node = nodes.get(nodeIndex);
+							Node rightNode = node.getChilds().get(1);
+							nodeIndex = nodes.indexOf(rightNode);
+							continue;
+						}
+					} else if (operation instanceof Prg2) {
+						moveBack.add(nodes.get(nodeIndex));
 					}
-				} else if (operation instanceof Prg2) {
-					moveBack.add(nodes.get(nodeIndex));
+					nodeIndex++;
 				}
-				nodeIndex++;
 			}
+			// printPath(array);
+			Double functionValue = (double) conf.getFoundCrumbs();
+			sumFunctionValue += functionValue;
+			if (isMinProblem()) {
+				if (functionValue < maxFunctionValue) {
+					maxFunctionValue = functionValue;
+				}
+				if (functionValue > minFunctionValue) {
+					minFunctionValue = functionValue;
+				}
+			} else {
+				if (functionValue > maxFunctionValue) {
+					maxFunctionValue = functionValue;
+				}
+				if (functionValue < minFunctionValue) {
+					minFunctionValue = functionValue;
+				}
+			}
+
+			sol.setFunctionValue(functionValue);
+
 		}
-		// printPath(array);
-		sol.setFitness(conf.getFoundCrumbs() / Double.valueOf(crumbs));
-		return sol.getFitness();
 	}
 
 	/**
@@ -308,11 +332,5 @@ public class ArtificialAnt extends TreeProblem {
 
 	public int getCrumbs() {
 		return crumbs;
-	}
-
-	@Override
-	public void evaluate(Population pop) {
-		for (Solution sol : pop.getSolutions())
-			evaluate(sol);
 	}
 }

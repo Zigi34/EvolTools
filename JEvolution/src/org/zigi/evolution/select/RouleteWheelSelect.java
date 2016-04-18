@@ -23,47 +23,6 @@ public class RouleteWheelSelect extends SelectFunction {
 
 	private double fitnessIncrement = MIN_VALUE;
 
-	@Override
-	public List<Solution> select(Population sols, int count) {
-		List<Solution> list = new LinkedList<Solution>();
-
-		// seznam reseni ze kterych si muzeme nahodne jedno vybrat
-		List<Solution> forSelect = new LinkedList<Solution>();
-		forSelect.addAll(sols.getSolutions());
-
-		double max = 0.0;
-		for (Solution sol : sols.getSolutions()) {
-			if (sol.isEvaluated()) {
-				Double fit = sol.getFitness();
-				if (fit.isNaN())
-					fit = 0.0;
-				max += fit + MIN_VALUE;
-			}
-		}
-
-		for (int i = 0; i < count; i++) {
-			double rnd = RAND.nextDouble() * max;
-			double value = 0.0;
-			Solution solut = null;
-			for (Solution sol : forSelect) {
-				value += sol.getFitness() + MIN_VALUE;
-				if (value > rnd) {
-					solut = sol;
-					break;
-				}
-			}
-
-			// vybereme
-			list.add(solut);
-
-			// odstranime jedince z dalsiho vyberu (zamezeni dvojiteho vyberu
-			// stejneho jedince)
-			max -= (solut.getFitness() + MIN_VALUE);
-			forSelect.remove(solut);
-		}
-		return list;
-	}
-
 	/**
 	 * Hodnota navyšování pro selekci
 	 * 
@@ -88,24 +47,32 @@ public class RouleteWheelSelect extends SelectFunction {
 	}
 
 	@Override
-	public List<Solution> select(Population sols, int count, double sumFitness) {
+	public Population select(Population pop, int count) {
 		List<Solution> list = new LinkedList<Solution>();
 
-		double max = sumFitness + (sols.size() * MIN_VALUE);
-		for (int i = 0; i < count; i++) {
+		double max = 0.0;
+		for (Solution sol : pop.getSolutions()) {
+			max += Population.getNormalizedFitness(sol, pop);
+		}
+
+		for (int index = 0; index < count; index++) {
 			double rnd = RAND.nextDouble() * max;
 			double value = 0.0;
-			for (Solution sol : sols.getSolutions()) {
-				Double fit = sol.getFitness();
-				if (fit.isNaN())
-					fit = 0.0;
-				value += fit + MIN_VALUE;
+			for (Solution sol : pop.getSolutions()) {
+				Double fitness = Population.getNormalizedFitness(sol, pop);
+				value += fitness;
 				if (value > rnd) {
-					list.add(sol);
+					list.add(sol.cloneMe());
 					break;
 				}
 			}
 		}
-		return list;
+		Population result = new Population();
+		result.setBestFunctionValue(pop.getBestFunctionValue());
+		result.setMax(pop.getMaxSolutions());
+		result.setSumFunctionValue(pop.getSumFunctionValue());
+		result.setWorstFunctionValue(pop.getWorstFunctionValue());
+		result.setSolutions(list);
+		return result;
 	}
 }

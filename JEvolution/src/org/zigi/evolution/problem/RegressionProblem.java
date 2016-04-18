@@ -36,9 +36,14 @@ public class RegressionProblem extends TreeProblem {
 	private static final Random RAND = new Random();
 
 	public static final Logger LOG = Logger.getLogger(RegressionProblem.class);
+	private String name;
 
 	public RegressionProblem() {
 
+	}
+
+	public RegressionProblem(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -86,19 +91,6 @@ public class RegressionProblem extends TreeProblem {
 
 	}
 
-	@Override
-	public TreeSolution randomGrowTreeSolution(Integer deepSize) {
-		TreeSolution solution = (TreeSolution) super.randomGrowTreeSolution(deepSize);
-		return solution;
-	}
-
-	@Override
-	public TreeSolution randomFullTreeSolution(Integer deepSize) {
-		TreeSolution solution = (TreeSolution) super.randomFullTreeSolution(deepSize);
-
-		return solution;
-	}
-
 	/**
 	 * Aplikuje operaci vybraného uzlu s operátory v podobě podřízených uzlů
 	 * 
@@ -113,34 +105,48 @@ public class RegressionProblem extends TreeProblem {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
 			Double var2 = (Double) childs.get(1).getValue().getValue();
+			if (var1.isNaN() || var2.isNaN())
+				return Double.NaN;
 			return var1 + var2;
 		} else if (function instanceof SubtractionFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
 			Double var2 = (Double) childs.get(1).getValue().getValue();
+			if (var1.isNaN() || var2.isNaN())
+				return Double.NaN;
 			return var1 - var2;
 		} else if (function instanceof DivideFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
 			Double var2 = (Double) childs.get(1).getValue().getValue();
+			if (var1.isNaN() || var2 == 0.0)
+				return Double.NaN;
 			return var1 / var2;
 		} else if (function instanceof MultiplyFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
 			Double var2 = (Double) childs.get(1).getValue().getValue();
+			if (var1.isNaN() || var2.isNaN())
+				return Double.NaN;
 			return var1 * var2;
 		} else if (function instanceof PowerFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
 			Double var2 = (Double) childs.get(1).getValue().getValue();
+			if (var1.isNaN() || var2.isNaN())
+				return Double.NaN;
 			return Math.pow(var1, var2);
 		} else if (function instanceof SinFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
+			if (var1.isNaN())
+				return Double.NaN;
 			return Math.sin(var1);
 		} else if (function instanceof CosFunction) {
 			List<Node> childs = functionNode.getChilds();
 			Double var1 = (Double) childs.get(0).getValue().getValue();
+			if (var1.isNaN())
+				return Double.NaN;
 			return Math.cos(var1);
 		} else if (function instanceof NumericValue) {
 			List<Node> childs = functionNode.getChilds();
@@ -150,8 +156,10 @@ public class RegressionProblem extends TreeProblem {
 			return (Double) childs.get(0).getValue().getValue();
 		} else if (function instanceof RangedPowerFunction) {
 			List<Node> childs = functionNode.getChilds();
-			double base = (Double) childs.get(0).getValue().getValue();
-			double index = ((RangedPowerFunction) function).getIndex();
+			Double base = (Double) childs.get(0).getValue().getValue();
+			Double index = ((RangedPowerFunction) function).getIndex();
+			if (base.isNaN() || index.isNaN())
+				return Double.NaN;
 			Double val = (Double) Math.pow(base, index);
 			return val;
 		}
@@ -180,74 +188,116 @@ public class RegressionProblem extends TreeProblem {
 		}
 	}
 
-	@Override
-	public Double evaluate(Solution sol) {
-		if (sol instanceof TreeSolution) {
-			TreeSolution originalTree = (TreeSolution) sol;
+	public void evaluate(Population pop) {
+		Double sumFunctionValue = 0.0;
+		for (Solution sol : pop.getSolutions()) {
+			if (sol instanceof TreeSolution) {
+				TreeSolution originalTree = (TreeSolution) sol;
+				Double sumError = 0.0;
 
-			// LOG.info("ORIGINAL: " + originalTree);
-			Double difference = 0.0;
+				List<NumericConstant> constants = constants(originalTree);
+				for (NumericConstant constant : constants)
+					if (constant.getValue() == null)
+						constant.evaluateRandom();
 
-			List<NumericConstant> constants = constants(originalTree);
-			for (NumericConstant constant : constants)
-				if (constant.getValue() == null)
-					constant.evaluateRandom();
+				for (KeyVariables key : dataset.keySet()) {
+					if (originalTree.height() > originalTree.getMaxHeight()) {
+						sumError = Double.MAX_VALUE;
+						sol.setFunctionValue(sumError);
+						sumFunctionValue += sumError;
+						break;
+					}
 
-			for (KeyVariables key : dataset.keySet()) {
-				TreeSolution tree = (TreeSolution) originalTree.cloneMe();
-				// LOG.info("ITEM: " + tree);
-				List<NumericVariable> variables = variables(tree);
-				for (int i = 0; i < variables.size(); i++)
-					setValueOfVariable(tree, variables.get(i).getName(), key.getKey(i));
+					TreeSolution tree = (TreeSolution) originalTree.cloneMe();
+					List<NumericVariable> variables = variables(tree);
+					for (int i = 0; i < variables.size(); i++)
+						setValueOfVariable(tree, variables.get(i).getName(), key.getKey(i));
 
-				// LOG.info("OHODNOCENA KOPIE: " + tree);
-				// LOG.info("Ohodnocene proměnné: " + tree);
-				List<Node> leaves = null;
-				while (!(leaves = tree.leaveNodes()).isEmpty() && tree.getNodes().size() > 1) {
-					// LOG.info(tree);
+					List<Node> leaves = null;
+					while (!(leaves = tree.leaveNodes()).isEmpty() && tree.getNodes().size() > 1) {
+						for (Node item : leaves) {
+							Node parent = item.getParent();
+							if (parent == null)
+								break;
 
-					for (Node item : leaves) {
-						Node parent = item.getParent();
-						if (parent == null)
-							break;
+							// testing for leaves
+							boolean valid = true;
+							for (Node node : parent.getChilds()) {
+								if (!node.isLeaf()) {
+									valid = false;
+									break;
+								}
+							}
 
-						// testing for leaves
-						boolean valid = true;
-						for (Node node : parent.getChilds()) {
-							if (!node.isLeaf()) {
-								valid = false;
+							if (valid) {
+								// get numeric value
+								Double val = applyFunction(parent);
+								tree.removeSubTree(parent);
+								tree.addGenotype(new NumericValue(val));
 								break;
 							}
 						}
-
-						if (valid) {
-							// get numeric value
-							Double val = applyFunction(parent);
-							// LOG.info("PRED REDUKCI: " + tree);
-							tree.removeSubTree(parent);
-							tree.addGenotype(new NumericValue(val));
-							// LOG.info("REDUCE: " + tree);
-							break;
-						}
 					}
+					Double result = (Double) tree.getRoot().getValue().getValue();
+					if (result.isNaN()) {
+						sumError = Double.MAX_VALUE;
+						break;
+					}
+					sumError += Math.pow(result - dataset.get(key), 2.0);
 				}
-				Double result = (Double) tree.getRoot().getValue().getValue();
-				difference += Math.abs(result - dataset.get(key));
+
+				sumFunctionValue += sumError;
+				sol.setFunctionValue(sumError);
 			}
-			if (difference == 0.0)
-				sol.setFitness(Double.MAX_VALUE - 1000.0);
-			else
-				sol.setFitness(1000.0 / difference);
-			// LOG.info(sol);
-			return sol.getFitness();
+
 		}
-		return null;
+		pop.setSumFunctionValue(sumFunctionValue);
 	}
 
-	@Override
-	public void evaluate(Population pop) {
-		for (Solution sol : pop.getSolutions())
-			evaluate(sol);
+	public static String printFunction(TreeSolution sol) {
+		StringBuilder sb = new StringBuilder();
+		recursiveFunction(sol.getRoot(), sb);
+		return sb.toString();
+	}
+
+	private static void recursiveFunction(Node node, StringBuilder sb) {
+		if (node == null)
+			return;
+		GPFenotype fun = node.getValue();
+
+		sb.append("(");
+
+		if (fun instanceof MultiplyFunction) {
+			recursiveFunction(node.getChilds().get(0), sb);
+			sb.append("*");
+			recursiveFunction(node.getChilds().get(1), sb);
+		} else if (fun instanceof SumFunction) {
+			recursiveFunction(node.getChilds().get(0), sb);
+			sb.append("+");
+			recursiveFunction(node.getChilds().get(1), sb);
+		} else if (fun instanceof SubtractionFunction) {
+			recursiveFunction(node.getChilds().get(0), sb);
+			sb.append("-");
+			recursiveFunction(node.getChilds().get(1), sb);
+		} else if (fun instanceof DivideFunction) {
+			recursiveFunction(node.getChilds().get(0), sb);
+			sb.append("/");
+			recursiveFunction(node.getChilds().get(1), sb);
+		} else if (fun instanceof RangedPowerFunction) {
+			RangedPowerFunction rf = (RangedPowerFunction) fun;
+			sb.append("POWER(");
+			recursiveFunction(node.getChilds().get(0), sb);
+			sb.append(",");
+			sb.append(rf.getIndex());
+			sb.append(")");
+		} else if (fun instanceof NumericConstant) {
+			NumericConstant con = (NumericConstant) fun;
+			sb.append(con.getValue());
+		} else if (fun instanceof NumericVariable)
+			sb.append("A2");
+		else if (fun instanceof NumericValue)
+			sb.append(((NumericValue) fun).getValue());
+		sb.append(")");
 	}
 
 	/**
@@ -272,5 +322,10 @@ public class RegressionProblem extends TreeProblem {
 				list.add((NumericConstant) node.getValue());
 		}
 		return list;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }

@@ -8,5 +8,14 @@
 \contentsline {figure}{\numberline {7}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru mutace}}{20}{figure.7}
 \contentsline {figure}{\numberline {8}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru editace. Lev\IeC {\'y} strom zjednodu\IeC {\v s}\IeC {\'\i }me a v\IeC {\'y}sledkem je strom prav\IeC {\'y}}}{21}{figure.8}
 \contentsline {figure}{\numberline {9}{\ignorespaces Regresn\IeC {\'\i } funkce (modr\IeC {\'a}) s nalezenou aproximax\IeC {\'\i } (\IeC {\v c}erven\IeC {\v e})}}{25}{figure.9}
+<<<<<<< HEAD
+\contentsline {figure}{\numberline {10}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^5-2x^3+x$}}{27}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces V\IeC {\'y}sledn\IeC {\'a} aproximace funkce $x^5-2x^3+x$}}{27}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^6-2x^4+x^2$}}{28}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces V\IeC {\'y}sledn\IeC {\'a} aproximace funkce $x^6-2x^4+x^2$}}{28}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces V\IeC {\'y}voj fitness nejlep\IeC {\v s}ich nalezen\IeC {\'y}ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } Quintic funkce}}{29}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces V\IeC {\'y}voj fitness nejlep\IeC {\v s}ich nalezen\IeC {\'y}ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } Sextic funkce}}{30}{figure.15}
+=======
 \contentsline {figure}{\numberline {10}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^5-2x^3+x$}}{26}{figure.10}
 \contentsline {figure}{\numberline {11}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^6-2x^4+x^2$}}{27}{figure.11}
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244

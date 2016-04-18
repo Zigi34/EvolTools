@@ -24,9 +24,15 @@ xmlns:prism = "http://prismstandard.org/namespaces/basic/2.0/">
 <pdfaid:conformance>B</pdfaid:conformance> 
 <xap:CreatorTool>pdfTeX</xap:CreatorTool> 
 <xapRights:Marked>True</xapRights:Marked> 
+<<<<<<< HEAD
+<xap:ModifyDate>2016-04-17T14:36:08+02:00</xap:ModifyDate> 
+<xap:CreateDate>2016-04-17T14:36:08+02:00</xap:CreateDate> 
+<xap:MetadataDate>2016-04-17T14:36:08+02:00</xap:MetadataDate> 
+=======
 <xap:ModifyDate>2016-04-10T12:19:55+02:00</xap:ModifyDate> 
 <xap:CreateDate>2016-04-10T12:19:55+02:00</xap:CreateDate> 
 <xap:MetadataDate>2016-04-10T12:19:55+02:00</xap:MetadataDate> 
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 </rdf:Description> 
 </rdf:RDF> 
 </x:xmpmeta> 

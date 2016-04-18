@@ -7,7 +7,7 @@ import org.zigi.evolution.util.Cloneable;
 
 public class Node implements Cloneable<Node> {
 
-	private Node[] childs;
+	private List<Node> childs;
 	private Node parent;
 	private GPFenotype value;
 	private long id;
@@ -32,7 +32,7 @@ public class Node implements Cloneable<Node> {
 	 *            nadřazený uzel
 	 */
 	public Node(GPFenotype val, Node parent) {
-		this.childs = new Node[val.getMaxChilds()];
+		this.childs = new LinkedList<Node>();
 		this.value = val;
 		this.parent = parent;
 		this.id = System.nanoTime();
@@ -44,10 +44,7 @@ public class Node implements Cloneable<Node> {
 	 * @return true, pokud jsou nastaveny všechny podřízené uzly
 	 */
 	public boolean isComplete() {
-		for (int i = 0; i < childs.length; i++)
-			if (childs[i] == null)
-				return false;
-		return true;
+		return getMaxChild() == childs.size();
 	}
 
 	/**
@@ -59,23 +56,17 @@ public class Node implements Cloneable<Node> {
 	 */
 	public void addChild(Node val) {
 		if (!isComplete()) {
-			for (int i = 0; i < childs.length; i++)
-				if (childs[i] == null) {
-					childs[i] = val;
-					break;
-				}
+			childs.add(val);
 		}
 	}
 
 	public void removeChild(Node node) {
-		for (int i = 0; i < childs.length; i++)
-			if (childs[i] != null && childs[i].equals(node)) {
-				// odstraneni uzlu z potomka na rodice
-				node.setParent(null);
-				// odstraneni uzlu z rodice na potomka
-				childs[i] = null;
-				break;
-			}
+		// odstraneni uzlu z potomka na rodice
+		for (Node n : node.getChilds())
+			n.setParent(null);
+
+		// odstraneni uzlu z rodice na potomka
+		childs.remove(node);
 	}
 
 	/**
@@ -84,11 +75,7 @@ public class Node implements Cloneable<Node> {
 	 * @return
 	 */
 	public List<Node> getChilds() {
-		List<Node> nodes = new LinkedList<Node>();
-		for (int i = 0; i < childs.length; i++)
-			if (childs[i] != null)
-				nodes.add(childs[i]);
-		return nodes;
+		return childs;
 	}
 
 	/**
@@ -169,13 +156,15 @@ public class Node implements Cloneable<Node> {
 		Node parent1 = node1.getParent();
 		if (parent1 != null) {
 			// nahradí odkaz z rodiče na druhý uzel
-			parent1.getChilds().set(parent1.getChilds().indexOf(node1), node2);
+			int nodeIndex = parent1.getChilds().indexOf(node1);
+			parent1.getChilds().set(nodeIndex, node2);
 		}
 
 		Node parent2 = node2.getParent();
 		if (parent2 != null) {
 			// nahradi odkaz z rodiče na první uzel
-			parent2.getChilds().set(parent2.getChilds().indexOf(node2), node1);
+			int nodeIndex = parent2.getChilds().indexOf(node2);
+			parent2.getChilds().set(nodeIndex, node1);
 		}
 
 		Node temp = null;
@@ -222,7 +211,7 @@ public class Node implements Cloneable<Node> {
 	 * @return
 	 */
 	public int height() {
-		return height(this, 0);
+		return height(this, 1);
 	}
 
 	/**

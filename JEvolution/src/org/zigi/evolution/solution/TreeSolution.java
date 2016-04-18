@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.zigi.evolution.solution.value.GPFenotype;
 import org.zigi.evolution.solution.value.Node;
-import org.zigi.evolution.util.Util;
 
 public class TreeSolution extends Solution {
 	private Node root;
@@ -58,20 +57,20 @@ public class TreeSolution extends Solution {
 			Node uncompleteNode = nextUncompleteNode();
 			if (uncompleteNode != null) {
 				// zjištění aktuální hloubky uzlu
-				int actualDeep = deepOf(uncompleteNode);
+				// int actualDeep = deepOf(uncompleteNode);
 
 				// není aktuální uzel již v maximální hloubce
-				if (maxDepth != null && actualDeep < maxDepth) {
+				// if (maxDepth != null && actualDeep < maxDepth) {
 
-					// pokud se jedna o poslední přidání uzlu, musí tento uzel
-					// být terminálem, jinak se vložení nepodaří
-					if (actualDeep + 1 == maxDepth && node.getMaxChild() > 0)
-						return;
+				// pokud se jedna o poslední přidání uzlu, musí tento uzel
+				// být terminálem, jinak se vložení nepodaří
+				// if (actualDeep + 1 == maxDepth && node.getMaxChild() > 0)
+				// return;
 
-					// vložení uzlu
-					uncompleteNode.addChild(node);
-					nodes.add(node);
-				}
+				// }
+				// vložení uzlu
+				uncompleteNode.addChild(node);
+				nodes.add(node);
 			}
 		}
 	}
@@ -221,7 +220,7 @@ public class TreeSolution extends Solution {
 	 */
 	public Solution cloneMe() {
 		TreeSolution tree = new TreeSolution(this.maxDepth);
-		tree.setFitness(new Double(getFitness()));
+		tree.setFunctionValue(new Double(getFunctionValue()));
 		List<Node> nodes = deepNodes();
 		for (Node node : nodes) {
 			tree.addGenotype(node.getValue().cloneMe());
@@ -312,14 +311,11 @@ public class TreeSolution extends Solution {
 	 *            index uzlu ve druhém stromě
 	 */
 	public static boolean changeSubTree(TreeSolution sol1, int index1, TreeSolution sol2, int index2) {
+		if (index1 == 0 && index2 == 0)
+			return true;
+
 		Node node1 = sol1.getNode(index1);
 		Node node2 = sol2.getNode(index2);
-		int finalHeight1 = node1.deepOf() + node2.height();
-		int finalHeight2 = node2.height() + node1.height();
-
-		// pokud by byla prekrocena vyska stromu, neprovadime nic
-		if (finalHeight1 > sol1.getMaxHeight() || finalHeight2 > sol2.getMaxHeight())
-			return false;
 
 		List<Node> nodes1 = node1.deepNodes();
 		List<Node> nodes2 = node2.deepNodes();
@@ -336,13 +332,13 @@ public class TreeSolution extends Solution {
 		for (Node node : nodes1) {
 			sol1.getNodes().remove(node);
 		}
-		sol2.getNodes().addAll(nodes2);
+		sol1.getNodes().addAll(nodes2);
 
 		// odstrani uzly z druhého stromu a vloží uzly z prvního
 		for (Node node : nodes2) {
 			sol2.getNodes().remove(node);
 		}
-		sol1.getNodes().addAll(nodes1);
+		sol2.getNodes().addAll(nodes1);
 
 		return true;
 	}
@@ -378,16 +374,17 @@ public class TreeSolution extends Solution {
 		}
 		if (actual.getMaxChild() > 0)
 			sb.append(")");
+
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
-		if (getFitness() == null)
+		if (getFunctionValue() == null)
 			sb.append("NULL");
 		else
-			sb.append(Util.formatNumber(getFitness()));
+			sb.append(String.format("%6.3e", getFunctionValue()));
 		sb.append("]");
 		printTree(sb, root);
 		return sb.toString();

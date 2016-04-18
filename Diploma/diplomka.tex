@@ -3,7 +3,6 @@
 \documentclass[bc,male,java,dept460]{diploma}		% oboustranny dokument
 \usepackage[czech]{babel}
 
-
 % Zadame pozadovane vstupy pro generovani titulnich stran.
 \ThesisAuthor{Zdeněk Gold}
 
@@ -22,8 +21,7 @@ Rád bych poděkoval prof. Ing. Ivan Zelinka, Ph.D. za užitečné rady, zajíma
 podměty a věnovaný čas při tvorbě této práce. Rovněž velmi děkuji svým rodičům a dalším rodinným příslušníkům za všestrannou podporu během studia.
 }
 
-\CzechAbstract {
-}
+\CzechAbstract {}
 
 \CzechKeywords {
 EVT, evoluční algoritmy, genetické programování, syntaktický strom, křížení, mutace, selekce, program, jedinec, symbolická regrese, Java
@@ -149,6 +147,7 @@ plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potom
 
 \paragraph*{}
 Životní cyklus algoritmů z rodiny evolučních algoritmů je v zásadě totožný a lze jej zjedodušeně popsat několika kroky, jak je znázorněno na obr. Na počátku je v rámci námi zkoumané instance problématiky náhodně vytvořena populace, a to z genofondu, který příslučí danému alforitmu.
+<<<<<<< HEAD
 
 \paragraph*{}
 Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocení kvality řešení) daného problému každému jedinci přiřazena hodota, vyjadřující míru vhodnosti jedince, tzv. fitness. Ohodnocená populace je dále podrobena selekci jedinců vhodných k reprodukci. Selektivní funkce přímo pracuje s přiřazenými fitness hodnotami a na základě těchto hodot ovlivňuje míru pravděpodobnosti jedinců v populaci.
@@ -156,6 +155,15 @@ Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocen�
 \paragraph*{}
 V reprodukční části algoritmu dochází k výměně genetických informací nově vzniklých jedinců. Typickými operátory je křížení - vzájemná výměna části fenotypů mezi více jedinci a mutace - náhodné pozměnení fenotypů jedince.
 
+=======
+
+\paragraph*{}
+Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocení kvality řešení) daného problému každému jedinci přiřazena hodota, vyjadřující míru vhodnosti jedince, tzv. fitness. Ohodnocená populace je dále podrobena selekci jedinců vhodných k reprodukci. Selektivní funkce přímo pracuje s přiřazenými fitness hodnotami a na základě těchto hodot ovlivňuje míru pravděpodobnosti jedinců v populaci.
+
+\paragraph*{}
+V reprodukční části algoritmu dochází k výměně genetických informací nově vzniklých jedinců. Typickými operátory je křížení - vzájemná výměna části fenotypů mezi více jedinci a mutace - náhodné pozměnení fenotypů jedince.
+
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 \subsection{Genetický algoritmus (GA)}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
@@ -455,6 +463,59 @@ K testvání byly použity polynomy pátého a šestého řádu, tzv. Sextic a Q
 
 \subsubsection{Quintic a Sextic problem}
 \paragraph*{}
+<<<<<<< HEAD
+Problém označovaný jako Quintic a Sextic problem jsou označením pro všechny polynomiální funkce pátého a šestého řádu. V této práci se jednalo o funkce definované vztahy \ref{eq:quitic} a \ref{eq:sextic}.
+
+\begin{equation} \label{eq:quitic}
+x^5-2x^3+x
+\end{equation}
+
+\begin{equation} \label{eq:sextic}
+x^6-2x^4+x^2
+\end{equation}
+
+\paragraph*{}
+Pro účely testování navržené aplikace bylo použito následujících nastavení evolučního běhu. Aby nebyly výsledky testování zkreslené, byla jednotlivá syntéza funkcí opakována 20 krát. Konfigurace k aproximaci Quintic a Sextic funkce je uvedená v tabulce \ref{tab:QuinticSexticConf} 
+
+\begin{table}
+  \centering
+  \begin{tabular}{| r | p{9cm} |} \hline
+    Datový soubor & tvoře 50 vzorky s krokem 0,4 a rozmezí [-1;1] \\ \hline
+    Velikost chyby & Suma absolutních hodnot rozdílů mezi původí hodnotou a hodnotou syntetizované funkce \\ \hline
+    Množina funkcí & $+, -, *, pow(a,b)$ \\ \hline
+    Množina terminálů & konstanty s nastavenou mezí [-10;10] a nezávislá proměnná $x$ \\ \hline
+    Počet generací & 500 evolučních cyklů \\ \hline
+    Velikost populace & 200 jedinců \\ \hline
+    Výška stromu & 6 \\ \hline
+    Pravděpodobnost křížení & 0.7 \\ \hline
+    Pravděpodobnost mutace & 0.28 \\ \hline
+    Pravděpodobnost reprodukce & 0.02 \\ \hline
+    Metoda křížení & Tournament (velikost 10) \\ \hline
+  \end{tabular}
+  \label{tab:QuinticSexticConf}
+  \caption{Konfigurace GP pro Sextic problém}
+\end{table}
+
+\InsertFigure{Figures/quintic-problem-origin.png}{1.0\textwidth}{Průběh funkce $x^5-2x^3+x$}{fig:quintic_fce}
+
+\InsertFigure{Figures/quintic-problem-result.png}{1.0\textwidth}{Výsledná aproximace funkce $x^5-2x^3+x$}{fig:quintic_aprox}
+
+\InsertFigure{Figures/sextic-problem-origin.png}{1.0\textwidth}{Průběh funkce $x^6-2x^4+x^2$}{fig:sextic_fce}
+
+\InsertFigure{Figures/sextic-problem-result.png}{1.0\textwidth}{Výsledná aproximace funkce $x^6-2x^4+x^2$}{fig:sextic_aprox}
+
+\paragraph*{}
+Simulace aproximace pro oba problémy byla opakována 20-krát. Na obrázku jsou zobrazena data a jejich proložení všemi syntetizovanými funkcemi. Lze si všimnout, že všechny nalezené syntetizované funkce celkem věrohodně aproximují původní funkce.
+
+\paragraph*{}
+Mezi nejlepší aproximaci funkce Sextic patřily výsledné funkce $(x^3-x)*(x^3-x)$ a $(x^3-x)*(x^3-x)$, které po úpravě (roznásobení) skutečně dávají původní funkci \ref{eq:sextic}.
+Stejně tak při hledání optimální funkce Quintic \ref{eq:quitic} problemu bylo během opakovaného běhu programu dosaženo optimálních řešení v podobě funkce $x-(((x+x)*(x*x))-(x^5))$
+
+
+\InsertFigure{Figures/fitness-quintic.png}{1.0\textwidth}{Vývoj fitness nejlepšich nalezených řešení Quintic funkce}{fig:fitnessQuintic}
+
+\InsertFigure{Figures/fitness-sextic.png}{1.0\textwidth}{Vývoj fitness nejlepšich nalezených řešení Sextic funkce}{fig:fitnessSextic}
+=======
 Problém označovaný jako Quintic a Sextic problem jsou označením pro všechny polynomiální funkce pátého a šestého řádu. V této práci se jednalo o funkce definované vztahy \ref{eq:quitic} a \ref{eq:sextic}. Prezentované výsledky pro oba problémy byly produkovány konfiguraci v tabulce \ref{tab:quintic_conf}.
 
 \begin{equation} \label{eq:quitic}
@@ -486,10 +547,11 @@ x^6-2x^4+x^2
 
 \paragraph*{}
 Simulace aproximace pro oba problémy byla opakována 50-krát. Na obrázku jsou zobrazeny data a jejich proložení všemi syntetizovanými funkcemi. Z toho obrázku lze vidět, že všechny nalezené syntetizované funkce velice přesně aproximují původní funkci.
+>>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 
 \subsection{Vyhodnocení}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+Nějaké zhodnocení
 
 \section{Závěr}
 \label{sec:Conclusion}

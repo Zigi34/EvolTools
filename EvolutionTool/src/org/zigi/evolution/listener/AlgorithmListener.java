@@ -28,7 +28,7 @@ public class AlgorithmListener implements PropertyChangeListener {
 			EvolutionAlgorithm alg = Services.algorithmService().getSelected().getAlgorithm();
 			Solution sol = alg.getBestSolution();
 			if (sol != null)
-				LOG.info("Nové lepší řešení " + sol.getFitness());
+				LOG.info("Nové lepší řešení " + sol.getFunctionValue());
 			else
 				LOG.info("Nové lepší řešení");
 		} else if (event.equals(GeneticProgramming.NEW_POPULATION)) {
