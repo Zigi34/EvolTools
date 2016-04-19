@@ -2,7 +2,6 @@ package org.zigi.evolution.services;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import org.zigi.evolution.model.PopulationModel;
 import org.zigi.evolution.model.ProblemModel;
@@ -52,11 +51,11 @@ public class PopulationService {
 			for (ProblemModel problem : Services.problemService().findProblemFunctions()) {
 				Population pop = new Population();
 
-				// randomly create solution
-				IntStream.range(0, 10).forEachOrdered(n -> {
-					pop.add(problem.getProblem().randomSolution());
-				});
-
+				/*
+				 * // randomly create solution IntStream.range(0,
+				 * 10).forEachOrdered(n -> {
+				 * pop.add(problem.getProblem().randomSolution()); });
+				 */
 				list.add(new PopulationModel(pop));
 			}
 		} catch (Exception e) {

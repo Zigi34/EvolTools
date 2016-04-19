@@ -83,8 +83,6 @@ různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako zá
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-
-
 \subsection{Pojmy z oblasti evolučních algoritmů}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
@@ -463,7 +461,6 @@ K testvání byly použity polynomy pátého a šestého řádu, tzv. Sextic a Q
 
 \subsubsection{Quintic a Sextic problem}
 \paragraph*{}
-<<<<<<< HEAD
 Problém označovaný jako Quintic a Sextic problem jsou označením pro všechny polynomiální funkce pátého a šestého řádu. V této práci se jednalo o funkce definované vztahy \ref{eq:quitic} a \ref{eq:sextic}.
 
 \begin{equation} \label{eq:quitic}
@@ -515,39 +512,6 @@ Stejně tak při hledání optimální funkce Quintic \ref{eq:quitic} problemu b
 \InsertFigure{Figures/fitness-quintic.png}{1.0\textwidth}{Vývoj fitness nejlepšich nalezených řešení Quintic funkce}{fig:fitnessQuintic}
 
 \InsertFigure{Figures/fitness-sextic.png}{1.0\textwidth}{Vývoj fitness nejlepšich nalezených řešení Sextic funkce}{fig:fitnessSextic}
-=======
-Problém označovaný jako Quintic a Sextic problem jsou označením pro všechny polynomiální funkce pátého a šestého řádu. V této práci se jednalo o funkce definované vztahy \ref{eq:quitic} a \ref{eq:sextic}. Prezentované výsledky pro oba problémy byly produkovány konfiguraci v tabulce \ref{tab:quintic_conf}.
-
-\begin{equation} \label{eq:quitic}
-x^5-2x^3+x
-\end{equation}
-
-\InsertFigure{Figures/quintic-problem.png}{0.7\textwidth}{Průběh funkce $x^5-2x^3+x$}{fig:quintic_fce}
-
-\begin{equation} \label{eq:sextic}
-x^6-2x^4+x^2
-\end{equation}
-
-\InsertFigure{Figures/sextic-problem.png}{0.7\textwidth}{Průběh funkce $x^6-2x^4+x^2$}{fig:sextic_fce}
-
-\paragraph*{}
-\begin{table}
-  \centering
-  \begin{tabular}{| r | p{9cm} |} \hline
-    Datový soubor & tvoře 50 vzorky v rozmezí [-1;1] \\ \hline
-    Velikost chyby & Suma absolutních hodnot rozdílů mezi původí hodnotou a hodnotou syntetizované funkce \\ \hline
-    Množina funkcí & $+, -, *, /, pow(a,b)$ \\ \hline
-    Množina terminálů & konstanty $a, b, c, d, e, f$ s nastavenou mezí [-10;10], a nezávislá proměnná $x$ \\ \hline
-    Počet generací & 5000 evolučních cyklů \\ \hline
-    Velikost populace & 500 řešení \\ \hline
-  \end{tabular}
-  \label{tab:quintic_conf}
-  \caption{Konfigurace pro testování GP pro Quintic a Sextic problem}
-\end{table}
-
-\paragraph*{}
-Simulace aproximace pro oba problémy byla opakována 50-krát. Na obrázku jsou zobrazeny data a jejich proložení všemi syntetizovanými funkcemi. Z toho obrázku lze vidět, že všechny nalezené syntetizované funkce velice přesně aproximují původní funkci.
->>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 
 \subsection{Vyhodnocení}
 \paragraph*{}

@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 
-public class EvolutionToolFootBar extends ToolBar {
+public class FootBar extends ToolBar {
 
 	@FXML
 	private Label title;
@@ -20,8 +20,8 @@ public class EvolutionToolFootBar extends ToolBar {
 	@FXML
 	private Label best;
 
-	public EvolutionToolFootBar() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/EvolutionToolFootBar.fxml"));
+	public FootBar() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/FootBar.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 

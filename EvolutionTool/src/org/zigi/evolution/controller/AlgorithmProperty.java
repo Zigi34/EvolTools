@@ -24,9 +24,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 
-public class EvolutionToolAlgorithmProperty extends BorderPane {
+public class AlgorithmProperty extends BorderPane {
 
-	private static final Logger LOG = Logger.getLogger(EvolutionToolAlgorithmProperty.class);
+	private static final Logger LOG = Logger.getLogger(AlgorithmProperty.class);
 
 	@FXML
 	private Label selectFunctionLabel;
@@ -55,8 +55,8 @@ public class EvolutionToolAlgorithmProperty extends BorderPane {
 	@FXML
 	private Slider crossMutate;
 
-	public EvolutionToolAlgorithmProperty() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/EvolutionToolAlgorithmProperty.fxml"));
+	public AlgorithmProperty() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/AlgorithmProperty.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 

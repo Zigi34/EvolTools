@@ -4,15 +4,18 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.problem.ArtificialAnt;
+import org.zigi.evolution.problem.RegressionProblem;
 
 public class ProblemService {
 
 	private static ProblemService instance;
 	private static ProblemModel selected;
 	private static List<ProblemModel> list;
+	private static final Logger LOG = Logger.getLogger(ProblemService.class);
 
 	private ProblemService() {
 		if (list == null) {
@@ -43,8 +46,11 @@ public class ProblemService {
 			problem.setMaxMoves(420);
 			problem.setYard(new File("resource/data/artificial_ant"));
 			list.add(new ProblemModel("Umělý mravenec", problem));
+
+			RegressionProblem problem2 = new RegressionProblem();
+			list.add(new ProblemModel("Symbolická regrese", problem2));
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		}
 	}
 

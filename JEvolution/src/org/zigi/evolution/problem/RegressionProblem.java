@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.log4j.Logger;
 import org.zigi.evolution.problem.regression.KeyVariables;
@@ -33,16 +32,22 @@ public class RegressionProblem extends TreeProblem {
 	private LinkedHashMap<KeyVariables, Double> dataset = new LinkedHashMap<>();
 	private Integer dimension;
 	private static final String VARIABLE_NAMES = "abcdefghijklmnopqrstuvwxyz";
-	private static final Random RAND = new Random();
 
 	public static final Logger LOG = Logger.getLogger(RegressionProblem.class);
 	private String name;
 
 	public RegressionProblem() {
+		addFenotype(new SumFunction());
+		addFenotype(new SubtractionFunction());
+		addFenotype(new MultiplyFunction());
+		addFenotype(new DivideFunction());
+		addFenotype(new RangedPowerFunction(2.0, 6.0, true));
+		addFenotype(new NumericConstant(-10.0, 10.0));
 
 	}
 
 	public RegressionProblem(String name) {
+		this();
 		this.name = name;
 	}
 

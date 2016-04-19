@@ -28,7 +28,6 @@ import org.zigi.evolution.solution.value.DivideFunction;
 import org.zigi.evolution.solution.value.MultiplyFunction;
 import org.zigi.evolution.solution.value.NumericConstant;
 import org.zigi.evolution.solution.value.PowerFunction;
-import org.zigi.evolution.solution.value.RangedPowerFunction;
 import org.zigi.evolution.solution.value.SinFunction;
 import org.zigi.evolution.solution.value.SubtractionFunction;
 import org.zigi.evolution.solution.value.SumFunction;
@@ -139,12 +138,6 @@ public class Main {
 				RegressionProblem problem = new RegressionProblem("quintic");
 				problem.loadDataset(new File("resources/quintic"), ";");
 				problem.setMaxHeight(height);
-				problem.addFenotype(new SumFunction());
-				problem.addFenotype(new SubtractionFunction());
-				problem.addFenotype(new MultiplyFunction());
-				// problem.addFenotype(new DivideFunction());
-				problem.addFenotype(new RangedPowerFunction(2.0, 6.0, true));
-				problem.addFenotype(new NumericConstant(-10.0, 10.0));
 
 				GeneticProgramming gp = new GeneticProgramming();
 				gp.setMutateProbability(0.28);

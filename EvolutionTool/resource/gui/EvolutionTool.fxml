@@ -36,7 +36,7 @@
               <content>
                 <BorderPane bottom="$null" right="$null" top="$null">
                   <left>
-                    <EvolutionToolAlgorithmProperty />
+                    <AlgorithmProperty />
                   </left>
                   <center>
                   	<ControlPanel />
@@ -48,7 +48,7 @@
               <content>
                 <BorderPane bottom="$null" left="$null" right="$null" top="$null">
                   <center>
-                    <EvolutionToolFitnessChart />
+                    <FitnessChart />
                   </center>
                 </BorderPane>
               </content>
@@ -57,7 +57,7 @@
               <content>
                 <BorderPane bottom="$null" left="$null" right="$null" top="$null">
                   <center>
-                    <EvolutionToolProblemProperty />
+                    <ProblemProperty />
                   </center>
                 </BorderPane>
               </content>
@@ -66,7 +66,7 @@
         </TabPane>
       </center>
       <bottom>
-        <EvolutionToolFootBar />
+        <FootBar />
       </bottom>
     </BorderPane>
   </children>

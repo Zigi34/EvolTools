@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.layout.AnchorPane;
 
-public class EvolutionToolFitnessChart extends AnchorPane {
+public class FitnessChart extends AnchorPane {
 
 	@FXML
 	private NumberAxis xAxis;
@@ -15,8 +15,8 @@ public class EvolutionToolFitnessChart extends AnchorPane {
 	@FXML
 	private NumberAxis yAxis;
 
-	public EvolutionToolFitnessChart() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/EvolutionToolFitnessChart.fxml"));
+	public FitnessChart() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/FitnessChart.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 
