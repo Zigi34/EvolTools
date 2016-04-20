@@ -19,4 +19,9 @@ public class DivideFunction extends GPFenotype {
 	public String toString() {
 		return "DIV";
 	}
+
+	@Override
+	public String getName() {
+		return "/";
+	}
 }

@@ -19,4 +19,9 @@ public class Prg3 extends GPFenotype {
 	public String toString() {
 		return "PRG3";
 	}
+
+	@Override
+	public String getName() {
+		return "PRG3";
+	}
 }

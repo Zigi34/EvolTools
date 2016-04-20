@@ -38,11 +38,15 @@ public class EvolutionTool extends Application {
 			stage.show();
 		} catch (Exception e) {
 			LOG.error(e);
-			e.printStackTrace();
 		}
 	}
 
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
+
+	public static Stage getStage() {
+		return stage;
+	}
+
 }

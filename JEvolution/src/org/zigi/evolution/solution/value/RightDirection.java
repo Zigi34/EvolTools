@@ -20,4 +20,9 @@ public class RightDirection extends GPFenotype {
 		return "RIGHT";
 	}
 
+	@Override
+	public String getName() {
+		return "RIGHT";
+	}
+
 }

@@ -19,4 +19,9 @@ public class SinFunction extends GPFenotype {
 	public String toString() {
 		return "SIN";
 	}
+
+	@Override
+	public String getName() {
+		return "sin()";
+	}
 }

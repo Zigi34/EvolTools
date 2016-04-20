@@ -37,7 +37,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	private static final Logger LOG = Logger.getLogger(GeneticProgramming.class);
 
 	public GeneticProgramming() {
-		setPopulationSize(400);
+		setPopulationSize(200);
 
 		setCross(new TreeCross());
 		setMutate(new TreeMutate());

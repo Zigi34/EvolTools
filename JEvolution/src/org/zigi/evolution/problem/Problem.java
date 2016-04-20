@@ -6,8 +6,8 @@ import org.zigi.evolution.util.Population;
 
 public abstract class Problem {
 	public boolean isMinProblem = true;
-	private double minFunctionValue;
-	private double maxFunctionValue;
+	private double minFunctionValue = 0.0;
+	private double maxFunctionValue = 2.0;
 	private double epsilon = 0.00001;
 
 	public abstract Solution randomSolution();

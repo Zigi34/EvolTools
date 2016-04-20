@@ -1,10 +1,22 @@
 package org.zigi.evolution.controller;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+import org.zigi.evolution.algorithm.EvolutionAlgorithm;
+import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.zigi.evolution.model.AlgorithmModel;
+import org.zigi.evolution.services.Services;
+import org.zigi.evolution.solution.Solution;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.AnchorPane;
 
 public class FitnessChart extends AnchorPane {
@@ -15,6 +27,12 @@ public class FitnessChart extends AnchorPane {
 	@FXML
 	private NumberAxis yAxis;
 
+	@FXML
+	private LineChart<Integer, Double> popFitnessLine;
+
+	private static final Logger LOG = Logger.getLogger(FitnessChart.class);
+	private XYChart.Series<Integer, Double> series = new XYChart.Series<Integer, Double>();
+
 	public FitnessChart() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/FitnessChart.fxml"));
 		fxmlLoader.setRoot(this);
@@ -23,13 +41,44 @@ public class FitnessChart extends AnchorPane {
 		try {
 			fxmlLoader.load();
 		} catch (IOException exception) {
-			throw new RuntimeException(exception);
+			LOG.error(exception);
 		}
 
 		initialize();
 	}
 
 	private void initialize() {
+		series.setName("Fitness chart");
+		xAxis.setLowerBound(0.0);
+		xAxis.setTickUnit(1.0);
+		yAxis.setLowerBound(0.0);
+		yAxis.setUpperBound(1.0);
+		yAxis.setTickUnit(0.01);
+		popFitnessLine.getData().add(series);
 
+		AlgorithmModel model = Services.algorithmService().getSelected();
+		if (model != null) {
+			EvolutionAlgorithm alg = model.getAlgorithm();
+			LOG.info("Nastavuji odchytavani udalosti");
+			alg.addChangeListener(new PropertyChangeListener() {
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					// při vytvoření nové populace se zjistí a do grafu nastaví
+					// fitness
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION)) {
+								Solution bestSolution = alg.getBestSolution();
+								Double bestFitness = alg.getProblem().getNormalizedFitness(bestSolution);
+								Integer generation = alg.getActualGeneration();
+								LOG.info("gen:" + generation + " = " + bestFitness);
+								series.getData().add(new XYChart.Data<Integer, Double>(generation, bestFitness));
+							}
+						}
+					});
+				}
+			});
+		}
 	}
 }

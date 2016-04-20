@@ -47,4 +47,9 @@ public class NumericValue extends GPFenotype {
 		return String.valueOf(value);
 	}
 
+	@Override
+	public String getName() {
+		return "";
+	}
+
 }

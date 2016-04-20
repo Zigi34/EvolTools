@@ -19,4 +19,9 @@ public class Move extends GPFenotype {
 	public String toString() {
 		return "MOVE";
 	}
+
+	@Override
+	public String getName() {
+		return "MOVE";
+	}
 }

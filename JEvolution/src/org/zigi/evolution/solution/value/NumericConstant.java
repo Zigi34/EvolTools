@@ -78,4 +78,9 @@ public class NumericConstant extends GPFenotype {
 		return String.valueOf(value);
 	}
 
+	@Override
+	public String getName() {
+		return "k";
+	}
+
 }

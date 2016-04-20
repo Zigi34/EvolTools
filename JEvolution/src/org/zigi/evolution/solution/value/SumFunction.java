@@ -19,4 +19,9 @@ public class SumFunction extends GPFenotype {
 	public String toString() {
 		return "SUM";
 	}
+
+	@Override
+	public String getName() {
+		return "+";
+	}
 }

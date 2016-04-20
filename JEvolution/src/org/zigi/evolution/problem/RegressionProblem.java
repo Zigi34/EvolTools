@@ -35,6 +35,7 @@ public class RegressionProblem extends TreeProblem {
 
 	public static final Logger LOG = Logger.getLogger(RegressionProblem.class);
 	private String name;
+	private String datasetPath;
 
 	public RegressionProblem() {
 		addFenotype(new SumFunction());
@@ -67,6 +68,8 @@ public class RegressionProblem extends TreeProblem {
 			LOG.error("File is not exist");
 			return;
 		}
+
+		this.datasetPath = file.toString();
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -327,6 +330,10 @@ public class RegressionProblem extends TreeProblem {
 				list.add((NumericConstant) node.getValue());
 		}
 		return list;
+	}
+
+	public String getDatasetPath() {
+		return datasetPath;
 	}
 
 	@Override

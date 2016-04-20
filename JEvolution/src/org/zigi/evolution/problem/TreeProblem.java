@@ -226,4 +226,13 @@ public abstract class TreeProblem extends Problem {
 	public void setMaxHeight(Integer maxHeight) {
 		this.maxHeight = maxHeight;
 	}
+
+	public void removeFenotype(GPFenotype fenotype) {
+		if (fenotype != null) {
+			if (fenotype.isTerminal())
+				terminals.remove(fenotype);
+			else
+				functions.remove(fenotype);
+		}
+	}
 }

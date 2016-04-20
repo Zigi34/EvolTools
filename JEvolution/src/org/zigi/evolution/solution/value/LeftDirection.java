@@ -19,4 +19,9 @@ public class LeftDirection extends GPFenotype {
 	public String toString() {
 		return "LEFT";
 	}
+
+	@Override
+	public String getName() {
+		return "LEFT";
+	}
 }

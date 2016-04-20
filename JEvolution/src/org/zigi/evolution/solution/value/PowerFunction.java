@@ -19,4 +19,9 @@ public class PowerFunction extends GPFenotype {
 	public String toString() {
 		return "POW";
 	}
+
+	@Override
+	public String getName() {
+		return "";
+	}
 }

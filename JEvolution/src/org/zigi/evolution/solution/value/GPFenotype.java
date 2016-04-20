@@ -27,4 +27,6 @@ public abstract class GPFenotype implements Cloneable<GPFenotype> {
 	public Object getValue() {
 		return null;
 	}
+
+	public abstract String getName();
 }

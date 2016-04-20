@@ -19,4 +19,9 @@ public class MultiplyFunction extends GPFenotype {
 	public String toString() {
 		return "MUL";
 	}
+
+	@Override
+	public String getName() {
+		return "*";
+	}
 }

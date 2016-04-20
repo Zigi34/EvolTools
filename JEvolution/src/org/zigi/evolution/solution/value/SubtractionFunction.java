@@ -19,4 +19,9 @@ public class SubtractionFunction extends GPFenotype {
 	public String toString() {
 		return "SUB";
 	}
+
+	@Override
+	public String getName() {
+		return "-";
+	}
 }

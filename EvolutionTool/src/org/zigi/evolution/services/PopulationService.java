@@ -3,6 +3,7 @@ package org.zigi.evolution.services;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.model.PopulationModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.util.Population;
@@ -18,6 +19,8 @@ public class PopulationService {
 	private static PopulationService instance;
 	private static PopulationModel selected;
 	private static List<PopulationModel> list;
+
+	private static final Logger LOG = Logger.getLogger(PopulationService.class);
 
 	private PopulationService() {
 		if (list == null) {
@@ -59,7 +62,7 @@ public class PopulationService {
 				list.add(new PopulationModel(pop));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error(e);
 		}
 	}
 

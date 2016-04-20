@@ -38,11 +38,6 @@ public class RangedPowerFunction extends GPFenotype {
 		return false;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("RPOW%s", getIndex());
-	}
-
 	public Double getMinIndex() {
 		return minIndex;
 	}
@@ -77,6 +72,8 @@ public class RangedPowerFunction extends GPFenotype {
 	}
 
 	public void setIndex(Double index) {
+		if (index == null)
+			return;
 		if (minIndex != null && index < minIndex)
 			return;
 		if (maxIndex != null && index > maxIndex)
@@ -90,5 +87,17 @@ public class RangedPowerFunction extends GPFenotype {
 
 	public void setDistrict(boolean district) {
 		this.district = district;
+	}
+
+	@Override
+	public String getName() {
+		if (minIndex == maxIndex)
+			String.format("^%s", minIndex);
+		return String.format("^<%s;%s>", minIndex, maxIndex);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("RPOW%s", index == null ? "" : getIndex());
 	}
 }

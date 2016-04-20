@@ -19,4 +19,9 @@ public class CosFunction extends GPFenotype {
 	public String toString() {
 		return "COS";
 	}
+
+	@Override
+	public String getName() {
+		return "cos()";
+	}
 }

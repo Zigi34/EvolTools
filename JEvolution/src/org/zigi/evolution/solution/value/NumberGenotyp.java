@@ -36,4 +36,9 @@ public class NumberGenotyp extends GPFenotype {
 		return true;
 	}
 
+	@Override
+	public String getName() {
+		return "";
+	}
+
 }
