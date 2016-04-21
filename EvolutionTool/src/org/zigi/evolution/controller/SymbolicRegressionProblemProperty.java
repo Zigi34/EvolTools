@@ -199,7 +199,7 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 				public void handle(ActionEvent event) {
 					File file = fileChooser.showOpenDialog(EvolutionTool.getStage());
 					if (file.exists()) {
-						problem.loadDataset(file, ";");
+						problem.setDatasetPath(file.toString());
 						datasetPath.setText(file.toString());
 					}
 				}

@@ -28,12 +28,12 @@ public class SpravedlivyBestElitism extends ElitismFunction {
 		List<Solution> list = new LinkedList<Solution>();
 		long count = Math.round(bestPercentage * max);
 		while (list.size() < count) {
-			list.add(pop.getSolutions().remove(pop.size() - 1));
+			list.add(pop.getSolutions().remove(pop.size() - 1).cloneMe());
 		}
 
 		while (list.size() < max) {
 			int rnd = RAND.nextInt(pop.size());
-			list.add(pop.getSolutions().remove(rnd));
+			list.add(pop.getSolutions().remove(rnd).cloneMe());
 		}
 		return list;
 	}

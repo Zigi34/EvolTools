@@ -16,6 +16,10 @@ public abstract class Problem {
 
 	public abstract void evaluate(Population pop);
 
+	public void initialize() {
+
+	}
+
 	public boolean isMinProblem() {
 		return isMinProblem;
 	}

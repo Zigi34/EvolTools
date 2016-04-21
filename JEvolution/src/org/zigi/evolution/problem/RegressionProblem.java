@@ -29,13 +29,14 @@ import org.zigi.evolution.solution.value.SumFunction;
 import org.zigi.evolution.util.Population;
 
 public class RegressionProblem extends TreeProblem {
-	private LinkedHashMap<KeyVariables, Double> dataset = new LinkedHashMap<>();
-	private Integer dimension;
+	private static final Logger LOG = Logger.getLogger(RegressionProblem.class);
 	private static final String VARIABLE_NAMES = "abcdefghijklmnopqrstuvwxyz";
 
-	public static final Logger LOG = Logger.getLogger(RegressionProblem.class);
+	private LinkedHashMap<KeyVariables, Double> dataset = new LinkedHashMap<>();
+	private Integer dimension;
 	private String name;
 	private String datasetPath;
+	private String datasetSplitter = ";";
 
 	public RegressionProblem() {
 		addFenotype(new SumFunction());
@@ -60,22 +61,24 @@ public class RegressionProblem extends TreeProblem {
 	 * @param splitter
 	 *            splitting character
 	 */
-	public void loadDataset(File file, String splitter) {
-		if (file == null) {
+	private void loadDataset() {
+		dataset.clear();
+		dimension = null;
+		if (datasetPath == null) {
 			LOG.error("File is null");
 			return;
-		} else if (!file.exists()) {
+		}
+		File file = new File(datasetPath);
+		if (!new File(datasetPath).exists()) {
 			LOG.error("File is not exist");
 			return;
 		}
-
-		this.datasetPath = file.toString();
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line = null;
 			while ((line = br.readLine()) != null) {
-				String[] values = line.split(splitter);
+				String[] values = line.split(datasetSplitter);
 				if (this.dimension == null)
 					this.dimension = values.length - 1;
 
@@ -334,6 +337,24 @@ public class RegressionProblem extends TreeProblem {
 
 	public String getDatasetPath() {
 		return datasetPath;
+	}
+
+	public void setDatasetPath(String path) {
+		this.datasetPath = path;
+	}
+
+	public String getDatasetSplitter() {
+		return datasetSplitter;
+	}
+
+	public void setDatasetSplitter(String datasetSplitter) {
+		this.datasetSplitter = datasetSplitter;
+	}
+
+	@Override
+	public void initialize() {
+		super.initialize();
+		loadDataset();
 	}
 
 	@Override

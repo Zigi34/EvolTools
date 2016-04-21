@@ -65,18 +65,26 @@ public class FitnessChart extends AnchorPane {
 				public void propertyChange(PropertyChangeEvent evt) {
 					// při vytvoření nové populace se zjistí a do grafu nastaví
 					// fitness
-					Platform.runLater(new Runnable() {
-						@Override
-						public void run() {
-							if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION)) {
-								Solution bestSolution = alg.getBestSolution();
-								Double bestFitness = alg.getProblem().getNormalizedFitness(bestSolution);
-								Integer generation = alg.getActualGeneration();
+					if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION) && alg.getActualGeneration() % 25 == 0) {
+						Solution bestSolution = alg.getBestSolution();
+						Double bestFitness = alg.getProblem().getNormalizedFitness(bestSolution);
+						Integer generation = alg.getActualGeneration();
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
 								LOG.info("gen:" + generation + " = " + bestFitness);
 								series.getData().add(new XYChart.Data<Integer, Double>(generation, bestFitness));
 							}
-						}
-					});
+						});
+					} else if (evt.getNewValue().equals(EvolutionAlgorithm.ALGORITHM_STARTED)) {
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								series.getData().clear();
+								LOG.info("Smazání grafu");
+							}
+						});
+					}
 				}
 			});
 		}

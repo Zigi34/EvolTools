@@ -19,7 +19,7 @@ public class BestElitism extends ElitismFunction {
 		int index = pop.size() - max;
 		List<Solution> list = new LinkedList<Solution>();
 		for (int i = index; i < pop.size(); i++)
-			list.add(pop.getSolutions().get(i));
+			list.add(pop.getSolutions().get(i).cloneMe());
 		return list;
 	}
 

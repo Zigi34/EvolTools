@@ -50,7 +50,7 @@ public class RankSelect extends SelectFunction {
 				Solution sol = solutions.get(i);
 				rnd -= ranks[i];
 				if (rnd <= 0) {
-					list.add(sol);
+					list.add(sol.cloneMe());
 					break;
 				}
 			}

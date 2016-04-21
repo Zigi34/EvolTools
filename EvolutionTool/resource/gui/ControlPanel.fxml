@@ -11,8 +11,13 @@
 
 <fx:root type="javafx.scene.layout.AnchorPane" prefHeight="-1.0" prefWidth="-1.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-    <Button fx:id="stopButton"  onAction="#stopAction" mnemonicParsing="false" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-    <Button fx:id="resetButton" mnemonicParsing="false" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="89.0" AnchorPane.topAnchor="14.0" />
-    <Button fx:id="startButton" onAction="#startAction" mnemonicParsing="false" text="Button" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="14.0" />
+    <Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopAction" prefHeight="24.0" prefWidth="80.0" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+    <Button fx:id="resetButton" mnemonicParsing="false" prefHeight="24.0" prefWidth="80.0" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="94.0" />
+    <Button fx:id="startButton" mnemonicParsing="false" onAction="#startAction" prefHeight="24.0" prefWidth="80.0" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="185.0" />
+    <TextArea fx:id="reportArea" prefHeight="-1.0" prefWidth="-1.0" wrapText="true" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+    <Label text="Report" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0" />
   </children>
+  <padding>
+    <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+  </padding>
 </fx:root>

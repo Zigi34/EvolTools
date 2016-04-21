@@ -13,7 +13,7 @@ import org.zigi.evolution.solution.Solution;
 public class Population implements Cloneable<Population>, Comparator<Solution>, List<Solution> {
 
 	private List<Solution> solutions = new LinkedList<Solution>();
-	private int max;
+	private int maxSolutions;
 	private Double sumFunctionValue = 0.0;
 
 	public static final int DEFAULT_SIZE = 20;
@@ -23,11 +23,11 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 	}
 
 	public Population(int size) {
-		this.max = size;
+		this.maxSolutions = size;
 	}
 
 	public void addAll(List<Solution> solutions) {
-		if ((this.solutions.size() + solutions.size()) <= max)
+		if ((this.solutions.size() + solutions.size()) <= maxSolutions)
 			this.solutions.addAll(solutions);
 	}
 
@@ -58,11 +58,11 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 	 * @return
 	 */
 	public int getMaxSolutions() {
-		return max;
+		return maxSolutions;
 	}
 
 	public void setMax(int max) {
-		this.max = max;
+		this.maxSolutions = max;
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 
 	@Override
 	public boolean add(Solution e) {
-		if (solutions.size() < max) {
+		if (solutions.size() < maxSolutions) {
 			return solutions.add(e);
 		}
 		return false;

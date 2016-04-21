@@ -1,18 +1,24 @@
 package org.zigi.evolution.controller;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.zigi.evolution.algorithm.EvolutionAlgorithm;
 import org.zigi.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.model.SelectFunctionModel;
 import org.zigi.evolution.services.Services;
+import org.zigi.evolution.solution.Solution;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -34,6 +40,9 @@ public class ControlPanel extends AnchorPane {
 	@FXML
 	private Button startButton;
 
+	@FXML
+	private TextArea reportArea;
+
 	public ControlPanel() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ControlPanel.fxml"));
 		fxmlLoader.setRoot(this);
@@ -52,6 +61,47 @@ public class ControlPanel extends AnchorPane {
 		stopButton.setText("Stop");
 		resetButton.setText("Reset");
 		startButton.setText("Start");
+
+		LOG.info("Jo");
+
+		AlgorithmModel model = Services.algorithmService().getSelected();
+		LOG.info("Jo");
+		if (model != null) {
+			LOG.info("Jo");
+			GeneticProgramming alg = (GeneticProgramming) model.getAlgorithm();
+			alg.addChangeListener(new PropertyChangeListener() {
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					if (evt.getNewValue().equals(EvolutionAlgorithm.ALGORITHM_STARTED)) {
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								reportArea.clear();
+								reportArea.appendText("START");
+							}
+						});
+					} else if (evt.getNewValue().equals(EvolutionAlgorithm.ALGORITHM_TERMINATED)) {
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								reportArea.appendText("END");
+							}
+						});
+					} else if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION) && alg.getActualGeneration() % 25 == 0) {
+						int generation = alg.getActualGeneration();
+						Solution best = alg.getBestSolution();
+						Double fitness = alg.getProblem().getNormalizedFitness(best);
+						String text = String.format("GENERATION: %s, FITNESS[%.3f], BEST SOLUTION: %s", generation, fitness, best);
+						Platform.runLater(new Runnable() {
+							@Override
+							public void run() {
+								reportArea.appendText(text);
+							}
+						});
+					}
+				}
+			});
+		}
 	}
 
 	@FXML

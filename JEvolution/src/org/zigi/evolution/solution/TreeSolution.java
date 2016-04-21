@@ -3,16 +3,19 @@ package org.zigi.evolution.solution;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.zigi.evolution.solution.value.GPFenotype;
 import org.zigi.evolution.solution.value.Node;
 
 public class TreeSolution extends Solution {
 	private Node root;
-	private List<Node> nodes = new LinkedList<Node>();
-	private Integer maxDepth;
+	private Integer maxDepth = 10;
+
+	private static final Logger LOG = Logger.getLogger(TreeSolution.class);
 
 	public TreeSolution(Integer maxDepth) {
-		this.maxDepth = maxDepth;
+		if (maxDepth != null)
+			this.maxDepth = maxDepth;
 	}
 
 	/**
@@ -20,7 +23,7 @@ public class TreeSolution extends Solution {
 	 * omezena
 	 */
 	public TreeSolution() {
-		this(null);
+		this(10);
 	}
 
 	public Integer getMaxHeight() {
@@ -52,25 +55,23 @@ public class TreeSolution extends Solution {
 	public void addNode(Node node) {
 		if (root == null) {
 			root = node;
-			nodes.add(node);
 		} else {
 			Node uncompleteNode = nextUncompleteNode();
 			if (uncompleteNode != null) {
 				// zjištění aktuální hloubky uzlu
-				// int actualDeep = deepOf(uncompleteNode);
+				int actualDeep = deepOf(uncompleteNode);
 
 				// není aktuální uzel již v maximální hloubce
-				// if (maxDepth != null && actualDeep < maxDepth) {
+				if (maxDepth != null && actualDeep < maxDepth) {
 
-				// pokud se jedna o poslední přidání uzlu, musí tento uzel
-				// být terminálem, jinak se vložení nepodaří
-				// if (actualDeep + 1 == maxDepth && node.getMaxChild() > 0)
-				// return;
+					// pokud se jedna o poslední přidání uzlu, musí tento uzel
+					// být terminálem, jinak se vložení nepodaří
+					if (actualDeep + 1 == maxDepth && node.getMaxChild() > 0)
+						return;
 
-				// }
+				}
 				// vložení uzlu
 				uncompleteNode.addChild(node);
-				nodes.add(node);
 			}
 		}
 	}
@@ -128,18 +129,19 @@ public class TreeSolution extends Solution {
 	 */
 	public Node removeSubTree(Node node) {
 		Node result = null;
-		if (nodes.contains(node)) {
-			List<Node> subNodes = node.deepNodes();
+		List<Node> subNodes = node.getChilds();
 
-			// pokud jde o odstraneni celeho korene
-			if (node == root) {
-				root = null;
-			} else {
-				// preskocime na nadrazeny uzel a odstranime tohoto potomka
-				result = node.getParent();
-				result.removeChild(node);
-			}
-			nodes.removeAll(subNodes);
+		// odstranime vazbu z potomků na rodiče
+		for (Node childNode : subNodes)
+			childNode.setParent(null);
+
+		// pokud jde o odstraneni celeho korene
+		if (node == root) {
+			root = null;
+		} else {
+			// preskocime na nadrazeny uzel a odstranime tohoto potomka
+			result = node.getParent();
+			result.removeChild(node);
 		}
 		return result;
 	}
@@ -152,7 +154,8 @@ public class TreeSolution extends Solution {
 	 */
 	public List<Node> uncompleteNodes() {
 		List<Node> list = new LinkedList<Node>();
-		uncompleteNodes(list, root);
+		Integer count = 0;
+		uncompleteNodes(list, root, count);
 		return list;
 	}
 
@@ -165,10 +168,13 @@ public class TreeSolution extends Solution {
 	 * @param actual
 	 *            aktualne prochazeny uzel
 	 */
-	private void uncompleteNodes(List<Node> list, Node actual) {
+	private void uncompleteNodes(List<Node> list, Node actual, Integer count) {
+		if (count > 20)
+			LOG.info(count);
 		if (actual != null) {
 			for (Node val : actual.getChilds()) {
-				uncompleteNodes(list, val);
+				count += 1;
+				uncompleteNodes(list, val, count);
 			}
 			if (!actual.isComplete()) {
 				list.add(actual);
@@ -230,12 +236,12 @@ public class TreeSolution extends Solution {
 
 	@Override
 	public GPFenotype getGenotype(Integer index) {
-		return nodes.get(index).getValue();
+		return deepNodes().get(index).getValue();
 	}
 
 	public List<GPFenotype> getGenotypes() {
 		List<GPFenotype> list = new LinkedList<GPFenotype>();
-		for (Node node : nodes) {
+		for (Node node : deepNodes()) {
 			list.add(node.getValue());
 		}
 		return list;
@@ -251,7 +257,7 @@ public class TreeSolution extends Solution {
 
 	@Override
 	public int size() {
-		return nodes.size();
+		return deepNodes().size();
 	}
 
 	@Override
@@ -267,7 +273,7 @@ public class TreeSolution extends Solution {
 	 * @return
 	 */
 	public Node getNode(int index) {
-		return nodes.get(index);
+		return deepNodes().get(index);
 	}
 
 	/**
@@ -276,7 +282,7 @@ public class TreeSolution extends Solution {
 	 * @return
 	 */
 	public List<Node> getNodes() {
-		return nodes;
+		return deepNodes();
 	}
 
 	/**

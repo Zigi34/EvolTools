@@ -136,7 +136,7 @@ public class Main {
 			for (int i = 0; i < tests; i++) {
 				Map<Integer, Double> st = new HashMap<Integer, Double>();
 				RegressionProblem problem = new RegressionProblem("quintic");
-				problem.loadDataset(new File("resources/quintic"), ";");
+				problem.setDatasetPath("resources/quintic");
 				problem.setMaxHeight(height);
 
 				GeneticProgramming gp = new GeneticProgramming();
@@ -213,7 +213,7 @@ public class Main {
 	public void regression() {
 		try {
 			RegressionProblem problem = new RegressionProblem();
-			problem.loadDataset(new File("resources/regression"), ";");
+			problem.setDatasetPath("resources/quintic");
 			problem.addFenotype(new SinFunction());
 			problem.addFenotype(new CosFunction());
 			problem.addFenotype(new SumFunction());
@@ -254,8 +254,67 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Main test = new Main();
-		test.artificialAnt();
+		// test.artificialAnt();
 		// test.regression();
-		// test.sextic();
+		test.sextic2();
+	}
+
+	public void sextic2() {
+		try {
+			int maxGen = 500;
+			int popSize = 200;
+			int height = 6;
+			int tournamentSize = 10;
+
+			RegressionProblem problem = new RegressionProblem("quintic");
+			problem.setDatasetPath("resources/quintic");
+			problem.setMaxHeight(height);
+
+			GeneticProgramming gp = new GeneticProgramming();
+			gp.setMutateProbability(0.05);
+			gp.setCrossProbrability(0.85);
+			gp.addChangeListener(new PropertyChangeListener() {
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					if (evt.getNewValue().equals(GeneticProgramming.ALGORITHM_TERMINATED)) {
+						Solution best = gp.getBestSolution();
+						Double funVal = best.getFunctionValue();
+						Population pop = gp.getPopulation();
+						Double fitness = problem.getNormalizedFitness(best);
+						int sols = pop.getMaxSolutions();
+						int gen = gp.getGeneration();
+						int height = problem.getMaxHeight();
+						SelectFunction select = gp.getSelect();
+						Double mutateProb = gp.getMutateProbability();
+						double crossProb = gp.getCrossProbrability();
+						CrossFunction cross = gp.getCross();
+					} else if (evt.getNewValue().equals(GeneticProgramming.NEW_BEST_SOLUTION)) {
+						LOG.info(gp.getBestSolution());
+
+					} else if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION)) {
+						LOG.info(String.format("%s;%s;%s;%s", gp.getActualGeneration(),
+								gp.getBestSolution().getFunctionValue(),
+								problem.getNormalizedFitness(gp.getBestSolution()), gp.getBestSolution()));
+					}
+				}
+			});
+			Population pop = new Population(popSize);
+			problem.setMinFunctionValue(0.0);
+			problem.setMaxFunctionValue(2.0);
+			gp.setPopulation(pop);
+			gp.setProblem(problem);
+			// gp.setGeneration(maxGen);
+			// TournamentSelection select = new TournamentSelection();
+			// select.setTournamentSize(tournamentSize);
+			// gp.setSelect(select);
+			// CrossFunction cross = new OnePointTreeCross();
+			// gp.setCross(cross);
+
+			gp.start();
+
+		} catch (Exception e) {
+			LOG.error(e);
+		}
+
 	}
 }

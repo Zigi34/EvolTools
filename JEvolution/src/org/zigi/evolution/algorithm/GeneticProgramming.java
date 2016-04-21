@@ -21,6 +21,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	private double crossProbrability = 0.8;
 
 	private static final Random RAND = new Random();
+	public static final int POPULATION_SIZE = 20;
 
 	public static final String CREATE_INIT_POPULATION_START = "CREATE_INIT_POPULATION_START";
 	public static final String CREATE_INIT_POPULATION_END = "CREATE_INIT_POPULATION_END";
@@ -37,7 +38,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	private static final Logger LOG = Logger.getLogger(GeneticProgramming.class);
 
 	public GeneticProgramming() {
-		setPopulationSize(200);
+		setPopulationSize(POPULATION_SIZE);
 
 		setCross(new TreeCross());
 		setMutate(new TreeMutate());
@@ -77,95 +78,97 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		this.mutateProbability = mutateProbability;
 	}
 
-	public void run() {
-		setState(INIT_STATE);
-		TreeProblem problem = (TreeProblem) getProblem();
-		this.mutate.setProblem(problem);
-		Population population = getPopulation();
-
-		// pokud neni populace inicializovana, vegenerujeme pul napul metodou
-		// GROW a FULL
-		if (population.size() == 0) {
-			setState(CREATE_INIT_POPULATION_START);
-			for (int i = 0; i < (population.getMaxSolutions() / 2); i++)
-				population.add(problem.randomFullTreeSolution());
-			for (int i = (population.getMaxSolutions() / 2); i < population.getMaxSolutions(); i++)
-				population.add(problem.randomGrowTreeSolution());
-			setState(CREATE_INIT_POPULATION_END);
-		}
-
-		// Util.logPopulation(population);
-
-		// ohodnotime celou populaci
-		setState(EVALUATE_POPULATION_START);
-		problem.evaluate(population);
-		setState(EVALUATE_POPULATION_END);
-
-		// aktualizace nejlepsiho jedince
-		setState(CHECK_BEST_SOLUTION_START);
-		checkBestSolution(population);
-		setState(CHECK_BEST_SOLUTION_END);
-
-		while (getActualGeneration() < getGeneration() && !isTerminate()) {
-			// Util.logPopulation(getPopulation());
-
-			Population list = select.select(getPopulation(), getProblem(), population.getMaxSolutions());
-
-			// Util.logPopulation(list);
-
-			long crossSize = Math.round(list.size() * crossProbrability);
-			long mutateSize = Math.round(list.size() * mutateProbability);
-			long reproduceSize = list.size() - (crossSize - mutateSize);
-
-			// krizeni
-			setState(CROSS_SOLUTION_START);
-			cross.cross(list, 0, crossSize);
-			setState(CROSS_SOLUTION_END);
-
-			// Util.logPopulation(list);
-
-			// mutace
-			setState(MUTATE_SOLUTION_START);
-			mutate.mutate(list, crossSize, mutateSize);
-			setState(MUTATE_SOLUTION_END);
-
-			// Util.logPopulation(list);
-
-			// ohodnocení nové populace
-			setState(EVALUATE_POPULATION_START);
-			problem.evaluate(list);
-			setState(EVALUATE_POPULATION_END);
-
-			// Util.logPopulation(list);
-
-			// Util.logPopulation(nextPop);
-			// LOG.info("-----");
-
-			setState(CHECK_BEST_SOLUTION_START);
-			checkBestSolution(list);
-			setState(CHECK_BEST_SOLUTION_END);
-
-			// Util.logPopulation(list);
-
-			// Util.logPopulation(p);
-			// LOG.info("-----");
-
-			// konec plneni nove populace a nahrazeni stare
-			setPopulation(list);
-			setState(NEW_POPULATION);
-
-			increseActualGeneration();
-		}
-
-		setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);
-		setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);
-	}
-
 	public double getCrossProbrability() {
 		return crossProbrability;
 	}
 
 	public void setCrossProbrability(double crossProbrability) {
 		this.crossProbrability = crossProbrability;
+	}
+
+	public void run() {
+		try {
+			setState(INIT_STATE);
+			TreeProblem problem = (TreeProblem) getProblem();
+			problem.initialize();
+			this.mutate.setProblem(problem);
+			Population population = getPopulation();
+
+			// pokud neni populace inicializovana, vegenerujeme pul napul
+			// metodou
+			// GROW a FULL
+			if (population.size() == 0) {
+				setState(CREATE_INIT_POPULATION_START);
+				for (int i = 0; i < (population.getMaxSolutions() / 2); i++)
+					population.add(problem.randomFullTreeSolution());
+				for (int i = (population.getMaxSolutions() / 2); i < population.getMaxSolutions(); i++)
+					population.add(problem.randomGrowTreeSolution());
+				setState(CREATE_INIT_POPULATION_END);
+			}
+
+			// Util.logPopulation(population);
+
+			// ohodnotime celou populaci
+			setState(EVALUATE_POPULATION_START);
+			problem.evaluate(population);
+			setState(EVALUATE_POPULATION_END);
+
+			// aktualizace nejlepsiho jedince
+			setState(CHECK_BEST_SOLUTION_START);
+			checkBestSolution(population);
+			setState(CHECK_BEST_SOLUTION_END);
+
+			while (getActualGeneration() < getGeneration() && !isTerminate()) {
+				Population list = select.select(getPopulation(), getProblem(), population.getMaxSolutions());
+
+				// LOG.info("SELECTED");
+				// Util.logPopulation(list);
+
+				long crossSize = Math.round(list.size() * crossProbrability);
+				long mutateSize = Math.round(list.size() * mutateProbability);
+				long reproduceSize = list.size() - (crossSize - mutateSize);
+
+				// krizeni
+				setState(CROSS_SOLUTION_START);
+				cross.cross(list, 0, crossSize);
+				setState(CROSS_SOLUTION_END);
+
+				// LOG.info("CROSSED");
+				// Util.logPopulation(list);
+
+				// mutace
+				setState(MUTATE_SOLUTION_START);
+				mutate.mutate(list, crossSize, mutateSize);
+				setState(MUTATE_SOLUTION_END);
+
+				// LOG.info("MATETED");
+				// Util.logPopulation(list);
+
+				// ohodnocení nové populace
+				setState(EVALUATE_POPULATION_START);
+				problem.evaluate(list);
+				setState(EVALUATE_POPULATION_END);
+
+				// LOG.info("EVALUATED");
+				// Util.logPopulation(list);
+
+				setState(CHECK_BEST_SOLUTION_START);
+				checkBestSolution(list);
+				setState(CHECK_BEST_SOLUTION_END);
+
+				// konec plneni nove populace a nahrazeni stare
+				setPopulation(list);
+				setState(NEW_POPULATION);
+
+				// Util.logPopulation(list);
+
+				increseActualGeneration();
+			}
+
+			setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);
+			setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);
+		} catch (Exception e) {
+			LOG.error(e);
+		}
 	}
 }

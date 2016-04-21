@@ -55,27 +55,13 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public void start() throws Exception {
 		if (!thread.isAlive()) {
+			reset();
+
 			thread = new Thread(this);
-			terminate = false;
-
-			if (problem == null)
-				throw new Exception("Problem není nastavený");
-
-			if (population == null)
-				fillPopulation();
-
 			thread.start();
+
 			setState(ALGORITHM_STARTED);
 		}
-	}
-
-	/**
-	 * Naplnění populace náhodnými řešeními pomocí objektu proglému
-	 */
-	private void fillPopulation() {
-		population = new Population();
-		for (int i = 0; i < population.getMaxSolutions(); i++)
-			population.add(problem.randomSolution());
 	}
 
 	/**
@@ -151,16 +137,6 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public void setTerminate(boolean terminate) {
 		this.terminate = terminate;
-	}
-
-	/**
-	 * Znovu spuštění algoritmu od začátku
-	 * 
-	 * @throws Exception
-	 */
-	public void restart() throws Exception {
-		terminate = false;
-		start();
 	}
 
 	/**
@@ -338,5 +314,14 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public void clearTerminateFunctions() {
 		terminateFunction.clear();
+	}
+
+	/**
+	 * Reset code before execute new evolution instantiate
+	 */
+	public void reset() {
+		bestSolution = null;
+		terminate = false;
+		actualGeneration = 0;
 	}
 }
