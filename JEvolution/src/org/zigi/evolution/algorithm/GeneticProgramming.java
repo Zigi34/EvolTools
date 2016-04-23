@@ -72,7 +72,13 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	}
 
 	public void setMutateProbability(double mutateProbability) {
-		this.mutateProbability = mutateProbability;
+		if (this.mutateProbability <= 1.0) {
+			this.mutateProbability = mutateProbability;
+			double sum = this.mutateProbability + this.crossProbrability;
+			if (sum > 1.0) {
+				this.crossProbrability = 1.0 - mutateProbability;
+			}
+		}
 	}
 
 	public double getCrossProbrability() {
@@ -80,7 +86,29 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	}
 
 	public void setCrossProbrability(double crossProbrability) {
-		this.crossProbrability = crossProbrability;
+		if (this.crossProbrability <= 1.0) {
+			this.crossProbrability = crossProbrability;
+			double sum = this.mutateProbability + this.crossProbrability;
+			if (sum > 1.0) {
+				this.mutateProbability = 1.0 - crossProbrability;
+			}
+		}
+	}
+
+	public double getReproduceProbability() {
+		return 1.0 - crossProbrability - mutateProbability;
+	}
+
+	public void setReproduceProbability(double value) {
+		if (value <= 1.0) {
+			double sum = this.crossProbrability + value;
+			if (sum > 1.0) {
+				this.crossProbrability = 1.0 - value;
+				this.mutateProbability = 0.0;
+			} else {
+				this.mutateProbability = 1.0 - crossProbrability - value;
+			}
+		}
 	}
 
 	public void run() {

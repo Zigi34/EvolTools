@@ -417,7 +417,32 @@ Po představení pestré, ale zdaleka né kompletní, škály algoritmů je tře
 
 \subsection{Umělý mravenec}
 \paragraph*{}
+Běžně úváděným problémem pro genetické algoritmy je úkol navést umělého mravence tak, aby se pokusil nalézt všechnu potravu ležící podél nepravidelné stezky. Cílem problému je nalezení konečného automatu, který by v konečném čase dosáhl daného problému. \cite{gpcm}
 
+\paragraph*{}
+Umělý mravence se pohybuje po dvourozměrné toroidní mřížce 32x32 polí tak, že začíná v levém horním rohu na souřadnicích (0,0) a směřuje po "Santa Fe" stezce až na konec. Na této stezce se přitom vyskytuje 89 nepravidelně rozložených polí s potravou. Mimo polí s potravou se na této stezce vyskytuje množství mezer délky až 3 buňky, kde potrava není, a to nejen na rovných úsecích, ale také v rozích.
+
+\paragraph*{}
+Celá stezka je zobrazena na obrázku. Jídlo reprezentují tmavá pole. Spolu s jídlem jsou na stezce mezery, které jsou na obrázku v šedé barvě.
+
+\InsertFigure{Figures/santa-fe.png}{0.7\textwidth}{Stezka Santa Fe}{fig:santafe}
+
+\paragraph*{}
+Umělý mravenec má velmi omezený pohled na svět kolem. Má senzor, kterým může vidět pouze na sousední buňku bezprostředně následují před mravencem a může provádět pouze některé z následujících primitivních akcí:
+
+\begin{itemize}
+\item RIGHT otočení mravence o 90 doprava
+\item LEFT otočení mravence o 90 doleva
+\item MOVE pohyb mravence o jedno políčko vpřed, ve směru natočení
+\end{itemize}
+
+Pro problém budeme také potřebovat zpracovávat informace z vnějšího světa pomocí malého senzoru mravence. Rozumným přístupem jak toho dosáhnout je použití podmíněného operátoru pro rozvětvení programu instrukcí a také operátoru pro sekvenční provádění instrukcí.
+
+\begin{itemize}
+\item IF-FOOD-AHEAD přijímá dva argumenty a spustí první v případě, že se bezprostředně před mravencem nachází potrava, jinak se vykoná instrukce z druhého argumentu
+\item PRG2 přijímá dva argumenty, které se sekvenčně po sobě vykonají
+\item PRG2 přijímá tři argumenty, které se sekvenčně po sobě vykonají
+\end{itemize}
 
 \subsection{Symbolická regrese}
 \paragraph*{}
@@ -563,6 +588,12 @@ Morgan Kaufnamm pub., ISBN 1-55860-543-6, 1999
 \bibitem{optimization} Lampinen Jouni, Zelinka, Ivan,
 \textit{New Ideas in Optimization and Mechanical Engineering Design Optimization by Differential Evolution. Volume 1},
 London: McGraw-Hill, 1999. 20 p. ISBN 007-709506-5
+
+\bibitem{gpcm} Koza, John R.,
+\textit{Genetic Programming On the Programming of Computers by Means of Natural Selection, Volume 6},
+London, England: The MIT Press, 1998. 819 p. ISBN 0262111705, 9780262111706
+
+ 
 
 \end{thebibliography}
 
