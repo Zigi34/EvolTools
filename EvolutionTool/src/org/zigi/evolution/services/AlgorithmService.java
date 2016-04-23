@@ -3,7 +3,7 @@ package org.zigi.evolution.services;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.listener.AlgorithmListener;
 import org.zigi.evolution.model.AlgorithmModel;
 

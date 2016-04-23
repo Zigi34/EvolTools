@@ -1,6 +1,6 @@
 package org.zigi.evolution.model;
 
-import org.zigi.evolution.mutate.MutateFunction;
+import org.evolution.mutate.MutateFunction;
 
 public class MutateFunctionModel {
 

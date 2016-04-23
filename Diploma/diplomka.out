@@ -17,13 +17,14 @@
 \BOOKMARK [2][-]{subsection.3.9}{Generov\341n\355 poc\341tecn\355 populace}{section.3}% 17
 \BOOKMARK [2][-]{subsection.3.10}{Oper\341tory}{section.3}% 18
 \BOOKMARK [2][-]{subsection.3.11}{Popis algoritmu}{section.3}% 19
-\BOOKMARK [1][-]{section.4}{Implementace GP}{}% 20
-\BOOKMARK [2][-]{subsection.4.1}{Evolucn\355 procesy}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.2}{UML model}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.3}{Aplikace EvolTools}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 24
-\BOOKMARK [2][-]{subsection.5.1}{Umel\375 mravenec}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.2}{Symbolick\341 regrese}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.3}{Vyhodnocen\355}{section.5}% 27
-\BOOKMARK [1][-]{section.6}{Z\341ver}{}% 28
-\BOOKMARK [1][-]{section.7}{Reference}{}% 29
+\BOOKMARK [1][-]{section.4}{Implementace}{}% 20
+\BOOKMARK [2][-]{subsection.4.1}{Struktura aplikace}{section.4}% 21
+\BOOKMARK [2][-]{subsection.4.2}{Evolucn\355 procesy}{section.4}% 22
+\BOOKMARK [2][-]{subsection.4.3}{UML model}{section.4}% 23
+\BOOKMARK [2][-]{subsection.4.4}{Aplikace EvolTools}{section.4}% 24
+\BOOKMARK [1][-]{section.5}{Testov\341n\355 na vybran\375ch probl\351mech}{}% 25
+\BOOKMARK [2][-]{subsection.5.1}{Umel\375 mravenec}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.2}{Symbolick\341 regrese}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.3}{Vyhodnocen\355}{section.5}% 28
+\BOOKMARK [1][-]{section.6}{Z\341ver}{}% 29
+\BOOKMARK [1][-]{section.7}{Reference}{}% 30

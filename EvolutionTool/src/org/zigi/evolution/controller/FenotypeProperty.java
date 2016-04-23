@@ -5,16 +5,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.evolution.solution.type.CosFunction;
+import org.evolution.solution.type.DivideFunction;
+import org.evolution.solution.type.GPFenotype;
+import org.evolution.solution.type.MultiplyFunction;
+import org.evolution.solution.type.NumericConstant;
+import org.evolution.solution.type.RangedPowerFunction;
+import org.evolution.solution.type.SinFunction;
+import org.evolution.solution.type.SubtractionFunction;
+import org.evolution.solution.type.SumFunction;
 import org.zigi.evolution.controller.fenotype.IFenotypeProperty;
-import org.zigi.evolution.solution.value.CosFunction;
-import org.zigi.evolution.solution.value.DivideFunction;
-import org.zigi.evolution.solution.value.GPFenotype;
-import org.zigi.evolution.solution.value.MultiplyFunction;
-import org.zigi.evolution.solution.value.NumericConstant;
-import org.zigi.evolution.solution.value.RangedPowerFunction;
-import org.zigi.evolution.solution.value.SinFunction;
-import org.zigi.evolution.solution.value.SubtractionFunction;
-import org.zigi.evolution.solution.value.SumFunction;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

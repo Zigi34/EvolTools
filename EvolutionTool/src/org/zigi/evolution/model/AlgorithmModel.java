@@ -1,7 +1,7 @@
 package org.zigi.evolution.model;
 
 import org.apache.log4j.Logger;
-import org.zigi.evolution.algorithm.EvolutionAlgorithm;
+import org.evolution.algorithm.EvolutionAlgorithm;
 
 public class AlgorithmModel {
 

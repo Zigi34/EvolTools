@@ -5,10 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.evolution.problem.ArtificialAnt;
+import org.evolution.problem.RegressionProblem;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
-import org.zigi.evolution.problem.ArtificialAnt;
-import org.zigi.evolution.problem.RegressionProblem;
 
 public class ProblemService {
 

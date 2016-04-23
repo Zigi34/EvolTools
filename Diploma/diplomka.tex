@@ -384,9 +384,33 @@ Postup evolučního algoritmu
 Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné od klasických, ale hlavně pro fakt, že v případě vhodného aplikování jsou schopny nahradit člověka
 \end{example}
 
-\section{Implementace GP}
+\section{Implementace}
+
+\subsection{Struktura aplikace}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+Samotná aplikace je rozdělena do dvou komponent. První část je tvořena knihovnou, která tvoří jádro projektu. Obsahuje samotnou implementaci genetického programování a rozhraní pro komunikaci a řízení běhu evolučního cyklu. Úkolem je umožnit uživateli nebo externímu systéme vhodně nastavit běh evoluce a konfigurovat způsob křížení, mutace, reprodukce volbu nastavení parametrů pro testované problémy. V tabulce \ref{tab:packagetree} je zobrazena balíčková struktura jádra aplikace.
+
+\paragraph*{}
+Implementovaná evoluce je tvořena pomocí komponent v podobě charakteristických rysů evolučních algoritmů. Ty jsou tvořeny abstraktními komponentami mutace, křížení, ohodnocení, populace a problému. Vztah a vazba mezi komponentami jednotlivých částí cyklu je popsána níže vysvětlujícími obrázky.
+
+\begin{table}
+  \centering
+  \begin{tabular}{| l | p{9cm} |} \hline
+    \emph{org.evolution.algorithm} & abstraktní evolučních algoritmus se společnými metodami pro evoluci \\ \hline
+    \emph{org.evolution.cross} & implementace operátorů křížení \\ \hline
+    \emph{org.evolution.mutate} & implementace mutačnich opertátorů \\ \hline
+    \emph{org.evolution.problem} & instance reprezentující jednotlivé problémy k testování genetického programování \\ \hline
+    \emph{org.evolution.problem.regression} & pomocné třídy pro problém symbolické regrese  \\ \hline
+    \emph{org.evolution.select} & implementace operátoru selekce k výběru vhodných jedinců z populace \\ \hline
+    \emph{org.evolution.solution} & Třídy pro reprezentaci jedinců v populaci (stromová struktura, chromozomy, ...) \\ \hline
+    \emph{org.evolution.solution.type} & jednotlivé typy genomu tvořící syntaktický strom \\ \hline
+    \emph{org.evolution.terminate} & implementace operátoru ukončení evolučního procesu \\ \hline
+    \emph{org.evolution.util} & pomocné třídy ke zpřehlednění kódu a ulehčující práci implementaci \\ \hline
+  \end{tabular}
+  \label{tab:packagetree}
+  \caption{Balíčková struktura aplikace EvolTool}
+\end{table}
+
 
 \subsection{Evoluční procesy}
 \paragraph*{}
@@ -407,9 +431,6 @@ Několik pravidel pro efektivnější výběrovou funkci:
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
-\subsection{Aplikace EvolTools}
-\paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
 
 \section{Testování na vybraných problémech}
 \paragraph*{}
@@ -417,7 +438,7 @@ Po představení pestré, ale zdaleka né kompletní, škály algoritmů je tře
 
 \subsection{Umělý mravenec}
 \paragraph*{}
-Běžně úváděným problémem pro genetické algoritmy je úkol navést umělého mravence tak, aby se pokusil nalézt všechnu potravu ležící podél nepravidelné stezky. Cílem problému je nalezení konečného automatu, který by v konečném čase dosáhl daného problému. \cite{gpcm}
+Běžně úváděným problémem pro genetické algoritmy je úkol navést umělého mravence tak, aby se pokusil nalézt všechnu potravu ležící podél nepravidelné stezky. Cílem problému je nalezení konečného automatu, který by v konečném čase dosáhl daného problému. \cite{gpcm}.
 
 \paragraph*{}
 Umělý mravence se pohybuje po dvourozměrné toroidní mřížce 32x32 polí tak, že začíná v levém horním rohu na souřadnicích (0,0) a směřuje po "Santa Fe" stezce až na konec. Na této stezce se přitom vyskytuje 89 nepravidelně rozložených polí s potravou. Mimo polí s potravou se na této stezce vyskytuje množství mezer délky až 3 buňky, kde potrava není, a to nejen na rovných úsecích, ale také v rozích.
@@ -431,17 +452,17 @@ Celá stezka je zobrazena na obrázku. Jídlo reprezentují tmavá pole. Spolu s
 Umělý mravenec má velmi omezený pohled na svět kolem. Má senzor, kterým může vidět pouze na sousední buňku bezprostředně následují před mravencem a může provádět pouze některé z následujících primitivních akcí:
 
 \begin{itemize}
-\item RIGHT otočení mravence o 90 doprava
-\item LEFT otočení mravence o 90 doleva
-\item MOVE pohyb mravence o jedno políčko vpřed, ve směru natočení
+\item \textbf{RIGHT} otočení mravence o 90 doprava
+\item \textbf{LEFT} otočení mravence o 90 doleva
+\item \textbf{MOVE} pohyb mravence o jedno políčko vpřed, ve směru natočení
 \end{itemize}
 
 Pro problém budeme také potřebovat zpracovávat informace z vnějšího světa pomocí malého senzoru mravence. Rozumným přístupem jak toho dosáhnout je použití podmíněného operátoru pro rozvětvení programu instrukcí a také operátoru pro sekvenční provádění instrukcí.
 
 \begin{itemize}
-\item IF-FOOD-AHEAD přijímá dva argumenty a spustí první v případě, že se bezprostředně před mravencem nachází potrava, jinak se vykoná instrukce z druhého argumentu
-\item PRG2 přijímá dva argumenty, které se sekvenčně po sobě vykonají
-\item PRG2 přijímá tři argumenty, které se sekvenčně po sobě vykonají
+\item \textbf{IF-FOOD-AHEAD} přijímá dva argumenty a spustí první v případě, že se bezprostředně před mravencem nachází potrava, jinak se vykoná instrukce z druhého argumentu
+\item \textbf{PRG2} přijímá dva argumenty, které se sekvenčně po sobě vykonají
+\item \textbf{PRG3} přijímá tři argumenty, které se sekvenčně po sobě vykonají
 \end{itemize}
 
 \subsection{Symbolická regrese}

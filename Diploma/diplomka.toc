@@ -27,16 +27,17 @@
 \contentsline {subsubsection}{\numberline {3.10.2}Mutace}{20}{subsubsection.3.10.2}
 \contentsline {subsubsection}{\numberline {3.10.3}Dal\IeC {\v s}\IeC {\'\i } oper\IeC {\'a}tory}{21}{subsubsection.3.10.3}
 \contentsline {subsection}{\numberline {3.11}Popis algoritmu}{21}{subsection.3.11}
-\contentsline {section}{\numberline {4}Implementace GP}{23}{section.4}
-\contentsline {subsection}{\numberline {4.1}Evolu\IeC {\v c}n\IeC {\'\i } procesy}{23}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{23}{subsubsection.4.1.1}
-\contentsline {subsection}{\numberline {4.2}UML model}{23}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Aplikace EvolTools}{23}{subsection.4.3}
-\contentsline {section}{\numberline {5}Testov\IeC {\'a}n\IeC {\'\i } na vybran\IeC {\'y}ch probl\IeC {\'e}mech}{24}{section.5}
-\contentsline {subsection}{\numberline {5.1}Um\IeC {\v e}l\IeC {\'y} mravenec}{24}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Symbolick\IeC {\'a} regrese}{26}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Aproximace funkc\IeC {\'\i }}{27}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Quintic a Sextic problem}{28}{subsubsection.5.2.2}
-\contentsline {subsection}{\numberline {5.3}Vyhodnocen\IeC {\'\i }}{28}{subsection.5.3}
-\contentsline {section}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{32}{section.6}
-\contentsline {section}{\numberline {7}Reference}{33}{section.7}
+\contentsline {section}{\numberline {4}Implementace}{23}{section.4}
+\contentsline {subsection}{\numberline {4.1}Struktura aplikace}{23}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Evolu\IeC {\v c}n\IeC {\'\i } procesy}{23}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{23}{subsubsection.4.2.1}
+\contentsline {subsection}{\numberline {4.3}UML model}{23}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Aplikace EvolTools}{24}{subsection.4.4}
+\contentsline {section}{\numberline {5}Testov\IeC {\'a}n\IeC {\'\i } na vybran\IeC {\'y}ch probl\IeC {\'e}mech}{25}{section.5}
+\contentsline {subsection}{\numberline {5.1}Um\IeC {\v e}l\IeC {\'y} mravenec}{25}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Symbolick\IeC {\'a} regrese}{27}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Aproximace funkc\IeC {\'\i }}{28}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Quintic a Sextic problem}{29}{subsubsection.5.2.2}
+\contentsline {subsection}{\numberline {5.3}Vyhodnocen\IeC {\'\i }}{29}{subsection.5.3}
+\contentsline {section}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{33}{section.6}
+\contentsline {section}{\numberline {7}Reference}{34}{section.7}

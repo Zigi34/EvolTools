@@ -1,6 +1,6 @@
 package org.zigi.evolution.model;
 
-import org.zigi.evolution.select.SelectFunction;
+import org.evolution.select.SelectFunction;
 
 public class SelectFunctionModel {
 

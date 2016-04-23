@@ -3,7 +3,7 @@ package org.zigi.evolution.controller;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.MutateFunctionModel;
 import org.zigi.evolution.model.PopulationModel;

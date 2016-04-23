@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.evolution.util.Population;
 import org.zigi.evolution.model.PopulationModel;
 import org.zigi.evolution.model.ProblemModel;
-import org.zigi.evolution.util.Population;
 
 /**
  * Population manager

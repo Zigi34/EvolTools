@@ -5,8 +5,9 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.zigi.evolution.algorithm.EvolutionAlgorithm;
-import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.evolution.algorithm.EvolutionAlgorithm;
+import org.evolution.algorithm.GeneticProgramming;
+import org.evolution.solution.Solution;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.model.SelectFunctionModel;
@@ -14,7 +15,6 @@ import org.zigi.evolution.services.AlgorithmService;
 import org.zigi.evolution.services.PopulationService;
 import org.zigi.evolution.services.ProblemService;
 import org.zigi.evolution.services.SelectFunctionService;
-import org.zigi.evolution.solution.Solution;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

@@ -1,6 +1,6 @@
 package org.zigi.evolution.model;
 
-import org.zigi.evolution.util.Population;
+import org.evolution.util.Population;
 
 /**
  * Population model object

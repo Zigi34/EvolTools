@@ -4,10 +4,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import org.apache.log4j.Logger;
-import org.zigi.evolution.algorithm.EvolutionAlgorithm;
-import org.zigi.evolution.algorithm.GeneticProgramming;
+import org.evolution.algorithm.EvolutionAlgorithm;
+import org.evolution.algorithm.GeneticProgramming;
+import org.evolution.solution.Solution;
 import org.zigi.evolution.services.Services;
-import org.zigi.evolution.solution.Solution;
 
 public class AlgorithmListener implements PropertyChangeListener {
 

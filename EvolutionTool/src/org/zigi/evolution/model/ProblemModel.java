@@ -1,6 +1,6 @@
 package org.zigi.evolution.model;
 
-import org.zigi.evolution.problem.Problem;
+import org.evolution.problem.Problem;
 
 public class ProblemModel {
 	private Problem problem;

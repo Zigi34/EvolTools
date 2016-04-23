@@ -1,6 +1,6 @@
 package org.zigi.evolution.model;
 
-import org.zigi.evolution.solution.Solution;
+import org.evolution.solution.Solution;
 
 import javafx.beans.property.SimpleStringProperty;
 

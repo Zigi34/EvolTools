@@ -3,9 +3,9 @@ package org.zigi.evolution.services;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.evolution.select.RankSelect;
+import org.evolution.select.RouleteWheelSelect;
 import org.zigi.evolution.model.SelectFunctionModel;
-import org.zigi.evolution.select.RankSelect;
-import org.zigi.evolution.select.RouleteWheelSelect;
 
 public class SelectFunctionService {
 
