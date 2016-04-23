@@ -1,7 +1,5 @@
 package org.zigi.evolution.algorithm;
 
-import java.util.Random;
-
 import org.apache.log4j.Logger;
 import org.zigi.evolution.cross.CrossFunction;
 import org.zigi.evolution.cross.TreeCross;
@@ -20,7 +18,6 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	private double mutateProbability = 0.1;
 	private double crossProbrability = 0.8;
 
-	private static final Random RAND = new Random();
 	public static final int POPULATION_SIZE = 20;
 
 	public static final String CREATE_INIT_POPULATION_START = "CREATE_INIT_POPULATION_START";
@@ -90,21 +87,16 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		try {
 			setState(INIT_STATE);
 			TreeProblem problem = (TreeProblem) getProblem();
-			problem.initialize();
 			this.mutate.setProblem(problem);
 			Population population = getPopulation();
 
 			// pokud neni populace inicializovana, vegenerujeme pul napul
-			// metodou
-			// GROW a FULL
-			if (population.size() == 0) {
-				setState(CREATE_INIT_POPULATION_START);
-				for (int i = 0; i < (population.getMaxSolutions() / 2); i++)
-					population.add(problem.randomFullTreeSolution());
-				for (int i = (population.getMaxSolutions() / 2); i < population.getMaxSolutions(); i++)
-					population.add(problem.randomGrowTreeSolution());
-				setState(CREATE_INIT_POPULATION_END);
-			}
+			setState(CREATE_INIT_POPULATION_START);
+			for (int i = 0; i < (population.getMaxSolutions() / 2); i++)
+				population.add(problem.randomFullTreeSolution());
+			for (int i = (population.getMaxSolutions() / 2); i < population.getMaxSolutions(); i++)
+				population.add(problem.randomGrowTreeSolution());
+			setState(CREATE_INIT_POPULATION_END);
 
 			// Util.logPopulation(population);
 

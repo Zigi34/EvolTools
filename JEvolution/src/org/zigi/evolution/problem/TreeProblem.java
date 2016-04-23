@@ -15,7 +15,6 @@ public abstract class TreeProblem extends Problem {
 	private List<GPFenotype> terminals = new LinkedList<GPFenotype>();
 	private List<GPFenotype> functions = new LinkedList<GPFenotype>();
 	private static final Random RAND = new Random();
-	private Integer maxHeight = 3;
 
 	private static final Logger LOG = Logger.getLogger(TreeProblem.class);
 
@@ -207,24 +206,6 @@ public abstract class TreeProblem extends Problem {
 	 */
 	public GPFenotype randomFunction() {
 		return functions.get(RAND.nextInt(functions.size())).cloneMe();
-	}
-
-	/**
-	 * Vrací maximální povolenou výšku stromu
-	 * 
-	 * @return
-	 */
-	public Integer getMaxHeight() {
-		return maxHeight;
-	}
-
-	/**
-	 * Nastavení maximální výsky stromu
-	 * 
-	 * @param maxHeight
-	 */
-	public void setMaxHeight(Integer maxHeight) {
-		this.maxHeight = maxHeight;
 	}
 
 	public void removeFenotype(GPFenotype fenotype) {

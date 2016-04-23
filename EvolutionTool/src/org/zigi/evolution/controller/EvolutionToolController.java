@@ -15,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 public class EvolutionToolController implements Initializable {
 
@@ -42,6 +44,24 @@ public class EvolutionToolController implements Initializable {
 	private MenuItem aboutMenuItem;
 
 	@FXML
+	private BorderPane mainContent;
+
+	@FXML
+	private BorderPane algContent;
+
+	@FXML
+	private BorderPane fitnessChart;
+
+	@FXML
+	private BorderPane problem;
+
+	@FXML
+	private AnchorPane footBar;
+
+	@FXML
+	private AnchorPane controlPane;
+
+	@FXML
 	Parent root;
 
 	@Override
@@ -52,10 +72,18 @@ public class EvolutionToolController implements Initializable {
 		helpMenu.setText(Utils.getLabel("help_menu"));
 		aboutMenuItem.setText(Utils.getLabel("about_menu_item"));
 
-		// tabs
 		algorithmTab.setText(Utils.getLabel("algorithm_tab"));
 		summaryTab.setText(Utils.getLabel("summary_tab"));
 		problemTab.setText(Utils.getLabel("problem_tab"));
+
+		fitnessChart.setCenter(new FitnessChart());
+		problem.setCenter(new ProblemProperty());
+		mainContent.setBottom(new FootBar());
+
+		// set inner algorithm
+		algContent.setLeft(new AlgorithmProperty());
+		algContent.setCenter(new ControlPanel());
+
 	}
 
 	@FXML

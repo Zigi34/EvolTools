@@ -6,14 +6,35 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <?import org.zigi.evolution.controller.*?>
 
 <AnchorPane id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.zigi.evolution.controller.EvolutionToolController">
-  <!-- TODO Add Nodes -->
   <children>
-    <BorderPane prefHeight="335.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <top>
+    <BorderPane fx:id="mainContent" prefHeight="335.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab fx:id="algorithmTab" text="Untitled Tab 1">
+              <content>
+                <BorderPane fx:id="algContent" bottom="$null" right="$null" top="$null" />
+              </content>
+            </Tab>
+            <Tab fx:id="summaryTab" text="Untitled Tab 2">
+              <content>
+                <BorderPane fx:id="fitnessChart" bottom="$null" left="$null" right="$null" top="$null" />
+              </content>
+            </Tab>
+            <Tab fx:id="problemTab" text="Untitled Tab 2">
+              <content>
+                <BorderPane fx:id="problem" bottom="$null" left="$null" right="$null" top="$null" />
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </center>
+      <top>
         <MenuBar>
           <menus>
             <Menu mnemonicParsing="false" text="Application" fx:id="applicationMenu">
@@ -29,45 +50,6 @@
           </menus>
         </MenuBar>
       </top>
-      <center>
-        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-          <tabs>
-            <Tab fx:id="algorithmTab" text="Untitled Tab 1">
-              <content>
-                <BorderPane bottom="$null" right="$null" top="$null">
-                  <left>
-                    <AlgorithmProperty />
-                  </left>
-                  <center>
-                  	<ControlPanel />
-                  </center>
-                </BorderPane>
-              </content>
-            </Tab>
-            <Tab fx:id="summaryTab" text="Untitled Tab 2">
-              <content>
-                <BorderPane bottom="$null" left="$null" right="$null" top="$null">
-                  <center>
-                    <FitnessChart />
-                  </center>
-                </BorderPane>
-              </content>
-            </Tab>
-            <Tab fx:id="problemTab" text="Untitled Tab 2">
-              <content>
-                <BorderPane bottom="$null" left="$null" right="$null" top="$null">
-                  <center>
-                    <ProblemProperty />
-                  </center>
-                </BorderPane>
-              </content>
-            </Tab>
-          </tabs>
-        </TabPane>
-      </center>
-      <bottom>
-        <FootBar />
-      </bottom>
     </BorderPane>
   </children>
 </AnchorPane>

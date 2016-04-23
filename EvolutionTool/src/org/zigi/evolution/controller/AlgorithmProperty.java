@@ -7,10 +7,16 @@ import org.zigi.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.MutateFunctionModel;
 import org.zigi.evolution.model.PopulationModel;
+import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.model.SelectFunctionModel;
+import org.zigi.evolution.services.AlgorithmService;
+import org.zigi.evolution.services.PopulationService;
+import org.zigi.evolution.services.ProblemService;
+import org.zigi.evolution.services.SelectFunctionService;
 import org.zigi.evolution.services.Services;
 import org.zigi.evolution.util.Utils;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -55,6 +61,15 @@ public class AlgorithmProperty extends BorderPane {
 	@FXML
 	private Slider crossMutate;
 
+	@FXML
+	private Label popLabel;
+
+	@FXML
+	private Slider popSlider;
+
+	@FXML
+	private ChoiceBox<Number> treeHeight;
+
 	public AlgorithmProperty() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/AlgorithmProperty.fxml"));
 		fxmlLoader.setRoot(this);
@@ -70,8 +85,9 @@ public class AlgorithmProperty extends BorderPane {
 	}
 
 	private void initialize() {
-		PopulationModel popModel = Services.populationService().getSelected();
-		AlgorithmModel algModel = Services.algorithmService().getSelected();
+		Services.populationService();
+		Services.algorithmService();
+		AlgorithmModel algModel = AlgorithmService.getSelected();
 
 		// basic property
 		basicProperty.setText(Utils.getLabel("basic_property"));
@@ -86,7 +102,7 @@ public class AlgorithmProperty extends BorderPane {
 			@Override
 			public void changed(ObservableValue<? extends SelectFunctionModel> observable, SelectFunctionModel oldValue, SelectFunctionModel newValue) {
 				LOG.info("Změna select funkce");
-				Services.selectFunctionService().setSelected(newValue);
+				SelectFunctionService.setSelected(newValue);
 			}
 		});
 
@@ -99,13 +115,12 @@ public class AlgorithmProperty extends BorderPane {
 
 		// generation
 		generationLabel.setText(Utils.getLabel("generation"));
-
 		generation.setText(String.valueOf(algModel.getAlgorithm().getGeneration()));
 		generation.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				try {
-					Services.algorithmService().getSelected().getAlgorithm().setGeneration(Integer.parseInt(newValue));
+					AlgorithmService.getSelected().getAlgorithm().setGeneration(Integer.parseInt(newValue));
 					LOG.debug("Change generation count to " + newValue);
 				} catch (Exception e) {
 					LOG.warn("Invalid value for generation count " + newValue);
@@ -115,7 +130,6 @@ public class AlgorithmProperty extends BorderPane {
 
 		// cross-mutate
 		crossMutateLabel.setText(Utils.getLabel("cross_mutate"));
-
 		if (algModel.getAlgorithm() instanceof GeneticProgramming) {
 			GeneticProgramming gp = (GeneticProgramming) algModel.getAlgorithm();
 			crossMutate.valueProperty().setValue(gp.getMutateProbability());
@@ -129,5 +143,36 @@ public class AlgorithmProperty extends BorderPane {
 				}
 			}
 		});
+
+		popLabel.setText("Velikost populace:");
+		popSlider.valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> source, Number oldValue, Number newValue) {
+				popLabel.setText("Velikost populace: " + newValue.intValue());
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						Services.populationService();
+						PopulationModel model = PopulationService.getSelected();
+						if (model != null) {
+							model.getPopulation().setMax(newValue.intValue());
+							LOG.info("Nastavení populace na " + newValue);
+						}
+					}
+				});
+			}
+		});
+
+		// výška stromu
+		ProblemModel problemModel = ProblemService.getSelected();
+		treeHeight.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				problemModel.getProblem().setMaxHeight(newValue.intValue());
+				LOG.info("Maximální výška stromu nastavena na " + newValue.intValue());
+			}
+		});
+		for (Integer i = 1; i <= 20; i++)
+			treeHeight.getItems().add(i);
+		treeHeight.getSelectionModel().select(5);
 	}
 }

@@ -10,7 +10,10 @@ import org.zigi.evolution.algorithm.GeneticProgramming;
 import org.zigi.evolution.model.AlgorithmModel;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.model.SelectFunctionModel;
-import org.zigi.evolution.services.Services;
+import org.zigi.evolution.services.AlgorithmService;
+import org.zigi.evolution.services.PopulationService;
+import org.zigi.evolution.services.ProblemService;
+import org.zigi.evolution.services.SelectFunctionService;
 import org.zigi.evolution.solution.Solution;
 
 import javafx.application.Platform;
@@ -62,12 +65,8 @@ public class ControlPanel extends AnchorPane {
 		resetButton.setText("Reset");
 		startButton.setText("Start");
 
-		LOG.info("Jo");
-
-		AlgorithmModel model = Services.algorithmService().getSelected();
-		LOG.info("Jo");
+		AlgorithmModel model = AlgorithmService.getSelected();
 		if (model != null) {
-			LOG.info("Jo");
 			GeneticProgramming alg = (GeneticProgramming) model.getAlgorithm();
 			alg.addChangeListener(new PropertyChangeListener() {
 				@Override
@@ -106,9 +105,9 @@ public class ControlPanel extends AnchorPane {
 
 	@FXML
 	private void startAction(ActionEvent event) {
-		AlgorithmModel alg = Services.algorithmService().getSelected();
+		AlgorithmModel alg = AlgorithmService.getSelected();
+		initializeAlgorithm(alg);
 		if (alg != null) {
-			// initializeAlgorithm(alg);
 			alg.start();
 		}
 	}
@@ -116,7 +115,7 @@ public class ControlPanel extends AnchorPane {
 	@FXML
 	private void stopAction() {
 		// pause algorithm
-		AlgorithmModel alg = Services.algorithmService().getSelected();
+		AlgorithmModel alg = AlgorithmService.getSelected();
 		if (alg != null) {
 			alg.stop();
 		}
@@ -124,34 +123,30 @@ public class ControlPanel extends AnchorPane {
 
 	@FXML
 	private void resetAction() {
-		// TODO reseting button going to stop with reset setting for new start
-		AlgorithmModel alg = Services.algorithmService().getSelected();
+		AlgorithmModel alg = AlgorithmService.getSelected();
 		if (alg != null) {
 			alg.reset();
 		}
 	}
 
 	private void initializeAlgorithm(AlgorithmModel alg) {
-
 		if (alg.getAlgorithm() instanceof GeneticProgramming) {
 			GeneticProgramming gp = (GeneticProgramming) alg.getAlgorithm();
 
-			ProblemModel problem = Services.problemService().getSelected();
+			ProblemModel problem = ProblemService.getSelected();
 			if (problem != null)
 				gp.setProblem(problem.getProblem());
 			else
 				LOG.info("Problem nebyl vybrán");
 
-			SelectFunctionModel select = Services.selectFunctionService().getSelected();
+			SelectFunctionModel select = SelectFunctionService.getSelected();
 			if (select != null)
 				gp.setSelect(select.getFunction());
 			else
 				LOG.info("Selekce nebyla vybrana");
-
-			// alg.setAlgorithm(gp);
 		}
 
 		// set population
-		alg.getAlgorithm().setPopulation(Services.populationService().getSelected().getPopulation());
+		alg.getAlgorithm().setPopulation(PopulationService.getSelected().getPopulation());
 	}
 }

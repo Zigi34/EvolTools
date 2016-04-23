@@ -9,6 +9,7 @@ public abstract class Problem {
 	private double minFunctionValue = 0.0;
 	private double maxFunctionValue = 2.0;
 	private double epsilon = 0.00001;
+	private Integer maxHeight = 3;
 
 	public abstract Solution randomSolution();
 
@@ -18,6 +19,24 @@ public abstract class Problem {
 
 	public void initialize() {
 
+	}
+
+	/**
+	 * Vrací maximální povolenou výšku stromu
+	 * 
+	 * @return
+	 */
+	public Integer getMaxHeight() {
+		return maxHeight;
+	}
+
+	/**
+	 * Nastavení maximální výsky stromu
+	 * 
+	 * @param maxHeight
+	 */
+	public void setMaxHeight(Integer maxHeight) {
+		this.maxHeight = maxHeight;
 	}
 
 	public boolean isMinProblem() {

@@ -13,25 +13,17 @@
 <fx:root type="javafx.scene.layout.AnchorPane" prefHeight="363.1328125" prefWidth="560.248046875" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
     <Label fx:id="l" text="Dataset" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
-    <TextField fx:id="datasetPath" prefWidth="397.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0" />
-    <Button fx:id="fileButton" mnemonicParsing="false" prefWidth="87.751953125" text="Vybrat" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="30.0" />
-    <ChoiceBox fx:id="treeHeight" layoutX="0.0" layoutY="76.0" prefWidth="90.0">
+    <TextField fx:id="datasetPath" prefWidth="447.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="30.0" />
+    <Button fx:id="fileButton" mnemonicParsing="false" prefWidth="85.0" text="Vybrat" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0" />
+    <ListView fx:id="selected" prefHeight="223.1328125" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="86.0" />
+    <Label text="Použité funkce a terminály" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="66.0" />
+    <Button fx:id="createButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Přidat" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="86.0" />
+    <Button fx:id="removeButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Odebrat" AnchorPane.rightAnchor="270.0" AnchorPane.topAnchor="120.0" />
+    <Label prefWidth="240.0" text="Výběr funkcí/terminálů" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="66.0" />
+    <AnchorPane id="fenotype" fx:id="fenotypeProperty" prefHeight="-1.0" prefWidth="240.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="120.0" />
+    <ChoiceBox fx:id="fenotypeCombo" prefHeight="25.0" prefWidth="240.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="86.0">
       <items>
-        <FXCollections fx:factory="observableArrayList">
-        </FXCollections>
-      </items>
-    </ChoiceBox>
-    <Label layoutX="0.0" layoutY="60.0" text="Výška stromu" />
-    <ListView fx:id="selected" layoutX="0.0" prefHeight="223.1328125" prefWidth="200.0" AnchorPane.topAnchor="126.0" />
-    <Label layoutX="0.0" layoutY="106.0" text="Použité funkce a terminály" />
-    <Button fx:id="createButton" layoutX="207.0" layoutY="126.0" mnemonicParsing="false" prefWidth="76.0" text="Přidat" />
-    <Button fx:id="removeButton" layoutX="207.0" layoutY="154.0" mnemonicParsing="false" prefWidth="76.0" text="Odebrat" />
-    <Label layoutX="296.0" layoutY="106.0" prefWidth="187.0" text="Výběr funkcí/terminálů" />
-    <AnchorPane id="fenotype" fx:id="fenotypeProperty" layoutX="296.0" layoutY="154.0" prefHeight="196.0" prefWidth="200.0" />
-    <ChoiceBox fx:id="fenotypeCombo" layoutX="296.0" layoutY="126.0" prefWidth="200.0">
-      <items>
-        <FXCollections fx:factory="observableArrayList">
-        </FXCollections>
+        <FXCollections fx:factory="observableArrayList" />
       </items>
     </ChoiceBox>
   </children>

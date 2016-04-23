@@ -323,5 +323,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 		bestSolution = null;
 		terminate = false;
 		actualGeneration = 0;
+		getProblem().initialize();
+		getPopulation().clear();
 	}
 }

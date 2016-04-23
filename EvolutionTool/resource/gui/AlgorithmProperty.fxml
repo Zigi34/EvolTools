@@ -12,8 +12,23 @@
 
 <fx:root type="javafx.scene.layout.BorderPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <center>
-    <Accordion>
+    <Accordion prefWidth="300.0">
       <expandedPane>
+        <TitledPane fx:id="x1" animated="false" text="Population Properties">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <Label fx:id="popLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                <Slider fx:id="popSlider" blockIncrement="10.0" majorTickUnit="100.0" max="500.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="34.0" />
+                <Label text="Výška stromu" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="90.0" />
+                <ChoiceBox AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="108.0" fx:id="treeHeight">
+                </ChoiceBox>
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
         <TitledPane fx:id="basicProperty" animated="false" text="Basic Properties">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="202.0">
@@ -30,14 +45,7 @@
             </AnchorPane>
           </content>
         </TitledPane>
-      </expandedPane>
-      <panes>
-        <fx:reference source="basicProperty" />
-        <TitledPane animated="false" text="Population Properties">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-          </content>
-        </TitledPane>
+        <fx:reference source="x1" />
       </panes>
     </Accordion>
   </center>

@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.zigi.evolution.EvolutionTool;
 import org.zigi.evolution.model.ProblemModel;
 import org.zigi.evolution.problem.RegressionProblem;
-import org.zigi.evolution.services.Services;
+import org.zigi.evolution.services.ProblemService;
 import org.zigi.evolution.solution.value.CosFunction;
 import org.zigi.evolution.solution.value.DivideFunction;
 import org.zigi.evolution.solution.value.GPFenotype;
@@ -43,9 +43,6 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 
 	@FXML
 	private ChoiceBox<GPFenotype> fenotypeCombo;
-
-	@FXML
-	private ChoiceBox<Integer> treeHeight;
 
 	@FXML
 	private AnchorPane fenotypeProperty;
@@ -115,7 +112,7 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 	private void initialize() {
 		fileChooser.setTitle("Vyber soubor");
 
-		ProblemModel model = Services.problemService().getSelected();
+		ProblemModel model = ProblemService.getSelected();
 		selected.getItems().clear();
 		if (model != null && model.getProblem() instanceof RegressionProblem) {
 			RegressionProblem problem = (RegressionProblem) model.getProblem();
@@ -138,18 +135,6 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 					return new FenotypeCell();
 				}
 			});
-
-			// výška stromu
-			for (Integer i = 1; i < 20; i++)
-				treeHeight.getItems().add(i);
-			treeHeight.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Integer>() {
-				@Override
-				public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
-					problem.setMaxHeight(newValue);
-					LOG.info("Maximální výška stromu nastavena na " + newValue);
-				}
-			});
-			treeHeight.getSelectionModel().select(5);
 
 			// tlačítko přidat
 			createButton.setOnAction(new EventHandler<ActionEvent>() {

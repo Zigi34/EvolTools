@@ -28,8 +28,8 @@ public class ProblemProperty extends AnchorPane {
 	@FXML
 	private ChoiceBox<ProblemModel> problemFunction;
 
-	@FXML
-	private AnchorPane problemPane;
+	// @FXML
+	// private AnchorPane problemPane;
 
 	public ProblemProperty() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ProblemProperty.fxml"));
@@ -60,7 +60,14 @@ public class ProblemProperty extends AnchorPane {
 
 				try {
 					if (newValue.getProblem() instanceof RegressionProblem) {
-						problemPane.getChildren().add(new SymbolicRegressionProblemProperty());
+						SymbolicRegressionProblemProperty panel = new SymbolicRegressionProblemProperty();
+						AnchorPane.setTopAnchor(panel, 64.0);
+						AnchorPane.setLeftAnchor(panel, 14.0);
+						AnchorPane.setRightAnchor(panel, 14.0);
+						AnchorPane.setBottomAnchor(panel, 14.0);
+						panel.setPrefHeight(-1.0);
+						panel.setPrefWidth(-1.0);
+						getChildren().add(panel);
 					}
 				} catch (Exception e) {
 					LOG.error(e);
