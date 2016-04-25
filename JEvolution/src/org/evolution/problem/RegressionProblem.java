@@ -45,12 +45,6 @@ public class RegressionProblem extends TreeProblem {
 		addFenotype(new DivideFunction());
 		addFenotype(new RangedPowerFunction(2.0, 6.0, true));
 		addFenotype(new NumericConstant(-10.0, 10.0));
-
-	}
-
-	public RegressionProblem(String name) {
-		this();
-		this.name = name;
 	}
 
 	/**
@@ -199,6 +193,50 @@ public class RegressionProblem extends TreeProblem {
 		}
 	}
 
+	public Double getFunctionValue(KeyVariables variable, Solution solution) {
+		if (solution instanceof TreeSolution) {
+			TreeSolution originalTree = (TreeSolution) solution;
+
+			List<NumericConstant> constants = constants(originalTree);
+			for (NumericConstant constant : constants)
+				if (constant.getValue() == null)
+					constant.evaluateRandom();
+
+			TreeSolution tree = (TreeSolution) originalTree.cloneMe();
+			List<NumericVariable> variables = variables(tree);
+			for (int i = 0; i < variables.size(); i++)
+				setValueOfVariable(tree, variables.get(i).getName(), variable.getKey(i));
+
+			List<Node> leaves = null;
+			while (!(leaves = tree.leaveNodes()).isEmpty() && tree.getNodes().size() > 1) {
+				for (Node item : leaves) {
+					Node parent = item.getParent();
+					if (parent == null)
+						break;
+
+					// testing for leaves
+					boolean valid = true;
+					for (Node node : parent.getChilds()) {
+						if (!node.isLeaf()) {
+							valid = false;
+							break;
+						}
+					}
+
+					if (valid) {
+						// get numeric value
+						Double val = applyFunction(parent);
+						tree.removeSubTree(parent);
+						tree.addGenotype(new NumericValue(val));
+						break;
+					}
+				}
+			}
+			return (Double) tree.getRoot().getValue().getValue();
+		}
+		return null;
+	}
+
 	public void evaluate(Population pop) {
 		Double sumFunctionValue = 0.0;
 		for (Solution sol : pop.getSolutions()) {
@@ -212,13 +250,6 @@ public class RegressionProblem extends TreeProblem {
 						constant.evaluateRandom();
 
 				for (KeyVariables key : dataset.keySet()) {
-					if (originalTree.height() > originalTree.getMaxHeight()) {
-						sumError = Double.MAX_VALUE;
-						sol.setFunctionValue(sumError);
-						sumFunctionValue += sumError;
-						break;
-					}
-
 					TreeSolution tree = (TreeSolution) originalTree.cloneMe();
 					List<NumericVariable> variables = variables(tree);
 					for (int i = 0; i < variables.size(); i++)
@@ -253,6 +284,10 @@ public class RegressionProblem extends TreeProblem {
 					if (result.isNaN()) {
 						sumError = Double.MAX_VALUE;
 						break;
+					}
+					// panalizace vysokych stromu
+					if (originalTree.height() > originalTree.getMaxHeight()) {
+						sumError *= 2;
 					}
 					sumError += Math.pow(result - dataset.get(key), 2.0);
 				}
@@ -349,6 +384,10 @@ public class RegressionProblem extends TreeProblem {
 
 	public void setDatasetSplitter(String datasetSplitter) {
 		this.datasetSplitter = datasetSplitter;
+	}
+
+	public LinkedHashMap<KeyVariables, Double> getDataset() {
+		return dataset;
 	}
 
 	@Override

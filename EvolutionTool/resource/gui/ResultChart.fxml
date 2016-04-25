@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" prefHeight="496.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Label text="Population Fitness" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <font>
+        <Font name="System Bold" size="16.0" />
+      </font>
+    </Label>
+    <LineChart fx:id="result" prefHeight="334.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+      <xAxis>
+        <NumberAxis fx:id="xAxis" side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+        <NumberAxis fx:id="yAxis" side="LEFT" />
+      </yAxis>
+      <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" />
+      </padding>
+    </LineChart>
+    <Label text="Best solution" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+    <Label fx:id="solutionTitle" text="" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+    <Label fx:id="generationTitle" prefWidth="200.0" text="Generation: 0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="14.0" />
+    <Label fx:id="fitnessTitle" prefWidth="200.0" text="Fitness: 0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="236.0" />
+  </children>
+</fx:root>

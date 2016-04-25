@@ -14,6 +14,31 @@
   <center>
     <Accordion prefWidth="300.0">
       <expandedPane>
+        <TitledPane fx:id="basicProperty" animated="false" prefHeight="482.0" prefWidth="302.0" text="Basic Properties">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="297.0">
+              <children>
+                <Label fx:id="selectFunctionLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                <ChoiceBox id="selectFunctionInput" fx:id="selectFunction" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="34.0" />
+                <Label id="selectFunctionLabel" fx:id="mutateFunctionLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0" />
+                <ChoiceBox id="selectFunctionInput" fx:id="mutateFunction" prefWidth="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="130.0" />
+                <Label fx:id="generationLabel" text="generací" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="380.0" />
+                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="400.0" />
+                <Label fx:id="crossLabel" prefWidth="173.0" text="Pravděpodobnost křížení" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="170.0" />
+                <Slider fx:id="cross" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.8" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="190.0" />
+                <Label fx:id="tournamentSizeLabel" prefWidth="-1.0" text="Velikost turnaje" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0" />
+                <TextField fx:id="tournamentSize" editable="true" focusTraversable="true" prefWidth="-1.0" visible="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="80.0" />
+                <Label fx:id="mutateLabel" prefWidth="268.0" text="Mutace" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="238.0" />
+                <Slider fx:id="mutate" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="258.0" />
+                <Label fx:id="reproductionLabel" prefWidth="268.0" text="Reprodukce" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="310.0" />
+                <Slider fx:id="reproduction" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="330.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </TitledPane>
+      </expandedPane>
+      <panes>
+        <fx:reference source="basicProperty" />
         <TitledPane fx:id="x1" animated="false" text="Population Properties">
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -21,31 +46,11 @@
                 <Label fx:id="popLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                 <Slider fx:id="popSlider" blockIncrement="10.0" majorTickUnit="100.0" max="500.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="34.0" />
                 <Label text="Výška stromu" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="90.0" />
-                <ChoiceBox AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="108.0" fx:id="treeHeight">
-                </ChoiceBox>
+                <ChoiceBox fx:id="treeHeight" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="108.0" />
               </children>
             </AnchorPane>
           </content>
         </TitledPane>
-      </expandedPane>
-      <panes>
-        <TitledPane fx:id="basicProperty" animated="false" text="Basic Properties">
-          <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="202.0">
-              <children>
-                <Label fx:id="selectFunctionLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-                <ChoiceBox id="selectFunctionInput" fx:id="selectFunction" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="30.0" />
-                <Label id="selectFunctionLabel" fx:id="mutateFunctionLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0" />
-                <ChoiceBox id="selectFunctionInput" fx:id="mutateFunction" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="76.0" />
-                <Label fx:id="generationLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="180.0" />
-                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="196.0" />
-                <Label id="generationLabel" fx:id="crossMutateLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="116.0" />
-                <Slider fx:id="crossMutate" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="173.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.7" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="138.0" />
-              </children>
-            </AnchorPane>
-          </content>
-        </TitledPane>
-        <fx:reference source="x1" />
       </panes>
     </Accordion>
   </center>

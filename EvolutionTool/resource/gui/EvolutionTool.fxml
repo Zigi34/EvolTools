@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 <?import org.zigi.evolution.controller.*?>
 
-<AnchorPane id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.zigi.evolution.controller.EvolutionToolController">
+<AnchorPane id="mainPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="org.evolution.controller.EvolutionToolController">
   <children>
     <BorderPane fx:id="mainContent" prefHeight="335.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
@@ -24,6 +24,11 @@
             <Tab fx:id="summaryTab" text="Untitled Tab 2">
               <content>
                 <BorderPane fx:id="fitnessChart" bottom="$null" left="$null" right="$null" top="$null" />
+              </content>
+            </Tab>
+            <Tab text="Untitled Tab 2" fx:id="resultTab">
+              <content>
+                <BorderPane fx:id="result" bottom="$null" left="$null" right="$null" top="$null" />
               </content>
             </Tab>
             <Tab fx:id="problemTab" text="Untitled Tab 2">

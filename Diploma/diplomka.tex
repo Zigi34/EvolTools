@@ -145,7 +145,6 @@ plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potom
 
 \paragraph*{}
 Životní cyklus algoritmů z rodiny evolučních algoritmů je v zásadě totožný a lze jej zjedodušeně popsat několika kroky, jak je znázorněno na obr. Na počátku je v rámci námi zkoumané instance problématiky náhodně vytvořena populace, a to z genofondu, který příslučí danému alforitmu.
-<<<<<<< HEAD
 
 \paragraph*{}
 Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocení kvality řešení) daného problému každému jedinci přiřazena hodota, vyjadřující míru vhodnosti jedince, tzv. fitness. Ohodnocená populace je dále podrobena selekci jedinců vhodných k reprodukci. Selektivní funkce přímo pracuje s přiřazenými fitness hodnotami a na základě těchto hodot ovlivňuje míru pravděpodobnosti jedinců v populaci.
@@ -153,15 +152,6 @@ Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocen�
 \paragraph*{}
 V reprodukční části algoritmu dochází k výměně genetických informací nově vzniklých jedinců. Typickými operátory je křížení - vzájemná výměna části fenotypů mezi více jedinci a mutace - náhodné pozměnení fenotypů jedince.
 
-=======
-
-\paragraph*{}
-Nad takto vytvořenou populací je za pomocí fitness funkce (obecné ohodnocení kvality řešení) daného problému každému jedinci přiřazena hodota, vyjadřující míru vhodnosti jedince, tzv. fitness. Ohodnocená populace je dále podrobena selekci jedinců vhodných k reprodukci. Selektivní funkce přímo pracuje s přiřazenými fitness hodnotami a na základě těchto hodot ovlivňuje míru pravděpodobnosti jedinců v populaci.
-
-\paragraph*{}
-V reprodukční části algoritmu dochází k výměně genetických informací nově vzniklých jedinců. Typickými operátory je křížení - vzájemná výměna části fenotypů mezi více jedinci a mutace - náhodné pozměnení fenotypů jedince.
-
->>>>>>> 9b2bd386a991002e1fe1c8ba5b730b9ad2b17244
 \subsection{Genetický algoritmus (GA)}
 \paragraph*{}
 Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potom
@@ -390,8 +380,9 @@ Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné
 \paragraph*{}
 Samotná aplikace je rozdělena do dvou komponent. První část je tvořena knihovnou, která tvoří jádro projektu. Obsahuje samotnou implementaci genetického programování a rozhraní pro komunikaci a řízení běhu evolučního cyklu. Úkolem je umožnit uživateli nebo externímu systéme vhodně nastavit běh evoluce a konfigurovat způsob křížení, mutace, reprodukce volbu nastavení parametrů pro testované problémy. V tabulce \ref{tab:packagetree} je zobrazena balíčková struktura jádra aplikace.
 
+\subsubsection{JEvolution}
 \paragraph*{}
-Implementovaná evoluce je tvořena pomocí komponent v podobě charakteristických rysů evolučních algoritmů. Ty jsou tvořeny abstraktními komponentami mutace, křížení, ohodnocení, populace a problému. Vztah a vazba mezi komponentami jednotlivých částí cyklu je popsána níže vysvětlujícími obrázky.
+Knihovna JEvolution, která obsahuje implementaci evoluce je tvořena komponentami v podobě charakteristických rysů evolučních algoritmů. Ty jsou tvořeny abstraktními třídami operátorů mutace, křížení, selekce a funkcemi pro ohodnocení a kontejnerovou třídou reprezentující populaci spolu s třídami instance problému. Vztah a vazba mezi komponentami jednotlivých částí cyklu je popsána níže vysvětlujícími obrázky.
 
 \begin{table}
   \centering
@@ -410,6 +401,24 @@ Implementovaná evoluce je tvořena pomocí komponent v podobě charakteristick�
   \label{tab:packagetree}
   \caption{Balíčková struktura aplikace EvolTool}
 \end{table}
+
+\paragraph*{}
+Popis komunikace a vazba mezi komponentami evolučních funkcí
+
+\InsertFigure{Figures/class-diagram.png}{1.0\textwidth}{Třídní diagram}{fig:classdiagram}
+
+\subsection{Grafické uživatelské rozhraní}
+\paragraph*{}
+Tato část je věnována implementaci uživatelského rozhraní v jazyce Java na bázi platformy JavaFX z dílny Sun Microsystems. Platforma využívá pro implementaci kódu návrhový vzor MVC. Modelové třídy jsou obsaženy v balíčku org.evolution.model, struktura vzhledu a sazeni ovládacích prvků, panelů a tlačítek je tvořena pomocí XML souborů s příponou .fxml v balíčku resources.gui a nakonec je to samotný řídící kód pro událostí reagující na uživatelské akce (klik, nastavení hodnoty, ...) jednotlivých panelů s ovládacími prvky zase popsané v .fxml souborech v balíčku org.evolution.controller. 
+
+\InsertFigure{Figures/gui.png}{1.0\textwidth}{GUI aplikace EvolTool}{fig:maingui}
+
+\paragraph*{}
+Evoluční proces volající metody jádra běží v samostatném vlákně s možností parametrizace evoluce. Nějdůležítějsí části kódu celé aplikace si blíže popíšeme níže.
+
+\paragraph*{}
+Vstupním bodem aplikace je třída EvolutionTool.java. Je vázána na grafické rohraní EvolutionTool.fxml. Třída ControlPanel.java řídí inicializaci, spouštění a ukončení evolučního procesu. Položky menu pro uložení a načtení konfigurace testovacích problémů jsou implementovány třídou EvolutionToolController.java. Přidružená grafická podoba je popsána v souboru EvolutionTool.fxml. Je vytvořena jako kontejnerový soubor pro ostatní grafické komponenty. Nastavení konkrétních testovacích problémů je obsaženo v souborech SymbolicRegressionProperty.fxml a ArtificialAntProperty.fxml s řídícím kódem v třídách SymbolicRegressionProblemProperty.java a ArtificialAntProblemProperty.java.
+
 
 
 \subsection{Evoluční procesy}
@@ -430,7 +439,6 @@ Několik pravidel pro efektivnější výběrovou funkci:
 \subsection{UML model}
 \paragraph*{}
 Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
-
 
 \section{Testování na vybraných problémech}
 \paragraph*{}

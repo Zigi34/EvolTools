@@ -135,7 +135,7 @@ public class Main {
 
 			for (int i = 0; i < tests; i++) {
 				Map<Integer, Double> st = new HashMap<Integer, Double>();
-				RegressionProblem problem = new RegressionProblem("quintic");
+				RegressionProblem problem = new RegressionProblem();
 				problem.setDatasetPath("resources/quintic");
 				problem.setMaxHeight(height);
 
@@ -262,11 +262,11 @@ public class Main {
 	public void sextic2() {
 		try {
 			int maxGen = 500;
-			int popSize = 200;
+			int popSize = 20;
 			int height = 6;
-			int tournamentSize = 10;
+			int tournamentSize = 2;
 
-			RegressionProblem problem = new RegressionProblem("quintic");
+			RegressionProblem problem = new RegressionProblem();
 			problem.setDatasetPath("resources/quintic");
 			problem.setMaxHeight(height);
 
@@ -290,7 +290,6 @@ public class Main {
 						CrossFunction cross = gp.getCross();
 					} else if (evt.getNewValue().equals(GeneticProgramming.NEW_BEST_SOLUTION)) {
 						LOG.info(gp.getBestSolution());
-
 					} else if (evt.getNewValue().equals(GeneticProgramming.NEW_POPULATION)) {
 						LOG.info(String.format("%s;%s;%s;%s", gp.getActualGeneration(),
 								gp.getBestSolution().getFunctionValue(),
@@ -307,10 +306,10 @@ public class Main {
 			// TournamentSelection select = new TournamentSelection();
 			// select.setTournamentSize(tournamentSize);
 			// gp.setSelect(select);
-			// CrossFunction cross = new OnePointTreeCross();
-			// gp.setCross(cross);
+			CrossFunction cross = new OnePointTreeCross();
+			gp.setCross(cross);
 
-			gp.start();
+			gp.run();
 
 		} catch (Exception e) {
 			LOG.error(e);

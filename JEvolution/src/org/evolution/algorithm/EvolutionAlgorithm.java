@@ -2,10 +2,6 @@ package org.evolution.algorithm;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,8 +26,6 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	private int generation = 2000;
 	private int actualGeneration = 0;
 	private Thread thread = new Thread(this);
-
-	protected OutputStreamWriter writer;
 
 	public static final String INIT_STATE = "INIT_STATE";
 	public static final String ALGORITHM_TERMINATING = "ALGORITHM_TERMINATING";
@@ -197,35 +191,6 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	}
 
 	/**
-	 * Stream pro zapisovani informaci o prubehu algoritmu
-	 * 
-	 * @return
-	 */
-	public OutputStreamWriter getWriter() {
-		return writer;
-	}
-
-	/**
-	 * Nastavuje (povoluje) stream pro zapis informaci o algoritmu
-	 * 
-	 * @param writer
-	 */
-	public void setWriter(OutputStreamWriter writer) {
-		this.writer = writer;
-	}
-
-	/**
-	 * Nastavuje (povoluje) stream pro zapis informaci o algoritmu
-	 * 
-	 * @param file
-	 *            soubor pro zápis
-	 * @throws FileNotFoundException
-	 */
-	public void setWriter(File file) throws FileNotFoundException {
-		this.writer = new OutputStreamWriter(new FileOutputStream(file));
-	}
-
-	/**
 	 * Identifikuje zmenu pro posluchace
 	 * 
 	 * @param object
@@ -252,12 +217,8 @@ public abstract class EvolutionAlgorithm implements Runnable {
 		listeners.add(listener);
 	}
 
-	public List<PropertyChangeListener> getListeners() {
+	private List<PropertyChangeListener> getListeners() {
 		return listeners;
-	}
-
-	public void setListeners(List<PropertyChangeListener> listeners) {
-		this.listeners = listeners;
 	}
 
 	/**
@@ -291,11 +252,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 		return actualGeneration;
 	}
 
-	public void setActualGeneration(int actualGeneration) {
-		this.actualGeneration = actualGeneration;
-	}
-
-	public void increseActualGeneration() {
+	protected void increseActualGeneration() {
 		this.actualGeneration++;
 	}
 

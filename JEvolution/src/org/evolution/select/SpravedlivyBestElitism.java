@@ -19,7 +19,7 @@ public class SpravedlivyBestElitism extends ElitismFunction {
 	public List<Solution> select(Population population, Integer max) {
 
 		Population pop = new Population();
-		pop.setMax(population.getMaxSolutions());
+		pop.setMaxSolutions(population.getMaxSolutions());
 		for (Solution sol : population.getSolutions())
 			if (!pop.getSolutions().contains(sol))
 				pop.add(sol);

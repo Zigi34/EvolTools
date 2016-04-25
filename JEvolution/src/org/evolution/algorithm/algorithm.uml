@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_VUr-4AnzEea7IoxHkWwqrA" name="algorithm">
+  <elementImport xmi:id="_VWxCgQnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_VWxpkAnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+  </elementImport>
+  <elementImport xmi:id="_VWxpkQnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+  </elementImport>
+  <elementImport xmi:id="_VWxpkgnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+  </elementImport>
+  <elementImport xmi:id="_VWxpkwnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+  </elementImport>
+  <elementImport xmi:id="_VWxplAnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+  </elementImport>
+  <elementImport xmi:id="_VWyQoAnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+  </elementImport>
+  <elementImport xmi:id="_VWyQoQnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+  </elementImport>
+  <elementImport xmi:id="_VWyQognzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_VW0s4AnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_VW1T8AnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_VW1T8QnzEea7IoxHkWwqrA">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <packageImport xmi:id="_VWwbcAnzEea7IoxHkWwqrA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_VWxCgAnzEea7IoxHkWwqrA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_VW17AAnzEea7IoxHkWwqrA" name="org">
+    <packagedElement xmi:type="uml:Package" xmi:id="_VW17AQnzEea7IoxHkWwqrA" name="evolution">
+      <packagedElement xmi:type="uml:Package" xmi:id="_VW17AgnzEea7IoxHkWwqrA" name="algorithm">
+        <packagedElement xmi:type="uml:Class" xmi:id="_VW5lYAnzEea7IoxHkWwqrA" name="EvolutionAlgorithm" visibility="public" isAbstract="true">
+          <eAnnotations xmi:id="_VW5lYQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+            <details xmi:id="_VW5lYgnzEea7IoxHkWwqrA" key="documentation" value=" Object represent evolution algorithm method&#xA; &#xA; @author zigi&#xA;"/>
+          </eAnnotations>
+          <elementImport xmi:id="_VXWRUAnzEea7IoxHkWwqrA" importedElement="_VXVqQQnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXXfcAnzEea7IoxHkWwqrA" importedElement="_VXW4YAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXYGggnzEea7IoxHkWwqrA" importedElement="_VXYGgQnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXZUoQnzEea7IoxHkWwqrA" importedElement="_VXZUoAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXZ7sQnzEea7IoxHkWwqrA" importedElement="_VXZ7sAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXbJ0QnzEea7IoxHkWwqrA" importedElement="_VXbJ0AnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXe0MAnzEea7IoxHkWwqrA" importedElement="_VXeNIQnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXgCUAnzEea7IoxHkWwqrA" importedElement="_VXfbQAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXgpYQnzEea7IoxHkWwqrA" importedElement="_VXgpYAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXh3gwnzEea7IoxHkWwqrA" importedElement="_VXh3ggnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXjFoAnzEea7IoxHkWwqrA" importedElement="_VXiekQnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXlh4gnzEea7IoxHkWwqrA" importedElement="_VXlh4QnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXmwAAnzEea7IoxHkWwqrA" importedElement="_VXmI8QnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_VXqaYgnzEea7IoxHkWwqrA" importedElement="_VXqaYQnzEea7IoxHkWwqrA" visibility="private"/>
+          <ownedAttribute xmi:id="_VX0LYAnzEea7IoxHkWwqrA" name="population" visibility="private" type="_VXqaYQnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VX2AkAnzEea7IoxHkWwqrA" name="terminate" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYF4MAnzEea7IoxHkWwqrA" name="problem" visibility="private" type="_VXiekQnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VYReYAnzEea7IoxHkWwqrA" name="bestSolution" visibility="private" type="_VXlh4QnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VYVIwAnzEea7IoxHkWwqrA" name="generation" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYVv0AnzEea7IoxHkWwqrA" name="" value="2000">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYW98AnzEea7IoxHkWwqrA" name="actualGeneration" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYbPYAnzEea7IoxHkWwqrA" name="" value="0">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYikIQnzEea7IoxHkWwqrA" name="thread" visibility="private" type="_VYikIAnzEea7IoxHkWwqrA">
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYjLMAnzEea7IoxHkWwqrA" name="" type="_VYikIAnzEea7IoxHkWwqrA" value="new Thread(this)"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYpR0AnzEea7IoxHkWwqrA" name="writer" visibility="protected" type="_VXbJ0AnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VYqf8AnzEea7IoxHkWwqrA" name="INIT_STATE" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYqf8QnzEea7IoxHkWwqrA" name="" value="&quot;INIT_STATE&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYruEAnzEea7IoxHkWwqrA" name="ALGORITHM_TERMINATING" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYsVIAnzEea7IoxHkWwqrA" name="" value="&quot;ALGORITHM_TERMINATING&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYtjQAnzEea7IoxHkWwqrA" name="ALGORITHM_TERMINATED" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYuKUAnzEea7IoxHkWwqrA" name="" value="&quot;ALGORITHM_TERMINATED&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYvYcAnzEea7IoxHkWwqrA" name="ALGORITHM_STARTED" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYvYcQnzEea7IoxHkWwqrA" name="" value="&quot;ALGORITHM_STARTED&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYwmkAnzEea7IoxHkWwqrA" name="NEW_BEST_SOLUTION" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYwmkQnzEea7IoxHkWwqrA" name="" value="&quot;NEW_BEST_SOLUTION&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYx0sAnzEea7IoxHkWwqrA" name="STATE_NAME" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYybwAnzEea7IoxHkWwqrA" name="" value="&quot;STATE&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VYzp4AnzEea7IoxHkWwqrA" name="state" visibility="protected">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VYzp4QnzEea7IoxHkWwqrA" name="" value="INIT_STATE">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VY-pAAnzEea7IoxHkWwqrA" name="listeners" visibility="private" type="_VXW4YAnzEea7IoxHkWwqrA" isOrdered="true" isUnique="false">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VY_QEQnzEea7IoxHkWwqrA" value="*"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VY_QEAnzEea7IoxHkWwqrA" name="" type="_VXW4YAnzEea7IoxHkWwqrA" value="new ArrayList&lt;PropertyChangeListener>()"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VZKPMAnzEea7IoxHkWwqrA" name="terminateFunction" visibility="private" type="_VXmI8QnzEea7IoxHkWwqrA" isOrdered="true" isUnique="false">
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VZK2QQnzEea7IoxHkWwqrA" value="*"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VZK2QAnzEea7IoxHkWwqrA" name="" type="_VXmI8QnzEea7IoxHkWwqrA" value="new LinkedList&lt;>()"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VZQ84AnzEea7IoxHkWwqrA" name="LOG" visibility="private" isLeaf="true" isStatic="true" type="_VXh3ggnzEea7IoxHkWwqrA">
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VZRj8AnzEea7IoxHkWwqrA" name="" type="_VXh3ggnzEea7IoxHkWwqrA" value="Logger.getLogger(EvolutionAlgorithm.class)"/>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VpE6gAnzEea7IoxHkWwqrA" name="start" specification="_VZXDgAnzEea7IoxHkWwqrA" node="_VpkCsAnzEea7IoxHkWwqrA _Vpme8AnzEea7IoxHkWwqrA _VppiQAnzEea7IoxHkWwqrA _VprXcAnzEea7IoxHkWwqrA _VqLtwAnzEea7IoxHkWwqrA _VqTCgAnzEea7IoxHkWwqrA _VqUQoAnzEea7IoxHkWwqrA _VqUQognzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vp72IAnzEea7IoxHkWwqrA" name="InitNode_If_0_cond" target="_VppiQAnzEea7IoxHkWwqrA" source="_VpkCsAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vp9EQAnzEea7IoxHkWwqrA" name="If_0_else" target="_VprXcAnzEea7IoxHkWwqrA" source="_VppiQAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vp9rUAnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqMU0AnzEea7IoxHkWwqrA" name="If_0_cond_reset();" target="_VqLtwAnzEea7IoxHkWwqrA" source="_VppiQAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vp9EQQnzEea7IoxHkWwqrA" value="!thread.isAlive()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqTpkAnzEea7IoxHkWwqrA" name="reset();_thread=new Thread(this);" target="_VqTCgAnzEea7IoxHkWwqrA" source="_VqLtwAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqUQoQnzEea7IoxHkWwqrA" name="thread=new Thread(this);_thread.start();" target="_VqUQoAnzEea7IoxHkWwqrA" source="_VqTCgAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vqi6IAnzEea7IoxHkWwqrA" name="thread.start();_setState(ALGORITHM_STARTED);" target="_VqUQognzEea7IoxHkWwqrA" source="_VqUQoAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqkIQAnzEea7IoxHkWwqrA" name="setState(ALGORITHM_STARTED);_If_0_merge" target="_VprXcAnzEea7IoxHkWwqrA" source="_VqUQognzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqkIQQnzEea7IoxHkWwqrA" name="If_0_merge_FinalNode" target="_Vpme8AnzEea7IoxHkWwqrA" source="_VprXcAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VpkCsAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vp72IAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vpme8AnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VqkIQQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VppiQAnzEea7IoxHkWwqrA" name="If_0_cond" incoming="_Vp72IAnzEea7IoxHkWwqrA" outgoing="_Vp9EQAnzEea7IoxHkWwqrA _VqMU0AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VprXcAnzEea7IoxHkWwqrA" name="If_0_merge" incoming="_Vp9EQAnzEea7IoxHkWwqrA _VqkIQAnzEea7IoxHkWwqrA" outgoing="_VqkIQQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VqLtwAnzEea7IoxHkWwqrA" name="reset();" incoming="_VqMU0AnzEea7IoxHkWwqrA" outgoing="_VqTpkAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VqTCgAnzEea7IoxHkWwqrA" name="thread=new Thread(this);" incoming="_VqTpkAnzEea7IoxHkWwqrA" outgoing="_VqUQoQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>thread=new Thread(this);
+</body>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VqUQoAnzEea7IoxHkWwqrA" name="thread.start();" incoming="_VqUQoQnzEea7IoxHkWwqrA" outgoing="_Vqi6IAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VqUQognzEea7IoxHkWwqrA" name="setState(ALGORITHM_STARTED);" incoming="_Vqi6IAnzEea7IoxHkWwqrA" outgoing="_VqkIQAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VqeBoAnzEea7IoxHkWwqrA" name="ALGORITHM_STARTED"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VqlWYAnzEea7IoxHkWwqrA" name="stop" specification="_VZdxMAnzEea7IoxHkWwqrA" node="_Vqpn0AnzEea7IoxHkWwqrA _VqqO4AnzEea7IoxHkWwqrA _VqqO4QnzEea7IoxHkWwqrA _Vqq18AnzEea7IoxHkWwqrA _VqrdAQnzEea7IoxHkWwqrA _VqrdAgnzEea7IoxHkWwqrA _VqsrIgnzEea7IoxHkWwqrA _VqtSMQnzEea7IoxHkWwqrA _VqzY0AnzEea7IoxHkWwqrA _Vq0m8AnzEea7IoxHkWwqrA _Vq1OAQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqqO4gnzEea7IoxHkWwqrA" name="InitNode_terminate=true;" target="_VqqO4QnzEea7IoxHkWwqrA" source="_Vqpn0AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqrdAAnzEea7IoxHkWwqrA" name="terminate=true;_setState(ALGORITHM_TERMINATING);" target="_Vqq18AnzEea7IoxHkWwqrA" source="_VqqO4QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqsEEAnzEea7IoxHkWwqrA" name="setState(ALGORITHM_TERMINATING_If_1_cond" target="_VqrdAQnzEea7IoxHkWwqrA" source="_Vqq18AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqsEEQnzEea7IoxHkWwqrA" name="If_1_else" target="_VqrdAgnzEea7IoxHkWwqrA" source="_VqrdAQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VqsrIQnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VqtSMAnzEea7IoxHkWwqrA" name="If_1_cond_thread.join(1000);" target="_VqsrIgnzEea7IoxHkWwqrA" source="_VqrdAQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VqsrIAnzEea7IoxHkWwqrA" value="thread != null"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vqt5QAnzEea7IoxHkWwqrA" name="thread.join(1000);_thread.interrupt();" target="_VqtSMQnzEea7IoxHkWwqrA" source="_VqsrIgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vqz_4AnzEea7IoxHkWwqrA" name="thread.interrupt();_LOG.error(e);" target="_VqzY0AnzEea7IoxHkWwqrA" source="_VqtSMQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq0m8QnzEea7IoxHkWwqrA" name="LOG.error(e);_try {&#xA;  thread.join(1000);&#xA;  thread.interrupt(" target="_Vq0m8AnzEea7IoxHkWwqrA" source="_VqzY0AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq1OAAnzEea7IoxHkWwqrA" name="try {&#xA;  thread.join(1000);&#xA;  t_If_1_merge" target="_VqrdAgnzEea7IoxHkWwqrA" source="_Vq0m8AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq11EAnzEea7IoxHkWwqrA" name="If_1_merge_setState(ALGORITHM_TERMINATED);" target="_Vq1OAQnzEea7IoxHkWwqrA" source="_VqrdAgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq11EQnzEea7IoxHkWwqrA" name="setState(ALGORITHM_TERMINATED)_FinalNode" target="_VqqO4AnzEea7IoxHkWwqrA" source="_Vq1OAQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vqpn0AnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VqqO4gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VqqO4AnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vq11EQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VqqO4QnzEea7IoxHkWwqrA" name="terminate=true;" incoming="_VqqO4gnzEea7IoxHkWwqrA" outgoing="_VqrdAAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>terminate=true;
+</body>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vqq18AnzEea7IoxHkWwqrA" name="setState(ALGORITHM_TERMINATING);" incoming="_VqrdAAnzEea7IoxHkWwqrA" outgoing="_VqsEEAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vqq18QnzEea7IoxHkWwqrA" name="ALGORITHM_TERMINATING"/>
+            </node>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VqrdAQnzEea7IoxHkWwqrA" name="If_1_cond" incoming="_VqsEEAnzEea7IoxHkWwqrA" outgoing="_VqsEEQnzEea7IoxHkWwqrA _VqtSMAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VqrdAgnzEea7IoxHkWwqrA" name="If_1_merge" incoming="_VqsEEQnzEea7IoxHkWwqrA _Vq1OAAnzEea7IoxHkWwqrA" outgoing="_Vq11EAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VqsrIgnzEea7IoxHkWwqrA" name="thread.join(1000);" incoming="_VqtSMAnzEea7IoxHkWwqrA" outgoing="_Vqt5QAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VqsrIwnzEea7IoxHkWwqrA" name="1000"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VqtSMQnzEea7IoxHkWwqrA" name="thread.interrupt();" incoming="_Vqt5QAnzEea7IoxHkWwqrA" outgoing="_Vqz_4AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VqzY0AnzEea7IoxHkWwqrA" name="LOG.error(e);" incoming="_Vqz_4AnzEea7IoxHkWwqrA" outgoing="_Vq0m8QnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VqzY0QnzEea7IoxHkWwqrA" name="e"/>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_Vq0m8AnzEea7IoxHkWwqrA" name="try {&#xA;  thread.join(1000);&#xA;  thread.interrupt();&#xA;}&#xA; catch (InterruptedException e) {&#xA;  LOG.error(e);&#xA;}" incoming="_Vq0m8QnzEea7IoxHkWwqrA" outgoing="_Vq1OAAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>try {
+  thread.join(1000);
+  thread.interrupt();
+}
+ catch (InterruptedException e) {
+  LOG.error(e);
+}
+</body>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vq1OAQnzEea7IoxHkWwqrA" name="setState(ALGORITHM_TERMINATED);" incoming="_Vq11EAnzEea7IoxHkWwqrA" outgoing="_Vq11EQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vq1OAgnzEea7IoxHkWwqrA" name="ALGORITHM_TERMINATED"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vq2cIAnzEea7IoxHkWwqrA" name="getPopulation" specification="_VZj30AnzEea7IoxHkWwqrA" node="_Vq5fcAnzEea7IoxHkWwqrA _Vq6GgAnzEea7IoxHkWwqrA _Vq6GgQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq6GggnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_Vq6GgQnzEea7IoxHkWwqrA" source="_Vq6GgAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vq5fcAnzEea7IoxHkWwqrA" type="_VXqaYQnzEea7IoxHkWwqrA" parameter="_VZj30wnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vq6GgAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vq6GggnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vq6GgQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vq6GggnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vq77sAnzEea7IoxHkWwqrA" name="setPopulation" specification="_VZ0WgAnzEea7IoxHkWwqrA" node="_Vq77sQnzEea7IoxHkWwqrA _Vq8iwAnzEea7IoxHkWwqrA _Vq8iwQnzEea7IoxHkWwqrA _Vq8iwgnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq9w4AnzEea7IoxHkWwqrA" name="InitNode_this.population=pop;" target="_Vq8iwgnzEea7IoxHkWwqrA" source="_Vq8iwAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vq-X8AnzEea7IoxHkWwqrA" name="this.population=pop;_FinalNode" target="_Vq8iwQnzEea7IoxHkWwqrA" source="_Vq8iwgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vq77sQnzEea7IoxHkWwqrA" name="pop" type="_VXqaYQnzEea7IoxHkWwqrA" parameter="_VZ09kQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vq8iwAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vq9w4AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vq8iwQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vq-X8AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_Vq8iwgnzEea7IoxHkWwqrA" name="this.population=pop;" incoming="_Vq9w4AnzEea7IoxHkWwqrA" outgoing="_Vq-X8AnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.population=pop;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vq-_AAnzEea7IoxHkWwqrA" name="setPopulationSize" specification="_VakkcAnzEea7IoxHkWwqrA" node="_VrBbQAnzEea7IoxHkWwqrA _VrCCUAnzEea7IoxHkWwqrA _VrCCUQnzEea7IoxHkWwqrA _VrHh4AnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrHh4QnzEea7IoxHkWwqrA" name="InitNode_population=new Population(size);" target="_VrHh4AnzEea7IoxHkWwqrA" source="_VrCCUAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrII8AnzEea7IoxHkWwqrA" name="population=new Population(size_FinalNode" target="_VrCCUQnzEea7IoxHkWwqrA" source="_VrHh4AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VrBbQAnzEea7IoxHkWwqrA" name="size" parameter="_VakkcwnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VrCCUAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VrHh4QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VrCCUQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VrII8AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VrHh4AnzEea7IoxHkWwqrA" name="population=new Population(size);" incoming="_VrHh4QnzEea7IoxHkWwqrA" outgoing="_VrII8AnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>population=new Population(size);
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VrIwAAnzEea7IoxHkWwqrA" name="isTerminate" specification="_VamZoAnzEea7IoxHkWwqrA" node="_VrIwAQnzEea7IoxHkWwqrA _VrIwAgnzEea7IoxHkWwqrA _VrIwAwnzEea7IoxHkWwqrA _VrTIEAnzEea7IoxHkWwqrA _VrYnoAnzEea7IoxHkWwqrA _VrZOsAnzEea7IoxHkWwqrA _VrZOsQnzEea7IoxHkWwqrA _Vrac0AnzEea7IoxHkWwqrA _Vrac0QnzEea7IoxHkWwqrA _VrbD4gnzEea7IoxHkWwqrA _VrkN0AnzEea7IoxHkWwqrA _VrkN0QnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrTvIAnzEea7IoxHkWwqrA" name="InitNode_Boolean terminate=this.terminate;" target="_VrTIEAnzEea7IoxHkWwqrA" source="_VrIwAgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrYnoQnzEea7IoxHkWwqrA" name="Boolean terminate=this.termina_Solution best=getBestSolution" target="_VrYnoAnzEea7IoxHkWwqrA" source="_VrTIEAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrZOsgnzEea7IoxHkWwqrA" name="Solution best=getBestSolution(_If_2_cond" target="_VrZOsAnzEea7IoxHkWwqrA" source="_VrYnoAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrZ1wAnzEea7IoxHkWwqrA" name="If_2_else" target="_VrZOsQnzEea7IoxHkWwqrA" source="_VrZOsAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrZ1wgnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrZ1wwnzEea7IoxHkWwqrA" name="If_2_cond_FinalNode" target="_VrIwAwnzEea7IoxHkWwqrA" source="_VrZOsAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrZ1wQnzEea7IoxHkWwqrA" value="best != null &amp;&amp; getProblem().getNormalizedFitness(best) == 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrac0gnzEea7IoxHkWwqrA" name="If_2_merge_If_3_cond" target="_Vrac0AnzEea7IoxHkWwqrA" source="_VrZOsQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrac0wnzEea7IoxHkWwqrA" name="If_3_else" target="_Vrac0QnzEea7IoxHkWwqrA" source="_Vrac0AnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrbD4QnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrjmwQnzEea7IoxHkWwqrA" name="If_3_cond_terminate|=function.isTerminate(this);" target="_VrbD4gnzEea7IoxHkWwqrA" source="_Vrac0AnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrbD4AnzEea7IoxHkWwqrA" value="!terminateFunction.isEmpty()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrk04AnzEea7IoxHkWwqrA" name="terminate|=function.isTerminat_If_4_cond" target="_VrkN0AnzEea7IoxHkWwqrA" source="_VrbD4gnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrk04QnzEea7IoxHkWwqrA" name="If_4_else" target="_VrkN0QnzEea7IoxHkWwqrA" source="_VrkN0AnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vrk04wnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrk05AnzEea7IoxHkWwqrA" name="If_4_cond_FinalNode" target="_VrIwAwnzEea7IoxHkWwqrA" source="_VrkN0AnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vrk04gnzEea7IoxHkWwqrA" value="terminate"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrlb8AnzEea7IoxHkWwqrA" name="If_4_merge_If_3_merge" target="_Vrac0QnzEea7IoxHkWwqrA" source="_VrkN0QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrmDAAnzEea7IoxHkWwqrA" name="If_3_merge_FinalNode" target="_VrIwAwnzEea7IoxHkWwqrA" source="_Vrac0QnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VrYAkAnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VrYnognzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VrIwAQnzEea7IoxHkWwqrA" parameter="_VanAsgnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VrIwAgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VrTvIAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VrIwAwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VrZ1wwnzEea7IoxHkWwqrA _Vrk05AnzEea7IoxHkWwqrA _VrmDAAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VrTIEAnzEea7IoxHkWwqrA" name="Boolean terminate=this.terminate;" incoming="_VrTvIAnzEea7IoxHkWwqrA" outgoing="_VrYnoQnzEea7IoxHkWwqrA" variable="_VrYAkAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VrYnoAnzEea7IoxHkWwqrA" name="Solution best=getBestSolution();" incoming="_VrYnoQnzEea7IoxHkWwqrA" outgoing="_VrZOsgnzEea7IoxHkWwqrA" variable="_VrYnognzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VrZOsAnzEea7IoxHkWwqrA" name="If_2_cond" incoming="_VrZOsgnzEea7IoxHkWwqrA" outgoing="_VrZ1wAnzEea7IoxHkWwqrA _VrZ1wwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VrZOsQnzEea7IoxHkWwqrA" name="If_2_merge" incoming="_VrZ1wAnzEea7IoxHkWwqrA" outgoing="_Vrac0gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_Vrac0AnzEea7IoxHkWwqrA" name="If_3_cond" incoming="_Vrac0gnzEea7IoxHkWwqrA" outgoing="_Vrac0wnzEea7IoxHkWwqrA _VrjmwQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_Vrac0QnzEea7IoxHkWwqrA" name="If_3_merge" incoming="_Vrac0wnzEea7IoxHkWwqrA _Vrlb8AnzEea7IoxHkWwqrA" outgoing="_VrmDAAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VrbD4gnzEea7IoxHkWwqrA" name="terminate|=function.isTerminate(this);" incoming="_VrjmwQnzEea7IoxHkWwqrA" outgoing="_Vrk04AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VrbD4wnzEea7IoxHkWwqrA" name="this"/>
+              <result xmi:id="_VrjmwAnzEea7IoxHkWwqrA" name="terminate"/>
+            </node>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VrkN0AnzEea7IoxHkWwqrA" name="If_4_cond" incoming="_Vrk04AnzEea7IoxHkWwqrA" outgoing="_Vrk04QnzEea7IoxHkWwqrA _Vrk05AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VrkN0QnzEea7IoxHkWwqrA" name="If_4_merge" incoming="_Vrk04QnzEea7IoxHkWwqrA" outgoing="_Vrlb8AnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VrmDAQnzEea7IoxHkWwqrA" name="setTerminate" specification="_VatuYAnzEea7IoxHkWwqrA" node="_VrmqEAnzEea7IoxHkWwqrA _VrmqEQnzEea7IoxHkWwqrA _VrmqEgnzEea7IoxHkWwqrA _VrmqEwnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrnRIAnzEea7IoxHkWwqrA" name="InitNode_this.terminate=terminate;" target="_VrmqEwnzEea7IoxHkWwqrA" source="_VrmqEQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrnRIQnzEea7IoxHkWwqrA" name="this.terminate=terminate;_FinalNode" target="_VrmqEgnzEea7IoxHkWwqrA" source="_VrmqEwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VrmqEAnzEea7IoxHkWwqrA" name="terminate" parameter="_VauVcgnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VrmqEQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VrnRIAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VrmqEgnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VrnRIQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VrmqEwnzEea7IoxHkWwqrA" name="this.terminate=terminate;" incoming="_VrnRIAnzEea7IoxHkWwqrA" outgoing="_VrnRIQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.terminate=terminate;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VrnRIgnzEea7IoxHkWwqrA" name="getProblem" specification="_Va0cEAnzEea7IoxHkWwqrA" node="_Vrn4MAnzEea7IoxHkWwqrA _Vrn4MQnzEea7IoxHkWwqrA _Vrn4MgnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrn4MwnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_Vrn4MgnzEea7IoxHkWwqrA" source="_Vrn4MQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vrn4MAnzEea7IoxHkWwqrA" type="_VXiekQnzEea7IoxHkWwqrA" parameter="_Va0cEwnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vrn4MQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vrn4MwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vrn4MgnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vrn4MwnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VrofQAnzEea7IoxHkWwqrA" name="setProblem" specification="_VbETsAnzEea7IoxHkWwqrA" node="_VrofQQnzEea7IoxHkWwqrA _VrpGUAnzEea7IoxHkWwqrA _VrpGUQnzEea7IoxHkWwqrA _VrpGUgnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrptYAnzEea7IoxHkWwqrA" name="InitNode_this.problem=problem;" target="_VrpGUgnzEea7IoxHkWwqrA" source="_VrpGUAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrptYQnzEea7IoxHkWwqrA" name="this.problem=problem;_FinalNode" target="_VrpGUQnzEea7IoxHkWwqrA" source="_VrpGUgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VrofQQnzEea7IoxHkWwqrA" name="problem" type="_VXiekQnzEea7IoxHkWwqrA" parameter="_VbETswnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VrpGUAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VrptYAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VrpGUQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VrptYQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VrpGUgnzEea7IoxHkWwqrA" name="this.problem=problem;" incoming="_VrptYAnzEea7IoxHkWwqrA" outgoing="_VrptYQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.problem=problem;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VrqUcAnzEea7IoxHkWwqrA" name="getBestSolution" specification="_VbJzQAnzEea7IoxHkWwqrA" node="_VrqUcQnzEea7IoxHkWwqrA _VrqUcgnzEea7IoxHkWwqrA _VrqUcwnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrqUdAnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VrqUcwnzEea7IoxHkWwqrA" source="_VrqUcgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VrqUcQnzEea7IoxHkWwqrA" type="_VXlh4QnzEea7IoxHkWwqrA" parameter="_VbJzQwnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VrqUcgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VrqUdAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VrqUcwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VrqUdAnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vrq7gAnzEea7IoxHkWwqrA" name="checkBestSolution" specification="_VbZq4AnzEea7IoxHkWwqrA" node="_Vrq7gQnzEea7IoxHkWwqrA _Vrq7ggnzEea7IoxHkWwqrA _VrrikAnzEea7IoxHkWwqrA _VrrikQnzEea7IoxHkWwqrA _VrrikgnzEea7IoxHkWwqrA _VrsJownzEea7IoxHkWwqrA _VrsJpAnzEea7IoxHkWwqrA _VrtXwAnzEea7IoxHkWwqrA _Vrt-0AnzEea7IoxHkWwqrA _Vrul4gnzEea7IoxHkWwqrA _VrvM8gnzEea7IoxHkWwqrA _VrvM8wnzEea7IoxHkWwqrA _Vrv0AQnzEea7IoxHkWwqrA _VrwbEgnzEea7IoxHkWwqrA _VryQQAnzEea7IoxHkWwqrA _VryQQQnzEea7IoxHkWwqrA _Vr1TkQnzEea7IoxHkWwqrA _Vr16oQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrrikwnzEea7IoxHkWwqrA" name="InitNode_If_5_cond" target="_VrrikQnzEea7IoxHkWwqrA" source="_Vrq7ggnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrsJoAnzEea7IoxHkWwqrA" name="If_5_else" target="_VrrikgnzEea7IoxHkWwqrA" source="_VrrikQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrsJognzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrswsAnzEea7IoxHkWwqrA" name="If_5_cond_If_6_cond" target="_VrsJownzEea7IoxHkWwqrA" source="_VrrikQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrsJoQnzEea7IoxHkWwqrA" value="bestSolution == null"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrswsQnzEea7IoxHkWwqrA" name="If_6_else" target="_VrsJpAnzEea7IoxHkWwqrA" source="_VrsJownzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrswswnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrtXwgnzEea7IoxHkWwqrA" name="If_6_cond_bestSolution=sol.cloneMe();" target="_VrtXwAnzEea7IoxHkWwqrA" source="_VrsJownzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrswsgnzEea7IoxHkWwqrA" value="!sol.getFunctionValue().isNaN()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrt-0gnzEea7IoxHkWwqrA" name="bestSolution=sol.cloneMe();_setState(EvolutionAlgorithm.NEW_" target="_Vrt-0AnzEea7IoxHkWwqrA" source="_VrtXwAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrul4AnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.NE_If_6_merge" target="_VrsJpAnzEea7IoxHkWwqrA" source="_Vrt-0AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrul4QnzEea7IoxHkWwqrA" name="If_6_merge_If_5_merge" target="_VrrikgnzEea7IoxHkWwqrA" source="_VrsJpAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrvM8AnzEea7IoxHkWwqrA" name="If_5_merge_Double fitness=solution.getFunctionValue();" target="_Vrul4gnzEea7IoxHkWwqrA" source="_VrrikgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vrv0AAnzEea7IoxHkWwqrA" name="Double fitness=solution.getFun_If_7_cond" target="_VrvM8gnzEea7IoxHkWwqrA" source="_Vrul4gnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrwbEAnzEea7IoxHkWwqrA" name="If_7_cond_bestSolution=solution.cloneMe();" target="_Vrv0AQnzEea7IoxHkWwqrA" source="_VrvM8gnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrwbEQnzEea7IoxHkWwqrA" value="!fitness.isNaN() &amp;&amp; problem.isMinProblem() &amp;&amp; fitness &lt; bestSolution.getFunctionValue()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrxpMAnzEea7IoxHkWwqrA" name="bestSolution=solution.cloneMe(_setState(EvolutionAlgorithm.N" target="_VrwbEgnzEea7IoxHkWwqrA" source="_Vrv0AQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VrzeYAnzEea7IoxHkWwqrA" name="If_7_cond_If_8_cond" target="_VryQQAnzEea7IoxHkWwqrA" source="_VrvM8gnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VrzeYQnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr0FcAnzEea7IoxHkWwqrA" name="If_8_else" target="_VryQQQnzEea7IoxHkWwqrA" source="_VryQQAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vr1TkAnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr16oAnzEea7IoxHkWwqrA" name="If_8_cond_bestSolution=solution.cloneMe();" target="_Vr1TkQnzEea7IoxHkWwqrA" source="_VryQQAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vr0sgAnzEea7IoxHkWwqrA" value="!fitness.isNaN() &amp;&amp; !problem.isMinProblem() &amp;&amp; fitness > bestSolution.getFunctionValue()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr6MEAnzEea7IoxHkWwqrA" name="bestSolution=solution.cloneMe(_setState(EvolutionAlgorithm.N" target="_Vr16oQnzEea7IoxHkWwqrA" source="_Vr1TkQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr6MEQnzEea7IoxHkWwqrA" name="If_8_cond_toThen_If_8_merge" target="_VryQQAnzEea7IoxHkWwqrA" source="_VryQQQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr6zIAnzEea7IoxHkWwqrA" name="thenPathTo_If_7_merge" target="_VrvM8wnzEea7IoxHkWwqrA" source="_VrwbEgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr6zIQnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.NE_If_7_merge" target="_VrvM8wnzEea7IoxHkWwqrA" source="_Vr16oQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr6zIgnzEea7IoxHkWwqrA" name="If_7_merge_FinalNode" target="_VrrikAnzEea7IoxHkWwqrA" source="_VrvM8wnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VrvM8QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vrq7gQnzEea7IoxHkWwqrA" name="population" type="_VXqaYQnzEea7IoxHkWwqrA" parameter="_VbZq4wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vrq7ggnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VrrikwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VrrikAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vr6zIgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VrrikQnzEea7IoxHkWwqrA" name="If_5_cond" incoming="_VrrikwnzEea7IoxHkWwqrA" outgoing="_VrsJoAnzEea7IoxHkWwqrA _VrswsAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VrrikgnzEea7IoxHkWwqrA" name="If_5_merge" incoming="_VrsJoAnzEea7IoxHkWwqrA _Vrul4QnzEea7IoxHkWwqrA" outgoing="_VrvM8AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VrsJownzEea7IoxHkWwqrA" name="If_6_cond" incoming="_VrswsAnzEea7IoxHkWwqrA" outgoing="_VrswsQnzEea7IoxHkWwqrA _VrtXwgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VrsJpAnzEea7IoxHkWwqrA" name="If_6_merge" incoming="_VrswsQnzEea7IoxHkWwqrA _Vrul4AnzEea7IoxHkWwqrA" outgoing="_Vrul4QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VrtXwAnzEea7IoxHkWwqrA" name="bestSolution=sol.cloneMe();" incoming="_VrtXwgnzEea7IoxHkWwqrA" outgoing="_Vrt-0gnzEea7IoxHkWwqrA">
+              <result xmi:id="_VrtXwQnzEea7IoxHkWwqrA" name="bestSolution"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vrt-0AnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);" incoming="_Vrt-0gnzEea7IoxHkWwqrA" outgoing="_Vrul4AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vrt-0QnzEea7IoxHkWwqrA" name="EvolutionAlgorithm.NEW_BEST_SOLUTION"/>
+            </node>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vrul4gnzEea7IoxHkWwqrA" name="Double fitness=solution.getFunctionValue();" incoming="_VrvM8AnzEea7IoxHkWwqrA" outgoing="_Vrv0AAnzEea7IoxHkWwqrA" variable="_VrvM8QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VrvM8gnzEea7IoxHkWwqrA" name="If_7_cond" incoming="_Vrv0AAnzEea7IoxHkWwqrA" outgoing="_VrwbEAnzEea7IoxHkWwqrA _VrzeYAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VrvM8wnzEea7IoxHkWwqrA" name="If_7_merge" incoming="_Vr6zIAnzEea7IoxHkWwqrA _Vr6zIQnzEea7IoxHkWwqrA" outgoing="_Vr6zIgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vrv0AQnzEea7IoxHkWwqrA" name="bestSolution=solution.cloneMe();" incoming="_VrwbEAnzEea7IoxHkWwqrA" outgoing="_VrxpMAnzEea7IoxHkWwqrA">
+              <result xmi:id="_Vrv0AgnzEea7IoxHkWwqrA" name="bestSolution"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VrwbEgnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);" incoming="_VrxpMAnzEea7IoxHkWwqrA" outgoing="_Vr6zIAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VrwbEwnzEea7IoxHkWwqrA" name="EvolutionAlgorithm.NEW_BEST_SOLUTION"/>
+            </node>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VryQQAnzEea7IoxHkWwqrA" name="If_8_cond" incoming="_VrzeYAnzEea7IoxHkWwqrA _Vr6MEQnzEea7IoxHkWwqrA" outgoing="_Vr0FcAnzEea7IoxHkWwqrA _Vr16oAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VryQQQnzEea7IoxHkWwqrA" name="If_8_merge" incoming="_Vr0FcAnzEea7IoxHkWwqrA" outgoing="_Vr6MEQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vr1TkQnzEea7IoxHkWwqrA" name="bestSolution=solution.cloneMe();" incoming="_Vr16oAnzEea7IoxHkWwqrA" outgoing="_Vr6MEAnzEea7IoxHkWwqrA">
+              <result xmi:id="_Vr1TkgnzEea7IoxHkWwqrA" name="bestSolution"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vr16oQnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.NEW_BEST_SOLUTION);" incoming="_Vr6MEAnzEea7IoxHkWwqrA" outgoing="_Vr6zIQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vr5lAAnzEea7IoxHkWwqrA" name="EvolutionAlgorithm.NEW_BEST_SOLUTION"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vr7aMAnzEea7IoxHkWwqrA" name="getWriter" specification="_VbiNwAnzEea7IoxHkWwqrA" node="_Vr7aMQnzEea7IoxHkWwqrA _Vr8BQAnzEea7IoxHkWwqrA _Vr8BQQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr8BQgnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_Vr8BQQnzEea7IoxHkWwqrA" source="_Vr8BQAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vr7aMQnzEea7IoxHkWwqrA" type="_VXbJ0AnzEea7IoxHkWwqrA" parameter="_Vbi00AnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vr8BQAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vr8BQgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vr8BQQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vr8BQgnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vr8oUAnzEea7IoxHkWwqrA" name="setWriter" specification="_VbyFYAnzEea7IoxHkWwqrA" node="_Vr8oUQnzEea7IoxHkWwqrA _Vr9PYAnzEea7IoxHkWwqrA _Vr9PYQnzEea7IoxHkWwqrA _Vr9PYgnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr_EkAnzEea7IoxHkWwqrA" name="InitNode_this.writer=writer;" target="_Vr9PYgnzEea7IoxHkWwqrA" source="_Vr9PYAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vr_EkQnzEea7IoxHkWwqrA" name="this.writer=writer;_FinalNode" target="_Vr9PYQnzEea7IoxHkWwqrA" source="_Vr9PYgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vr8oUQnzEea7IoxHkWwqrA" name="writer" type="_VXbJ0AnzEea7IoxHkWwqrA" parameter="_VbyFYwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vr9PYAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vr_EkAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vr9PYQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vr_EkQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_Vr9PYgnzEea7IoxHkWwqrA" name="this.writer=writer;" incoming="_Vr_EkAnzEea7IoxHkWwqrA" outgoing="_Vr_EkQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.writer=writer;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsASsAnzEea7IoxHkWwqrA" name="setWriter" specification="_VcB9AAnzEea7IoxHkWwqrA" node="_VsASsQnzEea7IoxHkWwqrA _VsDWAAnzEea7IoxHkWwqrA _VsD9EAnzEea7IoxHkWwqrA _VsD9EQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsD9EgnzEea7IoxHkWwqrA" name="InitNode_this.writer=new OutputStreamWriter(new FileOutputSt" target="_VsD9EQnzEea7IoxHkWwqrA" source="_VsDWAAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsEkIAnzEea7IoxHkWwqrA" name="this.writer=new OutputStreamWr_FinalNode" target="_VsD9EAnzEea7IoxHkWwqrA" source="_VsD9EQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsASsQnzEea7IoxHkWwqrA" name="file" type="_VXYGgQnzEea7IoxHkWwqrA" parameter="_VcB9AwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsDWAAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsD9EgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsD9EAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsEkIAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VsD9EQnzEea7IoxHkWwqrA" name="this.writer=new OutputStreamWriter(new FileOutputStream(file));" incoming="_VsD9EgnzEea7IoxHkWwqrA" outgoing="_VsEkIAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.writer=new OutputStreamWriter(new FileOutputStream(file));
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsEkIQnzEea7IoxHkWwqrA" name="notifyListeners" specification="_VcsrYAnzEea7IoxHkWwqrA" node="_VsEkIgnzEea7IoxHkWwqrA _VsFLMAnzEea7IoxHkWwqrA _VsFLMQnzEea7IoxHkWwqrA _VsFLMgnzEea7IoxHkWwqrA _VsFLMwnzEea7IoxHkWwqrA _VsFLNAnzEea7IoxHkWwqrA _VsFyQAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsGZUAnzEea7IoxHkWwqrA" name="InitNode_name.propertyChange(new PropertyChangeEvent(this,pr" target="_VsFyQAnzEea7IoxHkWwqrA" source="_VsFLMwnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsGZUQnzEea7IoxHkWwqrA" name="name.propertyChange(new Proper_FinalNode" target="_VsFLNAnzEea7IoxHkWwqrA" source="_VsFyQAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsEkIgnzEea7IoxHkWwqrA" name="object" type="_VcIDoAnzEea7IoxHkWwqrA" parameter="_VcsrYwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsFLMAnzEea7IoxHkWwqrA" name="property" parameter="_VcsrZAnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </node>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsFLMQnzEea7IoxHkWwqrA" name="oldValue" type="_VcIDoAnzEea7IoxHkWwqrA" parameter="_VcsrZQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsFLMgnzEea7IoxHkWwqrA" name="newValue" type="_VcIDoAnzEea7IoxHkWwqrA" parameter="_VcsrZgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsFLMwnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsGZUAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsFLNAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsGZUQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsFyQAnzEea7IoxHkWwqrA" name="name.propertyChange(new PropertyChangeEvent(this,property,oldValue,newValue));" incoming="_VsGZUAnzEea7IoxHkWwqrA" outgoing="_VsGZUQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VsFyQQnzEea7IoxHkWwqrA" name="new PropertyChangeEvent(this,property,oldValue,newValue)"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsHAYAnzEea7IoxHkWwqrA" name="addChangeListener" specification="_VdG7EAnzEea7IoxHkWwqrA" node="_VsL44AnzEea7IoxHkWwqrA _VsL44QnzEea7IoxHkWwqrA _VsL44gnzEea7IoxHkWwqrA _VsMf8AnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsMf8gnzEea7IoxHkWwqrA" name="InitNode_listeners.add(listener);" target="_VsMf8AnzEea7IoxHkWwqrA" source="_VsL44QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsNHAAnzEea7IoxHkWwqrA" name="listeners.add(listener);_FinalNode" target="_VsL44gnzEea7IoxHkWwqrA" source="_VsMf8AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsL44AnzEea7IoxHkWwqrA" name="listener" type="_VXW4YAnzEea7IoxHkWwqrA" parameter="_VdG7EwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsL44QnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsMf8gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsL44gnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsNHAAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsMf8AnzEea7IoxHkWwqrA" name="listeners.add(listener);" incoming="_VsMf8gnzEea7IoxHkWwqrA" outgoing="_VsNHAAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VsMf8QnzEea7IoxHkWwqrA" name="listener"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsNHAQnzEea7IoxHkWwqrA" name="getListeners" specification="_VdadEAnzEea7IoxHkWwqrA" node="_VsNHAgnzEea7IoxHkWwqrA _VsNuEAnzEea7IoxHkWwqrA _VsNuEQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsNuEgnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VsNuEQnzEea7IoxHkWwqrA" source="_VsNuEAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsNHAgnzEea7IoxHkWwqrA" type="_VXgpYAnzEea7IoxHkWwqrA" parameter="_VdadEQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsNuEAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsNuEgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsNuEQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsNuEgnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsOVIAnzEea7IoxHkWwqrA" name="getState" specification="_VeKrAAnzEea7IoxHkWwqrA" node="_VsOVIQnzEea7IoxHkWwqrA _VsOVIgnzEea7IoxHkWwqrA _VsO8MAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsO8MQnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VsO8MAnzEea7IoxHkWwqrA" source="_VsOVIgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsOVIQnzEea7IoxHkWwqrA" parameter="_VeKrAwnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsOVIgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsO8MQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsO8MAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsO8MQnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsPjQAnzEea7IoxHkWwqrA" name="setState" specification="_VeYtcAnzEea7IoxHkWwqrA" node="_VsPjQQnzEea7IoxHkWwqrA _VsPjQgnzEea7IoxHkWwqrA _VsPjQwnzEea7IoxHkWwqrA _VsPjRAnzEea7IoxHkWwqrA _VsQxYQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsQxYAnzEea7IoxHkWwqrA" name="InitNode_notifyListeners(this,&quot;STATE&quot;,this.state,state);" target="_VsPjRAnzEea7IoxHkWwqrA" source="_VsPjQgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsVp4AnzEea7IoxHkWwqrA" name="notifyListeners(this,&quot;STATE&quot;,t_this.state=state;" target="_VsQxYQnzEea7IoxHkWwqrA" source="_VsPjRAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsVp4QnzEea7IoxHkWwqrA" name="this.state=state;_FinalNode" target="_VsPjQwnzEea7IoxHkWwqrA" source="_VsQxYQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsPjQQnzEea7IoxHkWwqrA" name="state" parameter="_VeYtcwnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsPjQgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsQxYAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsPjQwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsVp4QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsPjRAnzEea7IoxHkWwqrA" name="notifyListeners(this,&quot;STATE&quot;,this.state,state);" incoming="_VsQxYAnzEea7IoxHkWwqrA" outgoing="_VsVp4AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VsQKUAnzEea7IoxHkWwqrA" name="this"/>
+              <argument xmi:id="_VsQKUQnzEea7IoxHkWwqrA" name="&quot;STATE&quot;"/>
+              <argument xmi:id="_VsQKUgnzEea7IoxHkWwqrA" name="this.state"/>
+              <argument xmi:id="_VsQKUwnzEea7IoxHkWwqrA" name="state"/>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VsQxYQnzEea7IoxHkWwqrA" name="this.state=state;" incoming="_VsVp4AnzEea7IoxHkWwqrA" outgoing="_VsVp4QnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.state=state;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsWQ8AnzEea7IoxHkWwqrA" name="getGeneration" specification="_VegpQAnzEea7IoxHkWwqrA" node="_VsWQ8QnzEea7IoxHkWwqrA _VsWQ8gnzEea7IoxHkWwqrA _VsW4AAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsW4AQnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VsW4AAnzEea7IoxHkWwqrA" source="_VsWQ8gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsWQ8QnzEea7IoxHkWwqrA" parameter="_VegpQQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsWQ8gnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsW4AQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsW4AAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsW4AQnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsXfEAnzEea7IoxHkWwqrA" name="setGeneration" specification="_Ve0yUAnzEea7IoxHkWwqrA" node="_VsXfEQnzEea7IoxHkWwqrA _VsXfEgnzEea7IoxHkWwqrA _VsXfEwnzEea7IoxHkWwqrA _VsYGIAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsYGIQnzEea7IoxHkWwqrA" name="InitNode_this.generation=generation;" target="_VsYGIAnzEea7IoxHkWwqrA" source="_VsXfEgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsYtMAnzEea7IoxHkWwqrA" name="this.generation=generation;_FinalNode" target="_VsXfEwnzEea7IoxHkWwqrA" source="_VsYGIAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsXfEQnzEea7IoxHkWwqrA" name="generation" parameter="_Ve0yUQnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsXfEgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsYGIQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsXfEwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsYtMAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VsYGIAnzEea7IoxHkWwqrA" name="this.generation=generation;" incoming="_VsYGIQnzEea7IoxHkWwqrA" outgoing="_VsYtMAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.generation=generation;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsYtMQnzEea7IoxHkWwqrA" name="getActualGeneration" specification="_VfDb0AnzEea7IoxHkWwqrA" node="_VsYtMgnzEea7IoxHkWwqrA _VsZUQAnzEea7IoxHkWwqrA _VsZUQQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsZUQgnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VsZUQQnzEea7IoxHkWwqrA" source="_VsZUQAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsYtMgnzEea7IoxHkWwqrA" parameter="_VfDb0QnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsZUQAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsZUQgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsZUQQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsZUQgnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VsZ7UAnzEea7IoxHkWwqrA" name="setActualGeneration" specification="_VfW90AnzEea7IoxHkWwqrA" node="_VsZ7UQnzEea7IoxHkWwqrA _VsZ7UgnzEea7IoxHkWwqrA _VsZ7UwnzEea7IoxHkWwqrA _VsZ7VAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsaiYAnzEea7IoxHkWwqrA" name="InitNode_this.actualGeneration=actualGeneration;" target="_VsZ7VAnzEea7IoxHkWwqrA" source="_VsZ7UgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsdlsAnzEea7IoxHkWwqrA" name="this.actualGeneration=actualGe_FinalNode" target="_VsZ7UwnzEea7IoxHkWwqrA" source="_VsZ7VAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VsZ7UQnzEea7IoxHkWwqrA" name="actualGeneration" parameter="_VfW90QnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VsZ7UgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsaiYAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsZ7UwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsdlsAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VsZ7VAnzEea7IoxHkWwqrA" name="this.actualGeneration=actualGeneration;" incoming="_VsaiYAnzEea7IoxHkWwqrA" outgoing="_VsdlsAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.actualGeneration=actualGeneration;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VseMwAnzEea7IoxHkWwqrA" name="increseActualGeneration" specification="_VfpRsAnzEea7IoxHkWwqrA" node="_VseMwQnzEea7IoxHkWwqrA _VseMwgnzEea7IoxHkWwqrA _VseMwwnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vsez0AnzEea7IoxHkWwqrA" name="InitNode_this.actualGeneration++;" target="_VseMwwnzEea7IoxHkWwqrA" source="_VseMwQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vsez0QnzEea7IoxHkWwqrA" name="this.actualGeneration++;_FinalNode" target="_VseMwgnzEea7IoxHkWwqrA" source="_VseMwwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VseMwQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vsez0AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VseMwgnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vsez0QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VseMwwnzEea7IoxHkWwqrA" name="this.actualGeneration++;" incoming="_Vsez0AnzEea7IoxHkWwqrA" outgoing="_Vsez0QnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.actualGeneration++;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vsfa4AnzEea7IoxHkWwqrA" name="addTerminateFunction" specification="_VgJoAAnzEea7IoxHkWwqrA" node="_Vsfa4QnzEea7IoxHkWwqrA _Vsfa4gnzEea7IoxHkWwqrA _Vsfa4wnzEea7IoxHkWwqrA _VsgB8AnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsgB8gnzEea7IoxHkWwqrA" name="InitNode_terminateFunction.add(function);" target="_VsgB8AnzEea7IoxHkWwqrA" source="_Vsfa4gnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsgB8wnzEea7IoxHkWwqrA" name="terminateFunction.add(function_FinalNode" target="_Vsfa4wnzEea7IoxHkWwqrA" source="_VsgB8AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vsfa4QnzEea7IoxHkWwqrA" name="function" type="_VXmI8QnzEea7IoxHkWwqrA" parameter="_VgJoAwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vsfa4gnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsgB8gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vsfa4wnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsgB8wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsgB8AnzEea7IoxHkWwqrA" name="terminateFunction.add(function);" incoming="_VsgB8gnzEea7IoxHkWwqrA" outgoing="_VsgB8wnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VsgB8QnzEea7IoxHkWwqrA" name="function"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VshQEAnzEea7IoxHkWwqrA" name="clearTerminateFunctions" specification="_VgSx8AnzEea7IoxHkWwqrA" node="_VshQEQnzEea7IoxHkWwqrA _VsjFQAnzEea7IoxHkWwqrA _VsjsUAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsjsUQnzEea7IoxHkWwqrA" name="InitNode_terminateFunction.clear();" target="_VsjsUAnzEea7IoxHkWwqrA" source="_VshQEQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VskTYAnzEea7IoxHkWwqrA" name="terminateFunction.clear();_FinalNode" target="_VsjFQAnzEea7IoxHkWwqrA" source="_VsjsUAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VshQEQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VsjsUQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VsjFQAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VskTYAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsjsUAnzEea7IoxHkWwqrA" name="terminateFunction.clear();" incoming="_VsjsUQnzEea7IoxHkWwqrA" outgoing="_VskTYAnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VskTYQnzEea7IoxHkWwqrA" name="reset" specification="_VgbU0AnzEea7IoxHkWwqrA" node="_VskTYgnzEea7IoxHkWwqrA _Vsk6cAnzEea7IoxHkWwqrA _Vsk6cQnzEea7IoxHkWwqrA _VslhgAnzEea7IoxHkWwqrA _VslhggnzEea7IoxHkWwqrA _VsqaAAnzEea7IoxHkWwqrA _VsroIAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vsk6cgnzEea7IoxHkWwqrA" name="InitNode_bestSolution=null;" target="_Vsk6cQnzEea7IoxHkWwqrA" source="_VskTYgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VslhgQnzEea7IoxHkWwqrA" name="bestSolution=null;_terminate=false;" target="_VslhgAnzEea7IoxHkWwqrA" source="_Vsk6cQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsnWsAnzEea7IoxHkWwqrA" name="terminate=false;_actualGeneration=0;" target="_VslhggnzEea7IoxHkWwqrA" source="_VslhgAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsrBEAnzEea7IoxHkWwqrA" name="actualGeneration=0;_getProblem().initialize();" target="_VsqaAAnzEea7IoxHkWwqrA" source="_VslhggnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsroIQnzEea7IoxHkWwqrA" name="getProblem().initialize();_getPopulation().clear();" target="_VsroIAnzEea7IoxHkWwqrA" source="_VsqaAAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VsroIgnzEea7IoxHkWwqrA" name="getPopulation().clear();_FinalNode" target="_Vsk6cAnzEea7IoxHkWwqrA" source="_VsroIAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VskTYgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vsk6cgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vsk6cAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VsroIgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_Vsk6cQnzEea7IoxHkWwqrA" name="bestSolution=null;" incoming="_Vsk6cgnzEea7IoxHkWwqrA" outgoing="_VslhgQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>bestSolution=null;
+</body>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VslhgAnzEea7IoxHkWwqrA" name="terminate=false;" incoming="_VslhgQnzEea7IoxHkWwqrA" outgoing="_VsnWsAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>terminate=false;
+</body>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VslhggnzEea7IoxHkWwqrA" name="actualGeneration=0;" incoming="_VsnWsAnzEea7IoxHkWwqrA" outgoing="_VsrBEAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>actualGeneration=0;
+</body>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsqaAAnzEea7IoxHkWwqrA" name="getProblem().initialize();" incoming="_VsrBEAnzEea7IoxHkWwqrA" outgoing="_VsroIQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VsroIAnzEea7IoxHkWwqrA" name="getPopulation().clear();" incoming="_VsroIQnzEea7IoxHkWwqrA" outgoing="_VsroIgnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedOperation xmi:id="_VZXDgAnzEea7IoxHkWwqrA" name="start" visibility="public" method="_VpE6gAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VZXDgQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VZXDggnzEea7IoxHkWwqrA" key="documentation" value=" Spustí algoritmus&#xA; &#xA; @throws Exception&#xA;&#x9;"/>
+            </eAnnotations>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VZdxMAnzEea7IoxHkWwqrA" name="stop" visibility="public" method="_VqlWYAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VZdxMQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VZdxMgnzEea7IoxHkWwqrA" key="documentation" value=" Zastavení algoritmus&#xA;&#x9;"/>
+            </eAnnotations>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VZj30AnzEea7IoxHkWwqrA" name="getPopulation" visibility="public" method="_Vq2cIAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VZj30QnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VZj30gnzEea7IoxHkWwqrA" key="documentation" value=" Získání populace jedinců&#xA; &#xA; @return&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VZj30wnzEea7IoxHkWwqrA" type="_VXqaYQnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VZ0WgAnzEea7IoxHkWwqrA" name="setPopulation" visibility="public" method="_Vq77sAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VZ0WgQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VZ09kAnzEea7IoxHkWwqrA" key="documentation" value=" Nastavení populace jedinců&#xA; &#xA; @param pop&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VZ09kQnzEea7IoxHkWwqrA" name="pop" type="_VXqaYQnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VakkcAnzEea7IoxHkWwqrA" name="setPopulationSize" visibility="public" method="_Vq-_AAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VakkcQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VakkcgnzEea7IoxHkWwqrA" key="documentation" value=" Nastavení velikosti maximální velikosti populace. Aktuální populace se&#xA; smaže&#xA; &#xA; @param size&#xA;            maximální kapacita&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VakkcwnzEea7IoxHkWwqrA" name="size">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VamZoAnzEea7IoxHkWwqrA" name="isTerminate" visibility="public" method="_VrIwAAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VanAsAnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VanAsQnzEea7IoxHkWwqrA" key="documentation" value=" Testuje, zda se má algoritmus ukončit&#xA; &#xA; @return&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VanAsgnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VatuYAnzEea7IoxHkWwqrA" name="setTerminate" visibility="public" method="_VrmDAQnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VauVcAnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VauVcQnzEea7IoxHkWwqrA" key="documentation" value=" Nastavení běhu/zastavení algoritmu&#xA; &#xA; @param terminate&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VauVcgnzEea7IoxHkWwqrA" name="terminate">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Va0cEAnzEea7IoxHkWwqrA" name="getProblem" visibility="public" method="_VrnRIgnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_Va0cEQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_Va0cEgnzEea7IoxHkWwqrA" key="documentation" value=" Získání instance problému&#xA; &#xA; @return&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_Va0cEwnzEea7IoxHkWwqrA" type="_VXiekQnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VbETsAnzEea7IoxHkWwqrA" name="setProblem" visibility="public" method="_VrofQAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VbETsQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VbETsgnzEea7IoxHkWwqrA" key="documentation" value=" Nastavení instance problému&#xA; &#xA; @param problem&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VbETswnzEea7IoxHkWwqrA" name="problem" type="_VXiekQnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VbJzQAnzEea7IoxHkWwqrA" name="getBestSolution" visibility="public" method="_VrqUcAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VbJzQQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VbJzQgnzEea7IoxHkWwqrA" key="documentation" value=" Získání instance nejlepšího řešení&#xA; &#xA; @return&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VbJzQwnzEea7IoxHkWwqrA" type="_VXlh4QnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VbZq4AnzEea7IoxHkWwqrA" name="checkBestSolution" visibility="public" method="_Vrq7gAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VbZq4QnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VbZq4gnzEea7IoxHkWwqrA" key="documentation" value=" Prochazi celou populaci a hleda reseni, ktera jsou lepsi nez aktualne&#xA; nejlepsi reseni. Pokud takove reseni nalezne, nahradi posledni nejlepsi&#xA; reseni&#xA; &#xA; @param population&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VbZq4wnzEea7IoxHkWwqrA" name="population" type="_VXqaYQnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VbiNwAnzEea7IoxHkWwqrA" name="getWriter" visibility="public" method="_Vr7aMAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VbiNwQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VbiNwgnzEea7IoxHkWwqrA" key="documentation" value=" Stream pro zapisovani informaci o prubehu algoritmu&#xA; &#xA; @return&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_Vbi00AnzEea7IoxHkWwqrA" type="_VXbJ0AnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VbyFYAnzEea7IoxHkWwqrA" name="setWriter" visibility="public" method="_Vr8oUAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VbyFYQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VbyFYgnzEea7IoxHkWwqrA" key="documentation" value=" Nastavuje (povoluje) stream pro zapis informaci o algoritmu&#xA; &#xA; @param writer&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VbyFYwnzEea7IoxHkWwqrA" name="writer" type="_VXbJ0AnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VcB9AAnzEea7IoxHkWwqrA" name="setWriter" visibility="public" method="_VsASsAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VcB9AQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VcB9AgnzEea7IoxHkWwqrA" key="documentation" value=" Nastavuje (povoluje) stream pro zapis informaci o algoritmu&#xA; &#xA; @param file&#xA;            soubor pro zápis&#xA; @throws FileNotFoundException&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VcB9AwnzEea7IoxHkWwqrA" name="file" type="_VXYGgQnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VcsrYAnzEea7IoxHkWwqrA" name="notifyListeners" visibility="private" method="_VsEkIQnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VcsrYQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VcsrYgnzEea7IoxHkWwqrA" key="documentation" value=" Identifikuje zmenu pro posluchace&#xA; &#xA; @param object&#xA;            objekt vyvolavajici udalost&#xA; @param property&#xA;            parametr, ktery se zmenil&#xA; @param oldValue&#xA;            stara hodnota&#xA; @param newValue&#xA;            nova hodnota&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VcsrYwnzEea7IoxHkWwqrA" name="object" type="_VcIDoAnzEea7IoxHkWwqrA"/>
+            <ownedParameter xmi:id="_VcsrZAnzEea7IoxHkWwqrA" name="property">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:id="_VcsrZQnzEea7IoxHkWwqrA" name="oldValue" type="_VcIDoAnzEea7IoxHkWwqrA"/>
+            <ownedParameter xmi:id="_VcsrZgnzEea7IoxHkWwqrA" name="newValue" type="_VcIDoAnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VdG7EAnzEea7IoxHkWwqrA" name="addChangeListener" visibility="public" method="_VsHAYAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VdG7EQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VdG7EgnzEea7IoxHkWwqrA" key="documentation" value=" Prida posluchace udalosti&#xA; &#xA; @param listener&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VdG7EwnzEea7IoxHkWwqrA" name="listener" type="_VXW4YAnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VdadEAnzEea7IoxHkWwqrA" name="getListeners" visibility="public" method="_VsNHAQnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VdadEQnzEea7IoxHkWwqrA" type="_VXgpYAnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Vd_r4AnzEea7IoxHkWwqrA" name="setListeners" visibility="public">
+            <ownedParameter xmi:id="_Vd_r4QnzEea7IoxHkWwqrA" name="listeners" type="_VXgpYAnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VeKrAAnzEea7IoxHkWwqrA" name="getState" visibility="public" method="_VsOVIAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VeKrAQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VeKrAgnzEea7IoxHkWwqrA" key="documentation" value=" Vraci stav algoritmu&#xA; &#xA; @return&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VeKrAwnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VeYtcAnzEea7IoxHkWwqrA" name="setState" visibility="protected" method="_VsPjQAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VeYtcQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VeYtcgnzEea7IoxHkWwqrA" key="documentation" value=" Změni stav algoritmu&#xA; &#xA; @param state&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VeYtcwnzEea7IoxHkWwqrA" name="state">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VegpQAnzEea7IoxHkWwqrA" name="getGeneration" visibility="public" method="_VsWQ8AnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VegpQQnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Ve0yUAnzEea7IoxHkWwqrA" name="setGeneration" visibility="public" method="_VsXfEAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_Ve0yUQnzEea7IoxHkWwqrA" name="generation">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VfDb0AnzEea7IoxHkWwqrA" name="getActualGeneration" visibility="public" method="_VsYtMQnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VfDb0QnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VfW90AnzEea7IoxHkWwqrA" name="setActualGeneration" visibility="public" method="_VsZ7UAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VfW90QnzEea7IoxHkWwqrA" name="actualGeneration">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VfpRsAnzEea7IoxHkWwqrA" name="increseActualGeneration" visibility="public" method="_VseMwAnzEea7IoxHkWwqrA"/>
+          <ownedOperation xmi:id="_VgJoAAnzEea7IoxHkWwqrA" name="addTerminateFunction" visibility="public" method="_Vsfa4AnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VgJoAQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VgJoAgnzEea7IoxHkWwqrA" key="documentation" value=" Add new terminate function&#xA; &#xA; @param function&#xA;            terminate function&#xA;&#x9;"/>
+            </eAnnotations>
+            <ownedParameter xmi:id="_VgJoAwnzEea7IoxHkWwqrA" name="function" type="_VXmI8QnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VgSx8AnzEea7IoxHkWwqrA" name="clearTerminateFunctions" visibility="public" method="_VshQEAnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VgSx8QnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VgSx8gnzEea7IoxHkWwqrA" key="documentation" value=" Remove all terminate function&#xA;&#x9;"/>
+            </eAnnotations>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VgbU0AnzEea7IoxHkWwqrA" name="reset" visibility="public" method="_VskTYQnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_VgbU0QnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_VgbU0gnzEea7IoxHkWwqrA" key="documentation" value=" Reset code before execute new evolution instantiate&#xA;&#x9;"/>
+            </eAnnotations>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_VW8osAnzEea7IoxHkWwqrA" name="GeneticProgramming" visibility="public">
+          <elementImport xmi:id="_Vg0WYAnzEea7IoxHkWwqrA" importedElement="_VXh3ggnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg1kgQnzEea7IoxHkWwqrA" importedElement="_Vg1kgAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg2LkQnzEea7IoxHkWwqrA" importedElement="_Vg2LkAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg2yognzEea7IoxHkWwqrA" importedElement="_Vg2yoQnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg3ZsQnzEea7IoxHkWwqrA" importedElement="_Vg3ZsAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg4n0AnzEea7IoxHkWwqrA" importedElement="_Vg4AwAnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg5O4QnzEea7IoxHkWwqrA" importedElement="_Vg5O4AnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg518QnzEea7IoxHkWwqrA" importedElement="_Vg518AnzEea7IoxHkWwqrA" visibility="private"/>
+          <elementImport xmi:id="_Vg518gnzEea7IoxHkWwqrA" importedElement="_VXqaYQnzEea7IoxHkWwqrA" visibility="private"/>
+          <generalization xmi:id="_Vgvd4AnzEea7IoxHkWwqrA" general="_VW5lYAnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VhAjoAnzEea7IoxHkWwqrA" name="select" visibility="private" type="_Vg518AnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VhHRUAnzEea7IoxHkWwqrA" name="cross" visibility="private" type="_Vg1kgAnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VhN_AAnzEea7IoxHkWwqrA" name="mutate" visibility="private" type="_Vg2yoQnzEea7IoxHkWwqrA"/>
+          <ownedAttribute xmi:id="_VhP0MAnzEea7IoxHkWwqrA" name="mutateProbability" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhQbQAnzEea7IoxHkWwqrA" name="" value="0.1">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhSQcAnzEea7IoxHkWwqrA" name="crossProbrability" visibility="private">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhSQcQnzEea7IoxHkWwqrA" name="" value="0.8">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhUFoAnzEea7IoxHkWwqrA" name="POPULATION_SIZE" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_VhUssAnzEea7IoxHkWwqrA" name="" value="20">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhWh4AnzEea7IoxHkWwqrA" name="CREATE_INIT_POPULATION_START" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhXI8AnzEea7IoxHkWwqrA" name="" value="&quot;CREATE_INIT_POPULATION_START&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhY-IAnzEea7IoxHkWwqrA" name="CREATE_INIT_POPULATION_END" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhY-IQnzEea7IoxHkWwqrA" name="" value="&quot;CREATE_INIT_POPULATION_END&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhbaYAnzEea7IoxHkWwqrA" name="EVALUATE_POPULATION_START" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhbaYQnzEea7IoxHkWwqrA" name="" value="&quot;EVALUATE_POPULATION_START&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhdPkAnzEea7IoxHkWwqrA" name="EVALUATE_POPULATION_END" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_Vhd2oAnzEea7IoxHkWwqrA" name="" value="&quot;EVALUATE_POPULATION_END&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Vhfr0AnzEea7IoxHkWwqrA" name="CHECK_BEST_SOLUTION_START" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhgS4AnzEea7IoxHkWwqrA" name="" value="&quot;CHECK_BEST_SOLUTION_START&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhiIEAnzEea7IoxHkWwqrA" name="CHECK_BEST_SOLUTION_END" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhivIAnzEea7IoxHkWwqrA" name="" value="&quot;CHECK_BEST_SOLUTION_END&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhkkUAnzEea7IoxHkWwqrA" name="MUTATE_SOLUTION_START" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhkkUQnzEea7IoxHkWwqrA" name="" value="&quot;MUTATE_SOLUTION_START&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhnAkAnzEea7IoxHkWwqrA" name="MUTATE_SOLUTION_END" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhnAkQnzEea7IoxHkWwqrA" name="" value="&quot;MUTATE_SOLUTION_END&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Vho1wAnzEea7IoxHkWwqrA" name="CROSS_SOLUTION_START" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_Vhpc0AnzEea7IoxHkWwqrA" name="" value="&quot;CROSS_SOLUTION_START&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhrSAAnzEea7IoxHkWwqrA" name="CROSS_SOLUTION_END" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_Vhr5EAnzEea7IoxHkWwqrA" name="" value="&quot;CROSS_SOLUTION_END&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_VhtuQAnzEea7IoxHkWwqrA" name="NEW_POPULATION" visibility="public" isLeaf="true" isStatic="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_VhtuQQnzEea7IoxHkWwqrA" name="" value="&quot;NEW_POPULATION&quot;">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:id="_Vh0b8AnzEea7IoxHkWwqrA" name="LOG" visibility="private" isLeaf="true" isStatic="true" type="_VXh3ggnzEea7IoxHkWwqrA">
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_Vh0b8QnzEea7IoxHkWwqrA" name="" type="_VXh3ggnzEea7IoxHkWwqrA" value="Logger.getLogger(GeneticProgramming.class)"/>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vs-jEAnzEea7IoxHkWwqrA" name="GeneticProgramming" specification="_Vh57gAnzEea7IoxHkWwqrA" node="_Vs-jEQnzEea7IoxHkWwqrA _Vs-jEgnzEea7IoxHkWwqrA _VtECoAnzEea7IoxHkWwqrA _VtEpsQnzEea7IoxHkWwqrA _VtFQwQnzEea7IoxHkWwqrA _VtF30QnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtEpsAnzEea7IoxHkWwqrA" name="InitNode_setPopulationSize(POPULATION_SIZE);" target="_VtECoAnzEea7IoxHkWwqrA" source="_Vs-jEQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtFQwAnzEea7IoxHkWwqrA" name="setPopulationSize(POPULATION_S_setCross(new TreeCross());" target="_VtEpsQnzEea7IoxHkWwqrA" source="_VtECoAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtF30AnzEea7IoxHkWwqrA" name="setCross(new TreeCross());_setMutate(new TreeMutate());" target="_VtFQwQnzEea7IoxHkWwqrA" source="_VtEpsQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtGe4AnzEea7IoxHkWwqrA" name="setMutate(new TreeMutate());_setSelect(new RankSelect());" target="_VtF30QnzEea7IoxHkWwqrA" source="_VtFQwQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtGe4QnzEea7IoxHkWwqrA" name="setSelect(new RankSelect());_FinalNode" target="_Vs-jEgnzEea7IoxHkWwqrA" source="_VtF30QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vs-jEQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtEpsAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vs-jEgnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtGe4QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VtECoAnzEea7IoxHkWwqrA" name="setPopulationSize(POPULATION_SIZE);" incoming="_VtEpsAnzEea7IoxHkWwqrA" outgoing="_VtFQwAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VtECoQnzEea7IoxHkWwqrA" name="POPULATION_SIZE"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VtEpsQnzEea7IoxHkWwqrA" name="setCross(new TreeCross());" incoming="_VtFQwAnzEea7IoxHkWwqrA" outgoing="_VtF30AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VtEpsgnzEea7IoxHkWwqrA" name="new TreeCross()"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VtFQwQnzEea7IoxHkWwqrA" name="setMutate(new TreeMutate());" incoming="_VtF30AnzEea7IoxHkWwqrA" outgoing="_VtGe4AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VtFQwgnzEea7IoxHkWwqrA" name="new TreeMutate()"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VtF30QnzEea7IoxHkWwqrA" name="setSelect(new RankSelect());" incoming="_VtGe4AnzEea7IoxHkWwqrA" outgoing="_VtGe4QnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VtF30gnzEea7IoxHkWwqrA" name="new RankSelect()"/>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtGe4gnzEea7IoxHkWwqrA" name="getSelect" specification="_ViJzIAnzEea7IoxHkWwqrA" node="_VtHF8AnzEea7IoxHkWwqrA _VtHF8QnzEea7IoxHkWwqrA _VtHF8gnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtHF8wnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VtHF8gnzEea7IoxHkWwqrA" source="_VtHF8QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtHF8AnzEea7IoxHkWwqrA" type="_Vg518AnzEea7IoxHkWwqrA" parameter="_ViJzIQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtHF8QnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtHF8wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtHF8gnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtHF8wnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtHtAAnzEea7IoxHkWwqrA" name="setSelect" specification="_VirXkAnzEea7IoxHkWwqrA" node="_VtHtAQnzEea7IoxHkWwqrA _VtHtAgnzEea7IoxHkWwqrA _VtHtAwnzEea7IoxHkWwqrA _VtHtBAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtIUEAnzEea7IoxHkWwqrA" name="InitNode_this.select=select;" target="_VtHtBAnzEea7IoxHkWwqrA" source="_VtHtAgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtIUEQnzEea7IoxHkWwqrA" name="this.select=select;_FinalNode" target="_VtHtAwnzEea7IoxHkWwqrA" source="_VtHtBAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtHtAQnzEea7IoxHkWwqrA" name="select" type="_Vg518AnzEea7IoxHkWwqrA" parameter="_VirXkQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtHtAgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtIUEAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtHtAwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtIUEQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtHtBAnzEea7IoxHkWwqrA" name="this.select=select;" incoming="_VtIUEAnzEea7IoxHkWwqrA" outgoing="_VtIUEQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.select=select;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtI7IAnzEea7IoxHkWwqrA" name="getCross" specification="_VjDLAAnzEea7IoxHkWwqrA" node="_VtI7IQnzEea7IoxHkWwqrA _VtI7IgnzEea7IoxHkWwqrA _VtI7IwnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtNzoAnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VtI7IwnzEea7IoxHkWwqrA" source="_VtI7IgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtI7IQnzEea7IoxHkWwqrA" type="_Vg1kgAnzEea7IoxHkWwqrA" parameter="_VjDLAQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtI7IgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtNzoAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtI7IwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtNzoAnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtOasAnzEea7IoxHkWwqrA" name="setCross" specification="_VjpA4AnzEea7IoxHkWwqrA" node="_VtOasQnzEea7IoxHkWwqrA _VtOasgnzEea7IoxHkWwqrA _VtOaswnzEea7IoxHkWwqrA _VtOatAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtPBwAnzEea7IoxHkWwqrA" name="InitNode_this.cross=cross;" target="_VtOatAnzEea7IoxHkWwqrA" source="_VtOasgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtQP4AnzEea7IoxHkWwqrA" name="this.cross=cross;_FinalNode" target="_VtOaswnzEea7IoxHkWwqrA" source="_VtOatAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtOasQnzEea7IoxHkWwqrA" name="cross" type="_Vg1kgAnzEea7IoxHkWwqrA" parameter="_VjpA4QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtOasgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtPBwAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtOaswnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtQP4AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtOatAnzEea7IoxHkWwqrA" name="this.cross=cross;" incoming="_VtPBwAnzEea7IoxHkWwqrA" outgoing="_VtQP4AnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.cross=cross;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtQP4QnzEea7IoxHkWwqrA" name="getMutate" specification="_Vj5fkAnzEea7IoxHkWwqrA" node="_VtQ28AnzEea7IoxHkWwqrA _VtQ28QnzEea7IoxHkWwqrA _VtQ28gnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtQ28wnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VtQ28gnzEea7IoxHkWwqrA" source="_VtQ28QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtQ28AnzEea7IoxHkWwqrA" type="_Vg2yoQnzEea7IoxHkWwqrA" parameter="_Vj5fkQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtQ28QnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtQ28wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtQ28gnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtQ28wnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtReAAnzEea7IoxHkWwqrA" name="setMutate" specification="_VkbEAAnzEea7IoxHkWwqrA" node="_VtReAQnzEea7IoxHkWwqrA _VtReAgnzEea7IoxHkWwqrA _VtReAwnzEea7IoxHkWwqrA _VtReBAnzEea7IoxHkWwqrA _VtSFEgnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtSFEQnzEea7IoxHkWwqrA" name="InitNode_mutate.setProblem(getProblem());" target="_VtReBAnzEea7IoxHkWwqrA" source="_VtReAgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtSsIAnzEea7IoxHkWwqrA" name="mutate.setProblem(getProblem()_this.mutate=mutate;" target="_VtSFEgnzEea7IoxHkWwqrA" source="_VtReBAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtSsIQnzEea7IoxHkWwqrA" name="this.mutate=mutate;_FinalNode" target="_VtReAwnzEea7IoxHkWwqrA" source="_VtSFEgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtReAQnzEea7IoxHkWwqrA" name="mutate" type="_Vg2yoQnzEea7IoxHkWwqrA" parameter="_VkbEAQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtReAgnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtSFEQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtReAwnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtSsIQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VtReBAnzEea7IoxHkWwqrA" name="mutate.setProblem(getProblem());" incoming="_VtSFEQnzEea7IoxHkWwqrA" outgoing="_VtSsIAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VtSFEAnzEea7IoxHkWwqrA" name="getProblem()"/>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtSFEgnzEea7IoxHkWwqrA" name="this.mutate=mutate;" incoming="_VtSsIAnzEea7IoxHkWwqrA" outgoing="_VtSsIQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.mutate=mutate;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtTTMAnzEea7IoxHkWwqrA" name="getMutateProbability" specification="_VkxCQAnzEea7IoxHkWwqrA" node="_VtVIYAnzEea7IoxHkWwqrA _VtVIYQnzEea7IoxHkWwqrA _VtVvcAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtVvcQnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VtVvcAnzEea7IoxHkWwqrA" source="_VtVIYQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtVIYAnzEea7IoxHkWwqrA" parameter="_VkxCQQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtVIYQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtVvcQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtVvcAnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtVvcQnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtVvcgnzEea7IoxHkWwqrA" name="setMutateProbability" specification="_VlIOoAnzEea7IoxHkWwqrA" node="_VtWWgAnzEea7IoxHkWwqrA _VtWWgQnzEea7IoxHkWwqrA _VtWWggnzEea7IoxHkWwqrA _VtWWgwnzEea7IoxHkWwqrA _VtWWhAnzEea7IoxHkWwqrA _Vtan8AnzEea7IoxHkWwqrA _VtbPAQnzEea7IoxHkWwqrA _Vtb2EQnzEea7IoxHkWwqrA _Vtb2EgnzEea7IoxHkWwqrA _VtdEMAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtW9kAnzEea7IoxHkWwqrA" name="InitNode_If_0_cond" target="_VtWWgwnzEea7IoxHkWwqrA" source="_VtWWgQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtW9kQnzEea7IoxHkWwqrA" name="If_0_else" target="_VtWWhAnzEea7IoxHkWwqrA" source="_VtWWgwnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtW9kwnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtbPAAnzEea7IoxHkWwqrA" name="If_0_cond_this.mutateProbability=mutateProbability;" target="_Vtan8AnzEea7IoxHkWwqrA" source="_VtWWgwnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtW9kgnzEea7IoxHkWwqrA" value="this.mutateProbability &lt;= 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtbPAgnzEea7IoxHkWwqrA" name="this.mutateProbability=mutateP_double sum=this.mutateProbabi" target="_VtbPAQnzEea7IoxHkWwqrA" source="_Vtan8AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vtb2EwnzEea7IoxHkWwqrA" name="double sum=this.mutateProbabil_If_1_cond" target="_Vtb2EQnzEea7IoxHkWwqrA" source="_VtbPAQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtcdIAnzEea7IoxHkWwqrA" name="If_1_else" target="_Vtb2EgnzEea7IoxHkWwqrA" source="_Vtb2EQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtcdIgnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtdEMQnzEea7IoxHkWwqrA" name="If_1_cond_this.crossProbrability=1.0 - mutateProbability;" target="_VtdEMAnzEea7IoxHkWwqrA" source="_Vtb2EQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtcdIQnzEea7IoxHkWwqrA" value="sum > 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtdEMgnzEea7IoxHkWwqrA" name="this.crossProbrability=1.0 - m_If_1_merge" target="_Vtb2EgnzEea7IoxHkWwqrA" source="_VtdEMAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtdrQAnzEea7IoxHkWwqrA" name="If_1_merge_If_0_merge" target="_VtWWhAnzEea7IoxHkWwqrA" source="_Vtb2EgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtdrQQnzEea7IoxHkWwqrA" name="If_0_merge_FinalNode" target="_VtWWggnzEea7IoxHkWwqrA" source="_VtWWhAnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_Vtb2EAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtWWgAnzEea7IoxHkWwqrA" name="mutateProbability" parameter="_VlIOoQnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtWWgQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtW9kAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtWWggnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtdrQQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VtWWgwnzEea7IoxHkWwqrA" name="If_0_cond" incoming="_VtW9kAnzEea7IoxHkWwqrA" outgoing="_VtW9kQnzEea7IoxHkWwqrA _VtbPAAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VtWWhAnzEea7IoxHkWwqrA" name="If_0_merge" incoming="_VtW9kQnzEea7IoxHkWwqrA _VtdrQAnzEea7IoxHkWwqrA" outgoing="_VtdrQQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_Vtan8AnzEea7IoxHkWwqrA" name="this.mutateProbability=mutateProbability;" incoming="_VtbPAAnzEea7IoxHkWwqrA" outgoing="_VtbPAgnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.mutateProbability=mutateProbability;
+</body>
+            </node>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VtbPAQnzEea7IoxHkWwqrA" name="double sum=this.mutateProbability + this.crossProbrability;" incoming="_VtbPAgnzEea7IoxHkWwqrA" outgoing="_Vtb2EwnzEea7IoxHkWwqrA" variable="_Vtb2EAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_Vtb2EQnzEea7IoxHkWwqrA" name="If_1_cond" incoming="_Vtb2EwnzEea7IoxHkWwqrA" outgoing="_VtcdIAnzEea7IoxHkWwqrA _VtdEMQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_Vtb2EgnzEea7IoxHkWwqrA" name="If_1_merge" incoming="_VtcdIAnzEea7IoxHkWwqrA _VtdEMgnzEea7IoxHkWwqrA" outgoing="_VtdrQAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtdEMAnzEea7IoxHkWwqrA" name="this.crossProbrability=1.0 - mutateProbability;" incoming="_VtdEMQnzEea7IoxHkWwqrA" outgoing="_VtdEMgnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.crossProbrability=1.0 - mutateProbability;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtdrQgnzEea7IoxHkWwqrA" name="getCrossProbrability" specification="_VlZUYAnzEea7IoxHkWwqrA" node="_VtijwAnzEea7IoxHkWwqrA _VtijwQnzEea7IoxHkWwqrA _VtijwgnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtijwwnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VtijwgnzEea7IoxHkWwqrA" source="_VtijwQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtijwAnzEea7IoxHkWwqrA" parameter="_VlZUYQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtijwQnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtijwwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtijwgnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtijwwnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtjK0AnzEea7IoxHkWwqrA" name="setCrossProbrability" specification="_Vl3OcAnzEea7IoxHkWwqrA" node="_VtjK0QnzEea7IoxHkWwqrA _VtjK0gnzEea7IoxHkWwqrA _Vtjx4AnzEea7IoxHkWwqrA _Vtjx4QnzEea7IoxHkWwqrA _Vtjx4gnzEea7IoxHkWwqrA _VtkY8wnzEea7IoxHkWwqrA _VtlAAQnzEea7IoxHkWwqrA _VtlnEQnzEea7IoxHkWwqrA _VtlnEgnzEea7IoxHkWwqrA _Vtm1MAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vtjx4wnzEea7IoxHkWwqrA" name="InitNode_If_2_cond" target="_Vtjx4QnzEea7IoxHkWwqrA" source="_VtjK0gnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtkY8AnzEea7IoxHkWwqrA" name="If_2_else" target="_Vtjx4gnzEea7IoxHkWwqrA" source="_Vtjx4QnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtkY8gnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtlAAAnzEea7IoxHkWwqrA" name="If_2_cond_this.crossProbrability=crossProbrability;" target="_VtkY8wnzEea7IoxHkWwqrA" source="_Vtjx4QnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtkY8QnzEea7IoxHkWwqrA" value="this.crossProbrability &lt;= 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtlAAgnzEea7IoxHkWwqrA" name="this.crossProbrability=crossPr_double sum=this.mutateProbabi" target="_VtlAAQnzEea7IoxHkWwqrA" source="_VtkY8wnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtlnEwnzEea7IoxHkWwqrA" name="double sum=this.mutateProbabil_If_3_cond" target="_VtlnEQnzEea7IoxHkWwqrA" source="_VtlAAQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtmOIAnzEea7IoxHkWwqrA" name="If_3_else" target="_VtlnEgnzEea7IoxHkWwqrA" source="_VtlnEQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtmOIgnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vtm1MQnzEea7IoxHkWwqrA" name="If_3_cond_this.mutateProbability=1.0 - crossProbrability;" target="_Vtm1MAnzEea7IoxHkWwqrA" source="_VtlnEQnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtmOIQnzEea7IoxHkWwqrA" value="sum > 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtrGoAnzEea7IoxHkWwqrA" name="this.mutateProbability=1.0 - c_If_3_merge" target="_VtlnEgnzEea7IoxHkWwqrA" source="_Vtm1MAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtrGoQnzEea7IoxHkWwqrA" name="If_3_merge_If_2_merge" target="_Vtjx4gnzEea7IoxHkWwqrA" source="_VtlnEgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtrtsAnzEea7IoxHkWwqrA" name="If_2_merge_FinalNode" target="_Vtjx4AnzEea7IoxHkWwqrA" source="_Vtjx4gnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VtlnEAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtjK0QnzEea7IoxHkWwqrA" name="crossProbrability" parameter="_Vl3OcQnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtjK0gnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vtjx4wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vtjx4AnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtrtsAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_Vtjx4QnzEea7IoxHkWwqrA" name="If_2_cond" incoming="_Vtjx4wnzEea7IoxHkWwqrA" outgoing="_VtkY8AnzEea7IoxHkWwqrA _VtlAAAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_Vtjx4gnzEea7IoxHkWwqrA" name="If_2_merge" incoming="_VtkY8AnzEea7IoxHkWwqrA _VtrGoQnzEea7IoxHkWwqrA" outgoing="_VtrtsAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtkY8wnzEea7IoxHkWwqrA" name="this.crossProbrability=crossProbrability;" incoming="_VtlAAAnzEea7IoxHkWwqrA" outgoing="_VtlAAgnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.crossProbrability=crossProbrability;
+</body>
+            </node>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VtlAAQnzEea7IoxHkWwqrA" name="double sum=this.mutateProbability + this.crossProbrability;" incoming="_VtlAAgnzEea7IoxHkWwqrA" outgoing="_VtlnEwnzEea7IoxHkWwqrA" variable="_VtlnEAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VtlnEQnzEea7IoxHkWwqrA" name="If_3_cond" incoming="_VtlnEwnzEea7IoxHkWwqrA" outgoing="_VtmOIAnzEea7IoxHkWwqrA _Vtm1MQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VtlnEgnzEea7IoxHkWwqrA" name="If_3_merge" incoming="_VtmOIAnzEea7IoxHkWwqrA _VtrGoAnzEea7IoxHkWwqrA" outgoing="_VtrGoQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_Vtm1MAnzEea7IoxHkWwqrA" name="this.mutateProbability=1.0 - crossProbrability;" incoming="_Vtm1MQnzEea7IoxHkWwqrA" outgoing="_VtrGoAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.mutateProbability=1.0 - crossProbrability;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtrtsQnzEea7IoxHkWwqrA" name="getReproduceProbability" specification="_VmJiUAnzEea7IoxHkWwqrA" node="_VtrtsgnzEea7IoxHkWwqrA _VtsUwAnzEea7IoxHkWwqrA _VtsUwQnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtsUwgnzEea7IoxHkWwqrA" name="InitNode_FinalNode" target="_VtsUwQnzEea7IoxHkWwqrA" source="_VtsUwAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_VtrtsgnzEea7IoxHkWwqrA" parameter="_VmJiUQnzEea7IoxHkWwqrA">
+              <name xsi:nil="true"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_VtsUwAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_VtsUwgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_VtsUwQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VtsUwgnzEea7IoxHkWwqrA"/>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_VtsUwwnzEea7IoxHkWwqrA" name="setReproduceProbability" specification="_VmgusAnzEea7IoxHkWwqrA" node="_Vts70AnzEea7IoxHkWwqrA _Vts70QnzEea7IoxHkWwqrA _Vts70gnzEea7IoxHkWwqrA _Vts70wnzEea7IoxHkWwqrA _Vts71AnzEea7IoxHkWwqrA _VtuJ8QnzEea7IoxHkWwqrA _VtuxAAnzEea7IoxHkWwqrA _VtuxAQnzEea7IoxHkWwqrA _VtvYEAnzEea7IoxHkWwqrA _VtwmMgnzEea7IoxHkWwqrA _VtzCcAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vtti4AnzEea7IoxHkWwqrA" name="InitNode_If_4_cond" target="_Vts70wnzEea7IoxHkWwqrA" source="_Vts70QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vtti4QnzEea7IoxHkWwqrA" name="If_4_else" target="_Vts71AnzEea7IoxHkWwqrA" source="_Vts70wnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtuJ8AnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtuJ8gnzEea7IoxHkWwqrA" name="If_4_cond_double sum=this.crossProbrability + value;" target="_VtuJ8QnzEea7IoxHkWwqrA" source="_Vts70wnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vtti4gnzEea7IoxHkWwqrA" value="value &lt;= 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtuxAgnzEea7IoxHkWwqrA" name="double sum=this.crossProbrabil_If_5_cond" target="_VtuxAAnzEea7IoxHkWwqrA" source="_VtuJ8QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtwmMAnzEea7IoxHkWwqrA" name="If_5_cond_this.crossProbrability=1.0 - value;" target="_VtvYEAnzEea7IoxHkWwqrA" source="_VtuxAAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtwmMQnzEea7IoxHkWwqrA" value="sum > 1.0"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtxNQAnzEea7IoxHkWwqrA" name="this.crossProbrability=1.0 - v_this.mutateProbability=0.0;" target="_VtwmMgnzEea7IoxHkWwqrA" source="_VtvYEAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtzCcQnzEea7IoxHkWwqrA" name="If_5_cond_this.mutateProbability=1.0 - crossProbrability - v" target="_VtzCcAnzEea7IoxHkWwqrA" source="_VtuxAAnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VtzpgAnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtzpgQnzEea7IoxHkWwqrA" name="thenPathTo_If_5_merge" target="_VtuxAQnzEea7IoxHkWwqrA" source="_VtwmMgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VtzpggnzEea7IoxHkWwqrA" name="this.mutateProbability=1.0 - c_If_5_merge" target="_VtuxAQnzEea7IoxHkWwqrA" source="_VtzCcAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt0QkAnzEea7IoxHkWwqrA" name="If_5_merge_If_4_merge" target="_Vts71AnzEea7IoxHkWwqrA" source="_VtuxAQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt0QkQnzEea7IoxHkWwqrA" name="If_4_merge_FinalNode" target="_Vts70gnzEea7IoxHkWwqrA" source="_Vts71AnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VtuJ8wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityParameterNode" xmi:id="_Vts70AnzEea7IoxHkWwqrA" name="value" parameter="_VmgusQnzEea7IoxHkWwqrA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </node>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vts70QnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vtti4AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vts70gnzEea7IoxHkWwqrA" name="FinalNode" incoming="_Vt0QkQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_Vts70wnzEea7IoxHkWwqrA" name="If_4_cond" incoming="_Vtti4AnzEea7IoxHkWwqrA" outgoing="_Vtti4QnzEea7IoxHkWwqrA _VtuJ8gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_Vts71AnzEea7IoxHkWwqrA" name="If_4_merge" incoming="_Vtti4QnzEea7IoxHkWwqrA _Vt0QkAnzEea7IoxHkWwqrA" outgoing="_Vt0QkQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VtuJ8QnzEea7IoxHkWwqrA" name="double sum=this.crossProbrability + value;" incoming="_VtuJ8gnzEea7IoxHkWwqrA" outgoing="_VtuxAgnzEea7IoxHkWwqrA" variable="_VtuJ8wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VtuxAAnzEea7IoxHkWwqrA" name="If_5_cond" incoming="_VtuxAgnzEea7IoxHkWwqrA" outgoing="_VtwmMAnzEea7IoxHkWwqrA _VtzCcQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:MergeNode" xmi:id="_VtuxAQnzEea7IoxHkWwqrA" name="If_5_merge" incoming="_VtzpgQnzEea7IoxHkWwqrA _VtzpggnzEea7IoxHkWwqrA" outgoing="_Vt0QkAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtvYEAnzEea7IoxHkWwqrA" name="this.crossProbrability=1.0 - value;" incoming="_VtwmMAnzEea7IoxHkWwqrA" outgoing="_VtxNQAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.crossProbrability=1.0 - value;
+</body>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtwmMgnzEea7IoxHkWwqrA" name="this.mutateProbability=0.0;" incoming="_VtxNQAnzEea7IoxHkWwqrA" outgoing="_VtzpgQnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.mutateProbability=0.0;
+</body>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VtzCcAnzEea7IoxHkWwqrA" name="this.mutateProbability=1.0 - crossProbrability - value;" incoming="_VtzCcQnzEea7IoxHkWwqrA" outgoing="_VtzpggnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>this.mutateProbability=1.0 - crossProbrability - value;
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:Activity" xmi:id="_Vt0QkgnzEea7IoxHkWwqrA" name="run" specification="_Vm5JMAnzEea7IoxHkWwqrA" node="_Vt03oAnzEea7IoxHkWwqrA _Vt03oQnzEea7IoxHkWwqrA _Vt03ognzEea7IoxHkWwqrA _Vt1esQnzEea7IoxHkWwqrA _Vt2FwQnzEea7IoxHkWwqrA _Vt2s0QnzEea7IoxHkWwqrA _Vt3T4AnzEea7IoxHkWwqrA _Vt3T4wnzEea7IoxHkWwqrA _Vt368AnzEea7IoxHkWwqrA _Vt368gnzEea7IoxHkWwqrA _Vt4iAgnzEea7IoxHkWwqrA _Vt5JEgnzEea7IoxHkWwqrA _Vt6XMQnzEea7IoxHkWwqrA _Vt6XMgnzEea7IoxHkWwqrA _Vt6XNAnzEea7IoxHkWwqrA _Vt6-QgnzEea7IoxHkWwqrA _Vt7lUwnzEea7IoxHkWwqrA _Vt8zcAnzEea7IoxHkWwqrA _Vt9agAnzEea7IoxHkWwqrA _Vt-BkAnzEea7IoxHkWwqrA _Vt-BkwnzEea7IoxHkWwqrA _Vt-oognzEea7IoxHkWwqrA _Vt_PsQnzEea7IoxHkWwqrA _Vt_2wQnzEea7IoxHkWwqrA _VuAd0AnzEea7IoxHkWwqrA _VuAd0QnzEea7IoxHkWwqrA _VuBE4gnzEea7IoxHkWwqrA _VuBr8wnzEea7IoxHkWwqrA _VuCTAQnzEea7IoxHkWwqrA _VuC6EQnzEea7IoxHkWwqrA _VuDhIAnzEea7IoxHkWwqrA _VuEIMAnzEea7IoxHkWwqrA _VuEvQQnzEea7IoxHkWwqrA _VuFWUQnzEea7IoxHkWwqrA _VuF9YAnzEea7IoxHkWwqrA _VuGkcQnzEea7IoxHkWwqrA _VuHLgQnzEea7IoxHkWwqrA _VuHykQnzEea7IoxHkWwqrA _VuIZoAnzEea7IoxHkWwqrA _VuIZownzEea7IoxHkWwqrA _VuJAsgnzEea7IoxHkWwqrA _VuJnwgnzEea7IoxHkWwqrA _VuKO0QnzEea7IoxHkWwqrA _VuK14QnzEea7IoxHkWwqrA _VuLc8AnzEea7IoxHkWwqrA _VuMEAAnzEea7IoxHkWwqrA _VuMrEAnzEea7IoxHkWwqrA _VuNSIAnzEea7IoxHkWwqrA _VuN5MAnzEea7IoxHkWwqrA">
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt1esAnzEea7IoxHkWwqrA" name="InitNode_setState(INIT_STATE);" target="_Vt03ognzEea7IoxHkWwqrA" source="_Vt03oAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt1esgnzEea7IoxHkWwqrA" name="setState(INIT_STATE);_TreeProblem problem=(TreeProblem)getPr" target="_Vt1esQnzEea7IoxHkWwqrA" source="_Vt03ognzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt2s0AnzEea7IoxHkWwqrA" name="TreeProblem problem=(TreeProbl_this.mutate.setProblem(proble" target="_Vt2FwQnzEea7IoxHkWwqrA" source="_Vt1esQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt2s0gnzEea7IoxHkWwqrA" name="this.mutate.setProblem(problem_Population population=getPopu" target="_Vt2s0QnzEea7IoxHkWwqrA" source="_Vt2FwQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt3T4gnzEea7IoxHkWwqrA" name="Population population=getPopul_setState(CREATE_INIT_POPULATI" target="_Vt3T4AnzEea7IoxHkWwqrA" source="_Vt2s0QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt4iAAnzEea7IoxHkWwqrA" name="int i=0_merge" target="_Vt3T4wnzEea7IoxHkWwqrA" source="_Vt368gnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt4iAQnzEea7IoxHkWwqrA" name="For_0_merge_cond" target="_Vt368AnzEea7IoxHkWwqrA" source="_Vt3T4wnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt5JEAnzEea7IoxHkWwqrA" name="For_0_cond_merge" target="_Vt3T4wnzEea7IoxHkWwqrA" source="_Vt4iAgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt5JEQnzEea7IoxHkWwqrA" name="setState(CREATE_INIT_POPULATIO_int i=0" target="_Vt368gnzEea7IoxHkWwqrA" source="_Vt3T4AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt5wIQnzEea7IoxHkWwqrA" name="For_0_cond_population.add(problem.randomFullTreeSolution());" target="_Vt5JEgnzEea7IoxHkWwqrA" source="_Vt368AnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vt5wIgnzEea7IoxHkWwqrA" value="i &lt; (population.getMaxSolutions() / 2)"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt6XMAnzEea7IoxHkWwqrA" name="population.add(problem.randomF_i++" target="_Vt4iAgnzEea7IoxHkWwqrA" source="_Vt5JEgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt6-QAnzEea7IoxHkWwqrA" name="int i=(population.getMaxSolutions() / 2)_merge" target="_Vt6XMQnzEea7IoxHkWwqrA" source="_Vt6XNAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt6-QQnzEea7IoxHkWwqrA" name="For_1_merge_cond" target="_Vt6XMgnzEea7IoxHkWwqrA" source="_Vt6XMQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt7lUAnzEea7IoxHkWwqrA" name="For_1_cond_merge" target="_Vt6XMQnzEea7IoxHkWwqrA" source="_Vt6-QgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt7lUQnzEea7IoxHkWwqrA" name="For_0_cond_int i=(population.getMaxSolutions() / 2)" target="_Vt6XNAnzEea7IoxHkWwqrA" source="_Vt368AnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vt7lUgnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt8MYQnzEea7IoxHkWwqrA" name="For_1_cond_population.add(problem.randomGrowTreeSolution());" target="_Vt7lUwnzEea7IoxHkWwqrA" source="_Vt6XMgnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vt8MYgnzEea7IoxHkWwqrA" value="i &lt; population.getMaxSolutions()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt8MYwnzEea7IoxHkWwqrA" name="population.add(problem.randomG_i++" target="_Vt6-QgnzEea7IoxHkWwqrA" source="_Vt7lUwnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt8zcgnzEea7IoxHkWwqrA" name="For_1_cond_setState(CREATE_INIT_POPULATION_END);" target="_Vt8zcAnzEea7IoxHkWwqrA" source="_Vt6XMgnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_Vt8zcwnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt9aggnzEea7IoxHkWwqrA" name="setState(CREATE_INIT_POPULATIO_setState(EVALUATE_POPULATION_" target="_Vt9agAnzEea7IoxHkWwqrA" source="_Vt8zcAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt-BkgnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_S_problem.evaluate(population);" target="_Vt-BkAnzEea7IoxHkWwqrA" source="_Vt9agAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt-ooQnzEea7IoxHkWwqrA" name="problem.evaluate(population);_setState(EVALUATE_POPULATION_E" target="_Vt-BkwnzEea7IoxHkWwqrA" source="_Vt-BkAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt_PsAnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_E_setState(CHECK_BEST_SOLUTION_" target="_Vt-oognzEea7IoxHkWwqrA" source="_Vt-BkwnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt_2wAnzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_S_checkBestSolution(population)" target="_Vt_PsQnzEea7IoxHkWwqrA" source="_Vt-oognzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_Vt_2wwnzEea7IoxHkWwqrA" name="checkBestSolution(population);_setState(CHECK_BEST_SOLUTION_" target="_Vt_2wQnzEea7IoxHkWwqrA" source="_Vt_PsQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuBE4AnzEea7IoxHkWwqrA" name="While_2_merge_cond" target="_VuAd0QnzEea7IoxHkWwqrA" source="_VuAd0AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuBE4QnzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_E_While_2_merge" target="_VuAd0AnzEea7IoxHkWwqrA" source="_Vt_2wQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuBr8AnzEea7IoxHkWwqrA" name="While_2_cond_Population list=select.select(getPopulation(),g" target="_VuBE4gnzEea7IoxHkWwqrA" source="_VuAd0QnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VuBr8QnzEea7IoxHkWwqrA" value="getActualGeneration() &lt; getGeneration() &amp;&amp; !isTerminate()"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuBr9AnzEea7IoxHkWwqrA" name="Population list=select.select(_long crossSize=Math.round(lis" target="_VuBr8wnzEea7IoxHkWwqrA" source="_VuBE4gnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuCTAgnzEea7IoxHkWwqrA" name="long crossSize=Math.round(list_long mutateSize=Math.round(li" target="_VuCTAQnzEea7IoxHkWwqrA" source="_VuBr8wnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuC6EgnzEea7IoxHkWwqrA" name="long mutateSize=Math.round(lis_long reproduceSize=list.size(" target="_VuC6EQnzEea7IoxHkWwqrA" source="_VuCTAQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuDhIgnzEea7IoxHkWwqrA" name="long reproduceSize=list.size()_setState(CROSS_SOLUTION_START" target="_VuDhIAnzEea7IoxHkWwqrA" source="_VuC6EQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuEvQAnzEea7IoxHkWwqrA" name="setState(CROSS_SOLUTION_START)_cross.cross(list,0,crossSize)" target="_VuEIMAnzEea7IoxHkWwqrA" source="_VuDhIAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuFWUAnzEea7IoxHkWwqrA" name="cross.cross(list,0,crossSize);_setState(CROSS_SOLUTION_END);" target="_VuEvQQnzEea7IoxHkWwqrA" source="_VuEIMAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuFWUwnzEea7IoxHkWwqrA" name="setState(CROSS_SOLUTION_END);_setState(MUTATE_SOLUTION_START" target="_VuFWUQnzEea7IoxHkWwqrA" source="_VuEvQQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuGkcAnzEea7IoxHkWwqrA" name="setState(MUTATE_SOLUTION_START_mutate.mutate(list,crossSize," target="_VuF9YAnzEea7IoxHkWwqrA" source="_VuFWUQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuHLgAnzEea7IoxHkWwqrA" name="mutate.mutate(list,crossSize,m_setState(MUTATE_SOLUTION_END)" target="_VuGkcQnzEea7IoxHkWwqrA" source="_VuF9YAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuHykAnzEea7IoxHkWwqrA" name="setState(MUTATE_SOLUTION_END);_setState(EVALUATE_POPULATION_" target="_VuHLgQnzEea7IoxHkWwqrA" source="_VuGkcQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuHykwnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_S_problem.evaluate(list);" target="_VuHykQnzEea7IoxHkWwqrA" source="_VuHLgQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuIZognzEea7IoxHkWwqrA" name="problem.evaluate(list);_setState(EVALUATE_POPULATION_END);" target="_VuIZoAnzEea7IoxHkWwqrA" source="_VuHykQnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuJAsQnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_E_setState(CHECK_BEST_SOLUTION_" target="_VuIZownzEea7IoxHkWwqrA" source="_VuIZoAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuJnwQnzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_S_checkBestSolution(list);" target="_VuJAsgnzEea7IoxHkWwqrA" source="_VuIZownzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuKO0AnzEea7IoxHkWwqrA" name="checkBestSolution(list);_setState(CHECK_BEST_SOLUTION_END);" target="_VuJnwgnzEea7IoxHkWwqrA" source="_VuJAsgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuK14AnzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_E_setPopulation(list);" target="_VuKO0QnzEea7IoxHkWwqrA" source="_VuJnwgnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuK14wnzEea7IoxHkWwqrA" name="setPopulation(list);_setState(NEW_POPULATION);" target="_VuK14QnzEea7IoxHkWwqrA" source="_VuKO0QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuLc8QnzEea7IoxHkWwqrA" name="setState(NEW_POPULATION);_increseActualGeneration();" target="_VuLc8AnzEea7IoxHkWwqrA" source="_VuK14QnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuLc8gnzEea7IoxHkWwqrA" name="increseActualGeneration();_While_2_merge" target="_VuAd0AnzEea7IoxHkWwqrA" source="_VuLc8AnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuMEAgnzEea7IoxHkWwqrA" name="While_2_cond_setState(EvolutionAlgorithm.ALGORITHM_TERMINATI" target="_VuMEAAnzEea7IoxHkWwqrA" source="_VuAd0QnzEea7IoxHkWwqrA">
+              <guard xmi:type="uml:LiteralString" xmi:id="_VuMEAwnzEea7IoxHkWwqrA" value="else"/>
+            </edge>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuMrEgnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.AL_setState(EvolutionAlgorithm.A" target="_VuMrEAnzEea7IoxHkWwqrA" source="_VuMEAAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuNSIgnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.AL_LOG.error(e);" target="_VuNSIAnzEea7IoxHkWwqrA" source="_VuMrEAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuN5MQnzEea7IoxHkWwqrA" name="LOG.error(e);_try {&#xA;  setState(INIT_STATE);&#xA;  TreeProblem pr" target="_VuN5MAnzEea7IoxHkWwqrA" source="_VuNSIAnzEea7IoxHkWwqrA"/>
+            <edge xmi:type="uml:ControlFlow" xmi:id="_VuOgQAnzEea7IoxHkWwqrA" name="try {&#xA;  setState(INIT_STATE);&#xA;_FinalNode" target="_Vt03oQnzEea7IoxHkWwqrA" source="_VuN5MAnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_Vt2FwAnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_Vt2s0wnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_Vt368QnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_Vt6XMwnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VuBr8gnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VuCTAAnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VuC6EAnzEea7IoxHkWwqrA"/>
+            <variable xmi:id="_VuC6EwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:InitialNode" xmi:id="_Vt03oAnzEea7IoxHkWwqrA" name="InitNode" outgoing="_Vt1esAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:ActivityFinalNode" xmi:id="_Vt03oQnzEea7IoxHkWwqrA" name="FinalNode" incoming="_VuOgQAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt03ognzEea7IoxHkWwqrA" name="setState(INIT_STATE);" incoming="_Vt1esAnzEea7IoxHkWwqrA" outgoing="_Vt1esgnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt03ownzEea7IoxHkWwqrA" name="INIT_STATE"/>
+            </node>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vt1esQnzEea7IoxHkWwqrA" name="TreeProblem problem=(TreeProblem)getProblem();" incoming="_Vt1esgnzEea7IoxHkWwqrA" outgoing="_Vt2s0AnzEea7IoxHkWwqrA" variable="_Vt2FwAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt2FwQnzEea7IoxHkWwqrA" name="this.mutate.setProblem(problem);" incoming="_Vt2s0AnzEea7IoxHkWwqrA" outgoing="_Vt2s0gnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt2FwgnzEea7IoxHkWwqrA" name="problem"/>
+            </node>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vt2s0QnzEea7IoxHkWwqrA" name="Population population=getPopulation();" incoming="_Vt2s0gnzEea7IoxHkWwqrA" outgoing="_Vt3T4gnzEea7IoxHkWwqrA" variable="_Vt2s0wnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt3T4AnzEea7IoxHkWwqrA" name="setState(CREATE_INIT_POPULATION_START);" incoming="_Vt3T4gnzEea7IoxHkWwqrA" outgoing="_Vt5JEQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt3T4QnzEea7IoxHkWwqrA" name="CREATE_INIT_POPULATION_START"/>
+            </node>
+            <node xmi:type="uml:MergeNode" xmi:id="_Vt3T4wnzEea7IoxHkWwqrA" name="For_0_merge" incoming="_Vt4iAAnzEea7IoxHkWwqrA _Vt5JEAnzEea7IoxHkWwqrA" outgoing="_Vt4iAQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_Vt368AnzEea7IoxHkWwqrA" name="For_0_cond" incoming="_Vt4iAQnzEea7IoxHkWwqrA" outgoing="_Vt5wIQnzEea7IoxHkWwqrA _Vt7lUQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vt368gnzEea7IoxHkWwqrA" name="int i=0" incoming="_Vt5JEQnzEea7IoxHkWwqrA" outgoing="_Vt4iAAnzEea7IoxHkWwqrA" variable="_Vt368QnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vt4iAgnzEea7IoxHkWwqrA" name="i++" incoming="_Vt6XMAnzEea7IoxHkWwqrA" outgoing="_Vt5JEAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt5JEgnzEea7IoxHkWwqrA" name="population.add(problem.randomFullTreeSolution());" incoming="_Vt5wIQnzEea7IoxHkWwqrA" outgoing="_Vt6XMAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt5wIAnzEea7IoxHkWwqrA" name="problem.randomFullTreeSolution()"/>
+            </node>
+            <node xmi:type="uml:MergeNode" xmi:id="_Vt6XMQnzEea7IoxHkWwqrA" name="For_1_merge" incoming="_Vt6-QAnzEea7IoxHkWwqrA _Vt7lUAnzEea7IoxHkWwqrA" outgoing="_Vt6-QQnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_Vt6XMgnzEea7IoxHkWwqrA" name="For_1_cond" incoming="_Vt6-QQnzEea7IoxHkWwqrA" outgoing="_Vt8MYQnzEea7IoxHkWwqrA _Vt8zcgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vt6XNAnzEea7IoxHkWwqrA" name="int i=(population.getMaxSolutions() / 2)" incoming="_Vt7lUQnzEea7IoxHkWwqrA" outgoing="_Vt6-QAnzEea7IoxHkWwqrA" variable="_Vt6XMwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_Vt6-QgnzEea7IoxHkWwqrA" name="i++" incoming="_Vt8MYwnzEea7IoxHkWwqrA" outgoing="_Vt7lUAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt7lUwnzEea7IoxHkWwqrA" name="population.add(problem.randomGrowTreeSolution());" incoming="_Vt8MYQnzEea7IoxHkWwqrA" outgoing="_Vt8MYwnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt8MYAnzEea7IoxHkWwqrA" name="problem.randomGrowTreeSolution()"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt8zcAnzEea7IoxHkWwqrA" name="setState(CREATE_INIT_POPULATION_END);" incoming="_Vt8zcgnzEea7IoxHkWwqrA" outgoing="_Vt9aggnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt8zcQnzEea7IoxHkWwqrA" name="CREATE_INIT_POPULATION_END"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt9agAnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_START);" incoming="_Vt9aggnzEea7IoxHkWwqrA" outgoing="_Vt-BkgnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt9agQnzEea7IoxHkWwqrA" name="EVALUATE_POPULATION_START"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt-BkAnzEea7IoxHkWwqrA" name="problem.evaluate(population);" incoming="_Vt-BkgnzEea7IoxHkWwqrA" outgoing="_Vt-ooQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt-BkQnzEea7IoxHkWwqrA" name="population"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt-BkwnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_END);" incoming="_Vt-ooQnzEea7IoxHkWwqrA" outgoing="_Vt_PsAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt-ooAnzEea7IoxHkWwqrA" name="EVALUATE_POPULATION_END"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt-oognzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_START);" incoming="_Vt_PsAnzEea7IoxHkWwqrA" outgoing="_Vt_2wAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt-oownzEea7IoxHkWwqrA" name="CHECK_BEST_SOLUTION_START"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt_PsQnzEea7IoxHkWwqrA" name="checkBestSolution(population);" incoming="_Vt_2wAnzEea7IoxHkWwqrA" outgoing="_Vt_2wwnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt_PsgnzEea7IoxHkWwqrA" name="population"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_Vt_2wQnzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_END);" incoming="_Vt_2wwnzEea7IoxHkWwqrA" outgoing="_VuBE4QnzEea7IoxHkWwqrA">
+              <argument xmi:id="_Vt_2wgnzEea7IoxHkWwqrA" name="CHECK_BEST_SOLUTION_END"/>
+            </node>
+            <node xmi:type="uml:MergeNode" xmi:id="_VuAd0AnzEea7IoxHkWwqrA" name="While_2_merge" incoming="_VuBE4QnzEea7IoxHkWwqrA _VuLc8gnzEea7IoxHkWwqrA" outgoing="_VuBE4AnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:DecisionNode" xmi:id="_VuAd0QnzEea7IoxHkWwqrA" name="While_2_cond" incoming="_VuBE4AnzEea7IoxHkWwqrA" outgoing="_VuBr8AnzEea7IoxHkWwqrA _VuMEAgnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VuBE4gnzEea7IoxHkWwqrA" name="Population list=select.select(getPopulation(),getProblem(),population.getMaxSolutions());" incoming="_VuBr8AnzEea7IoxHkWwqrA" outgoing="_VuBr9AnzEea7IoxHkWwqrA" variable="_VuBr8gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VuBr8wnzEea7IoxHkWwqrA" name="long crossSize=Math.round(list.size() * crossProbrability);" incoming="_VuBr9AnzEea7IoxHkWwqrA" outgoing="_VuCTAgnzEea7IoxHkWwqrA" variable="_VuCTAAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VuCTAQnzEea7IoxHkWwqrA" name="long mutateSize=Math.round(list.size() * mutateProbability);" incoming="_VuCTAgnzEea7IoxHkWwqrA" outgoing="_VuC6EgnzEea7IoxHkWwqrA" variable="_VuC6EAnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:AddVariableValueAction" xmi:id="_VuC6EQnzEea7IoxHkWwqrA" name="long reproduceSize=list.size() - (crossSize - mutateSize);" incoming="_VuC6EgnzEea7IoxHkWwqrA" outgoing="_VuDhIgnzEea7IoxHkWwqrA" variable="_VuC6EwnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuDhIAnzEea7IoxHkWwqrA" name="setState(CROSS_SOLUTION_START);" incoming="_VuDhIgnzEea7IoxHkWwqrA" outgoing="_VuEvQAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuDhIQnzEea7IoxHkWwqrA" name="CROSS_SOLUTION_START"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuEIMAnzEea7IoxHkWwqrA" name="cross.cross(list,0,crossSize);" incoming="_VuEvQAnzEea7IoxHkWwqrA" outgoing="_VuFWUAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuEIMQnzEea7IoxHkWwqrA" name="list"/>
+              <argument xmi:id="_VuEIMgnzEea7IoxHkWwqrA" name="0"/>
+              <argument xmi:id="_VuEIMwnzEea7IoxHkWwqrA" name="crossSize"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuEvQQnzEea7IoxHkWwqrA" name="setState(CROSS_SOLUTION_END);" incoming="_VuFWUAnzEea7IoxHkWwqrA" outgoing="_VuFWUwnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuEvQgnzEea7IoxHkWwqrA" name="CROSS_SOLUTION_END"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuFWUQnzEea7IoxHkWwqrA" name="setState(MUTATE_SOLUTION_START);" incoming="_VuFWUwnzEea7IoxHkWwqrA" outgoing="_VuGkcAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuFWUgnzEea7IoxHkWwqrA" name="MUTATE_SOLUTION_START"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuF9YAnzEea7IoxHkWwqrA" name="mutate.mutate(list,crossSize,mutateSize);" incoming="_VuGkcAnzEea7IoxHkWwqrA" outgoing="_VuHLgAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuF9YQnzEea7IoxHkWwqrA" name="list"/>
+              <argument xmi:id="_VuF9YgnzEea7IoxHkWwqrA" name="crossSize"/>
+              <argument xmi:id="_VuF9YwnzEea7IoxHkWwqrA" name="mutateSize"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuGkcQnzEea7IoxHkWwqrA" name="setState(MUTATE_SOLUTION_END);" incoming="_VuHLgAnzEea7IoxHkWwqrA" outgoing="_VuHykAnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuGkcgnzEea7IoxHkWwqrA" name="MUTATE_SOLUTION_END"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuHLgQnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_START);" incoming="_VuHykAnzEea7IoxHkWwqrA" outgoing="_VuHykwnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuHLggnzEea7IoxHkWwqrA" name="EVALUATE_POPULATION_START"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuHykQnzEea7IoxHkWwqrA" name="problem.evaluate(list);" incoming="_VuHykwnzEea7IoxHkWwqrA" outgoing="_VuIZognzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuHykgnzEea7IoxHkWwqrA" name="list"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuIZoAnzEea7IoxHkWwqrA" name="setState(EVALUATE_POPULATION_END);" incoming="_VuIZognzEea7IoxHkWwqrA" outgoing="_VuJAsQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuIZoQnzEea7IoxHkWwqrA" name="EVALUATE_POPULATION_END"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuIZownzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_START);" incoming="_VuJAsQnzEea7IoxHkWwqrA" outgoing="_VuJnwQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuJAsAnzEea7IoxHkWwqrA" name="CHECK_BEST_SOLUTION_START"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuJAsgnzEea7IoxHkWwqrA" name="checkBestSolution(list);" incoming="_VuJnwQnzEea7IoxHkWwqrA" outgoing="_VuKO0AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuJnwAnzEea7IoxHkWwqrA" name="list"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuJnwgnzEea7IoxHkWwqrA" name="setState(CHECK_BEST_SOLUTION_END);" incoming="_VuKO0AnzEea7IoxHkWwqrA" outgoing="_VuK14AnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuJnwwnzEea7IoxHkWwqrA" name="CHECK_BEST_SOLUTION_END"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuKO0QnzEea7IoxHkWwqrA" name="setPopulation(list);" incoming="_VuK14AnzEea7IoxHkWwqrA" outgoing="_VuK14wnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuKO0gnzEea7IoxHkWwqrA" name="list"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuK14QnzEea7IoxHkWwqrA" name="setState(NEW_POPULATION);" incoming="_VuK14wnzEea7IoxHkWwqrA" outgoing="_VuLc8QnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuK14gnzEea7IoxHkWwqrA" name="NEW_POPULATION"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuLc8AnzEea7IoxHkWwqrA" name="increseActualGeneration();" incoming="_VuLc8QnzEea7IoxHkWwqrA" outgoing="_VuLc8gnzEea7IoxHkWwqrA"/>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuMEAAnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);" incoming="_VuMEAgnzEea7IoxHkWwqrA" outgoing="_VuMrEgnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuMEAQnzEea7IoxHkWwqrA" name="EvolutionAlgorithm.ALGORITHM_TERMINATING"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuMrEAnzEea7IoxHkWwqrA" name="setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);" incoming="_VuMrEgnzEea7IoxHkWwqrA" outgoing="_VuNSIgnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuMrEQnzEea7IoxHkWwqrA" name="EvolutionAlgorithm.ALGORITHM_TERMINATED"/>
+            </node>
+            <node xmi:type="uml:CallOperationAction" xmi:id="_VuNSIAnzEea7IoxHkWwqrA" name="LOG.error(e);" incoming="_VuNSIgnzEea7IoxHkWwqrA" outgoing="_VuN5MQnzEea7IoxHkWwqrA">
+              <argument xmi:id="_VuNSIQnzEea7IoxHkWwqrA" name="e"/>
+            </node>
+            <node xmi:type="uml:OpaqueAction" xmi:id="_VuN5MAnzEea7IoxHkWwqrA" name="try {&#xA;  setState(INIT_STATE);&#xA;  TreeProblem problem=(TreeProblem)getProblem();&#xA;  this.mutate.setProblem(problem);&#xA;  Population population=getPopulation();&#xA;  setState(CREATE_INIT_POPULATION_START);&#xA;  for (int i=0; i &lt; (population.getMaxSolutions() / 2); i++)   population.add(problem.randomFullTreeSolution());&#xA;  for (int i=(population.getMaxSolutions() / 2); i &lt; population.getMaxSolutions(); i++)   population.add(problem.randomGrowTreeSolution());&#xA;  setState(CREATE_INIT_POPULATION_END);&#xA;  setState(EVALUATE_POPULATION_START);&#xA;  problem.evaluate(population);&#xA;  setState(EVALUATE_POPULATION_END);&#xA;  setState(CHECK_BEST_SOLUTION_START);&#xA;  checkBestSolution(population);&#xA;  setState(CHECK_BEST_SOLUTION_END);&#xA;  while (getActualGeneration() &lt; getGeneration() &amp;&amp; !isTerminate()) {&#xA;    Population list=select.select(getPopulation(),getProblem(),population.getMaxSolutions());&#xA;    long crossSize=Math.round(list.size() * crossProbrability);&#xA;    long mutateSize=Math.round(list.size() * mutateProbability);&#xA;    long reproduceSize=list.size() - (crossSize - mutateSize);&#xA;    setState(CROSS_SOLUTION_START);&#xA;    cross.cross(list,0,crossSize);&#xA;    setState(CROSS_SOLUTION_END);&#xA;    setState(MUTATE_SOLUTION_START);&#xA;    mutate.mutate(list,crossSize,mutateSize);&#xA;    setState(MUTATE_SOLUTION_END);&#xA;    setState(EVALUATE_POPULATION_START);&#xA;    problem.evaluate(list);&#xA;    setState(EVALUATE_POPULATION_END);&#xA;    setState(CHECK_BEST_SOLUTION_START);&#xA;    checkBestSolution(list);&#xA;    setState(CHECK_BEST_SOLUTION_END);&#xA;    setPopulation(list);&#xA;    setState(NEW_POPULATION);&#xA;    increseActualGeneration();&#xA;  }&#xA;  setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);&#xA;  setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);&#xA;}&#xA; catch (Exception e) {&#xA;  LOG.error(e);&#xA;}" incoming="_VuN5MQnzEea7IoxHkWwqrA" outgoing="_VuOgQAnzEea7IoxHkWwqrA">
+              <language>JAVA</language>
+              <body>try {
+  setState(INIT_STATE);
+  TreeProblem problem=(TreeProblem)getProblem();
+  this.mutate.setProblem(problem);
+  Population population=getPopulation();
+  setState(CREATE_INIT_POPULATION_START);
+  for (int i=0; i &lt; (population.getMaxSolutions() / 2); i++)   population.add(problem.randomFullTreeSolution());
+  for (int i=(population.getMaxSolutions() / 2); i &lt; population.getMaxSolutions(); i++)   population.add(problem.randomGrowTreeSolution());
+  setState(CREATE_INIT_POPULATION_END);
+  setState(EVALUATE_POPULATION_START);
+  problem.evaluate(population);
+  setState(EVALUATE_POPULATION_END);
+  setState(CHECK_BEST_SOLUTION_START);
+  checkBestSolution(population);
+  setState(CHECK_BEST_SOLUTION_END);
+  while (getActualGeneration() &lt; getGeneration() &amp;&amp; !isTerminate()) {
+    Population list=select.select(getPopulation(),getProblem(),population.getMaxSolutions());
+    long crossSize=Math.round(list.size() * crossProbrability);
+    long mutateSize=Math.round(list.size() * mutateProbability);
+    long reproduceSize=list.size() - (crossSize - mutateSize);
+    setState(CROSS_SOLUTION_START);
+    cross.cross(list,0,crossSize);
+    setState(CROSS_SOLUTION_END);
+    setState(MUTATE_SOLUTION_START);
+    mutate.mutate(list,crossSize,mutateSize);
+    setState(MUTATE_SOLUTION_END);
+    setState(EVALUATE_POPULATION_START);
+    problem.evaluate(list);
+    setState(EVALUATE_POPULATION_END);
+    setState(CHECK_BEST_SOLUTION_START);
+    checkBestSolution(list);
+    setState(CHECK_BEST_SOLUTION_END);
+    setPopulation(list);
+    setState(NEW_POPULATION);
+    increseActualGeneration();
+  }
+  setState(EvolutionAlgorithm.ALGORITHM_TERMINATING);
+  setState(EvolutionAlgorithm.ALGORITHM_TERMINATED);
+}
+ catch (Exception e) {
+  LOG.error(e);
+}
+</body>
+            </node>
+          </ownedBehavior>
+          <ownedOperation xmi:id="_Vh57gAnzEea7IoxHkWwqrA" name="GeneticProgramming" visibility="public" method="_Vs-jEAnzEea7IoxHkWwqrA"/>
+          <ownedOperation xmi:id="_ViJzIAnzEea7IoxHkWwqrA" name="getSelect" visibility="public" method="_VtGe4gnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_ViJzIQnzEea7IoxHkWwqrA" type="_Vg518AnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VirXkAnzEea7IoxHkWwqrA" name="setSelect" visibility="public" method="_VtHtAAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VirXkQnzEea7IoxHkWwqrA" name="select" type="_Vg518AnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VjDLAAnzEea7IoxHkWwqrA" name="getCross" visibility="public" method="_VtI7IAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VjDLAQnzEea7IoxHkWwqrA" type="_Vg1kgAnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VjpA4AnzEea7IoxHkWwqrA" name="setCross" visibility="public" method="_VtOasAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VjpA4QnzEea7IoxHkWwqrA" name="cross" type="_Vg1kgAnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Vj5fkAnzEea7IoxHkWwqrA" name="getMutate" visibility="public" method="_VtQP4QnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_Vj5fkQnzEea7IoxHkWwqrA" type="_Vg2yoQnzEea7IoxHkWwqrA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VkbEAAnzEea7IoxHkWwqrA" name="setMutate" visibility="public" method="_VtReAAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VkbEAQnzEea7IoxHkWwqrA" name="mutate" type="_Vg2yoQnzEea7IoxHkWwqrA"/>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VkxCQAnzEea7IoxHkWwqrA" name="getMutateProbability" visibility="public" method="_VtTTMAnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VkxCQQnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VlIOoAnzEea7IoxHkWwqrA" name="setMutateProbability" visibility="public" method="_VtVvcgnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VlIOoQnzEea7IoxHkWwqrA" name="mutateProbability">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VlZUYAnzEea7IoxHkWwqrA" name="getCrossProbrability" visibility="public" method="_VtdrQgnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VlZUYQnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Vl3OcAnzEea7IoxHkWwqrA" name="setCrossProbrability" visibility="public" method="_VtjK0AnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_Vl3OcQnzEea7IoxHkWwqrA" name="crossProbrability">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VmJiUAnzEea7IoxHkWwqrA" name="getReproduceProbability" visibility="public" method="_VtrtsQnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VmJiUQnzEea7IoxHkWwqrA" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_VmgusAnzEea7IoxHkWwqrA" name="setReproduceProbability" visibility="public" method="_VtsUwwnzEea7IoxHkWwqrA">
+            <ownedParameter xmi:id="_VmgusQnzEea7IoxHkWwqrA" name="value">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:id="_Vm5JMAnzEea7IoxHkWwqrA" name="run" visibility="public" method="_Vt0QkgnzEea7IoxHkWwqrA">
+            <eAnnotations xmi:id="_Vm5JMQnzEea7IoxHkWwqrA" source="http://www.eclipse.org/umlgen/reverse/java/doc">
+              <details xmi:id="_Vm5JMgnzEea7IoxHkWwqrA" key="documentation" value=" When an object implementing interface &lt;code>Runnable&lt;/code> is used&#xA; to create a thread, starting the thread causes the object's&#xA; &lt;code>run&lt;/code> method to be called in that separately executing&#xA; thread.&#xA; &lt;p>&#xA; The general contract of the method &lt;code>run&lt;/code> is that it may&#xA; take any action whatsoever.&#xA; @see     java.lang.Thread#run()&#xA; "/>
+            </eAnnotations>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuPuYAnzEea7IoxHkWwqrA" name="algorithm_beans" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXVqQAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuPuYQnzEea7IoxHkWwqrA" name="algorithm_io" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXYGgAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQVcAnzEea7IoxHkWwqrA" name="algorithm_util" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXeNIAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQVcQnzEea7IoxHkWwqrA" name="algorithm_log4j" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXh3gQnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQVcgnzEea7IoxHkWwqrA" name="algorithm_problem" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXiekAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQVcwnzEea7IoxHkWwqrA" name="algorithm_solution" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXlh4AnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQ8gAnzEea7IoxHkWwqrA" name="algorithm_terminate" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXmI8AnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQ8gQnzEea7IoxHkWwqrA" name="algorithm_util" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_VXqaYAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQ8ggnzEea7IoxHkWwqrA" name="algorithm_cross" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_Vg09cAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuQ8gwnzEea7IoxHkWwqrA" name="algorithm_mutate" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_Vg2yoAnzEea7IoxHkWwqrA"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_VuRjkAnzEea7IoxHkWwqrA" name="algorithm_select" client="_VW17AgnzEea7IoxHkWwqrA" supplier="_Vg4n0QnzEea7IoxHkWwqrA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VXiekAnzEea7IoxHkWwqrA" name="problem">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_VXiekQnzEea7IoxHkWwqrA" name="Problem"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg4AwAnzEea7IoxHkWwqrA" name="TreeProblem"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VXlh4AnzEea7IoxHkWwqrA" name="solution">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_VXlh4QnzEea7IoxHkWwqrA" name="Solution"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VXmI8AnzEea7IoxHkWwqrA" name="terminate">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_VXmI8QnzEea7IoxHkWwqrA" name="TerminateFunction"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_VXqaYAnzEea7IoxHkWwqrA" name="util">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_VXqaYQnzEea7IoxHkWwqrA" name="Population"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Vg09cAnzEea7IoxHkWwqrA" name="cross">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg1kgAnzEea7IoxHkWwqrA" name="CrossFunction"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg2LkAnzEea7IoxHkWwqrA" name="TreeCross"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Vg2yoAnzEea7IoxHkWwqrA" name="mutate">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg2yoQnzEea7IoxHkWwqrA" name="MutateFunction"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg3ZsAnzEea7IoxHkWwqrA" name="TreeMutate"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Vg4n0QnzEea7IoxHkWwqrA" name="select">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg5O4AnzEea7IoxHkWwqrA" name="RankSelect"/>
+        <packagedElement xmi:type="uml:DataType" xmi:id="_Vg518AnzEea7IoxHkWwqrA" name="SelectFunction"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_VXh3gAnzEea7IoxHkWwqrA" name="apache">
+      <packagedElement xmi:type="uml:Package" xmi:id="_VXh3gQnzEea7IoxHkWwqrA" name="log4j">
+        <packagedElement xmi:type="uml:DataType" xmi:id="_VXh3ggnzEea7IoxHkWwqrA" name="Logger"/>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_VXTOAAnzEea7IoxHkWwqrA" name="java">
+    <packagedElement xmi:type="uml:Package" xmi:id="_VXT1EAnzEea7IoxHkWwqrA" name="lang">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXT1EQnzEea7IoxHkWwqrA" name="Runnable"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VYikIAnzEea7IoxHkWwqrA" name="Thread"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VcIDoAnzEea7IoxHkWwqrA" name="Object"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_VXVqQAnzEea7IoxHkWwqrA" name="beans">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXVqQQnzEea7IoxHkWwqrA" name="PropertyChangeEvent"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXW4YAnzEea7IoxHkWwqrA" name="PropertyChangeListener"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_VXYGgAnzEea7IoxHkWwqrA" name="io">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXYGgQnzEea7IoxHkWwqrA" name="File"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXZUoAnzEea7IoxHkWwqrA" name="FileNotFoundException"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXZ7sAnzEea7IoxHkWwqrA" name="FileOutputStream"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXbJ0AnzEea7IoxHkWwqrA" name="OutputStreamWriter"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_VXeNIAnzEea7IoxHkWwqrA" name="util">
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXeNIQnzEea7IoxHkWwqrA" name="ArrayList"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXfbQAnzEea7IoxHkWwqrA" name="LinkedList"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="_VXgpYAnzEea7IoxHkWwqrA" name="List"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

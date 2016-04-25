@@ -63,7 +63,6 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 	}
 
 	public void setMutate(MutateFunction mutate) {
-		mutate.setProblem(getProblem());
 		this.mutate = mutate;
 	}
 
@@ -115,7 +114,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 		try {
 			setState(INIT_STATE);
 			TreeProblem problem = (TreeProblem) getProblem();
-			this.mutate.setProblem(problem);
+			problem.initialize();
 			Population population = getPopulation();
 
 			// pokud neni populace inicializovana, vegenerujeme pul napul
@@ -158,7 +157,7 @@ public class GeneticProgramming extends EvolutionAlgorithm {
 
 				// mutace
 				setState(MUTATE_SOLUTION_START);
-				mutate.mutate(list, crossSize, mutateSize);
+				mutate.mutate(list, problem, crossSize, mutateSize);
 				setState(MUTATE_SOLUTION_END);
 
 				// LOG.info("MATETED");

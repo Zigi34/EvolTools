@@ -57,7 +57,7 @@ public class RankSelect extends SelectFunction {
 		}
 
 		Population result = new Population();
-		result.setMax(pop.getMaxSolutions());
+		result.setMaxSolutions(pop.getMaxSolutions());
 		result.setSolutions(list);
 		return result;
 	}

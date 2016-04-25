@@ -26,11 +26,6 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 		this.maxSolutions = size;
 	}
 
-	public void addAll(List<Solution> solutions) {
-		if ((this.solutions.size() + solutions.size()) <= maxSolutions)
-			this.solutions.addAll(solutions);
-	}
-
 	public void clear() {
 		solutions.clear();
 	}
@@ -61,7 +56,7 @@ public class Population implements Cloneable<Population>, Comparator<Solution>, 
 		return maxSolutions;
 	}
 
-	public void setMax(int max) {
+	public void setMaxSolutions(int max) {
 		this.maxSolutions = max;
 	}
 
