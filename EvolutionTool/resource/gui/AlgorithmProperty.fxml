@@ -14,24 +14,26 @@
   <center>
     <Accordion prefWidth="300.0">
       <expandedPane>
-        <TitledPane fx:id="basicProperty" animated="false" prefHeight="482.0" prefWidth="302.0" text="Basic Properties">
+        <TitledPane fx:id="basicProperty" animated="false" prefHeight="600.0" prefWidth="300.0" text="Basic Properties">
           <content>
-            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="494.0" prefWidth="297.0">
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="300.0">
               <children>
                 <Label fx:id="selectFunctionLabel" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                 <ChoiceBox id="selectFunctionInput" fx:id="selectFunction" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="34.0" />
-                <Label id="selectFunctionLabel" fx:id="mutateFunctionLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="110.0" />
-                <ChoiceBox id="selectFunctionInput" fx:id="mutateFunction" prefWidth="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="130.0" />
-                <Label fx:id="generationLabel" text="generací" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="380.0" />
-                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="400.0" />
-                <Label fx:id="crossLabel" prefWidth="173.0" text="Pravděpodobnost křížení" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="170.0" />
-                <Slider fx:id="cross" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.8" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="190.0" />
+                <Label id="selectFunctionLabel" fx:id="mutateFunctionLabel" prefWidth="173.0" text="Label" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="177.0" />
+                <ChoiceBox id="selectFunctionInput" fx:id="mutateFunction" prefWidth="-1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="197.0" />
+                <Label fx:id="generationLabel" text="generací" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="447.0" />
+                <TextField fx:id="generation" prefWidth="173.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="467.0" />
+                <Label fx:id="crossLabel" prefWidth="173.0" text="Pravděpodobnost křížení" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="237.0" />
+                <Slider fx:id="cross" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.8" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="257.0" />
                 <Label fx:id="tournamentSizeLabel" prefWidth="-1.0" text="Velikost turnaje" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0" />
                 <TextField fx:id="tournamentSize" editable="true" focusTraversable="true" prefWidth="-1.0" visible="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="80.0" />
-                <Label fx:id="mutateLabel" prefWidth="268.0" text="Mutace" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="238.0" />
-                <Slider fx:id="mutate" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="258.0" />
-                <Label fx:id="reproductionLabel" prefWidth="268.0" text="Reprodukce" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="310.0" />
-                <Slider fx:id="reproduction" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="330.0" />
+                <Label fx:id="mutateLabel" prefWidth="268.0" text="Mutace" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="305.0" />
+                <Slider fx:id="mutate" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="325.0" />
+                <Label fx:id="reproductionLabel" prefWidth="268.0" text="Reprodukce" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="377.0" />
+                <Slider fx:id="reproduction" majorTickUnit="0.5" max="1.0" minorTickCount="4" prefWidth="-1.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.1" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="397.0" />
+                <Label id="selectFunctionLabel" fx:id="crossFunctionLabel" layoutX="14.0" layoutY="124.0" prefWidth="272.0" text="Label" />
+                <ChoiceBox id="selectFunctionInput" fx:id="crossFunction" layoutX="14.0" layoutY="144.0" prefWidth="273.0" />
               </children>
             </AnchorPane>
           </content>

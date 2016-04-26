@@ -55,6 +55,6 @@ public class OnePointTreeCross extends CrossFunction {
 
 	@Override
 	public String toString() {
-		return "one-point-cross";
+		return "One point cross";
 	}
 }

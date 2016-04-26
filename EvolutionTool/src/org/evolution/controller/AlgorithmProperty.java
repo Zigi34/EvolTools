@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.evolution.algorithm.GeneticProgramming;
 import org.evolution.model.AlgorithmModel;
+import org.evolution.model.CrossFunctionModel;
 import org.evolution.model.MutateFunctionModel;
 import org.evolution.model.PopulationModel;
 import org.evolution.model.ProblemModel;
@@ -48,6 +49,12 @@ public class AlgorithmProperty extends BorderPane {
 
 	@FXML
 	private ChoiceBox<MutateFunctionModel> mutateFunction;
+
+	@FXML
+	private Label crossFunctionLabel;
+
+	@FXML
+	private ChoiceBox<CrossFunctionModel> crossFunction;
 
 	@FXML
 	private TitledPane basicProperty;
@@ -164,6 +171,29 @@ public class AlgorithmProperty extends BorderPane {
 		ObservableList<MutateFunctionModel> mutateList = FXCollections.observableList(Services.mutateFunctionService().findMutateFunctions());
 		mutateFunction.setItems(mutateList);
 		mutateFunction.getSelectionModel().selectFirst();
+		mutateFunction.valueProperty().addListener(new ChangeListener<MutateFunctionModel>() {
+			@Override
+			public void changed(ObservableValue<? extends MutateFunctionModel> observable, MutateFunctionModel oldValue, MutateFunctionModel newValue) {
+				GeneticProgramming gp = (GeneticProgramming) AlgorithmService.getSelected().getAlgorithm();
+				gp.setMutate(newValue.getFunction());
+				LOG.debug("Mutační funkce: " + newValue.getFunction());
+			}
+		});
+
+		// mutate function
+		crossFunctionLabel.setText(Utils.getLabel("cross_function"));
+
+		ObservableList<CrossFunctionModel> crossList = FXCollections.observableList(Services.crossFunctionService().findCrossFunctions());
+		crossFunction.setItems(crossList);
+		crossFunction.getSelectionModel().selectFirst();
+		crossFunction.valueProperty().addListener(new ChangeListener<CrossFunctionModel>() {
+			@Override
+			public void changed(ObservableValue<? extends CrossFunctionModel> observable, CrossFunctionModel oldValue, CrossFunctionModel newValue) {
+				GeneticProgramming gp = (GeneticProgramming) AlgorithmService.getSelected().getAlgorithm();
+				gp.setCross(newValue.getFunction());
+				LOG.debug("Funkce křížení: " + newValue.getFunction());
+			}
+		});
 
 		// generation
 		generationLabel.setText(Utils.getLabel("generation"));

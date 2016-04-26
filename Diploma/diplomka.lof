@@ -1,19 +1,21 @@
 \select@language {czech}
 \contentsline {figure}{\numberline {1}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h evolu\IeC {\v c}n\IeC {\'\i }ho algoritmu}}{8}{figure.1}
 \contentsline {figure}{\numberline {2}{\ignorespaces N\IeC {\v e}jak\IeC {\'y} graf}}{12}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Ruletov\IeC {\'e} kolo}}{13}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h algoritmu Genetick\IeC {\'e}ho programov\IeC {\'a}n\IeC {\'\i }}}{15}{figure.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces Reprezentace stromu}}{17}{figure.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}}{19}{figure.6}
-\contentsline {figure}{\numberline {7}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru mutace}}{20}{figure.7}
-\contentsline {figure}{\numberline {8}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru editace. Lev\IeC {\'y} strom zjednodu\IeC {\v s}\IeC {\'\i }me a v\IeC {\'y}sledkem je strom prav\IeC {\'y}}}{21}{figure.8}
-\contentsline {figure}{\numberline {9}{\ignorespaces T\IeC {\v r}\IeC {\'\i }dn\IeC {\'\i } diagram}}{24}{figure.9}
-\contentsline {figure}{\numberline {10}{\ignorespaces GUI aplikace EvolTool}}{25}{figure.10}
-\contentsline {figure}{\numberline {11}{\ignorespaces Stezka Santa Fe}}{28}{figure.11}
-\contentsline {figure}{\numberline {12}{\ignorespaces Regresn\IeC {\'\i } funkce (modr\IeC {\'a}) s nalezenou aproximax\IeC {\'\i } (\IeC {\v c}erven\IeC {\v e})}}{30}{figure.12}
-\contentsline {figure}{\numberline {13}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^5-2x^3+x$}}{32}{figure.13}
-\contentsline {figure}{\numberline {14}{\ignorespaces V\IeC {\'y}sledn\IeC {\'a} aproximace funkce $x^5-2x^3+x$}}{32}{figure.14}
-\contentsline {figure}{\numberline {15}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^6-2x^4+x^2$}}{33}{figure.15}
-\contentsline {figure}{\numberline {16}{\ignorespaces V\IeC {\'y}sledn\IeC {\'a} aproximace funkce $x^6-2x^4+x^2$}}{33}{figure.16}
-\contentsline {figure}{\numberline {17}{\ignorespaces V\IeC {\'y}voj fitness nejlep\IeC {\v s}ich nalezen\IeC {\'y}ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } Quintic funkce}}{34}{figure.17}
-\contentsline {figure}{\numberline {18}{\ignorespaces V\IeC {\'y}voj fitness nejlep\IeC {\v s}ich nalezen\IeC {\'y}ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } Sextic funkce}}{34}{figure.18}
+\contentsline {figure}{\numberline {3}{\ignorespaces Reprezentace stromu}}{14}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Ruletov\IeC {\'e} kolo}}{15}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Po\IeC {\v r}adov\IeC {\'y} v\IeC {\'y}b\IeC {\v e}r}}{15}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}}{16}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad jednobodov\IeC {\'e}ho oper\IeC {\'a}toru k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}}{18}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru mutace}}{19}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces P\IeC {\v r}\IeC {\'\i }klad oper\IeC {\'a}toru editace. Lev\IeC {\'y} strom zjednodu\IeC {\v s}\IeC {\'\i }me a v\IeC {\'y}sledkem je strom prav\IeC {\'y}}}{20}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h algoritmu Genetick\IeC {\'e}ho programov\IeC {\'a}n\IeC {\'\i }}}{21}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces T\IeC {\v r}\IeC {\'\i }dn\IeC {\'\i } diagram}}{25}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces GUI aplikace EvolTool}}{26}{figure.12}
+\contentsline {figure}{\numberline {13}{\ignorespaces Stezka Santa Fe}}{29}{figure.13}
+\contentsline {figure}{\numberline {14}{\ignorespaces Regresn\IeC {\'\i } funkce (modr\IeC {\'a}) s nalezenou aproximax\IeC {\'\i } (\IeC {\v c}erven\IeC {\v e})}}{31}{figure.14}
+\contentsline {figure}{\numberline {15}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^5-2x^3+x$}}{33}{figure.15}
+\contentsline {figure}{\numberline {16}{\ignorespaces V\IeC {\'y}sledn\IeC {\'a} aproximace funkce $x^5-2x^3+x$}}{33}{figure.16}
+\contentsline {figure}{\numberline {17}{\ignorespaces Pr\IeC {\r u}b\IeC {\v e}h funkce $x^6-2x^4+x^2$}}{34}{figure.17}
+\contentsline {figure}{\numberline {18}{\ignorespaces V\IeC {\'y}sledn\IeC {\'a} aproximace funkce $x^6-2x^4+x^2$}}{34}{figure.18}
+\contentsline {figure}{\numberline {19}{\ignorespaces V\IeC {\'y}voj fitness nejlep\IeC {\v s}ich nalezen\IeC {\'y}ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } Quintic funkce}}{35}{figure.19}
+\contentsline {figure}{\numberline {20}{\ignorespaces V\IeC {\'y}voj fitness nejlep\IeC {\v s}ich nalezen\IeC {\'y}ch \IeC {\v r}e\IeC {\v s}en\IeC {\'\i } Sextic funkce}}{35}{figure.20}

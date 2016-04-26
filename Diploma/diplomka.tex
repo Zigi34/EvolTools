@@ -81,7 +81,7 @@ různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako zá
 
 \section{Evoluční algoritmy}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné od klasických, ale hlavně pro fakt, že v případě vhodného aplikování jsou schopny nahradit člověka.
 
 \subsection{Pojmy z oblasti evolučních algoritmů}
 \paragraph*{}
@@ -140,7 +140,6 @@ Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podl
 plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
 
 \subsection{Životní cyklus evolučních algoritmů}
-
 \InsertFigure{Figures/evol-progress.png}{0.7\textwidth}{Průběh evolučního algoritmu}{fig:EvolProgress}
 
 \paragraph*{}
@@ -225,59 +224,6 @@ Vlastnostmi se podobá neuronovými sítěmi. Od jiných evolučních algoritmů
 \paragraph*{}
 Funkce $f_i$ z množiny $\Pi$ tvořící uzly syntaktického stromu jejichž argumenty reprezentují hrany vedoucí do hloubky o jedno větší. Terminály zastupují proměnné či konstanty umístěné v listových uzlech ukončují růst stromu a samotné individuum.
 
-\subsection{Selekce}
-\paragraph*{}
-Cílem operátoru selekce je udžení v nové populaci co možná nejlepší řešení daného problému. Praktikuje se přitom přímá vazba na hodnotu fitness funkce jednotlivých jedinců (řešení). Výběr jedinců z populace je často aplikován  algoritmem, založeným na pravděpodobnosti.
-
-\paragraph*{}
-Variant selekce existuje několik. Běžne se v publikacích objevují vyskytují varianty označované jako \textit{roulete wheel selection}
-
-\subsubsection*{Roulete wheel selection}
-\paragraph*{}
-V češtině pod názvem výběr ruletovým kolem, je operátor používaný v genetických algoritmů pro výběr potenciálně vhodných řešení pro následnou rekombinaci. K přiřazené fitness hodnotě se úměrně přidružuje pravděpodobnostní hodnota pro výběr jedince k další reprodukci. 
-
-\paragraph*{}
-Hodnota fitness je použita k přiřazení pravděpodobnosti pro výběr jednotlivých řešení následujícím způsobem. Pokud je $f_i$ přiřazená fitness hodnota jedince $i$ v populaci, pak pravděpodobnost, že toto řešení bude vybráno rovno $p_i=\frac{f_i}{\sum\limits_{j=1}^n f_j}$, kde $n$ je počet jedinců v populaci.
-
-\paragraph*{}
-Rozdělení pravděpodobnosti pro jednotlivé jedince si lze dobře představit na kole s výšeči, kde plocha každé výseči reprezentuje velikost pravděpodobností každého řešení. Odtud tedy název tohoto algoritmu.
-
-\InsertFigure{Figures/roulete_wheel}{0.5\textwidth}{Ruletové kolo}{fig:SampleGraph}
-
-\subsection{Algo1ritmus GP}
-\paragraph*{}
-Jak ilustruje níže uvedený obrázek \ref{fig:gp-paradigm}, algoritmus GP lze rozdělit do několika kroků, které budou následně rozebrány v závislosti na způsobu realizace.
-\InsertFigure{Figures/gp-paradigm.png}{0.7\textwidth}{Průběh algoritmu Genetického programování}{fig:gp-paradigm}
-
-\paragraph*{}
-Prvním krokem je vytvoření náhodné populace jedinců, která bude sloužit k tvorbě dalších, vhodnějších řešeních.
-Než se dostaneme ke šlechtění nových "lepších" jedinců, je potřeba, ve stávající populaci, nějak rozlišit vhodnější řešení reprezentováno jedincem, od řešení horšího. Proto je iniciační populace ohodnocena fitness funkcí.
-
-\paragraph*{}
-Před tím, něž budou řešení v populaci podrobena operátorům křížení nebo mutaci, stanou nejprve před genetickou operací selekce. Program je vybrán na základě dříve zmíněné Darwinovy teorie přírodního výběru. Konkrétně pro nás je to na základě předchozího ohodnocení.
-
-\paragraph*{}
-Ohodnocená populace je následně předaná genetickým operacím. Zde bude velmi záviset, s jakými parametry budou operace křížení či mutace operovat. Je třeba parametrem stanovit, jak velká část populace bude podrobena operaci mutace a naopak jak velká část operaci křížení. 
-
-\subsection{Omezení GP}
-\paragraph*{}
-Koza ve své knize definuje \cite{kozagp} dvojí požadavky na množinu funkcí a terminálů. Je to požadavek uzavřenosti (closure) a postačitelnosti (sufficiency) obou množin. Uzavřenost množiny je splněna tehdy, pokud může libovolná funkce příjmout jako argument libovoulnou funkci z množiny funkcí či terminál z množiny terminálních symbolů. Uzavřenost zamezí tvorbu syntakticky nesprávných programů.
-
-\paragraph*{}
-Postačitelnst nám naproti tomu umožňuje, abychom byli schopní k danému problému nalézt odpovídající program (funkci), která by jej řešila. Díky tomu jsme schopni říci, že k danému problému můžeme vyjádřit řešení daného problému. Představme si problém nalezení potravy umělým mravencem v mřížkové soustavěm kterou můžeme popsat množinou funkcí tvořenou příkazy $\{KROK VPRED, OTOC VLEVO, OTOC VPRAVO\}$ a množinou terminálů s jediným příkazem $\{ZASTAV\}$. I bez dokázaní si můžeme jasně říci, že jsme schopní díky těmto příkazům dostat mravence do jakéhokoliv místa a zastavit.
-
-\paragraph*{}
-U jednoduchých příkladů, kde je množina terminálů a neterminálů tvořena pouze Booleovskými funkcemi můžeme i bez důkazů předpokládat, že takové množiny jsou uzavřené a splňují také podmínku postačitelnosti. Ovšem v reálných příkladech budeme často používat programy složené číselných proměnných a funkcích, podmínkách, rekurzích, ruzných typů v argumentech funkcí. Nebo budeme při práci s číselnými funkcemi muset ošetřit některé zakázané stavy (dělení nulou, logaritmus záporného čísla, atd.). V takových případech už podmínka uzavřenosti nemusí platit.
-
-\paragraph*{}
-I v těchto případech se však můžeme odkázat na Kozu, který tvrdí, že lze jednoduchým postupem zajistit, aby byly množiny terminálů a funkcí uzavřené pro obecně jakýkoliv problém. Vezměme si případ programu pracujícího s číselnými funkcemi a terminály, kde může nastat situace, že se bude muset provést dělení nulou. Proto je třeba upravit funkce z těchto množin tak, aby umožňovaly zpracovat také nedefinovatelnou hodnotu ("undefined") v podobě nějakého zástupného symbolu a ošetřit stavy funkcí tak, aby funkce mohla vrátit kromě čísla také tuto hodnotu v případech, kdy je operae zakákána nebo v případě, že alespoň jeden z argumentů vrací tuto hodnotu. Takto upravené funkce Koza nazývá chráněné funkce (protected functions).
-
-\paragraph*{}
-Vlastnost uzavřenosti množin je vhodná, ale není absolutně nutná. Jako alternativa k chráněným funkcím může sloužit jiný přístup. Pokud striktně nevyžadujeme, aby byl program syntaktického stromu validní, můžeme nesprávně generované stromy v populaci zakázat nebo je jinak penalizovat, aby nepřecházely do nových generací. V této práci se však takovým způsobům nebudeme zabývat a budeme pracovat pouze se splněnou podmínkou uzavřenosti.
-
-\paragraph*{}
-Protože výsledná funkce je tvořena nejen proměnnými, ale také konstantami, je třeba si říci, jak je při tvorbě jedince reprezentovat. Protože můžeme chtít použít GP pro ekonomické modelování, měl by mít algoritmus možnost generovat vhodné konstanty v daném rozsahu a daného typu podle řešené úlohy. Koza navrhuje množinu terminálů o náhodnou konstantu C tak, že se během běhu programu při ohodnocení individuí doplní o náhodnou hodnotu z příslučné množiny. Toto číslo se potom využije jako kterýkoliv jiný terminál.
-
 \subsection{Množina funkcí a terminálů}
 \paragraph*{}
 Množina funkcí může obsahovat:
@@ -311,20 +257,66 @@ Koza ve své knize \cite{kozagp} doporučuje kombinaci obou metod, což v praxi 
 \paragraph*{}
 Vše si můžeme ukázat na příkladě populace s $N=500$ jedinců, kde je stanovena maximální hloubka $h_max=6$. Při generování základní populace budeme postupovat tak, že 100 jedinců bude generováno s $h_max=2$ (50 s růstovou metodou a 50 s úplnou metodou),následně pro dalších 100 řešení generujeme obdobné stromy hloubký o 1 vyšší $h_max=3$ a tak dále, až do hloubky $h_max=6$.
 
-\subsection{Operátory}
-
-\subsubsection{Křížení}
+\subsection{Selekce}
 \paragraph*{}
-V GP budeme používat stejné operace jako u GA. Operátor křížení pracuje s dvojícemi stromů. U každého stromu z dvojíce zvolí náhodně uzel pro křížení a v dalším kroku zamění podstromy pod zvolenými uzly mezi sebou. Více osvětlíme příkladem na obrázku. Oproti GA se zde potkáváme s problémem postupného růstu hloubky reprezentujících stromů. V první generaci si obstaráme stromy, který mají definouvanou maximální hloubku. Při aplikaci křížení však snad nastává případ, kdy je například listový uzel jednoho stromu nahrazen téměř celým podstromem druhého jedince. V podstatě jen v případech, kdy se budou zaměňovat podstromy z uzlů, které jsou ve stejné hloubce se žádný z obou stromů nerozšiřuje. Ve všech ostatních případech bude jeden nebo druhý strom rozšířený.
+Cílem operátoru selekce je udžení v nové populaci co možná nejlepší řešení daného problému. Praktikuje se přitom přímá vazba na hodnotu fitness funkce jednotlivých jedinců (řešení). Výběr jedinců z populace je často aplikován  algoritmem, založeným na pravděpodobnosti.
+
+\paragraph*{}
+Variant selekce existuje několik. Běžne se v publikacích objevují vyskytují varianty označované jako \textit{roulete wheel selection}
+
+\subsubsection*{Roulete wheel selection}
+\paragraph*{}
+V češtině pod názvem výběr ruletovým kolem, je operátor používaný v genetických algoritmů pro výběr potenciálně vhodných řešení pro následnou rekombinaci. K přiřazené fitness hodnotě se úměrně přidružuje pravděpodobnostní hodnota pro výběr jedince k další reprodukci. 
+
+\paragraph*{}
+Hodnota fitness je použita k přiřazení pravděpodobnosti pro výběr jednotlivých řešení následujícím způsobem. Pokud je $f_i$ přiřazená fitness hodnota jedince $i$ v populaci, pak pravděpodobnost, že toto řešení bude vybráno rovno $p_i=\frac{f_i}{\sum\limits_{j=1}^n f_j}$, kde $n$ je počet jedinců v populaci.
+
+\paragraph*{}
+Rozdělení pravděpodobnosti pro jednotlivé jedince si lze dobře představit na kole s výšeči, kde plocha každé výseči reprezentuje velikost pravděpodobností každého řešení. Odtud tedy název tohoto algoritmu.
+
+\InsertFigure{Figures/roulete_wheel.png}{0.5\textwidth}{Ruletové kolo}{fig:RouleteWheelSelect}
+
+\subsubsection*{Rank selection}
+
+\InsertFigure{Figures/rank-select.png}{0.5\textwidth}{Pořadový výběr}{fig:RankSelect}
+
+
+\subsection{Křížení}
+\paragraph*{}
+V GP budeme používat stejné operace jako u GA. Operátor křížení pracuje s dvojícemi stromů. U každého stromu z dvojíce zvolí náhodně uzel pro křížení a v dalším kroku zamění podstromy pod zvolenými uzly mezi sebou. Více osvětlíme příkladem na obrázku.
+
+\InsertFigure{Figures/cross.png}{0.7\textwidth}{Příklad operátoru křížení}{fig:CrossSample}
+
+\paragraph*{}
+Oproti GA se zde potkáváme s problémem postupného růstu hloubky reprezentujících stromů (tzv. bloat). V první generaci si obstaráme stromy, který mají definouvanou maximální hloubku. Při aplikaci křížení však snad nastává případ, kdy je například listový uzel jednoho stromu nahrazen téměř celým podstromem druhého jedince. V podstatě jen v případech, kdy se budou zaměňovat podstromy z uzlů, které jsou ve stejné hloubce se žádný z obou stromů nerozšiřuje. Ve všech ostatních případech bude jeden nebo druhý strom rozšířený. Řešením může být:
+\begin{itemize}
+\item úprava operátorů, aby netvořily dlouhá řešení
+\item penalizace dlouhých řešení při ohodnocování
+\item vícekriteriální optimalizace
+\end{itemize}
 
 \paragraph*{}
 Koza doporučuje, abychom definovali i maximální hloubku stromů vzniklých křížením. Doporučuje se trojnásobek hloubky počáteční populace. Pokud bychom při křížení překročili tuto maximální povolenou hranici, takto vzniklí potomci budou odmítnuti a nahrazeni jedním z rodičovských jedinců.
 
-\InsertFigure{Figures/cross.png}{0.7\textwidth}{Příklad operátoru křížení}{fig:CrossSample}
+\subsubsection{Standardní křížení (Tree-based crossover)}
+\paragraph*{}
+Křížení probíhá zcela tím způsobem, že se zcela náhodně vybere z každého stromu jeden uzel a ten se použije k následné výměně souvisejícího podstromu mezi dvěma rodiči. Jde o intiutivně obdobné chování, jaké známe z genetického algoitmu (GA). Názornou ukázku nalezneme na obrázku \ref{fig:CrossSample}.
+
+\subsubsection{Jednobodové křížení (One-point crossover)}
+\paragraph*{}
+Při biologické reprodukce je genetický materiál obou rodičů vyměňován tak, že výsledné geny dítěte jsou na přibližně stejném místě, jako tomu bylo u rodičovských genů. Což je však zcela odlišné od standardního křížení, kde mohou být podstromy přesunuty na zcela jinou pozici vzhledem k rodičovským stromům.
+
+\paragraph*{}
+Metody křížení, majíci tendenci zachovat polohu genetické informace se nazývají homologní. Tyto homologní metody křížení se běžné používají v lineárním GP.
+
+Fungují tak, že se vybere společný bod křížení v rodičovských reprezentacích, a poté se vymění odpovídající podstromy. Protože oba rodiče mohou mít různý tvar, tak než dojde k výběru bodu křížení, analyzují se oba stromy a pro křížení se vyberou pouze dvojíce uzlů, se stejným umístěním. \ref{fig:OnePointCrossover}.
+
+\InsertFigure{Figures/one-point-cross.png}{0.7\textwidth}{Příklad jednobodového operátoru křížení}{fig:OnePointCrossover}
+
 \paragraph*{}
 Speciálním případem při křížení je tzv. "incestní křížení", které nastane tehdy, pokud do křížení vstoupí dva identiční jedinci. V případě GA je takový případ nežádoucí, protože vznikají identiční potomci. V případe GP k tomu nastává pouze tehdy, když by byl v obou stromech vybrán tentýž uzel pro křížení.
 
-\subsubsection{Mutace}
+\subsection{Mutace}
 \paragraph*{}
 Operátor mutace také náhodně vybere uzel stromu a celý jeho podstrom odstraní. Na tomto místě se poté náhodně vygeneruje chybějící část stromu do maximální hloubky předepsané parametrem tak, aby vyýsledný strom nebyl příliš velký. 
 
@@ -338,7 +330,7 @@ Variant operace mutace je několik. Mezi základní patří tyto:
 \item smršťující mutace (shrink mutation) nahrazuje náhodně zvolený podstrom jediným terminálem
 \end{enumerate}
 
-\subsubsection{Další operátory}
+\subsection{Další operátory}
 \paragraph*{}
 To však není celý výčet možných operátorů. Existují i operátor, které se v GP nevyužívají zcela běžně, ale stojí za to se o nich zmínit. Mezi méně časté operátory řadíme například operátor permutace, zapouzdření, editace či decimace.
 
@@ -350,9 +342,10 @@ Operátor editace se snaží poskytnou nedestruktivní redukci hloubky stromu ta
 
 \InsertFigure{Figures/editace.png}{0.7\textwidth}{Příklad operátoru editace. Levý strom zjednodušíme a výsledkem je strom pravý}{fig:EditSample}
 
-\subsection{Popis algoritmu}
+\subsection{Algoritmus GP}
 \paragraph*{}
-Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a na jakých principech fungují, se seznámíme s tím, co jsou to „evoluční výpočetní techniky“.
+Jak ilustruje níže uvedený obrázek \ref{fig:gp-paradigm}, algoritmus GP lze rozdělit do několika kroků, které budou následně rozebrány v závislosti na způsobu realizace.
+\InsertFigure{Figures/gp-paradigm.png}{0.7\textwidth}{Průběh algoritmu Genetického programování}{fig:gp-paradigm}
 
 \begin{example}
 \label{priklad}
@@ -369,13 +362,38 @@ Postup evolučního algoritmu
 \item Vybraní jedinci zaplní novou populaci
 \item Stará populace je zapomenuta a na její místo nastupuje populace nová. Dále se pokračuje krokem 4.
 \end{enumerate}
-
-\paragraph*{}
-Evoluční algoritmy nejsou populární jen proto, že jsou moderní a odlišné od klasických, ale hlavně pro fakt, že v případě vhodného aplikování jsou schopny nahradit člověka
 \end{example}
 
-\section{Implementace}
+\paragraph*{}
+Prvním krokem je vytvoření náhodné populace jedinců, která bude sloužit k tvorbě dalších, vhodnějších řešeních.
+Než se dostaneme ke šlechtění nových "lepších" jedinců, je potřeba, ve stávající populaci, nějak rozlišit vhodnější řešení reprezentováno jedincem, od řešení horšího. Proto je iniciační populace ohodnocena fitness funkcí.
 
+\paragraph*{}
+Před tím, něž budou řešení v populaci podrobena operátorům křížení nebo mutaci, stanou nejprve před genetickou operací selekce. Program je vybrán na základě dříve zmíněné Darwinovy teorie přírodního výběru. Konkrétně pro nás je to na základě předchozího ohodnocení.
+
+\paragraph*{}
+Ohodnocená populace je následně předaná genetickým operacím. Zde bude velmi záviset, s jakými parametry budou operace křížení či mutace operovat. Je třeba parametrem stanovit, jak velká část populace bude podrobena operaci mutace a naopak jak velká část operaci křížení. 
+
+\subsection{Omezení GP}
+\paragraph*{}
+Koza ve své knize definuje \cite{kozagp} dvojí požadavky na množinu funkcí a terminálů. Je to požadavek uzavřenosti (closure) a postačitelnosti (sufficiency) obou množin. Uzavřenost množiny je splněna tehdy, pokud může libovolná funkce příjmout jako argument libovoulnou funkci z množiny funkcí či terminál z množiny terminálních symbolů. Uzavřenost zamezí tvorbu syntakticky nesprávných programů.
+
+\paragraph*{}
+Postačitelnst nám naproti tomu umožňuje, abychom byli schopní k danému problému nalézt odpovídající program (funkci), která by jej řešila. Díky tomu jsme schopni říci, že k danému problému můžeme vyjádřit řešení daného problému. Představme si problém nalezení potravy umělým mravencem v mřížkové soustavěm kterou můžeme popsat množinou funkcí tvořenou příkazy $\{KROK VPRED, OTOC VLEVO, OTOC VPRAVO\}$ a množinou terminálů s jediným příkazem $\{ZASTAV\}$. I bez dokázaní si můžeme jasně říci, že jsme schopní díky těmto příkazům dostat mravence do jakéhokoliv místa a zastavit.
+
+\paragraph*{}
+U jednoduchých příkladů, kde je množina terminálů a neterminálů tvořena pouze Booleovskými funkcemi můžeme i bez důkazů předpokládat, že takové množiny jsou uzavřené a splňují také podmínku postačitelnosti. Ovšem v reálných příkladech budeme často používat programy složené číselných proměnných a funkcích, podmínkách, rekurzích, ruzných typů v argumentech funkcí. Nebo budeme při práci s číselnými funkcemi muset ošetřit některé zakázané stavy (dělení nulou, logaritmus záporného čísla, atd.). V takových případech už podmínka uzavřenosti nemusí platit.
+
+\paragraph*{}
+I v těchto případech se však můžeme odkázat na Kozu, který tvrdí, že lze jednoduchým postupem zajistit, aby byly množiny terminálů a funkcí uzavřené pro obecně jakýkoliv problém. Vezměme si případ programu pracujícího s číselnými funkcemi a terminály, kde může nastat situace, že se bude muset provést dělení nulou. Proto je třeba upravit funkce z těchto množin tak, aby umožňovaly zpracovat také nedefinovatelnou hodnotu ("undefined") v podobě nějakého zástupného symbolu a ošetřit stavy funkcí tak, aby funkce mohla vrátit kromě čísla také tuto hodnotu v případech, kdy je operae zakákána nebo v případě, že alespoň jeden z argumentů vrací tuto hodnotu. Takto upravené funkce Koza nazývá chráněné funkce (protected functions).
+
+\paragraph*{}
+Vlastnost uzavřenosti množin je vhodná, ale není absolutně nutná. Jako alternativa k chráněným funkcím může sloužit jiný přístup. Pokud striktně nevyžadujeme, aby byl program syntaktického stromu validní, můžeme nesprávně generované stromy v populaci zakázat nebo je jinak penalizovat, aby nepřecházely do nových generací. V této práci se však takovým způsobům nebudeme zabývat a budeme pracovat pouze se splněnou podmínkou uzavřenosti.
+
+\paragraph*{}
+Protože výsledná funkce je tvořena nejen proměnnými, ale také konstantami, je třeba si říci, jak je při tvorbě jedince reprezentovat. Protože můžeme chtít použít GP pro ekonomické modelování, měl by mít algoritmus možnost generovat vhodné konstanty v daném rozsahu a daného typu podle řešené úlohy. Koza navrhuje množinu terminálů o náhodnou konstantu C tak, že se během běhu programu při ohodnocení individuí doplní o náhodnou hodnotu z příslučné množiny. Toto číslo se potom využije jako kterýkoliv jiný terminál.
+
+\section{Implementace}
 \subsection{Struktura aplikace}
 \paragraph*{}
 Samotná aplikace je rozdělena do dvou komponent. První část je tvořena knihovnou, která tvoří jádro projektu. Obsahuje samotnou implementaci genetického programování a rozhraní pro komunikaci a řízení běhu evolučního cyklu. Úkolem je umožnit uživateli nebo externímu systéme vhodně nastavit běh evoluce a konfigurovat způsob křížení, mutace, reprodukce volbu nastavení parametrů pro testované problémy. V tabulce \ref{tab:packagetree} je zobrazena balíčková struktura jádra aplikace.
@@ -621,8 +639,6 @@ London: McGraw-Hill, 1999. 20 p. ISBN 007-709506-5
 \bibitem{gpcm} Koza, John R.,
 \textit{Genetic Programming On the Programming of Computers by Means of Natural Selection, Volume 6},
 London, England: The MIT Press, 1998. 819 p. ISBN 0262111705, 9780262111706
-
- 
 
 \end{thebibliography}
 

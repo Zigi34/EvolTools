@@ -19,6 +19,10 @@ public class Services {
 		return MutateFunctionService.getInstance();
 	}
 
+	public static CrossFunctionService crossFunctionService() {
+		return CrossFunctionService.getInstance();
+	}
+
 	public static ProblemService problemService() {
 		return ProblemService.getInstance();
 	}

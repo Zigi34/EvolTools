@@ -26,4 +26,9 @@ public class TreeCross extends CrossFunction {
 			TreeSolution.changeSubTree(sol1, cross1, sol2, cross2);
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Simple tree cross";
+	}
 }

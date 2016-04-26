@@ -16,29 +16,29 @@
 \contentsline {subsection}{\numberline {3.1}GA vs. GP}{11}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}\IeC {\'U}lohy \IeC {\v r}e\IeC {\v s}en\IeC {\'e} GP}{11}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Reprezentace jedince}{12}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Selekce}{13}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Algo1ritmus GP}{14}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Omezen\IeC {\'\i } GP}{14}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Mno\IeC {\v z}ina funkc\IeC {\'\i } a termin\IeC {\'a}l\IeC {\r u}}{16}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Reprezentace stromov\IeC {\'e} struktury}{17}{subsection.3.8}
-\contentsline {subsection}{\numberline {3.9}Generov\IeC {\'a}n\IeC {\'\i } po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i } populace}{17}{subsection.3.9}
-\contentsline {subsection}{\numberline {3.10}Oper\IeC {\'a}tory}{18}{subsection.3.10}
-\contentsline {subsubsection}{\numberline {3.10.1}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{18}{subsubsection.3.10.1}
-\contentsline {subsubsection}{\numberline {3.10.2}Mutace}{20}{subsubsection.3.10.2}
-\contentsline {subsubsection}{\numberline {3.10.3}Dal\IeC {\v s}\IeC {\'\i } oper\IeC {\'a}tory}{21}{subsubsection.3.10.3}
-\contentsline {subsection}{\numberline {3.11}Popis algoritmu}{21}{subsection.3.11}
-\contentsline {section}{\numberline {4}Implementace}{23}{section.4}
-\contentsline {subsection}{\numberline {4.1}Struktura aplikace}{23}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}JEvolution}{23}{subsubsection.4.1.1}
-\contentsline {subsection}{\numberline {4.2}Grafick\IeC {\'e} u\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{23}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Evolu\IeC {\v c}n\IeC {\'\i } procesy}{26}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{26}{subsubsection.4.3.1}
-\contentsline {subsection}{\numberline {4.4}UML model}{26}{subsection.4.4}
-\contentsline {section}{\numberline {5}Testov\IeC {\'a}n\IeC {\'\i } na vybran\IeC {\'y}ch probl\IeC {\'e}mech}{27}{section.5}
-\contentsline {subsection}{\numberline {5.1}Um\IeC {\v e}l\IeC {\'y} mravenec}{27}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Symbolick\IeC {\'a} regrese}{29}{subsection.5.2}
-\contentsline {subsubsection}{\numberline {5.2.1}Aproximace funkc\IeC {\'\i }}{30}{subsubsection.5.2.1}
-\contentsline {subsubsection}{\numberline {5.2.2}Quintic a Sextic problem}{31}{subsubsection.5.2.2}
-\contentsline {subsection}{\numberline {5.3}Vyhodnocen\IeC {\'\i }}{31}{subsection.5.3}
-\contentsline {section}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{35}{section.6}
-\contentsline {section}{\numberline {7}Reference}{36}{section.7}
+\contentsline {subsection}{\numberline {3.4}Mno\IeC {\v z}ina funkc\IeC {\'\i } a termin\IeC {\'a}l\IeC {\r u}}{13}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Reprezentace stromov\IeC {\'e} struktury}{13}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Generov\IeC {\'a}n\IeC {\'\i } po\IeC {\v c}\IeC {\'a}te\IeC {\v c}n\IeC {\'\i } populace}{13}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Selekce}{14}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}K\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i }}{15}{subsection.3.8}
+\contentsline {subsubsection}{\numberline {3.8.1}Standardn\IeC {\'\i } k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i } (Tree-based crossover)}{17}{subsubsection.3.8.1}
+\contentsline {subsubsection}{\numberline {3.8.2}Jednobodov\IeC {\'e} k\IeC {\v r}\IeC {\'\i }\IeC {\v z}en\IeC {\'\i } (One-point crossover)}{17}{subsubsection.3.8.2}
+\contentsline {subsection}{\numberline {3.9}Mutace}{18}{subsection.3.9}
+\contentsline {subsection}{\numberline {3.10}Dal\IeC {\v s}\IeC {\'\i } oper\IeC {\'a}tory}{18}{subsection.3.10}
+\contentsline {subsection}{\numberline {3.11}Algoritmus GP}{20}{subsection.3.11}
+\contentsline {subsection}{\numberline {3.12}Omezen\IeC {\'\i } GP}{22}{subsection.3.12}
+\contentsline {section}{\numberline {4}Implementace}{24}{section.4}
+\contentsline {subsection}{\numberline {4.1}Struktura aplikace}{24}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}JEvolution}{24}{subsubsection.4.1.1}
+\contentsline {subsection}{\numberline {4.2}Grafick\IeC {\'e} u\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{24}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Evolu\IeC {\v c}n\IeC {\'\i } procesy}{27}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}V\IeC {\'y}b\IeC {\v e}rov\IeC {\'a} funkce}{27}{subsubsection.4.3.1}
+\contentsline {subsection}{\numberline {4.4}UML model}{27}{subsection.4.4}
+\contentsline {section}{\numberline {5}Testov\IeC {\'a}n\IeC {\'\i } na vybran\IeC {\'y}ch probl\IeC {\'e}mech}{28}{section.5}
+\contentsline {subsection}{\numberline {5.1}Um\IeC {\v e}l\IeC {\'y} mravenec}{28}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Symbolick\IeC {\'a} regrese}{30}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Aproximace funkc\IeC {\'\i }}{31}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Quintic a Sextic problem}{32}{subsubsection.5.2.2}
+\contentsline {subsection}{\numberline {5.3}Vyhodnocen\IeC {\'\i }}{32}{subsection.5.3}
+\contentsline {section}{\numberline {6}Z\IeC {\'a}v\IeC {\v e}r}{36}{section.6}
+\contentsline {section}{\numberline {7}Reference}{37}{section.7}
