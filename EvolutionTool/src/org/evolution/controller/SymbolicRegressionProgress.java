@@ -23,9 +23,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class ResultChart extends AnchorPane {
+public class SymbolicRegressionProgress extends AnchorPane {
 
-	private static final Logger LOG = Logger.getLogger(ResultChart.class);
+	private static final Logger LOG = Logger.getLogger(SymbolicRegressionProgress.class);
 
 	@FXML
 	private NumberAxis xAxis;
@@ -48,8 +48,8 @@ public class ResultChart extends AnchorPane {
 	private XYChart.Series<Double, Double> optimal = new XYChart.Series<Double, Double>();
 	private XYChart.Series<Double, Double> best = new XYChart.Series<Double, Double>();
 
-	public ResultChart() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ResultChart.fxml"));
+	public SymbolicRegressionProgress() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/SymbolicRegressionProgress.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 

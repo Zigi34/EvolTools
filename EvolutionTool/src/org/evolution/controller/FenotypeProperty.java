@@ -9,9 +9,15 @@ import org.evolution.controller.fenotype.IFenotypeProperty;
 import org.evolution.solution.type.CosFunction;
 import org.evolution.solution.type.DivideFunction;
 import org.evolution.solution.type.GPFenotype;
+import org.evolution.solution.type.IfFoodAhead;
+import org.evolution.solution.type.LeftDirection;
+import org.evolution.solution.type.Move;
 import org.evolution.solution.type.MultiplyFunction;
 import org.evolution.solution.type.NumericConstant;
+import org.evolution.solution.type.Prg2;
+import org.evolution.solution.type.Prg3;
 import org.evolution.solution.type.RangedPowerFunction;
+import org.evolution.solution.type.RightDirection;
 import org.evolution.solution.type.SinFunction;
 import org.evolution.solution.type.SubtractionFunction;
 import org.evolution.solution.type.SumFunction;
@@ -126,6 +132,18 @@ public class FenotypeProperty extends AnchorPane implements IFenotypeProperty {
 			return new NumericConstant(getValue1(), getValue2());
 		} else if (fenotype.getClass().equals(RangedPowerFunction.class)) {
 			return new RangedPowerFunction(getValue1(), getValue2(), true);
+		} else if (fenotype.getClass().equals(Move.class)) {
+			return new Move();
+		} else if (fenotype.getClass().equals(LeftDirection.class)) {
+			return new LeftDirection();
+		} else if (fenotype.getClass().equals(RightDirection.class)) {
+			return new RightDirection();
+		} else if (fenotype.getClass().equals(IfFoodAhead.class)) {
+			return new IfFoodAhead();
+		} else if (fenotype.getClass().equals(Prg2.class)) {
+			return new Prg2();
+		} else if (fenotype.getClass().equals(Prg3.class)) {
+			return new Prg3();
 		}
 
 		return result;

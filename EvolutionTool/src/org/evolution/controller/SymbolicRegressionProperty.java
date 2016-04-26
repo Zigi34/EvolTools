@@ -21,6 +21,7 @@ import org.evolution.solution.type.SubtractionFunction;
 import org.evolution.solution.type.SumFunction;
 import org.evolution.util.Utils;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -29,6 +30,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -36,9 +38,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 
-public class SymbolicRegressionProblemProperty extends AnchorPane {
+public class SymbolicRegressionProperty extends AnchorPane {
 
-	private static final Logger LOG = Logger.getLogger(SymbolicRegressionProblemProperty.class);
+	private static final Logger LOG = Logger.getLogger(SymbolicRegressionProperty.class);
 	private static List<GPFenotype> allFenotype = new LinkedList<GPFenotype>();
 
 	@FXML
@@ -62,6 +64,18 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 	@FXML
 	private Button removeButton;
 
+	@FXML
+	private TextField minValue;
+
+	@FXML
+	private TextField maxValue;
+
+	@FXML
+	private Label minValueLabel;
+
+	@FXML
+	private Label maxValueLabel;
+
 	private FenotypeProperty selectedFenotype;
 	private FileChooser fileChooser = new FileChooser();
 
@@ -76,7 +90,7 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 		allFenotype.add(new RangedPowerFunction());
 	}
 
-	public SymbolicRegressionProblemProperty() {
+	public SymbolicRegressionProperty() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/SymbolicRegressionProperty.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -187,6 +201,40 @@ public class SymbolicRegressionProblemProperty extends AnchorPane {
 						problem.setDatasetPath(file.toString());
 						datasetPath.setText(file.toString());
 					}
+				}
+			});
+
+			// nastavení minimální a maximální hodnoty
+			minValueLabel.setText("Minimální hodnota");
+			maxValueLabel.setText("Maximální hodnota");
+			minValue.setText(String.valueOf(problem.getMinFunctionValue()));
+			maxValue.setText(String.valueOf(problem.getMaxFunctionValue()));
+			minValue.textProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								problem.setMinFunctionValue(Double.parseDouble(newValue));
+							} catch (Exception e) {
+							}
+						}
+					});
+				}
+			});
+			maxValue.textProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							try {
+								problem.setMaxFunctionValue(Double.parseDouble(newValue));
+							} catch (Exception e) {
+							}
+						}
+					});
 				}
 			});
 		}

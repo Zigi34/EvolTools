@@ -106,7 +106,7 @@ public class EvolutionToolController implements Initializable {
 							if (alg.getProblem() instanceof ArtificialAnt) {
 								result.setCenter(new ArtificialAntProgress());
 							} else if (alg.getProblem() instanceof RegressionProblem) {
-								result.setCenter(new ResultChart());
+								result.setCenter(new SymbolicRegressionProgress());
 							}
 						}
 					});

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.log4j.Logger;
 import org.evolution.model.ProblemModel;
+import org.evolution.problem.ArtificialAnt;
 import org.evolution.problem.RegressionProblem;
 import org.evolution.services.Services;
 import org.evolution.util.Utils;
@@ -28,8 +29,7 @@ public class ProblemProperty extends AnchorPane {
 	@FXML
 	private ChoiceBox<ProblemModel> problemFunction;
 
-	// @FXML
-	// private AnchorPane problemPane;
+	private AnchorPane problemPane;
 
 	public ProblemProperty() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/ProblemProperty.fxml"));
@@ -60,13 +60,28 @@ public class ProblemProperty extends AnchorPane {
 
 				try {
 					if (newValue.getProblem() instanceof RegressionProblem) {
-						SymbolicRegressionProblemProperty panel = new SymbolicRegressionProblemProperty();
+						if (problemPane != null)
+							getChildren().remove(problemPane);
+						SymbolicRegressionProperty panel = new SymbolicRegressionProperty();
 						AnchorPane.setTopAnchor(panel, 64.0);
 						AnchorPane.setLeftAnchor(panel, 14.0);
 						AnchorPane.setRightAnchor(panel, 14.0);
 						AnchorPane.setBottomAnchor(panel, 14.0);
 						panel.setPrefHeight(-1.0);
 						panel.setPrefWidth(-1.0);
+						problemPane = panel;
+						getChildren().add(panel);
+					} else if (newValue.getProblem() instanceof ArtificialAnt) {
+						if (problemPane != null)
+							getChildren().remove(problemPane);
+						ArtificialAntProperty panel = new ArtificialAntProperty();
+						AnchorPane.setTopAnchor(panel, 64.0);
+						AnchorPane.setLeftAnchor(panel, 14.0);
+						AnchorPane.setRightAnchor(panel, 14.0);
+						AnchorPane.setBottomAnchor(panel, 14.0);
+						panel.setPrefHeight(-1.0);
+						panel.setPrefWidth(-1.0);
+						problemPane = panel;
 						getChildren().add(panel);
 					}
 				} catch (Exception e) {
