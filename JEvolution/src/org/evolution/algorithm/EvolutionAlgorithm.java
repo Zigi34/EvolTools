@@ -32,6 +32,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	public static final String ALGORITHM_TERMINATED = "ALGORITHM_TERMINATED";
 	public static final String ALGORITHM_STARTED = "ALGORITHM_STARTED";
 	public static final String NEW_BEST_SOLUTION = "NEW_BEST_SOLUTION";
+	public static final String PROBLEM_CHANGED = "PROBLEM_CHANGED";
 
 	public static final String STATE_NAME = "STATE";
 
@@ -149,6 +150,7 @@ public abstract class EvolutionAlgorithm implements Runnable {
 	 */
 	public void setProblem(Problem problem) {
 		this.problem = problem;
+		setState(PROBLEM_CHANGED);
 	}
 
 	/**
