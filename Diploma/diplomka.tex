@@ -491,6 +491,37 @@ Pro problém budeme také potřebovat zpracovávat informace z vnějšího svět
 \item \textbf{PRG3} přijímá tři argumenty, které se sekvenčně po sobě vykonají
 \end{itemize}
 
+\subsubsection{Testování}
+\paragraph*{}
+Pro účely testování navržené aplikace bylo použito následujících nastavení evolučního běhu. Aby nebyly výsledky testování zkreslené, bylo proces hledání optimálních pokynů pro nalezení co největšího množství potravy opakován 20 krát. Konfigurace k pro hledání po "Santa Fe stezce" je uvedený v tabulce \ref{tab:SantaFeConf} 
+
+\begin{table}
+  \centering
+  \begin{tabular}{| r | p{9cm} |} \hline
+    Datový soubor & tvoře polem 32x32 s 89 políčky s potravou \\ \hline
+    Vhodnost & podíl nalezené potravy oproti celkovému množství po 400 krocích \\ \hline
+    Množina funkcí & $MOVE, LEFT, RIGHT$ \\ \hline
+    Množina terminálů & $IFA, PRG2$ s aritou 2 a $PRG3$ s aritou 3 \\ \hline
+    Počet generací & 2000 evolučních cyklů \\ \hline
+    Velikost populace & 500 jedinců \\ \hline
+    Výška stromu & 7 \\ \hline
+    Pravděpodobnost křížení & 0.85 \\ \hline
+    Pravděpodobnost mutace & 0.05 \\ \hline
+    Pravděpodobnost reprodukce & 0.1 \\ \hline
+    Metoda křížení & Tournament (velikost 3) \\ \hline
+  \end{tabular}
+  \label{tab:ArtificialAntConf}
+  \caption{Konfigurace GP pro problém Artificial Ant}
+\end{table}
+
+\InsertFigure{Figures/best_ant.png}{0.7\textwidth}{Nalezeno řešení}{fig:artificialant1}
+
+\paragraph*{}
+Na obrázku je zobrazeno typické řešení, které algoritmus vrátil. Lze si všimnout, že se využilo procházení označované jako tzv. "prošívač", kdy se nevyužila žádná rozhodovací funkce ale aplikoval se vždy stejná sada instrukcí. Toto řešení reprezentuje syntaktický strom $IFA(PRG3(PRG2(MOVE,MOVE),PRG2(MOVE,MOVE),PRG2(MOVE,PRG2(MOVE,MOVE))),PRG2(LEFT,IFA(PRG2(MOVE,RIGHT),RIGHT)))$.
+
+\paragraph*{}
+Mezi nejlepší funkce při procházení patřily např. $IA(PRG3(PRG2(MOVE,MOVE),PRG2(MOVE,MOVE),PRG2(MOVE,PRG2(MOVE,MOVE))),PRG2(LEFT,IFA(PRG2(MOVE,RIGHT),RIGHT)))$, která po 400 krocích nalezla 60 políček s potravou \ref{fig:artificialant1} nebo $PRG3(IFA(PRG2(PRG2(MOVE,MOVE),PRG2(MOVE,PRG2(MOVE,MOVE))),PRG2(PRG2(LEFT,MOVE),MOVE)),RIGHT,RIGHT)$, které bylo schopné nalézt 60 políček s potravou. 
+
 \subsection{Symbolická regrese}
 \paragraph*{}
 Symbolická regrese (dále jako SR) se v publikacích popisována jako statická metoda používaná k předpovídání hodnot nějaké proměnné, závislé a jedné nebo více nezávislých proměnných. Snaží se odhalit vnitřní vztahy v datovém souboru. Jde tedy o inverzní postup pro získání symbolického tvaru (původního předpisu funkce) na základě tohoto souboru dat - množina hodnot z definičního oboru funkce. 

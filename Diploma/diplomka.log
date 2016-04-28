@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  26 APR 2016 20:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.10.9)  27 APR 2016 14:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -867,7 +867,7 @@ Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textring' on input line 142.
 
-<Figures/evol-progress.png, id=288, 387.4475pt x 311.1625pt>
+<Figures/evol-progress.png, id=292, 387.4475pt x 311.1625pt>
 File: Figures/evol-progress.png Graphic file (type png)
 
 <use Figures/evol-progress.png>
@@ -881,7 +881,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 204.
 
-[11] <Figures/Graf.pdf, id=340, 361.35pt x 252.945pt>
+[11] <Figures/Graf.pdf, id=344, 361.35pt x 252.945pt>
 File: Figures/Graf.pdf Graphic file (type pdf)
  <use Figures/Graf.pdf>
 Package pdftex.def Info: Figures/Graf.pdf used on input line 222.
@@ -898,7 +898,7 @@ Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                removing `\textring' on input line 227.
 
 [12 <./Figures/Graf.pdf>]
-<Figures/tree_structure.png, id=356, 458.71375pt x 491.8375pt>
+<Figures/tree_structure.png, id=360, 458.71375pt x 491.8375pt>
 File: Figures/tree_structure.png Graphic file (type png)
 
 <use Figures/tree_structure.png>
@@ -916,14 +916,14 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                removing `\textasciicaron' on input line 250.
 
 [13] [14 <./Figures/tree_structure.png>]
-<Figures/roulete_wheel.png, id=385, 1204.5pt x 803.0pt>
+<Figures/roulete_wheel.png, id=389, 1204.5pt x 803.0pt>
 File: Figures/roulete_wheel.png Graphic file (type png)
 
 <use Figures/roulete_wheel.png>
 Package pdftex.def Info: Figures/roulete_wheel.png used on input line 277.
 (pdftex.def)             Requested size: 213.39568pt x 142.25475pt.
 
-<Figures/rank-select.png, id=386, 1204.5pt x 803.0pt>
+<Figures/rank-select.png, id=390, 1204.5pt x 803.0pt>
 File: Figures/rank-select.png Graphic file (type png)
 
 <use Figures/rank-select.png>
@@ -935,7 +935,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 284.
 
-<Figures/cross.png, id=387, 798.985pt x 742.775pt>
+<Figures/cross.png, id=391, 798.985pt x 742.775pt>
 File: Figures/cross.png Graphic file (type png)
  <use Figures/cross.png>
 Package pdftex.def Info: Figures/cross.png used on input line 288.
@@ -951,44 +951,41 @@ File: omsppl.fd
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 293.
 
-
-LaTeX Warning: Citation `langdonpoli' on page 17 undefined on input line 307.
-
-<Figures/one-point-cross.png, id=408, 833.1125pt x 684.5575pt>
+<Figures/one-point-cross.png, id=413, 833.1125pt x 684.5575pt>
 File: Figures/one-point-cross.png Graphic file (type png)
 
 <use Figures/one-point-cross.png>
 Package pdftex.def Info: Figures/one-point-cross.png used on input line 314.
 (pdftex.def)             Requested size: 298.75264pt x 245.47952pt.
  [17]
-<Figures/mutate.png, id=421, 397.485pt x 682.55pt>
+<Figures/mutate.png, id=427, 397.485pt x 682.55pt>
 File: Figures/mutate.png Graphic file (type png)
  <use Figures/mutate.png>
 Package pdftex.def Info: Figures/mutate.png used on input line 323.
 (pdftex.def)             Requested size: 170.71393pt x 293.1471pt.
 
 [18 <./Figures/one-point-cross.png>] [19 <./Figures/mutate.png>]
-<Figures/editace.png, id=439, 738.76pt x 311.1625pt>
+<Figures/editace.png, id=445, 738.76pt x 311.1625pt>
 File: Figures/editace.png Graphic file (type png)
  <use Figures/editace.png>
 Package pdftex.def Info: Figures/editace.png used on input line 343.
 (pdftex.def)             Requested size: 298.75264pt x 125.8302pt.
 
-<Figures/gp-paradigm.png, id=441, 662.475pt x 997.7275pt>
+<Figures/gp-paradigm.png, id=447, 662.475pt x 997.7275pt>
 File: Figures/gp-paradigm.png Graphic file (type png)
 
 <use Figures/gp-paradigm.png>
 Package pdftex.def Info: Figures/gp-paradigm.png used on input line 348.
 (pdftex.def)             Requested size: 298.75264pt x 449.93234pt.
  [20 <./Figures/editace.png>] [21 <./Figures/gp-paradigm.png>] [22] [23]
-<Figures/class-diagram.png, id=485, 992.70876pt x 828.09375pt>
+<Figures/class-diagram.png, id=491, 992.70876pt x 828.09375pt>
 File: Figures/class-diagram.png Graphic file (type png)
 
 <use Figures/class-diagram.png>
 Package pdftex.def Info: Figures/class-diagram.png used on input line 426.
 (pdftex.def)             Requested size: 426.79135pt x 356.02283pt.
 
-<Figures/gui.png, id=486, 1002.74625pt x 617.30624pt>
+<Figures/gui.png, id=492, 1002.74625pt x 617.30624pt>
 File: Figures/gui.png Graphic file (type png)
  <use Figures/gui.png>
 Package pdftex.def Info: Figures/gui.png used on input line 432.
@@ -1013,7 +1010,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 465.
 
-<Figures/santa-fe.png, id=520, 600.2425pt x 585.18625pt>
+<Figures/santa-fe.png, id=526, 600.2425pt x 585.18625pt>
 File: Figures/santa-fe.png Graphic file (type png)
 
 <use Figures/santa-fe.png>
@@ -1022,111 +1019,145 @@ Package pdftex.def Info: Figures/santa-fe.png used on input line 475.
  [28
 
 ] [29 <./Figures/santa-fe.png (PNG copy)>]
-<Figures/regression_example.png, id=535, 853.1875pt x 526.96875pt>
+
+LaTeX Warning: Reference `tab:SantaFeConf' on page 30 undefined on input line 4
+96.
+
+<Figures/best_ant.png, id=541, 383.4325pt x 387.4475pt>
+File: Figures/best_ant.png Graphic file (type png)
+
+<use Figures/best_ant.png>
+Package pdftex.def Info: Figures/best_ant.png used on input line 517.
+(pdftex.def)             Requested size: 298.75264pt x 301.9004pt.
+
+Overfull \hbox (311.38202pt too wide) in paragraph at lines 520--521
+\T1/ppl/m/n/10.95 strom $\OML/cmm/m/it/10.95 IF \OMS/cmsy/m/n/10.95 ^^@ \OML/cm
+m/m/it/10.95 FOOD \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 AHEAD\OT1/cmr/m/n
+/10.95 (\OML/cmm/m/it/10.95 PRG\OT1/cmr/m/n/10.95 3(\OML/cmm/m/it/10.95 PRG\OT1
+/cmr/m/n/10.95 2(\OML/cmm/m/it/10.95 MOVE; MOVE\OT1/cmr/m/n/10.95 )\OML/cmm/m/i
+t/10.95 ; PRG\OT1/cmr/m/n/10.95 2(\OML/cmm/m/it/10.95 MOVE; MOVE\OT1/cmr/m/n/10
+.95 )\OML/cmm/m/it/10.95 ; PRG\OT1/cmr/m/n/10.95 2(\OML/cmm/m/it/10.95 MOVE; PR
+G\OT1/cmr/m/n/10.95 2(\OML/cmm/m/it/10.95 MOVE; MOVE\OT1/cmr/m/n/10.95 )))\OML/
+cmm/m/it/10.95 ; PRG\OT1/cmr/m/n/10.95 2(\OML/cmm/m/it/10.95 LEFT; IF \OMS/cmsy
+/m/n/10.95 ^^@
+ []
+
+
+Overfull \hbox (526.51396pt too wide) in paragraph at lines 523--524
+ [] \T1/ppl/m/n/10.95 Mezi nej-lep²í funkce p°i pro-chá-zení pa-t-°ily nap°. $\
+OML/cmm/m/it/10.95 IF \OMS/cmsy/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 FOOD \OMS/cms
+y/m/n/10.95 ^^@ \OML/cmm/m/it/10.95 AHEAD\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.9
+5 PRG\OT1/cmr/m/n/10.95 3(\OML/cmm/m/it/10.95 PRG\OT1/cmr/m/n/10.95 2(\OML/cmm/
+m/it/10.95 MOVE; MOVE\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; PRG\OT1/cmr/m/n/
+10.95 2(\OML/cmm/m/it/10.95 MOVE; MOVE\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;
+ PRG\OT1/cmr/m/n/10.95 2(\OML/cmm/m/it/10.95 MOVE; PRG\OT1/cmr/m/n/10.95 2(\OML
+/cmm/m/it/10.95 MOVE; MOVE\OT1/cmr/m/n/10.95 )))\OML/cmm/m/it/10.95 ; PRG\OT1/c
+mr/m/n/10.95 2(\OML/cmm/m/it/10.95 LEFT; IF \OMS/cmsy/m/n/10.95 ^^@
+ []
+
+[30] [31 <./Figures/best_ant.png (PNG copy)>]
+<Figures/regression_example.png, id=557, 853.1875pt x 526.96875pt>
 File: Figures/regression_example.png Graphic file (type png)
 
 <use Figures/regression_example.png>
-Package pdftex.def Info: Figures/regression_example.png used on input line 513.
+Package pdftex.def Info: Figures/regression_example.png used on input line 544.
 
 (pdftex.def)             Requested size: 298.75264pt x 184.52223pt.
- [30]
-Overfull \hbox (2.39993pt too wide) in paragraph at lines 519--520
+
+Overfull \hbox (2.39993pt too wide) in paragraph at lines 550--551
  [] \T1/ppl/m/n/10.95 Sym-bo-lická re-grese má ²i-roké vy-u-ºití. Mezi nej-£as-
 t¥j²í moº-nosti apli-kace bychom mohli
  []
 
-[31 <./Figures/regression_example.png>]
-<Figures/quintic-problem-origin.png, id=565, 1211.52625pt x 655.44875pt>
+[32] <Figures/quintic-problem-origin.png, id=575, 1211.52625pt x 655.44875pt>
 File: Figures/quintic-problem-origin.png Graphic file (type png)
 
 <use Figures/quintic-problem-origin.png>
 Package pdftex.def Info: Figures/quintic-problem-origin.png used on input line 
-568.
+599.
 (pdftex.def)             Requested size: 426.79135pt x 230.9007pt.
 
-<Figures/quintic-problem-result.png, id=566, 1217.54875pt x 655.44875pt>
+<Figures/quintic-problem-result.png, id=576, 1217.54875pt x 655.44875pt>
 File: Figures/quintic-problem-result.png Graphic file (type png)
 
 <use Figures/quintic-problem-result.png>
 Package pdftex.def Info: Figures/quintic-problem-result.png used on input line 
-570.
+601.
 (pdftex.def)             Requested size: 426.79135pt x 229.75053pt.
 
-<Figures/sextic-problem-origin.png, id=567, 1220.56pt x 661.47125pt>
+<Figures/sextic-problem-origin.png, id=577, 1220.56pt x 661.47125pt>
 File: Figures/sextic-problem-origin.png Graphic file (type png)
 
 <use Figures/sextic-problem-origin.png>
-Package pdftex.def Info: Figures/sextic-problem-origin.png used on input line 5
-72.
+Package pdftex.def Info: Figures/sextic-problem-origin.png used on input line 6
+03.
 (pdftex.def)             Requested size: 426.79135pt x 231.29636pt.
 
-<Figures/sextic-problem-result.png, id=568, 1220.56pt x 661.47125pt>
+<Figures/sextic-problem-result.png, id=578, 1220.56pt x 661.47125pt>
 File: Figures/sextic-problem-result.png Graphic file (type png)
 
 <use Figures/sextic-problem-result.png>
-Package pdftex.def Info: Figures/sextic-problem-result.png used on input line 5
-74.
+Package pdftex.def Info: Figures/sextic-problem-result.png used on input line 6
+05.
 (pdftex.def)             Requested size: 426.79135pt x 231.29636pt.
 
-Overfull \hbox (11.22546pt too wide) in paragraph at lines 577--578
+Overfull \hbox (11.22546pt too wide) in paragraph at lines 608--609
 \T1/ppl/m/n/10.95 ra-zena data a je-jich pro-lo-ºení v²emi syn-te-ti-zo-va-nými
  funk-cemi. Lze si v²im-nout, ºe v²echny
  []
 
-<Figures/fitness-quintic.png, id=571, 1356.06625pt x 716.6775pt>
+[33 <./Figures/regression_example.png>] [34 <./Figures/quintic-problem-origin.p
+ng (PNG copy)>] [35 <./Figures/quintic-problem-result.png (PNG copy)> <./Figure
+s/sextic-problem-origin.png (PNG copy)>]
+<Figures/fitness-quintic.png, id=604, 1356.06625pt x 716.6775pt>
 File: Figures/fitness-quintic.png Graphic file (type png)
 
 <use Figures/fitness-quintic.png>
-Package pdftex.def Info: Figures/fitness-quintic.png used on input line 584.
+Package pdftex.def Info: Figures/fitness-quintic.png used on input line 615.
 (pdftex.def)             Requested size: 426.79135pt x 225.55777pt.
 
-<Figures/fitness-sextic.png, id=572, 1403.2425pt x 711.65875pt>
+<Figures/fitness-sextic.png, id=605, 1403.2425pt x 711.65875pt>
 File: Figures/fitness-sextic.png Graphic file (type png)
 
 <use Figures/fitness-sextic.png>
-Package pdftex.def Info: Figures/fitness-sextic.png used on input line 586.
+Package pdftex.def Info: Figures/fitness-sextic.png used on input line 617.
 (pdftex.def)             Requested size: 426.79135pt x 216.44206pt.
- [32] [33 <./Figures/quintic-problem-origin.png (PNG copy)> <./Figures/quintic-
-problem-result.png (PNG copy)>] [34 <./Figures/sextic-problem-origin.png (PNG c
-opy)> <./Figures/sextic-problem-result.png (PNG copy)>] [35 <./Figures/fitness-
-quintic.png (PNG copy)> <./Figures/fitness-sextic.png (PNG copy)>]
+ [36 <./Figures/sextic-problem-result.png (PNG copy)>] [37 <./Figures/fitness-q
+uintic.png (PNG copy)> <./Figures/fitness-sextic.png (PNG copy)>]
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 592.
+(hyperref)                removing `\textasciicaron' on input line 623.
 
-[36
+[38
 
 ]
-Underfull \hbox (badness 1460) in paragraph at lines 616--619
+Underfull \hbox (badness 1460) in paragraph at lines 647--650
 []\T1/ppl/m/n/10.95 Koza, J. R., \T1/ppl/m/it/10.95 Ge-ne-tic pro-gra-m-ming II
 . Au-to-ma-tic Dis-co-very of Re-u-sa-ble Pro-grams\T1/ppl/m/n/10.95 ,
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 649.
-[37
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 680.
+[39
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 649.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 680.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 649.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 649.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 680.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 680.
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
 (rerunfilecheck)             Checksum: A64C85EA2A2849DA267474301E3FAEE3;2098.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 649.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 680.
  ) 
 Here is how much of TeX's memory you used:
- 9070 strings out of 494116
- 129460 string characters out of 6157658
- 258638 words of memory out of 5000000
- 12011 multiletter control sequences out of 15000+600000
+ 9086 strings out of 494116
+ 129716 string characters out of 6157658
+ 258746 words of memory out of 5000000
+ 12018 multiletter control sequences out of 15000+600000
  37212 words of font info for 52 fonts, out of 8000000 for 9000
  448 hyphenation exceptions out of 8191
  43i,11n,45p,1057b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1144,9 +1175,9 @@ hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive
 fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
 /uplri8a.pfb>
-Output written on diplomka.pdf (43 pages, 5216223 bytes).
+Output written on diplomka.pdf (45 pages, 5666028 bytes).
 PDF statistics:
- 731 PDF objects out of 1000 (max. 8388607)
- 255 named destinations out of 1000 (max. 500000)
- 362 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 751 PDF objects out of 1000 (max. 8388607)
+ 263 named destinations out of 1000 (max. 500000)
+ 367 words of extra memory for PDF output out of 10000 (max. 10000000)
 
