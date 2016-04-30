@@ -18,7 +18,7 @@
 
 \Thanks {
 Rád bych poděkoval prof. Ing. Ivan Zelinka, Ph.D. za užitečné rady, zajímavé
-podměty a věnovaný čas při tvorbě této práce. Rovněž velmi děkuji svým rodičům a dalším rodinným příslušníkům za všestrannou podporu během studia.
+podměty a věnovaný čas při tvorbě této práce. Rovněž velmi děkuji svým rodičům a dalším rodinným příslušníkům za všestrannou podporu během studia. A nakonec bych chtěl poděkovat své přítelkyni, která při mne po celou dobu tvorby.
 }
 
 \CzechAbstract {}
@@ -74,10 +74,7 @@ EVT, evolutionary algorithm, genetic programming, syntactic tree, cross, mutate,
 \section{Úvod}
 \label{sec:Uvod}
 \paragraph*{}
-Tento text je ukázkou sazby diplomové práce v \LaTeX{}u pomocí třídy dokumentů \verb|diploma|.
-Pochopitelně text není skutečnou diplomovou prací, ale jen ukázkou použití
-implementovaných maker v praxi. V kapitole \ref{sec:Typo} jsou ukázky použití
-různých maker a prostředí. V kapitole \ref{sec:Conclusion} bude \uv{jako závěr}. Zároveň tato kapitola slouží jako ukázka generování křížových odkazů v \LaTeX{}u.
+Cílem této práce byla implementace algoritmu genetického programování a testování jeho funkčnosti na typických optimalizačnich problémech jako syntéza funkcí či hledání optimálního algoritmu pro pohyb umělého mravence v po zadané stezce. Testy byly provedeny opakovaně, aby byla výsledná data vypovídající. Na těchto ukázkách můžeme vidět, že genetické programování patří mezi silné nástroje pro optimalizaci i v praxi.
 
 \section{Evoluční algoritmy}
 \paragraph*{}
@@ -89,34 +86,32 @@ Před tím, než se pustíme do popisu toho, co jsou to evoluční algoritmy a n
 
 \subsubsection{Jedinec}
 \paragraph*{}
-Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
+Jedincem rozumíme jedno možné konkrétní řešení zkoumané úlohy. Každé z kandidátních řešení je poté zakódováno pomocí genotypu - typicky jako vektor hodnod. Souvisejícím pojmem je fenotyp, což je synonymum pro kandidátní řešení problému, které můžeme sestavit podle dat obsažených v genotypu.
 
 \subsubsection{Populace}
 \paragraph*{}
-Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
-
-\paragraph*{}
-Typickým rysem evolučních algoritmů je, že jsou založeny na práci s populací jedinců. Populace může být znázorněna jako matice NxM, kde sloupce představují jednotlivé jedince. Každý jedinec představuje aktuální řešení danéího problému. S každým jedincem je navíc spojena hodnota účelové funkce, která říká, jak vhodný je jedinec pro další vývoj populace.
+Typickým rysem evolučních algoritmů je, že jsou založeny na práci s populací jedinců. Populace může být znázorněna jako matice $NxM$, kde sloupce představují jednotlivé jedince. Každý jedinec představuje aktuální řešení danéího problému. S každým jedincem je navíc spojena hodnota účelové funkce, která říká, jak vhodný je jedinec pro další vývoj populace.
 
 \paragraph*{}
 Hlavní činnosti evolučních algoritmů je cyklické vytváření nových populací, tedy náhrada starách populací novými. To vše pomocí přesně definovaných matematických pravidel.
 
 \paragraph*{}
-K vytvoření populace je třeba nadefinovat tzv. vzor, podle kterého se generuje celá počáteční populace. Ve vzoru jsou pro každý parametr konkrétního jedince definovány tři konstanty, a to typ proměnné a hranice intervalu, v němž může pohybovat hodnota parametru. Volba hranice je velmi důležitý krok, protože při jejich nevhodném zvolení se může stát, že budou nalezena řešení , která nebudou možné fyzikálně realizovat nebo nebudou mít opodstatnění. 
+K vytvoření populace je třeba nadefinovat tzv. vzor \ref{eq:vzor}., podle kterého se generuje celá počáteční populace. Ve vzoru jsou pro každý parametr konkrétního jedince definovány tři konstanty, a to typ proměnné a hranice intervalu, v němž může pohybovat hodnota parametru. Volba hranice je velmi důležitý krok, protože při jejich nevhodném zvolení se může stát, že budou nalezena řešení , která nebudou možné fyzikálně realizovat nebo nebudou mít opodstatnění. 
 
 \paragraph*{}
 Další neméně důležtý význam hranic souvisí se samotným evolučním procesem. Může se stát, že daný problém bude reprezentován plochou, která bude nabývat lokálních extrémů stále větších hodnot se vzrůstající vzdáleností od počátku. To způsobí, že evoluce bude nacházet stále nová řešení až do nekonečna. Je to způsobeno tím, že evoluční proces směřuje do stále hlubších a vzdálenějších extrémů.
-Populace je na základě vzorového jedince vygenerována podle vzorce.
+
+\begin{equation}
+P_{i,j}=x_{i,j}=rnd[0;1]*(x_{i,j}^{Hi}-x_{i,j}^{Lo})+x_{i,j}^{Lo}, kde i=1,...,M, j=1,...,N
+\label{eq:vzor}
+\end{equation}
+
 
 \paragraph*{}
-$\Theta(1+\alpha)$.  
+Vztah \ref{eq:vzor}. zajišťuje, že všchny parametry jedinců budou náhodně vygenerovány uvnitř povolených hranic prostoru možných řešení.
 
 \paragraph*{}
-Tento vztah zajišťuje, že všchny parametry jedinců budou náhodně vygenerovány uvnitř povolených hranic prostoru možných řešení.
-
-\paragraph*{}
-Zobrazení o tom, jak kvalitně proběhla evoluce, se provádí pomocí tzv. historie vývoje hodnoty účelové funkce ve formě jednoduchého grafu. Na něm je vykreslena závislost vývoje účelové funkce na aktuálním počtu jejich ohodnocení. Jde o sekvenci nejhorších a nejlepších řešení z jednotlivých populací. Výhodnější je však zobrazení závislosti hodnoty účelové funkce na aktuálním počtu jejich ohodnocení. To proto, že u evolučních cyklů se provádí u jednotlivých algoritmů různý počet ohodnocení účelové funkce. U prvního případu může být pomalejší konvergence hodnoty účelové funkce zobrazena jako rychlejší a naopak. Skutečná informace o kvalitě evoluce je pak zkreslená. U druhého způsobu můžeme objektivně porovnávat různé typy algoritmů bez ohledu na jejich vnitřní struktuře.
-Kromě vývoje nejlepšího jedince je pak vhodné zobrazovat vývoj i nejhoršího jedince z populace, a to do jednoho grafu.
+Zobrazení o tom, jak kvalitně proběhla evoluce, se provádí pomocí tzv. historie vývoje hodnoty účelové funkce ve formě jednoduchého grafu. Na něm je vykreslena závislost vývoje účelové funkce na aktuálním počtu jejich ohodnocení. Jde o sekvenci nejhorších a nejlepších řešení z jednotlivých populací. Výhodnější je však zobrazení závislosti hodnoty účelové funkce na aktuálním počtu jejich ohodnocení. To proto, že u evolučních cyklů se provádí u jednotlivých algoritmů různý počet ohodnocení účelové funkce. U prvního případu může být pomalejší konvergence hodnoty účelové funkce zobrazena jako rychlejší a naopak. Skutečná informace o kvalitě evoluce je pak zkreslená. U druhého způsobu můžeme objektivně porovnávat různé typy algoritmů bez ohledu na jejich vnitřní struktuře. Kromě vývoje nejlepšího jedince je pak vhodné zobrazovat vývoj i nejhoršího jedince z populace, a to do jednoho grafu.
 
 \paragraph*{}
 Vývoj populace musí být vždy konvergentní k lepším hodnotám, což znamená, že nemůže nikdy vykazovat divergenci. V daném algoritmu funguje tzv. „elitismus“, který slouží jako jakýsi jednosměrný filtr, jenž propouští do nové populace pouze ta řešení, která jsou lepší či stejně dobrá jako ta ze staré populace.
@@ -126,13 +121,29 @@ Vývoj populace musí být vždy konvergentní k lepším hodnotám, což znamen
 Každého vytvořeného reprezentativního jedince je třeba ohodnotit v rámci celé populace čítající desídky jiných jedinců tak, aby bylo možné některé jedince (řešení) upřednostňovat při výběru pro křížení před jinými (horšími) řešeními.
 Hodnota takto přidělená jedinci je označována za jeho fitness (neboli vhodnost).
 
+\paragraph*{}
+Výrazem „účelová funkce“ rozumíme takovou funkcí, jejíž optimalizace vede k nalezení
+optimálního řešení zadané úlohy. Její označení bude dále $f_{cost}$. Pro vyhodnocování vhodnoti je pak třeba vědět, zda jde o úlohu "maximalizační" \ref{eq:maxim}. nebo "minimalizační". Pro "maximalizační" úlohu platí, je funkce $f_{cost}$ má v bodě $x_0$ maximum, pokud existuje okolí bodu $x_0$ takévé, že platí
+
+\begin{equation}
+f_{cost}(x) \leq f_{cost}(x_0)
+\label{eq:maxim}
+\end{equation}
+
 \subsubsection{Operátor mutace}
 \paragraph*{}
-Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
+Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
+
+\InsertFigure{Figures/evol-progress.png}{0.7\textwidth}{Mutace schématicky na binárním řetězci}{fig:mutate}
+
+\paragraph*{}
+Mutace slouží k udržování genetické variace v populaci a zabraňuje procesu evoluce sklouznout pouze do oblasti hledání lokálního optimálního řešení. Protože významně narušuje genetickou informaci, aplikuje se tento operátor pouze s omezenou pravděpodoností (typicky 0,01).
 
 \subsubsection{Operátor křížení}
 \paragraph*{}
-Podle klasické Darwinové a Mendelovy teorie evoluce, je uznáváno dogma, podle něhož se jednotlivé druhy vyvíjejí tak, že jsou z rodičů plozeni potomci, kteří podléhají při svém vzniku mutacím. Rodiče a potomci nevhodní pro aktuální životní prostředí vymírají cyklicky po tzv. generacích, čímž uvolňují místo novým rodičům a jejich potomkům.
+Abychom dali vzniknout novým strukturám, je třeba  využít genetických operátorů křížení. Za účelem křížení je nejprve nutné vybrané jedince spárovat a aplikovat na ně křížení s nějakou předem stanovenou pravděpodobností (obvykle velmi vysokou, např. 0,95). Křížení samo o sobě znamená výměnu genetického materiálu, tedy částí řetězců mezi oběma jedinci. V nejjednodušším případě se může jednat např. o to, že se náhodně určí pozice a od této pozice si oba řetězce vymění konce. Vždy je však třeba volit takový mechanismus, aby křížením vznikl opět řetězec, který reprezentuje nějaké přípustné řešení.
+
+\InsertFigure{Figures/evol-progress.png}{0.7\textwidth}{Schématický příklad křížení na binárním řetězci}{fig:crossover}
 
 \subsubsection{Elitismus}
 \paragraph*{}
